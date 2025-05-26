@@ -1,4 +1,5 @@
 #include "..\script_component.hpp"
+// RYD_ArtyMission
 
 params ["_pos","_arty","_ammoG","_amount","_FO"];
 
