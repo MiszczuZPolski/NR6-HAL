@@ -4184,1241 +4184,1241 @@ RYD_CloseEnemyB =
 // 		};
 // 	};
 
-RYD_LZ =
-	{
-	private ["_pos","_lz","_rds","_isFlat","_posX","_posY"];
+// RYD_LZ =
+// 	{
+// 	private ["_pos","_lz","_rds","_isFlat","_posX","_posY"];
 
-	_pos = _this select 0;
+// 	_pos = _this select 0;
 
-	_posX = -1;
-	_posY = -1;
-	_rds = 50;
+// 	_posX = -1;
+// 	_posY = -1;
+// 	_rds = 50;
 
-	_lz = objNull;
+// 	_lz = objNull;
 
-	_isFlat = [];
+// 	_isFlat = [];
 
-	while {_rds <= 400} do
-		{
-		_isFlat = _pos isFlatEmpty [20,_rds,1,15,0,false,objNull];
+// 	while {_rds <= 400} do
+// 		{
+// 		_isFlat = _pos isFlatEmpty [20,_rds,1,15,0,false,objNull];
 
-		if ((count _isFlat) > 1) exitWith
-			{
-			_posX = _isFlat select 0;
-			_posY = _isFlat select 1;
-			};
+// 		if ((count _isFlat) > 1) exitWith
+// 			{
+// 			_posX = _isFlat select 0;
+// 			_posY = _isFlat select 1;
+// 			};
 
-		_rds = _rds + 50;
-		};
+// 		_rds = _rds + 50;
+// 		};
 
-	if (_posX > 0) then
-		{
-		_lz = createVehicle ["Land_HelipadEmpty_F", [_posX,_posY,0], [], 0, "NONE"];
-		//_i01 = [[_posX,_posY],str (random 100),"markLZ","ColorRed","ICON","mil_dot","LZ",""] call RYD_Mark
-		};
+// 	if (_posX > 0) then
+// 		{
+// 		_lz = createVehicle ["Land_HelipadEmpty_F", [_posX,_posY,0], [], 0, "NONE"];
+// 		//_i01 = [[_posX,_posY],str (random 100),"markLZ","ColorRed","ICON","mil_dot","LZ",""] call RYD_Mark
+// 		};
 
-	_lz
-	};
+// 	_lz
+// 	};
 
-RYD_TimeMachine =
-	{
-	private ["_units","_id"];
+// RYD_TimeMachine =
+// 	{
+// 	private ["_units","_id"];
 
-	_units = _this select 0;
+// 	_units = _this select 0;
 
-		{
-		_id = _x addAction ["Time: x2", (RYD_Path + "TimeM\TimeFaster.sqf"), "", -50, false, true, "", "(_this == _target)"];
-		_id = _x addAction ["Time: x0.5", (RYD_Path + "TimeM\TimeSlower.sqf"), "", -60, false, true, "", "(_this == _target)"];
-		_id = _x addAction ["Order pause enabled", (RYD_Path + "TimeM\EnOP.sqf"), "", -70, false, true, "", "(not RydHQ_GPauseActive) and (_this == _target)"];
-		_id = _x addAction ["Order pause disabled", (RYD_Path + "TimeM\DisOP.sqf"), "", -80, false, true, "", "RydHQ_GPauseActive and (_this == _target)"];
-		}
-	forEach _units;
+// 		{
+// 		_id = _x addAction ["Time: x2", (RYD_Path + "TimeM\TimeFaster.sqf"), "", -50, false, true, "", "(_this == _target)"];
+// 		_id = _x addAction ["Time: x0.5", (RYD_Path + "TimeM\TimeSlower.sqf"), "", -60, false, true, "", "(_this == _target)"];
+// 		_id = _x addAction ["Order pause enabled", (RYD_Path + "TimeM\EnOP.sqf"), "", -70, false, true, "", "(not RydHQ_GPauseActive) and (_this == _target)"];
+// 		_id = _x addAction ["Order pause disabled", (RYD_Path + "TimeM\DisOP.sqf"), "", -80, false, true, "", "RydHQ_GPauseActive and (_this == _target)"];
+// 		}
+// 	forEach _units;
 
-	true
-	};
+// 	true
+// 	};
 
-RYD_AddTask =
-	{//[(leader _unitG),[],[_posX,_posY]] call RYD_AddTask;
-	private ["_unit","_descr","_dstn","_type","_task","_tasks","_tName","_presentplayer"];
+// RYD_AddTask =
+// 	{//[(leader _unitG),[],[_posX,_posY]] call RYD_AddTask;
+// 	private ["_unit","_descr","_dstn","_type","_task","_tasks","_tName","_presentplayer"];
 
-	_unit = _this select 0;
-	_descr = _this select 1;
-	_dstn = _this select 2;
-	_type = _this select 3;
+// 	_unit = _this select 0;
+// 	_descr = _this select 1;
+// 	_dstn = _this select 2;
+// 	_type = _this select 3;
 
-	if (isNil "_type") then {_type = "move"};
+// 	if (isNil "_type") then {_type = "move"};
 
-	_tasks = (group _unit) getVariable ["HACAddedTasks",[]];
-	_task = taskNull;
+// 	_tasks = (group _unit) getVariable ["HACAddedTasks",[]];
+// 	_task = taskNull;
 
-	_presentplayer = true;
+// 	_presentplayer = true;
 
-	/*
-	{
-		if (isPlayer _x) exitwith {_presentplayer = true};
-	} forEach (units (group _unit));
-	*/
+// 	/*
+// 	{
+// 		if (isPlayer _x) exitwith {_presentplayer = true};
+// 	} forEach (units (group _unit));
+// 	*/
 
-	if (_presentplayer) then
-		{
+// 	if (_presentplayer) then
+// 		{
 
-		(group _unit) setVariable ["HACAddedTasks",[]];
+// 		(group _unit) setVariable ["HACAddedTasks",[]];
 
-			{
-			[_x] call BIS_fnc_deleteTask;
-			}
-		forEach _tasks;
+// 			{
+// 			[_x] call BIS_fnc_deleteTask;
+// 			}
+// 		forEach _tasks;
 
-		sleep 1;
+// 		sleep 1;
 
-		_task = [(group _unit),(str (group _unit)) + "HALTask", _descr, _dstn,"ASSIGNED",0,true,_type,true] call BIS_fnc_taskCreate;
-		_tasks = [];
+// 		_task = [(group _unit),(str (group _unit)) + "HALTask", _descr, _dstn,"ASSIGNED",0,true,_type,true] call BIS_fnc_taskCreate;
+// 		_tasks = [];
 
-		_tasks pushBack _task;
+// 		_tasks pushBack _task;
 
-		(group _unit) setVariable ["HACAddedTasks",_tasks];
+// 		(group _unit) setVariable ["HACAddedTasks",_tasks];
 
-		};
+// 		};
 
-	_task
-	};
+// 	_task
+// 	};
 
-RYD_FindHighestWithIndex =
-	{
-	private ["_array","_ix","_highest","_valMax","_valAct","_index","_clIndex"];
+// RYD_FindHighestWithIndex =
+// 	{
+// 	private ["_array","_ix","_highest","_valMax","_valAct","_index","_clIndex"];
 
-	_array = _this select 0;
-	_ix = _this select 1;
-
-	_highest = [];
-
-	if ((count _array) > 0) then
-		{
-		_highest = _array select 0;
-		_index = 0;
-		_clIndex = 0;
-		_valMax = _highest select _ix;
-
-			{
-			_valAct = _x select _ix;
-
-			if (_valAct > _valMax) then
-				{
-				_highest = _x;
-				_valMax = _valAct;
-				_clIndex = _index
-				};
-
-			_index = _index + 1
-			}
-		forEach _array
-		};
-
-	[_highest,_clIndex]
-	};
-
-RYD_ValueOrd =
-	{
-	private ["_array","_final","_highest","_ix"];
-
-	_array = +(_this select 0);
-
-	_final = [];
-
-	while {((count _array) > 0)} do
-		{
-		_highest = [_array,3] call RYD_FindHighestWithIndex;
-		_ix = _highest select 1;
-		_highest = _highest select 0;
-
-		_final pushBack _highest;
-
-		_array deleteAt _ix;
-		};
-
-	_final
-	};
+// 	_array = _this select 0;
+// 	_ix = _this select 1;
+
+// 	_highest = [];
+
+// 	if ((count _array) > 0) then
+// 		{
+// 		_highest = _array select 0;
+// 		_index = 0;
+// 		_clIndex = 0;
+// 		_valMax = _highest select _ix;
+
+// 			{
+// 			_valAct = _x select _ix;
+
+// 			if (_valAct > _valMax) then
+// 				{
+// 				_highest = _x;
+// 				_valMax = _valAct;
+// 				_clIndex = _index
+// 				};
+
+// 			_index = _index + 1
+// 			}
+// 		forEach _array
+// 		};
+
+// 	[_highest,_clIndex]
+// 	};
+
+// RYD_ValueOrd =
+// 	{
+// 	private ["_array","_final","_highest","_ix"];
+
+// 	_array = +(_this select 0);
+
+// 	_final = [];
+
+// 	while {((count _array) > 0)} do
+// 		{
+// 		_highest = [_array,3] call RYD_FindHighestWithIndex;
+// 		_ix = _highest select 1;
+// 		_highest = _highest select 0;
+
+// 		_final pushBack _highest;
+
+// 		_array deleteAt _ix;
+// 		};
+
+// 	_final
+// 	};
 
-RYD_FindOverwatchPos =
-	{
-	private ["_pos","_tgtPos","_radius","_dir","_posASL","_tgtPosASL","_pool","_posX","_posY","_posX2","_posY2","_pool2","_isBlock","_pool3","_elevImp","_terrImp","_terr","_elev","_final","_value",
-	"_urban","_forest","_group","_dst","_vh"];
-
-	_pos = _this select 0;//ATL
-	_tgtPos = _this select 1;//ATL
-	_tgtPos = [_tgtPos select 0,_tgtPos select 1,1.5];
-	_radius = _this select 2;
-	_elevImp = 1;
-	if ((count _this) > 3) then {_elevImp = _this select 3};
-	_terrImp = 1;
-	if ((count _this) > 4) then {_terrImp = _this select 4};
-	_group = grpNull;
-	if ((count _this) > 5) then {_group = _this select 5};
-	_vh = vehicle (leader _group);
-
-	_tgtPosASL = [_tgtPos select 0,_tgtPos select 1,getTerrainHeightASL [_tgtPos select 0,_tgtPos select 1] + 1.5];
-
-	_pool = [];
-
-	_posX = _pos select 0;
-	_posY = _pos select 1;
-
-	for "_i" from 1 to 100 do
-		{
-		_posX2 = _posX + (random (2 * _radius)) - _radius;
-		_posY2 = _posY + (random (2 * _radius)) - _radius;
+// RYD_FindOverwatchPos =
+// 	{
+// 	private ["_pos","_tgtPos","_radius","_dir","_posASL","_tgtPosASL","_pool","_posX","_posY","_posX2","_posY2","_pool2","_isBlock","_pool3","_elevImp","_terrImp","_terr","_elev","_final","_value",
+// 	"_urban","_forest","_group","_dst","_vh"];
+
+// 	_pos = _this select 0;//ATL
+// 	_tgtPos = _this select 1;//ATL
+// 	_tgtPos = [_tgtPos select 0,_tgtPos select 1,1.5];
+// 	_radius = _this select 2;
+// 	_elevImp = 1;
+// 	if ((count _this) > 3) then {_elevImp = _this select 3};
+// 	_terrImp = 1;
+// 	if ((count _this) > 4) then {_terrImp = _this select 4};
+// 	_group = grpNull;
+// 	if ((count _this) > 5) then {_group = _this select 5};
+// 	_vh = vehicle (leader _group);
+
+// 	_tgtPosASL = [_tgtPos select 0,_tgtPos select 1,getTerrainHeightASL [_tgtPos select 0,_tgtPos select 1] + 1.5];
+
+// 	_pool = [];
+
+// 	_posX = _pos select 0;
+// 	_posY = _pos select 1;
+
+// 	for "_i" from 1 to 100 do
+// 		{
+// 		_posX2 = _posX + (random (2 * _radius)) - _radius;
+// 		_posY2 = _posY + (random (2 * _radius)) - _radius;
 
-		if not (surfaceIsWater [_posX2,_posY2]) then {_pool pushBack [_posX2,_posY2,1]}
-		};
+// 		if not (surfaceIsWater [_posX2,_posY2]) then {_pool pushBack [_posX2,_posY2,1]}
+// 		};
 
-	_pool2 = [];
+// 	_pool2 = [];
 
-		{
-		_isBlock = terrainIntersect [_x, _tgtPos];
-		if not (_isBlock) then
-			{
-			_pool2 pushBack _x
-			}
-		}
-	forEach _pool;
+// 		{
+// 		_isBlock = terrainIntersect [_x, _tgtPos];
+// 		if not (_isBlock) then
+// 			{
+// 			_pool2 pushBack _x
+// 			}
+// 		}
+// 	forEach _pool;
 
-	if ((count _pool2) == 0) then {_pool2 = _pool};
+// 	if ((count _pool2) == 0) then {_pool2 = _pool};
 
-	_pool3 = [];
+// 	_pool3 = [];
 
-		{
-		_isBlock = lineIntersects [[_x select 0,_x select 1,getTerrainHeightASL [_x select 0,_x select 1] + 1], _tgtPosASL];
-		if not (_isBlock) then
-			{
-			_pool3 pushBack _x
-			}
-		}
-	forEach _pool2;
+// 		{
+// 		_isBlock = lineIntersects [[_x select 0,_x select 1,getTerrainHeightASL [_x select 0,_x select 1] + 1], _tgtPosASL];
+// 		if not (_isBlock) then
+// 			{
+// 			_pool3 pushBack _x
+// 			}
+// 		}
+// 	forEach _pool2;
 
-	if ((count _pool3) == 0) then {_pool3 = _pool2};
+// 	if ((count _pool3) == 0) then {_pool3 = _pool2};
 
-		{
-		_value = [_x,1,1] call RYD_TerraCognita;
-		_urban = _value select 0;
-		_forest = _value select 1;
+// 		{
+// 		_value = [_x,1,1] call RYD_TerraCognita;
+// 		_urban = _value select 0;
+// 		_forest = _value select 1;
 
-		_terr = (_urban + _forest) * 100;
+// 		_terr = (_urban + _forest) * 100;
 
-		_posX = _x select 0;
-		_posY = _x select 1;
-		_elev = getTerrainHeightASL [_posX,_posY];
-		_dst = 0;
-		if not (isNull _group) then
-			{
-			_dst = ([_posX,_posY] distance _vh)/1000
-			};
+// 		_posX = _x select 0;
+// 		_posY = _x select 1;
+// 		_elev = getTerrainHeightASL [_posX,_posY];
+// 		_dst = 0;
+// 		if not (isNull _group) then
+// 			{
+// 			_dst = ([_posX,_posY] distance _vh)/1000
+// 			};
 
-		_x pushBack ((_terr * _terrImp) + (_elev * _elevImp))/(1 + _dst)
-		}
-	forEach _pool3;
+// 		_x pushBack ((_terr * _terrImp) + (_elev * _elevImp))/(1 + _dst)
+// 		}
+// 	forEach _pool3;
 
-	_pool3 = [_pool3] call RYD_ValueOrd;
+// 	_pool3 = [_pool3] call RYD_ValueOrd;
 
-	_final = [];
+// 	_final = [];
 
-		{
-		_final pushBack [_x select 0,_x select 1]
-		}
-	forEach _pool3;
+// 		{
+// 		_final pushBack [_x select 0,_x select 1]
+// 		}
+// 	forEach _pool3;
 
-	_final
-	};
+// 	_final
+// 	};
 
-RYD_KeepAlt =
-	{
-	private ["_veh","_alt","_keep"];
+// RYD_KeepAlt =
+// 	{
+// 	private ["_veh","_alt","_keep"];
 
-	_veh = _this select 0;
-	_alt = _this select 1;
+// 	_veh = _this select 0;
+// 	_alt = _this select 1;
 
-	_keep = true;
+// 	_keep = true;
 
-	while {_keep} do
-		{
-		sleep 0.1;
-		if (isNull _veh) exitWith {};
-		if not (alive _veh) exitWith {};
-		_keep = _veh getVariable ["KeepAlt",true];
-		_veh flyInHeight _alt
-		};
+// 	while {_keep} do
+// 		{
+// 		sleep 0.1;
+// 		if (isNull _veh) exitWith {};
+// 		if not (alive _veh) exitWith {};
+// 		_keep = _veh getVariable ["KeepAlt",true];
+// 		_veh flyInHeight _alt
+// 		};
 
-	_veh setVariable ["KeepAlt",nil]
-	};
+// 	_veh setVariable ["KeepAlt",nil]
+// 	};
 
-RYD_AmmoDrop =
-	{
-	private ["_cargo","_ammoBox","_spawnPos","_parachute","_parachutePos","_height1","_height2","_height3","_speed","_dir","_vel","_pos","_off","_type","_benef","_backLimit"];
+// RYD_AmmoDrop =
+// 	{
+// 	private ["_cargo","_ammoBox","_spawnPos","_parachute","_parachutePos","_height1","_height2","_height3","_speed","_dir","_vel","_pos","_off","_type","_benef","_backLimit"];
 
-	_cargo = _this select 0;
-	_ammoBox = _this select 1;
-	_benef = _this select 2;
-	_type = typeOf _ammoBox;
+// 	_cargo = _this select 0;
+// 	_ammoBox = _this select 1;
+// 	_benef = _this select 2;
+// 	_type = typeOf _ammoBox;
 
-	_dir = getDir _cargo;
+// 	_dir = getDir _cargo;
 
-	_backLimit = (((boundingBoxReal _cargo) select 0) select 1);
+// 	_backLimit = (((boundingBoxReal _cargo) select 0) select 1);
 
-	_parachutePos = _cargo modelToWorld [0,(_backLimit - 2),-2];
+// 	_parachutePos = _cargo modelToWorld [0,(_backLimit - 2),-2];
 
-	_parachute = createVehicle ["B_Parachute_02_F", [_parachutePos select 0,_parachutePos select 1,2000], [], 0.5, "NONE"];
-	_parachute setPos _parachutePos;
-	_parachute setDir _dir;
+// 	_parachute = createVehicle ["B_Parachute_02_F", [_parachutePos select 0,_parachutePos select 1,2000], [], 0.5, "NONE"];
+// 	_parachute setPos _parachutePos;
+// 	_parachute setDir _dir;
 
-	_vel = velocity _cargo;
+// 	_vel = velocity _cargo;
 
-	_parachute setVelocity [(_vel select 0)/2,(_vel select 1)/2,(_vel select 2)/2];
+// 	_parachute setVelocity [(_vel select 0)/2,(_vel select 1)/2,(_vel select 2)/2];
 
-	_ammoBox setDir _dir;
+// 	_ammoBox setDir _dir;
 
-	_ammoBox attachTo [_parachute,[0,0,0]];
+// 	_ammoBox attachTo [_parachute,[0,0,0]];
 
-	_ammoBox enableSimulationGlobal true;
-	_ammoBox hideObjectGlobal false;
+// 	_ammoBox enableSimulationGlobal true;
+// 	_ammoBox hideObjectGlobal false;
 
-	sleep 2;
+// 	sleep 2;
 
-	waitUntil
-		{
-		_height1 = (getPosATL _ammoBox) select 2;
-		sleep 0.005;
-		_height2 = (getPosATL _ammoBox) select 2;
-		_speed = abs ((velocity _ammoBox) select 2);
-		if (_height2 > _height1) then {_parachute setVelocity [0,0,-20]};
-		sleep 0.005;
-		_height3 = (getPosATL _ammoBox) select 2;
+// 	waitUntil
+// 		{
+// 		_height1 = (getPosATL _ammoBox) select 2;
+// 		sleep 0.005;
+// 		_height2 = (getPosATL _ammoBox) select 2;
+// 		_speed = abs ((velocity _ammoBox) select 2);
+// 		if (_height2 > _height1) then {_parachute setVelocity [0,0,-20]};
+// 		sleep 0.005;
+// 		_height3 = (getPosATL _ammoBox) select 2;
 
-		((_height2 < 0.05) or {(_height2 < 2) and {(_height3 > _height2) or {(_speed < 0.001) or {(isNull _parachute)}}}})
-		};
+// 		((_height2 < 0.05) or {(_height2 < 2) and {(_height3 > _height2) or {(_speed < 0.001) or {(isNull _parachute)}}}})
+// 		};
 
-	detach _ammoBox;
+// 	detach _ammoBox;
 
-	_pos = getPosATL _ammoBox;
+// 	_pos = getPosATL _ammoBox;
 
-	//deleteVehicle _ammoBox;
+// 	//deleteVehicle _ammoBox;
 
-	//_ammoBox = createVehicle [_type, _pos, [], 0, "NONE"];
+// 	//_ammoBox = createVehicle [_type, _pos, [], 0, "NONE"];
 
-	_off = _ammoBox modelToWorld [0,0,0] select 2;
-	if (_off < 2) then
-		{
-		_ammoBox setPos [_pos select 0,_pos select 1,0];
-		}
-	else
-		{
-		_off = getPos _ammoBox select 2;
-		_ammoBox setPosATL [_pos select 0,_pos select 1,(_pos select 2)-_off];
-		};
+// 	_off = _ammoBox modelToWorld [0,0,0] select 2;
+// 	if (_off < 2) then
+// 		{
+// 		_ammoBox setPos [_pos select 0,_pos select 1,0];
+// 		}
+// 	else
+// 		{
+// 		_off = getPos _ammoBox select 2;
+// 		_ammoBox setPosATL [_pos select 0,_pos select 1,(_pos select 2)-_off];
+// 		};
 
-	_benef setVariable ["isBoxed",_ammoBox];
+// 	_benef setVariable ["isBoxed",_ammoBox];
 
-	if not (isNull _parachute) then
-		{
-		_parachute setVelocity [0,0,0]
-		};
+// 	if not (isNull _parachute) then
+// 		{
+// 		_parachute setVelocity [0,0,0]
+// 		};
 
-	sleep 5;
+// 	sleep 5;
 
-	if not (isNull _parachute) then
-		{
-		deleteVehicle _parachute
-		}
-	};
-
-RYD_ResetAI =
-	{
-	private ["_group","_All","_unit","_pos","_posX","_posY","_type","_muzzles"];
-
-	_group = _this select 0;
-	_All = units _group;
-
-		{
-		_unit = _x;
-		_pos = getPosATL _unit;
-
-		_posX = _pos select 0;
-		_posY = _pos select 1;
-
-		_posX = _posX + (random 0.25) - 0.125;
-		_posY = _posY + (random 0.25) - 0.125;
-
-		_unit setPos [_posX,_posY,1];
-
-		sleep 0.05;
-
-		_unit doMove [_posX,_posY,0];
-
-		sleep 0.05;
-
-		_unit setDir (getDir player);
-
-		sleep 0.05;
-
-		_unit forceSpeed -1;
-
-		sleep 0.05;
-
-		if ((count (weapons _unit)) > 0) then
-			{
-			private["_type", "_muzzles"];
-
-			_type = (weapons _unit) select 0;
-			_muzzles = getArray(configFile >> "cfgWeapons" >> _type >> "muzzles");
-
-			if (count _muzzles > 1) then
-				{
-				_unit selectWeapon (_muzzles select 0);
-				}
-			else
-				{
-				_unit selectWeapon _type
-				}
-			}
-		}
-	forEach _All;
-
-	sleep 0.5;
-
-		{
-		_x doWatch objNull;
-		sleep 0.05;
-		_x doTarget objNull;
-		sleep 0.05;
-		_x enableReload false;
-		sleep 0.05;
-		_x stop true;
-		sleep 0.05;
-		_x setUnitPos "UP";
-		sleep 0.05
-		}
-	forEach _All;
-
-	sleep 0.5;
-
-		{
-		_x switchMove "";
-		sleep 0.05;
-		_x disableAI "TARGET";
-		sleep 0.05;
-		_x disableAI "AUTOTARGET";
-		sleep 0.05;
-		_x disableAI "MOVE";
-		sleep 0.05;
-		_x disableAI "FSM";
-		sleep 0.05;
-		_x disableAI "ANIM";
-		sleep 0.05
-		}
-	forEach _All;
-
-	sleep 5;
-
-		{
-		_x setUnitPos "AUTO";
-		sleep 0.05;
-		_x enableAI "TARGET";
-		sleep 0.05;
-		_x enableAI "AUTOTARGET";
-		sleep 0.05;
-		_x enableAI "MOVE";
-		sleep 0.05;
-		_x enableAI "FSM";
-		sleep 0.05;
-		_x enableAI "ANIM";
-		sleep 0.05;
-		_x stop false;
-		sleep 0.05;
-		_x enableReload true;
-		sleep 0.05
-		}
-	forEach _All;
-	};
+// 	if not (isNull _parachute) then
+// 		{
+// 		deleteVehicle _parachute
+// 		}
+// 	};
+
+// RYD_ResetAI =
+// 	{
+// 	private ["_group","_All","_unit","_pos","_posX","_posY","_type","_muzzles"];
+
+// 	_group = _this select 0;
+// 	_All = units _group;
+
+// 		{
+// 		_unit = _x;
+// 		_pos = getPosATL _unit;
+
+// 		_posX = _pos select 0;
+// 		_posY = _pos select 1;
+
+// 		_posX = _posX + (random 0.25) - 0.125;
+// 		_posY = _posY + (random 0.25) - 0.125;
+
+// 		_unit setPos [_posX,_posY,1];
+
+// 		sleep 0.05;
+
+// 		_unit doMove [_posX,_posY,0];
+
+// 		sleep 0.05;
+
+// 		_unit setDir (getDir player);
+
+// 		sleep 0.05;
+
+// 		_unit forceSpeed -1;
+
+// 		sleep 0.05;
+
+// 		if ((count (weapons _unit)) > 0) then
+// 			{
+// 			private["_type", "_muzzles"];
+
+// 			_type = (weapons _unit) select 0;
+// 			_muzzles = getArray(configFile >> "cfgWeapons" >> _type >> "muzzles");
+
+// 			if (count _muzzles > 1) then
+// 				{
+// 				_unit selectWeapon (_muzzles select 0);
+// 				}
+// 			else
+// 				{
+// 				_unit selectWeapon _type
+// 				}
+// 			}
+// 		}
+// 	forEach _All;
+
+// 	sleep 0.5;
+
+// 		{
+// 		_x doWatch objNull;
+// 		sleep 0.05;
+// 		_x doTarget objNull;
+// 		sleep 0.05;
+// 		_x enableReload false;
+// 		sleep 0.05;
+// 		_x stop true;
+// 		sleep 0.05;
+// 		_x setUnitPos "UP";
+// 		sleep 0.05
+// 		}
+// 	forEach _All;
+
+// 	sleep 0.5;
+
+// 		{
+// 		_x switchMove "";
+// 		sleep 0.05;
+// 		_x disableAI "TARGET";
+// 		sleep 0.05;
+// 		_x disableAI "AUTOTARGET";
+// 		sleep 0.05;
+// 		_x disableAI "MOVE";
+// 		sleep 0.05;
+// 		_x disableAI "FSM";
+// 		sleep 0.05;
+// 		_x disableAI "ANIM";
+// 		sleep 0.05
+// 		}
+// 	forEach _All;
+
+// 	sleep 5;
+
+// 		{
+// 		_x setUnitPos "AUTO";
+// 		sleep 0.05;
+// 		_x enableAI "TARGET";
+// 		sleep 0.05;
+// 		_x enableAI "AUTOTARGET";
+// 		sleep 0.05;
+// 		_x enableAI "MOVE";
+// 		sleep 0.05;
+// 		_x enableAI "FSM";
+// 		sleep 0.05;
+// 		_x enableAI "ANIM";
+// 		sleep 0.05;
+// 		_x stop false;
+// 		sleep 0.05;
+// 		_x enableReload true;
+// 		sleep 0.05
+// 		}
+// 	forEach _All;
+// 	};
 
-RYD_FireCount =
-	{
-	private ["_unit","_count","_fEH"];
+// RYD_FireCount =
+// 	{
+// 	private ["_unit","_count","_fEH"];
 
-	_unit = _this select 0;
+// 	_unit = _this select 0;
 
-	_count = _unit getVariable "FireCount";
-	if (isNil "_count") then {_count = 0};
+// 	_count = _unit getVariable "FireCount";
+// 	if (isNil "_count") then {_count = 0};
 
-	if (_count >= 2) exitWith
-		{
-		_fEH = _unit getVariable "HAC_FEH";
-		if not (isNil "_fEH") then
-			{
-			_unit removeEventHandler ["Fired",_fEH];
-			_unit setVariable ["HAC_FEH",nil]
-			}
-		};
+// 	if (_count >= 2) exitWith
+// 		{
+// 		_fEH = _unit getVariable "HAC_FEH";
+// 		if not (isNil "_fEH") then
+// 			{
+// 			_unit removeEventHandler ["Fired",_fEH];
+// 			_unit setVariable ["HAC_FEH",nil]
+// 			}
+// 		};
 
-	_unit setVariable ["FireCount",_count + 1]
-	};
+// 	_unit setVariable ["FireCount",_count + 1]
+// 	};
 
-RYD_HQChatter =
-	{//if (RydxHQ_HQChat) then {[_unitG,"HQ_ord_attack",_pos,_HQ] call RYD_HQChatter};
-	private ["_group","_sentence","_pos","_HQ","_unit","_comm","_who","_where","_nL"];
+// RYD_HQChatter =
+// 	{//if (RydxHQ_HQChat) then {[_unitG,"HQ_ord_attack",_pos,_HQ] call RYD_HQChatter};
+// 	private ["_group","_sentence","_pos","_HQ","_unit","_comm","_who","_where","_nL"];
 
-	_group = _this select 0;
-	_sentence = _this select 1;
-	_pos = +(_this select 2);
-	_HQ = _this select 3;
+// 	_group = _this select 0;
+// 	_sentence = _this select 1;
+// 	_pos = +(_this select 2);
+// 	_HQ = _this select 3;
 
-	_unit = leader _group;
-	_comm = leader _HQ;
+// 	_unit = leader _group;
+// 	_comm = leader _HQ;
 
-	switch (missionNamespace getVariable ["RydxHQ_AIChat_Type" ,"NONE"]) do
-		{
-		case ("SILENT_M") : {_sentence = "HAC_SILENTM_" + _sentence};
-		case ("40K_IMPERIUM") : {_sentence = "HAC_40KImp_" + _sentence};
-		};
+// 	switch (missionNamespace getVariable ["RydxHQ_AIChat_Type" ,"NONE"]) do
+// 		{
+// 		case ("SILENT_M") : {_sentence = "HAC_SILENTM_" + _sentence};
+// 		case ("40K_IMPERIUM") : {_sentence = "HAC_40KImp_" + _sentence};
+// 		};
 
 
-	_sentence = getText (configFile >> "CfgRadio" >> _sentence >> "title");
-	_who = toUpper (getText (configFile >> "CfgVehicles" >> (typeOf (vehicle _unit)) >> "displayName"));
+// 	_sentence = getText (configFile >> "CfgRadio" >> _sentence >> "title");
+// 	_who = toUpper (getText (configFile >> "CfgVehicles" >> (typeOf (vehicle _unit)) >> "displayName"));
 
-	_who = groupId _group ;
+// 	_who = groupId _group ;
 
-	_where = "";
+// 	_where = "";
 
-	_nL = nearestLocations [_pos, ["Hill","NameCityCapital","NameCity","NameVillage","NameLocal","Strategic","StrongpointArea"], 600];
+// 	_nL = nearestLocations [_pos, ["Hill","NameCityCapital","NameCity","NameVillage","NameLocal","Strategic","StrongpointArea"], 600];
 
-	if ((count _nL) > 0) then
-		{
-		_nL = _nL select 0;
-		_where = (text _nL) + ", ";
-		};
+// 	if ((count _nL) > 0) then
+// 		{
+// 		_nL = _nL select 0;
+// 		_where = (text _nL) + ", ";
+// 		};
 
-	_where = _where + (format ["Grid: %1",mapGridPosition _pos]);
+// 	_where = _where + (format ["Grid: %1",mapGridPosition _pos]);
 
-	_sentence = format ["%1. %2 at %3.",_who,_sentence,_where];
+// 	_sentence = format ["%1. %2 at %3.",_who,_sentence,_where];
 
 
-	if not (isMultiplayer) then {
+// 	if not (isMultiplayer) then {
 
-		_comm sideChat _sentence
-	}
-	else
-	{
-//		[[_comm,_sentence],"RYD_MP_Sidechat",true,false,true] call BIS_fnc_MP;
-		[_comm,_sentence] remoteExecCall ["sideChat"];
-	};
-	};
+// 		_comm sideChat _sentence
+// 	}
+// 	else
+// 	{
+// //		[[_comm,_sentence],"RYD_MP_Sidechat",true,false,true] call BIS_fnc_MP;
+// 		[_comm,_sentence] remoteExecCall ["sideChat"];
+// 	};
+// 	};
 
-RYD_OrderPause =
-	{
-	private ["_unitG","_pos","_sentence","_HQ","_pause","_lastOrd"];
+// RYD_OrderPause =
+// 	{
+// 	private ["_unitG","_pos","_sentence","_HQ","_pause","_lastOrd"];
 
-	_unitG = _this select 0;
-	_pos = _this select 1;
+// 	_unitG = _this select 0;
+// 	_pos = _this select 1;
 
-	if ((typeName _pos) in [(typeName objNull),(typeName locationNull)]) then {_pos = position _pos};
+// 	if ((typeName _pos) in [(typeName objNull),(typeName locationNull)]) then {_pos = position _pos};
 
-	_pos set [2,0];
+// 	_pos set [2,0];
 
-	_sentence = _this select 2;
-	_HQ = _this select 3;
+// 	_sentence = _this select 2;
+// 	_HQ = _this select 3;
 
-	_pause = 3 + (random 1.5);
+// 	_pause = 3 + (random 1.5);
 
-	waitUntil
-		{
-		sleep 0.1;
+// 	waitUntil
+// 		{
+// 		sleep 0.1;
 
-		_lastOrd = _HQ getVariable ["RydHQ_MyLastOrder",0];
+// 		_lastOrd = _HQ getVariable ["RydHQ_MyLastOrder",0];
 
-		((time - _lastOrd) > _pause)
-		};
+// 		((time - _lastOrd) > _pause)
+// 		};
 
-	_HQ setVariable ["RydHQ_MyLastOrder",time];
+// 	_HQ setVariable ["RydHQ_MyLastOrder",time];
 
-	if (RydxHQ_HQChat) then
-		{
-		[_unitG,_sentence,_pos,_HQ] call RYD_HQChatter
-		};
+// 	if (RydxHQ_HQChat) then
+// 		{
+// 		[_unitG,_sentence,_pos,_HQ] call RYD_HQChatter
+// 		};
 
-	true
-	};
+// 	true
+// 	};
 
-RYD_AIChatter =
-	{
-	//if (isMultiPlayer) exitWith {};
+// RYD_AIChatter =
+// 	{
+// 	//if (isMultiPlayer) exitWith {};
 
-	private ["_unit","_group","_lastComm","_sentences","_side","_lastTime","_varName","_sentence","_kind","_lastKind","_exitNow","_chatRep","_repExChance","_ct","_units","_color","_type","_code","_who"];
+// 	private ["_unit","_group","_lastComm","_sentences","_side","_lastTime","_varName","_sentence","_kind","_lastKind","_exitNow","_chatRep","_repExChance","_ct","_units","_color","_type","_code","_who"];
 
-	_unit = _this select 0;
+// 	_unit = _this select 0;
 
-	_group = group _unit;
+// 	_group = group _unit;
 
-	_lastComm = _group getVariable "HAC_LastComm";
-	if (isNil "_lastComm") then {_lastComm = -5};
-	if ((time - _lastComm) < 5) exitWith {};
+// 	_lastComm = _group getVariable "HAC_LastComm";
+// 	if (isNil "_lastComm") then {_lastComm = -5};
+// 	if ((time - _lastComm) < 5) exitWith {};
 
-	_sentences = _this select 1;
-	_side = side _unit;
+// 	_sentences = _this select 1;
+// 	_side = side _unit;
 
-	if (({(((side _x) == _side) and (isPlayer _x))} count allUnits) < 1) exitWith {};
+// 	if (({(((side _x) == _side) and (isPlayer _x))} count allUnits) < 1) exitWith {};
 
 
-	_group setVariable ["HAC_LastComm",time];
+// 	_group setVariable ["HAC_LastComm",time];
 
-	_kind = _this select 2;
+// 	_kind = _this select 2;
 
 
-	switch (missionNamespace getVariable ["RydxHQ_AIChat_Type" ,"NONE"]) do
-		{
-		case ("SILENT_M") : {_sentences = (call compile ("RydxHQ_AIC_SILENTM_" + _kind))};
-		case ("40K_IMPERIUM") : {_sentences = (call compile ("RydxHQ_AIC_40KImp_" + _kind))};
-		};
+// 	switch (missionNamespace getVariable ["RydxHQ_AIChat_Type" ,"NONE"]) do
+// 		{
+// 		case ("SILENT_M") : {_sentences = (call compile ("RydxHQ_AIC_SILENTM_" + _kind))};
+// 		case ("40K_IMPERIUM") : {_sentences = (call compile ("RydxHQ_AIC_40KImp_" + _kind))};
+// 		};
 
-	_varName = "_West";
+// 	_varName = "_West";
 
-	switch (_side) do
-		{
-		case (east) : {_varName = "_East"};
-		case (resistance) : {_varName = "_Guer"};
-		};
+// 	switch (_side) do
+// 		{
+// 		case (east) : {_varName = "_East"};
+// 		case (resistance) : {_varName = "_Guer"};
+// 		};
 
-	_lastTime = missionNamespace getVariable ["HAC_AIChatLT" + _varName,[0,""]];
-	_lastKind = _lastTime select 1;
-	_lastTime = _lastTime select 0;
+// 	_lastTime = missionNamespace getVariable ["HAC_AIChatLT" + _varName,[0,""]];
+// 	_lastKind = _lastTime select 1;
+// 	_lastTime = _lastTime select 0;
 
-	if ((time - _lastTime) < 5) then {sleep 2};
+// 	if ((time - _lastTime) < 5) then {sleep 2};
 
-	_lastTime = missionNamespace getVariable ["HAC_AIChatLT" + _varName,[0,""]];
-	_lastKind = _lastTime select 1;
-	_lastTime = _lastTime select 0;
+// 	_lastTime = missionNamespace getVariable ["HAC_AIChatLT" + _varName,[0,""]];
+// 	_lastKind = _lastTime select 1;
+// 	_lastTime = _lastTime select 0;
 
-	if ((time - _lastTime) < 5) then {sleep 2};
+// 	if ((time - _lastTime) < 5) then {sleep 2};
 
-	_lastTime = missionNamespace getVariable ["HAC_AIChatLT" + _varName,[0,""]];
-	_lastKind = _lastTime select 1;
-	_lastTime = _lastTime select 0;
+// 	_lastTime = missionNamespace getVariable ["HAC_AIChatLT" + _varName,[0,""]];
+// 	_lastKind = _lastTime select 1;
+// 	_lastTime = _lastTime select 0;
 
-	if ((time - _lastTime) < 5) exitWith {};
+// 	if ((time - _lastTime) < 5) exitWith {};
 
-	_exitNow = false;
+// 	_exitNow = false;
 
-	_chatRep = 0;
+// 	_chatRep = 0;
 
-	if (_lastKind in [_kind]) then
-		{
-		_chatRep = missionNamespace getVariable ["HAC_AIChatRep" + _varName,0];
-		_repExChance = round (random 2);
+// 	if (_lastKind in [_kind]) then
+// 		{
+// 		_chatRep = missionNamespace getVariable ["HAC_AIChatRep" + _varName,0];
+// 		_repExChance = round (random 2);
 
-		if (_chatRep >= _repExChance) then
-			{
-			if ((random 100) < (90 + _chatRep)) then
-				{
-				_exitNow = true
-				}
-			}
-		};
+// 		if (_chatRep >= _repExChance) then
+// 			{
+// 			if ((random 100) < (90 + _chatRep)) then
+// 				{
+// 				_exitNow = true
+// 				}
+// 			}
+// 		};
 
-	if (_exitNow) exitWith {};
+// 	if (_exitNow) exitWith {};
 
-	missionNamespace setVariable ["HAC_AIChatLT" + _varName,[_lastTime,_kind]];
+// 	missionNamespace setVariable ["HAC_AIChatLT" + _varName,[_lastTime,_kind]];
 
-	if (_lastKind in [_kind]) then
-		{
-		missionNamespace setVariable ["HAC_AIChatRep" + _varName,_chatRep + 1]
-		};
+// 	if (_lastKind in [_kind]) then
+// 		{
+// 		missionNamespace setVariable ["HAC_AIChatRep" + _varName,_chatRep + 1]
+// 		};
 
-	_sentence = selectRandom _sentences;
+// 	_sentence = selectRandom _sentences;
 
 
-//	[[_unit,_sentence],"RYD_MP_SideRadio",true,false,true] call BIS_fnc_MP;
-	[_unit,_sentence] remoteExecCall ["sideRadio"];
+// //	[[_unit,_sentence],"RYD_MP_SideRadio",true,false,true] call BIS_fnc_MP;
+// 	[_unit,_sentence] remoteExecCall ["sideRadio"];
 
 
 
-/*"OrdDen"
-"OrdConf"
-"OrdFinal"
-"OrdEnd"
-"ArtAss"
-"ArtDen"
-"ArtFire"
-"ArtyReq"
-"SmokeReq"
-"IllumReq"
-"SuppReq"
-"SuppAss"
-"SuppDen"
-"MedReq"
-"EnemySpot"
-"InDanger"
-"InFear"
-"InPanic"
-"OffStance"
-"DefStance"*/
+// /*"OrdDen"
+// "OrdConf"
+// "OrdFinal"
+// "OrdEnd"
+// "ArtAss"
+// "ArtDen"
+// "ArtFire"
+// "ArtyReq"
+// "SmokeReq"
+// "IllumReq"
+// "SuppReq"
+// "SuppAss"
+// "SuppDen"
+// "MedReq"
+// "EnemySpot"
+// "InDanger"
+// "InFear"
+// "InPanic"
+// "OffStance"
+// "DefStance"*/
 
-	if (RydHQ_ChatDebug) then
-		{
-		_color = "ColorGrey";
-		_type = "mil_warning";
+// 	if (RydHQ_ChatDebug) then
+// 		{
+// 		_color = "ColorGrey";
+// 		_type = "mil_warning";
 
-		if (_kind in ["ArtyReq","SmokeReq","IllumReq","SuppReq","MedReq"]) then {_type = "mil_unknown"};
+// 		if (_kind in ["ArtyReq","SmokeReq","IllumReq","SuppReq","MedReq"]) then {_type = "mil_unknown"};
 
-		switch (true) do
-			{
-			case (_kind in ["OffStance","DefStance","OrdConf","OrdFinal","OrdEnd","ArtFire"]) :
-				{
-				_color = "Color4_FD_F"//light blue
-				};
+// 		switch (true) do
+// 			{
+// 			case (_kind in ["OffStance","DefStance","OrdConf","OrdFinal","OrdEnd","ArtFire"]) :
+// 				{
+// 				_color = "Color4_FD_F"//light blue
+// 				};
 
-			case (_kind in ["SuppAss","ArtAss"]) :
-				{
-				_color = "Color2_FD_F"//light khaki
-				};
+// 			case (_kind in ["SuppAss","ArtAss"]) :
+// 				{
+// 				_color = "Color2_FD_F"//light khaki
+// 				};
 
-			case (_kind in ["EnemySpot"]) :
-				{
-				_color = "Color1_FD_F"//light red
-				};
+// 			case (_kind in ["EnemySpot"]) :
+// 				{
+// 				_color = "Color1_FD_F"//light red
+// 				};
 
-			case (_kind in ["MedReq","SuppReq","ArtyReq","SmokeReq","IllumReq"]) :
-				{
-				_color = "Color3_FD_F"//light orange
-				};
+// 			case (_kind in ["MedReq","SuppReq","ArtyReq","SmokeReq","IllumReq"]) :
+// 				{
+// 				_color = "Color3_FD_F"//light orange
+// 				};
 
-			case (_kind in ["ArtDen","SuppDen","OrdDen"]) :
-				{
-				_color = "ColorOrange"
-				};
+// 			case (_kind in ["ArtDen","SuppDen","OrdDen"]) :
+// 				{
+// 				_color = "ColorOrange"
+// 				};
 
-			case (_kind in ["InDanger","InFear","InPanic"]) :
-				{
-				_color = "ColorRed"
-				};
-			};
+// 			case (_kind in ["InDanger","InFear","InPanic"]) :
+// 				{
+// 				_color = "ColorRed"
+// 				};
+// 			};
 
-		_sentence = getText (configFile >> "CfgRadio" >> _sentence >> "title");
+// 		_sentence = getText (configFile >> "CfgRadio" >> _sentence >> "title");
 
-		_who = groupId (group _unit);
+// 		_who = groupId (group _unit);
 
 
-		_mark = [(getPosATL _unit),_unit,"markChatter" + (str (random 10)),_color,"ICON",_type, _who + " : " + _sentence,"",[0.5,0.5]] call RYD_Mark;
+// 		_mark = [(getPosATL _unit),_unit,"markChatter" + (str (random 10)),_color,"ICON",_type, _who + " : " + _sentence,"",[0.5,0.5]] call RYD_Mark;
 
-		_code =
-			{
-			_SCRname = "ChatMark";
+// 		_code =
+// 			{
+// 			_SCRname = "ChatMark";
 
-			_mark = _this select 0;
+// 			_mark = _this select 0;
 
-			_alpha = 1;
+// 			_alpha = 1;
 
-			sleep 27.5;
+// 			sleep 27.5;
 
-			for "_i" from 1 to 20 do
-				{
-				_alpha = _alpha - 0.05;
-				_mark setMarkerAlpha _alpha;
+// 			for "_i" from 1 to 20 do
+// 				{
+// 				_alpha = _alpha - 0.05;
+// 				_mark setMarkerAlpha _alpha;
 
-				sleep 0.1
-				};
+// 				sleep 0.1
+// 				};
 
-			deleteMarker _mark
-			};
+// 			deleteMarker _mark
+// 			};
 
-		[[_mark],_code] call RYD_Spawn;
-		};
+// 		[[_mark],_code] call RYD_Spawn;
+// 		};
 
-	missionNamespace setVariable ["HAC_AIChatLT" + _varName,[time,_kind]];
-	};
+// 	missionNamespace setVariable ["HAC_AIChatLT" + _varName,[time,_kind]];
+// 	};
 
-RYD_MP_Sidechat =
-	{
-	private ["_unit","_sentence"];
+// RYD_MP_Sidechat =
+// 	{
+// 	private ["_unit","_sentence"];
 
-	_unit = _this select 0;
-	_sentence = _this select 1;
-	_unit sideChat _sentence;
+// 	_unit = _this select 0;
+// 	_sentence = _this select 1;
+// 	_unit sideChat _sentence;
 
-	true
-	};
+// 	true
+// 	};
 
-RYD_ReqTransport_Actions =
-	{
-	private ["_ChosenOne","_unitG","_GD","_actionID","_VActArr","_ActArr","_isAir"];
+// RYD_ReqTransport_Actions =
+// 	{
+// 	private ["_ChosenOne","_unitG","_GD","_actionID","_VActArr","_ActArr","_isAir"];
 
-	_ChosenOne = _this select 0;
-	_LeaderG = _this select 1;
-	_GD = _this select 2;
-	_isAir = false;
-	if ((count _this) > 3) then {_isAir = _this select 3};
+// 	_ChosenOne = _this select 0;
+// 	_LeaderG = _this select 1;
+// 	_GD = _this select 2;
+// 	_isAir = false;
+// 	if ((count _this) > 3) then {_isAir = _this select 3};
 
 
-	_ActArr = (_LeaderG getVariable ["HAL_ReqTraActs",[]]);
-	_VActArr = (_LeaderG getVariable ["HAL_ReqTraVActs",[]]);
+// 	_ActArr = (_LeaderG getVariable ["HAL_ReqTraActs",[]]);
+// 	_VActArr = (_LeaderG getVariable ["HAL_ReqTraVActs",[]]);
 
-	_actionID = _ChosenOne addAction ["Select New Transport Destination",
-	{
+// 	_actionID = _ChosenOne addAction ["Select New Transport Destination",
+// 	{
 
-	(_this select 1) onMapSingleClick "(group _this) setvariable ['HALReqDest',_pos,true]; _this onMapSingleClick ''; hint 'Destination Selected'";
+// 	(_this select 1) onMapSingleClick "(group _this) setvariable ['HALReqDest',_pos,true]; _this onMapSingleClick ''; hint 'Destination Selected'";
 
-	openMap true;
+// 	openMap true;
 
-	hintC "You can now select the destination on your map. Only select the destination once everyone is aboard as this will order the departure of the vehicle. You can select a new destination at any time as long as the transport support was not terminated.";
+// 	hintC "You can now select the destination on your map. Only select the destination once everyone is aboard as this will order the departure of the vehicle. You can select a new destination at any time as long as the transport support was not terminated.";
 
-	}
-	,
-	_GD,5,false,false,"","_target isEqualTo (vehicle _this)",15];
+// 	}
+// 	,
+// 	_GD,5,false,false,"","_target isEqualTo (vehicle _this)",15];
 
-	_VActArr pushBack _actionID;
+// 	_VActArr pushBack _actionID;
 
-	_actionID = _ChosenOne addAction ["Transport Stealth Mode",
-	{
+// 	_actionID = _ChosenOne addAction ["Transport Stealth Mode",
+// 	{
 
-	[(_this select 3),"STEALTH"] remoteExecCall ["setBehaviour",leader (_this select 3)];
-	[(_this select 3),"GREEN"] remoteExecCall ["setCombatMode",leader (_this select 3)];
+// 	[(_this select 3),"STEALTH"] remoteExecCall ["setBehaviour",leader (_this select 3)];
+// 	[(_this select 3),"GREEN"] remoteExecCall ["setCombatMode",leader (_this select 3)];
 
-	}
-	,
-	_GD,5,false,false,"","_target isEqualTo (vehicle _this)",15];
+// 	}
+// 	,
+// 	_GD,5,false,false,"","_target isEqualTo (vehicle _this)",15];
 
-	_VActArr pushBack _actionID;
+// 	_VActArr pushBack _actionID;
 
-	_actionID = _ChosenOne addAction ["Transport Normal Mode",
-	{
+// 	_actionID = _ChosenOne addAction ["Transport Normal Mode",
+// 	{
 
-	[(_this select 3),"CARELESS"] remoteExecCall ["setBehaviour",leader (_this select 3)];
-	[(_this select 3),"YELLOW"] remoteExecCall ["setCombatMode",leader (_this select 3)];
+// 	[(_this select 3),"CARELESS"] remoteExecCall ["setBehaviour",leader (_this select 3)];
+// 	[(_this select 3),"YELLOW"] remoteExecCall ["setCombatMode",leader (_this select 3)];
 
-	}
-	,
-	_GD,5,false,false,"","_target isEqualTo (vehicle _this)",15];
+// 	}
+// 	,
+// 	_GD,5,false,false,"","_target isEqualTo (vehicle _this)",15];
 
-	_VActArr pushBack _actionID;
+// 	_VActArr pushBack _actionID;
 
-	_actionID = _LeaderG addAction ["Dismiss Transport Support [" + (groupId _GD) + "]",
-	{
+// 	_actionID = _LeaderG addAction ["Dismiss Transport Support [" + (groupId _GD) + "]",
+// 	{
 
-	(_this select 3) setVariable ['HALReqDone',true,true];
+// 	(_this select 3) setVariable ['HALReqDone',true,true];
 
-	(_this select 0) removeAction (_this select 2);
+// 	(_this select 0) removeAction (_this select 2);
 
-	}
-	,
-	_GD,-1.7,false,false,"","true",0.01];
+// 	}
+// 	,
+// 	_GD,-1.7,false,false,"","true",0.01];
 
-	if (_isAir) then
-		{
+// 	if (_isAir) then
+// 		{
 
-		_actionID = _LeaderG addAction ["Force Immediate Full-Stop Landing [" + (groupId _GD) + "]",
-		{
+// 		_actionID = _LeaderG addAction ["Force Immediate Full-Stop Landing [" + (groupId _GD) + "]",
+// 		{
 
-		[(_this select 3), (currentWaypoint (_this select 3))] setWaypointPosition [getPosATL (vehicle (leader (_this select 3))),0];
-		(vehicle (leader (_this select 3))) land 'land';
+// 		[(_this select 3), (currentWaypoint (_this select 3))] setWaypointPosition [getPosATL (vehicle (leader (_this select 3))),0];
+// 		(vehicle (leader (_this select 3))) land 'land';
 
-		}
-		,
-		_GD,-2,false,false,"","(_this distance ((group _this) getVariable ['AssignedCargo' + (str (group _this)),objNull])) < 250",0.01];
+// 		}
+// 		,
+// 		_GD,-2,false,false,"","(_this distance ((group _this) getVariable ['AssignedCargo' + (str (group _this)),objNull])) < 250",0.01];
 
-		_ActArr pushBack _actionID;
-	};
+// 		_ActArr pushBack _actionID;
+// 	};
 
-	_LeaderG setVariable ["HAL_ReqTraActs",_ActArr,true];
-	_LeaderG setVariable ["HAL_ReqTraVActs",_VActArr,true];
+// 	_LeaderG setVariable ["HAL_ReqTraActs",_ActArr,true];
+// 	_LeaderG setVariable ["HAL_ReqTraVActs",_VActArr,true];
 
-	true
-	};
+// 	true
+// 	};
 
-RYD_ReqLogistics_Actions =
-	{
-	private ["_ChosenOne","_Type","_actionID"];
+// RYD_ReqLogistics_Actions =
+// 	{
+// 	private ["_ChosenOne","_Type","_actionID"];
 
-	_ChosenOne = _this select 0;
+// 	_ChosenOne = _this select 0;
 
-	_Type = _this select 1;
+// 	_Type = _this select 1;
 
-	_actionID = _ChosenOne addAction ["Dismiss " + _Type + " Support [" + (groupId (group (_ChosenOne))) + "]",
-	{
+// 	_actionID = _ChosenOne addAction ["Dismiss " + _Type + " Support [" + (groupId (group (_ChosenOne))) + "]",
+// 	{
 
-	(_this select 3) setVariable ["HAL_Requested",false,true];
-	[(_this select 0)] remoteExecCall ["RYD_ReqLogisticsDelete_Actions"];
+// 	(_this select 3) setVariable ["HAL_Requested",false,true];
+// 	[(_this select 0)] remoteExecCall ["RYD_ReqLogisticsDelete_Actions"];
 
-	}
-	,
-	_ChosenOne,5,false,false,"","true",15];
+// 	}
+// 	,
+// 	_ChosenOne,5,false,false,"","true",15];
 
-	_ChosenOne setVariable ["HAL_ReqTraAct",_actionID];
+// 	_ChosenOne setVariable ["HAL_ReqTraAct",_actionID];
 
-	true
-	};
+// 	true
+// 	};
 
-RYD_ReqLogisticsDelete_Actions =
-	{
-	private ["_ChosenOne","_actionID"];
+// RYD_ReqLogisticsDelete_Actions =
+// 	{
+// 	private ["_ChosenOne","_actionID"];
 
-	_ChosenOne = _this select 0;
+// 	_ChosenOne = _this select 0;
 
-	_actionID = _ChosenOne getVariable ["HAL_ReqTraAct",nil];
+// 	_actionID = _ChosenOne getVariable ["HAL_ReqTraAct",nil];
 
-	if not (isNil "_actionID") then  {_ChosenOne removeAction _actionID};
+// 	if not (isNil "_actionID") then  {_ChosenOne removeAction _actionID};
 
-	_ChosenOne setVariable ["HAL_ReqTraAct",nil];
+// 	_ChosenOne setVariable ["HAL_ReqTraAct",nil];
 
-	true
-	};
+// 	true
+// 	};
 
-RYD_MP_SideRadio =
-	{
-	private ["_unit","_sentence"];
+// RYD_MP_SideRadio =
+// 	{
+// 	private ["_unit","_sentence"];
 
-	_unit = _this select 0;
-	_sentence = _this select 1;
-	_unit sideRadio _sentence;
+// 	_unit = _this select 0;
+// 	_sentence = _this select 1;
+// 	_unit sideRadio _sentence;
 
-	true
-	};
+// 	true
+// 	};
 
-RYD_MP_orderGetIn =
-	{
-	//Obsolete
+// RYD_MP_orderGetIn =
+// 	{
+// 	//Obsolete
 
-	private ["_unit","_istrue"];
+// 	private ["_unit","_istrue"];
 
-	_unit = _this select 0;
-	_istrue = _this select 1;
-	_unit orderGetIn _istrue;
-	};
+// 	_unit = _this select 0;
+// 	_istrue = _this select 1;
+// 	_unit orderGetIn _istrue;
+// 	};
 
-RYD_MP_unassignVehicle =
-	{
-	private ["_unit"];
+// RYD_MP_unassignVehicle =
+// 	{
+// 	private ["_unit"];
 
-	_unit = _this select 0;
-	unassignVehicle _unit;
-	};
+// 	_unit = _this select 0;
+// 	unassignVehicle _unit;
+// 	};
 
-RYD_MP_assignedVehicle =
-	{
+// RYD_MP_assignedVehicle =
+// 	{
 
-	//Obsolete from ExecCall delay
+// 	//Obsolete from ExecCall delay
 
-	private ["_unit","_vh"];
+// 	private ["_unit","_vh"];
 
-	_unit = _this select 0;
-	[_unit] remoteExecCall ["RYD_MP_assignedVehicle2"];
+// 	_unit = _this select 0;
+// 	[_unit] remoteExecCall ["RYD_MP_assignedVehicle2"];
 
-	_vh = _unit getVariable ["AssVh",objNull];
-	_unit setVariable ["AssVh",nil,true];
+// 	_vh = _unit getVariable ["AssVh",objNull];
+// 	_unit setVariable ["AssVh",nil,true];
 
-	_vh
-	};
+// 	_vh
+// 	};
 
-RYD_MP_assignedVehicle2 =
-	{
+// RYD_MP_assignedVehicle2 =
+// 	{
 
-	//Obsolete
+// 	//Obsolete
 
-	private ["_unit","_vh"];
+// 	private ["_unit","_vh"];
 
-	_unit = _this select 0;
-	_vh = assignedVehicle _unit;
-	_unit setVariable ["AssVh",_vh,true];
-	};
+// 	_unit = _this select 0;
+// 	_vh = assignedVehicle _unit;
+// 	_unit setVariable ["AssVh",_vh,true];
+// 	};
 
-RYD_FindBiggest =
-	{
-	private ["_array","_biggest","_valMax","_valAct","_index","_clIndex"];
+// RYD_FindBiggest =
+// 	{
+// 	private ["_array","_biggest","_valMax","_valAct","_index","_clIndex"];
 
-	_array = _this select 0;
+// 	_array = _this select 0;
 
-	_biggest = grpNull;
+// 	_biggest = grpNull;
 
-	if ((count _array) > 0) then
-		{
-		_biggest = _array select 0;
-		_index = 0;
-		_clIndex = 0;
-		_valMax = count (units _biggest);
+// 	if ((count _array) > 0) then
+// 		{
+// 		_biggest = _array select 0;
+// 		_index = 0;
+// 		_clIndex = 0;
+// 		_valMax = count (units _biggest);
 
-			{
-			_valAct = count (units _x);
+// 			{
+// 			_valAct = count (units _x);
 
-			if (_valAct > _valMax) then
-				{
-				_biggest = _x;
-				_valMax = _valAct;
-				_clIndex = _index
-				};
+// 			if (_valAct > _valMax) then
+// 				{
+// 				_biggest = _x;
+// 				_valMax = _valAct;
+// 				_clIndex = _index
+// 				};
 
-			_index = _index + 1
-			}
-		forEach _array
-		};
+// 			_index = _index + 1
+// 			}
+// 		forEach _array
+// 		};
 
-	[_biggest,_clIndex]
-	};
+// 	[_biggest,_clIndex]
+// 	};
 
-RYD_SizeOrd =
-	{
-	private ["_array","_final","_highest","_ix"];
+// RYD_SizeOrd =
+// 	{
+// 	private ["_array","_final","_highest","_ix"];
 
-	_array = +(_this select 0);
+// 	_array = +(_this select 0);
 
-	_final = [];
+// 	_final = [];
 
-	while {((count _array) > 0)} do
-		{
-		_highest = [_array] call RYD_FindBiggest;
-		_ix = _highest select 1;
-		_highest = _highest select 0;
+// 	while {((count _array) > 0)} do
+// 		{
+// 		_highest = [_array] call RYD_FindBiggest;
+// 		_ix = _highest select 1;
+// 		_highest = _highest select 0;
 
-		if not (isNil "_highest") then
-			{
-			if not (isNull _highest) then
-				{
-				_final pushBack _highest;
-				}
-			};
+// 		if not (isNil "_highest") then
+// 			{
+// 			if not (isNull _highest) then
+// 				{
+// 				_final pushBack _highest;
+// 				}
+// 			};
 
-		_array deleteAt _ix;
-		};
+// 		_array deleteAt _ix;
+// 		};
 
-	_final
-	};
+// 	_final
+// 	};
 
-RYD_RandomOrd =
-	{
-	private ["_array","_final","_random","_select"];
+// RYD_RandomOrd =
+// 	{
+// 	private ["_array","_final","_random","_select"];
 
-	_array = _this select 0;
+// 	_array = _this select 0;
 
-	_final = [];
+// 	_final = [];
 
-	while {((count _array) > 0)} do
-		{
-		_select = floor (random (count _array));
-		_random = _array select _select;
+// 	while {((count _array) > 0)} do
+// 		{
+// 		_select = floor (random (count _array));
+// 		_random = _array select _select;
 
-		if not (isNil "_random") then
-			{
-			if ((typeName _random) in [typeName grpNull]) then
-				{
-				if not (isNull _random) then
-					{
-					if (({alive _x} count (units _random)) > 0) then
-						{
-						_final pushBack _random;
-						}
-					}
-				}
-			};
+// 		if not (isNil "_random") then
+// 			{
+// 			if ((typeName _random) in [typeName grpNull]) then
+// 				{
+// 				if not (isNull _random) then
+// 					{
+// 					if (({alive _x} count (units _random)) > 0) then
+// 						{
+// 						_final pushBack _random;
+// 						}
+// 					}
+// 				}
+// 			};
 
-		_array = _array - [_random]
-		};
+// 		_array = _array - [_random]
+// 		};
 
-	_final
-	};
+// 	_final
+// 	};
 
-RYD_RandomOrdB =
-	{
-	private ["_array","_final","_random","_select"];
+// RYD_RandomOrdB =
+// 	{
+// 	private ["_array","_final","_random","_select"];
 
-	_array = +(_this select 0);
+// 	_array = +(_this select 0);
 
-	_final = [];
+// 	_final = [];
 
-	while {((count _array) > 0)} do
-		{
-		_select = floor (random (count _array));
-		_random = _array select _select;
+// 	while {((count _array) > 0)} do
+// 		{
+// 		_select = floor (random (count _array));
+// 		_random = _array select _select;
 
-		_final pushBack _random;
+// 		_final pushBack _random;
 
-		_array deleteAt _select;
-		};
+// 		_array deleteAt _select;
+// 		};
 
-	_final
-	};
+// 	_final
+// 	};
 
-RYD_NearestRoad =
-	{
-	private ["_pos","_radius","_roads","_chosen","_dist","_distC"];
+// RYD_NearestRoad =
+// 	{
+// 	private ["_pos","_radius","_roads","_chosen","_dist","_distC"];
 
-	_pos = _this select 0;
-	_radius = _this select 1;
+// 	_pos = _this select 0;
+// 	_radius = _this select 1;
 
-	_chosen = objNull;
+// 	_chosen = objNull;
 
-	_roads = _pos nearRoads _radius;
+// 	_roads = _pos nearRoads _radius;
 
-	if ((count _roads) > 0) then
-		{
-		_chosen = _roads select 0;
-		_distC = (getPosATL _chosen) distance _pos;
+// 	if ((count _roads) > 0) then
+// 		{
+// 		_chosen = _roads select 0;
+// 		_distC = (getPosATL _chosen) distance _pos;
 
-			{
-			_dist = (getPosATL _x) distance _pos;
-			if (_dist <_distC) then {_chosen = _x;_distC = _dist}
-			}
-		forEach _roads
-		};
+// 			{
+// 			_dist = (getPosATL _x) distance _pos;
+// 			if (_dist <_distC) then {_chosen = _x;_distC = _dist}
+// 			}
+// 		forEach _roads
+// 		};
 
-	_chosen
-	};
+// 	_chosen
+// 	};
 
-RYD_FlatLandNoRoad =
-	{
-	private ["_pos","_radius","_final","_isGood","_isFlat","_noRoad","_nR","_ct"];
+// RYD_FlatLandNoRoad =
+// 	{
+// 	private ["_pos","_radius","_final","_isGood","_isFlat","_noRoad","_nR","_ct"];
 
-	_pos = _this select 0;
-	_radius = _this select 1;
+// 	_pos = _this select 0;
+// 	_radius = _this select 1;
 
-	_final = +_pos;
+// 	_final = +_pos;
 
-	_isGood = true;
+// 	_isGood = true;
 
-	_isFlat = _pos isFlatEmpty [5,_radius/2,2,5,0,false,objNull];
-	if ((count _isFlat) <= 1) then
-		{
-		_isGood = false
-		}
-	else
-		{
-		_noRoad = true;
-		_nR = [_pos,20] call RYD_NearestRoad;
-		if (not (isNull _nR) or (isOnRoad _pos)) then
-			{
-			_isGood = false
-			}
-		};
+// 	_isFlat = _pos isFlatEmpty [5,_radius/2,2,5,0,false,objNull];
+// 	if ((count _isFlat) <= 1) then
+// 		{
+// 		_isGood = false
+// 		}
+// 	else
+// 		{
+// 		_noRoad = true;
+// 		_nR = [_pos,20] call RYD_NearestRoad;
+// 		if (not (isNull _nR) or (isOnRoad _pos)) then
+// 			{
+// 			_isGood = false
+// 			}
+// 		};
 
-	_ct = 0;
-	while {not (_isGood)} do
-		{
-		_ct = _ct + 1;
-		if (_ct > 30) exitWith {};
-		_pos = [_pos,_radius] call RYD_RandomAround;
+// 	_ct = 0;
+// 	while {not (_isGood)} do
+// 		{
+// 		_ct = _ct + 1;
+// 		if (_ct > 30) exitWith {};
+// 		_pos = [_pos,_radius] call RYD_RandomAround;
 
-		_isGood = true;
+// 		_isGood = true;
 
-		_isFlat = _pos isFlatEmpty [5,_radius/2,2,5,0,false,objNull];
-		if ((count _isFlat) <= 1) then
-			{
-			_isGood = false
-			}
-		else
-			{
-			_noRoad = true;
-			_nR = [_pos,20] call RYD_NearestRoad;
-			if (not (isNull _nR) or (isOnRoad _pos)) then
-				{
-				_isGood = false
-				}
-			};
-		};
+// 		_isFlat = _pos isFlatEmpty [5,_radius/2,2,5,0,false,objNull];
+// 		if ((count _isFlat) <= 1) then
+// 			{
+// 			_isGood = false
+// 			}
+// 		else
+// 			{
+// 			_noRoad = true;
+// 			_nR = [_pos,20] call RYD_NearestRoad;
+// 			if (not (isNull _nR) or (isOnRoad _pos)) then
+// 				{
+// 				_isGood = false
+// 				}
+// 			};
+// 		};
 
-	if (_isGood) then {_final = _pos};
+// 	if (_isGood) then {_final = _pos};
 
-	_final
-	};
+// 	_final
+// 	};
 
-RYD_GoInside =
-	{
-	private ["_wp","_pos","_nHouses","_nHouse","_posAll","_posAct","_chosen","_enterable","_stat","_oldStat","_isRoof"];
+// RYD_GoInside =
+// 	{
+// 	private ["_wp","_pos","_nHouses","_nHouse","_posAll","_posAct","_chosen","_enterable","_stat","_oldStat","_isRoof"];
 
-	_wp = _this select 0;
-	_pos = waypointPosition _wp;
+// 	_wp = _this select 0;
+// 	_pos = waypointPosition _wp;
 
-	_posAll = [];
-	_chosen = -1;
+// 	_posAll = [];
+// 	_chosen = -1;
 
-	_nHouses = _pos nearObjects ["House",100];
+// 	_nHouses = _pos nearObjects ["House",100];
 
-	_nHouse = objNull;
+// 	_nHouse = objNull;
 
-	if ((count _nHouses) > 0) then
-		{
-		_nHouse = _nHouses select (floor (random (count _nHouses)));
-		_nHouses = _nHouses - [_nHouse];
+// 	if ((count _nHouses) > 0) then
+// 		{
+// 		_nHouse = _nHouses select (floor (random (count _nHouses)));
+// 		_nHouses = _nHouses - [_nHouse];
 
-		_enterable = true;
-		if not (((_nHouse buildingPos 0) distance [0,0,0]) > 1) then {_enterable = false};
+// 		_enterable = true;
+// 		if not (((_nHouse buildingPos 0) distance [0,0,0]) > 1) then {_enterable = false};
 
-		if not (_enterable) then
-			{
-			while {((count _nHouses) > 0)} do
-				{
-				_nHouse = _nHouses select (floor (random (count _nHouses)));
-				_nHouses = _nHouses - [_nHouse];
+// 		if not (_enterable) then
+// 			{
+// 			while {((count _nHouses) > 0)} do
+// 				{
+// 				_nHouse = _nHouses select (floor (random (count _nHouses)));
+// 				_nHouses = _nHouses - [_nHouse];
 
-				_enterable = true;
-				if not (((_nHouse buildingPos 0) distance [0,0,0]) > 1) then {_enterable = false};
-				if (_enterable) exitWith {}
-				}
-			};
+// 				_enterable = true;
+// 				if not (((_nHouse buildingPos 0) distance [0,0,0]) > 1) then {_enterable = false};
+// 				if (_enterable) exitWith {}
+// 				}
+// 			};
 
-		if (_enterable) then
-			{
-			_posAct = [1,1,1];
+// 		if (_enterable) then
+// 			{
+// 			_posAct = [1,1,1];
 
-			_i = 0;
-			while {((_posAct distance [0,0,0]) > 0)} do
-				{
-				_posAct = _nHouse buildingPos _i;
-				_i = _i + 1;
-				if ((_posAct distance [0,0,0]) > 0) then
-					{
-					_isRoof = [ATLToASL _posAct,20] call RYD_RoofOver;
+// 			_i = 0;
+// 			while {((_posAct distance [0,0,0]) > 0)} do
+// 				{
+// 				_posAct = _nHouse buildingPos _i;
+// 				_i = _i + 1;
+// 				if ((_posAct distance [0,0,0]) > 0) then
+// 					{
+// 					_isRoof = [ATLToASL _posAct,20] call RYD_RoofOver;
 
-					if (_isRoof) then
-						{
-						_posAll pushBack _posAct
-						}
-					}
-				}
-			};
+// 					if (_isRoof) then
+// 						{
+// 						_posAll pushBack _posAct
+// 						}
+// 					}
+// 				}
+// 			};
 
-		if ((count _posAll) > 0) then
-			{
-			_chosen = _posAll select (floor (random (count _posAll)));
+// 		if ((count _posAll) > 0) then
+// 			{
+// 			_chosen = _posAll select (floor (random (count _posAll)));
 
-			_wp setWaypointPosition [_chosen,0];
-			_stat = "this doMove " + (str _chosen);
-			_oldStat = (waypointStatements _wp) select 1;
-			_stat = _stat + ";" + _oldStat;
-			_wp setWaypointStatements ["true",_stat];
-			}
-		};
+// 			_wp setWaypointPosition [_chosen,0];
+// 			_stat = "this doMove " + (str _chosen);
+// 			_oldStat = (waypointStatements _wp) select 1;
+// 			_stat = _stat + ";" + _oldStat;
+// 			_wp setWaypointStatements ["true",_stat];
+// 			}
+// 		};
 
-	[_nHouse,_chosen]
-	};
+// 	[_nHouse,_chosen]
+// 	};
 
-RYD_RoofOver =
-	{
-	private ["_pos","_cam","_target","_pX","_pY","_pZ","_pos1","_pos2","_level","_roofed"];
+// RYD_RoofOver =
+// 	{
+// 	private ["_pos","_cam","_target","_pX","_pY","_pZ","_pos1","_pos2","_level","_roofed"];
 
-	_pos = _this select 0;
-	_level = _this select 1;
+// 	_pos = _this select 0;
+// 	_level = _this select 1;
 
-	_pX = _pos select 0;
-	_pY = _pos select 1;
-	_pZ = (_pos select 2) + 1;
+// 	_pX = _pos select 0;
+// 	_pY = _pos select 1;
+// 	_pZ = (_pos select 2) + 1;
 
-	_pos1 = [_pX,_pY,_pZ];
-	_pos2 = [_pX,_pY,_pZ + _level];
+// 	_pos1 = [_pX,_pY,_pZ];
+// 	_pos2 = [_pX,_pY,_pZ + _level];
 
-	_cam = objNull;
+// 	_cam = objNull;
 
-	if ((count _this) > 2) then {_cam = _this select 2};
+// 	if ((count _this) > 2) then {_cam = _this select 2};
 
-	_target = objNull;
+// 	_target = objNull;
 
-	if ((count _this) > 3) then {_target = _this select 3};
+// 	if ((count _this) > 3) then {_target = _this select 3};
 
-	_roofed = lineIntersects [_pos1, _pos2,_cam,_target];
+// 	_roofed = lineIntersects [_pos1, _pos2,_cam,_target];
 
-	_roofed
-	};
+// 	_roofed
+// 	};
 
 RYD_RHQCheck =
 	{
@@ -5540,87 +5540,87 @@ RYD_RHQCheck =
 	"RHQ CHECK" hintC format ["Forgotten classes: %1\nClasses not present in basic categories: %2\n(see RPT file for detailed forgotten classes list)",count _noInTotal,count _noInBasic];
 	};
 
-RYD_LOSCheck =
-	{
-	private ["_pos1","_pos2","_isLOS","_cam","_target","_pX1","_pY1","_pX2","_pY2","_pos1ATL","_pos2ATL","_level1","_level2"];
+// RYD_LOSCheck =
+// 	{
+// 	private ["_pos1","_pos2","_isLOS","_cam","_target","_pX1","_pY1","_pX2","_pY2","_pos1ATL","_pos2ATL","_level1","_level2"];
 
-	_pos1 = _this select 0;
-	_pos2 = _this select 1;
-	_level1 = _this select 2;
-	_level2 = _this select 3;
+// 	_pos1 = _this select 0;
+// 	_pos2 = _this select 1;
+// 	_level1 = _this select 2;
+// 	_level2 = _this select 3;
 
-	_pX1 = _pos1 select 0;
-	_pY1 = _pos1 select 1;
+// 	_pX1 = _pos1 select 0;
+// 	_pY1 = _pos1 select 1;
 
-	_pX2 = _pos2 select 0;
-	_pY2 = _pos2 select 1;
+// 	_pX2 = _pos2 select 0;
+// 	_pY2 = _pos2 select 1;
 
-	_pos1 = [_pX1,_pY1,(_pos1 select 2) + _level1];
-	_pos2 = [_pX2,_pY2,(_pos2 select 2) + _level2];
+// 	_pos1 = [_pX1,_pY1,(_pos1 select 2) + _level1];
+// 	_pos2 = [_pX2,_pY2,(_pos2 select 2) + _level2];
 
-	_pos1ATL = [_pX1,_pY1,_level1];
-	_pos2ATL = [_pX2,_pY2,_level2];
+// 	_pos1ATL = [_pX1,_pY1,_level1];
+// 	_pos2ATL = [_pX2,_pY2,_level2];
 
-	_cam = objNull;
+// 	_cam = objNull;
 
-	if ((count _this) > 4) then {_cam = _this select 4};
+// 	if ((count _this) > 4) then {_cam = _this select 4};
 
-	_target = objNull;
+// 	_target = objNull;
 
-	if ((count _this) > 5) then {_target = _this select 5};
+// 	if ((count _this) > 5) then {_target = _this select 5};
 
-	_isLOS = not (terrainIntersect [_pos1ATL, _pos2ATL]);
+// 	_isLOS = not (terrainIntersect [_pos1ATL, _pos2ATL]);
 
-	if (_isLOS) then
-		{
-		_isLOS = not (lineIntersects [_pos1, _pos2,_cam,_target])
-		};
+// 	if (_isLOS) then
+// 		{
+// 		_isLOS = not (lineIntersects [_pos1, _pos2,_cam,_target])
+// 		};
 
-	_isLOS
-	};
+// 	_isLOS
+// 	};
 
-RYD_KillHetman =
-	{
-	RydBB_Active = false;
-	RydBBa_Urgent = true;
-	RydBBb_Urgent = true;
+// RYD_KillHetman =
+// 	{
+// 	RydBB_Active = false;
+// 	RydBBa_Urgent = true;
+// 	RydBBb_Urgent = true;
 
-		{
-		_gps = [];
-		if not (isNull _x) then
-			{
-			_gps = (_x getVariable ["RydHQ_Friends",[]]) + [_x]
-			};
+// 		{
+// 		_gps = [];
+// 		if not (isNull _x) then
+// 			{
+// 			_gps = (_x getVariable ["RydHQ_Friends",[]]) + [_x]
+// 			};
 
-		_x setVariable ["RydHQ_KIA",true];
+// 		_x setVariable ["RydHQ_KIA",true];
 
-			{
-			_x setVariable ["RydHQ_MIA",true];
-			[_x] call CBA_fnc_clearWaypoints;
-			_fEH = (leader _x) getVariable "HAC_FEH";
+// 			{
+// 			_x setVariable ["RydHQ_MIA",true];
+// 			[_x] call CBA_fnc_clearWaypoints;
+// 			_fEH = (leader _x) getVariable "HAC_FEH";
 
-			if not (isNil "_fEH") then
-				{
-				(leader _x) removeEventHandler ["Fired",_fEH];
-				(leader _x) setVariable ["HAC_FEH",nil]
-				};
+// 			if not (isNil "_fEH") then
+// 				{
+// 				(leader _x) removeEventHandler ["Fired",_fEH];
+// 				(leader _x) setVariable ["HAC_FEH",nil]
+// 				};
 
-				{
-				(vehicle _x) doMove (position _x)
-				}
-			forEach (units _x)
-			}
-		forEach _gps;
-		}
-	forEach RydxHQ_AllHQ;
+// 				{
+// 				(vehicle _x) doMove (position _x)
+// 				}
+// 			forEach (units _x)
+// 			}
+// 		forEach _gps;
+// 		}
+// 	forEach RydxHQ_AllHQ;
 
-		{
-		terminate _x
-		}
-	forEach RydxHQ_Handles;
+// 		{
+// 		terminate _x
+// 		}
+// 	forEach RydxHQ_Handles;
 
-		{
-		deleteMarker _x
-		}
-	forEach RydxHQ_Markers;
-	};
+// 		{
+// 		deleteMarker _x
+// 		}
+// 	forEach RydxHQ_Markers;
+// 	};
