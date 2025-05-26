@@ -19,7 +19,7 @@ _Commanders = [];
     if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
     if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
 
-    waitUntil {sleep 0.5; (not (isNil _Leader))};
+    waitUntil {sleep 0.5; (!(isNil _Leader))};
     _Leader = call compile _Leader;
 
     if (call compile ("isNil " + "'"  + _prefix + "Excluded" + "'" )) then {
@@ -29,7 +29,7 @@ _Commanders = [];
     };
 
     {
-        if not ((typeOf _x) == "NR6_HAL_Leader_Module") then {
+        if !((typeOf _x) == "NR6_HAL_Leader_Module") then {
             _x call compile (_prefix + "Excluded" + " pushback " + "(group _this)");
         };
     } forEach (synchronizedObjects _logic);

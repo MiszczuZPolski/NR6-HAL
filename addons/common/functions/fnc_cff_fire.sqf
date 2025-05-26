@@ -169,7 +169,7 @@ if ((count _guns) < 1) exitWith {-1};
 } forEach _guns;
 
 /*{
-	if not (isNull _x) then
+	if !(isNull _x) then
 		{
 			{
 			(vehicle _x) setVariable ["RydHQ_GunFree",true]

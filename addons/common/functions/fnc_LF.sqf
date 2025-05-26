@@ -66,10 +66,10 @@ if  !(RydHQ_LF) then
     private _fnc_code = {
         _tgt = _this select 0;
         _vPos = _this select 1;
-        _isFoot = (_tgt == (vehicle _tgt));
+        _isFoot = (isNull objectParent _tgt);
 
         while { !(isNil "BIS_liveFeed")} do {
-            if ((_isFoot) && !(_tgt == (vehicle _tgt))) exitWith {
+            if ((_isFoot) && !(isNull objectParent _tgt)) exitWith {
                 if (isNil "RydxHQ_LFTerminating") then {
                     RydxHQ_LFTerminating = true;
                     [] call BIS_fnc_liveFeedTerminate;

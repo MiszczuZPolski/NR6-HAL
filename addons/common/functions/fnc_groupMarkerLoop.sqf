@@ -26,9 +26,9 @@
 						{
 						_myMark = "ItsMyMark_" + (str _x) + (str (random 100));
 						_myMark = createMarker [_myMark,_pos];
-						_myMark setMarkerColor _color;
-						_myMark setMarkerShape "ICON";
-						_myMark setMarkerType "mil_dot";
+						_myMark setMarkerColorLocal _color;
+						_myMark setMarkerShapeLocal "ICON";
+						_myMark setMarkerTypeLocal "mil_dot";
 						_myMark setMarkerSize [0.75,0.75];
 
 						_x setVariable ["RYD_ItsMyMark",_myMark]
@@ -57,7 +57,7 @@
 				}
 			else
 				{
-				if not (isNil "_myMark") then
+				if !(isNil "_myMark") then
 					{
 					deleteMarker _myMark
 					}

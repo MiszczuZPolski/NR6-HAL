@@ -115,7 +115,7 @@ _amount2 = _amount - _amount1;
 		switch (true) do {
 			case (isNil {_x}) : {_battery set [_foreachIndex,grpNull]};
 			case (isNull _x) : {_battery set [_foreachIndex,grpNull]};
-			case (({((alive _x) and !(_x == (vehicle _x)))} count (units _x)) < 1) : {_battery set [_foreachIndex,grpNull]};
+			case (({((alive _x) and !(isNull objectParent _x))} count (units _x)) < 1) : {_battery set [_foreachIndex,grpNull]};
 		};
 	} forEach _battery;
 
@@ -235,7 +235,7 @@ _amount2 = _amount - _amount1;
 		switch (true) do {
 			case (isNil {_x}) : {_battery set [_foreachIndex,grpNull]};
 			case (isNull _x) : {_battery set [_foreachIndex,grpNull]};
-			case (({((alive _x) and !(_x == (vehicle _x)))} count (units _x)) < 1) : {_battery set [_foreachIndex,grpNull]};
+			case (({((alive _x) and !(isNull objectParent _x))} count (units _x)) < 1) : {_battery set [_foreachIndex,grpNull]};
 		};
 	} forEach _battery;
 
@@ -463,10 +463,10 @@ _amount2 = _amount - _amount1;
 		_text = getText (configFile >> "CfgVehicles" >> (typeOf (vehicle _batlead1)) >> "displayName");
 		_i = "markBat" + str (_battery1);
 		_i = createMarker [_i,_posM1];
-		_i setMarkerColor "ColorBlack";
-		_i setMarkerShape "ICON";
-		_i setMarkerType "mil_circle";
-		_i setMarkerSize [0.4,0.4];
+		_i setMarkerColorLocal "ColorBlack";
+		_i setMarkerShapeLocal "ICON";
+		_i setMarkerTypeLocal "mil_circle";
+		_i setMarkerSizeLocal [0.4,0.4];
 		_i setMarkerText ("Firing battery - " + _text);
 
 		_markers pushBack _i;
@@ -475,9 +475,9 @@ _amount2 = _amount - _amount1;
 		_distance2 = _impactPosM distance _posM1;
 		_i = "mark0" + str (_battery1);
 		_i = createMarker [_i,_impactPos];
-		_i setMarkerColor "ColorBlue";
-		_i setMarkerShape "ELLIPSE";
-		_i setMarkerSize [_distance, _distance];
+		_i setMarkerColorLocal "ColorBlue";
+		_i setMarkerShapeLocal "ELLIPSE";
+		_i setMarkerSizeLocal [_distance, _distance];
 		_i setMarkerBrush "Border";
 
 		_markers pushBack _i;
@@ -493,11 +493,11 @@ _amount2 = _amount - _amount1;
 
 		_i = "mark1" + str (_battery1);
 		_i = createMarker [_i,[_posX,_posY]];
-		_i setMarkerColor "ColorBlack";
-		_i setMarkerShape "RECTANGLE";
-		_i setMarkerSize [0.5,_distance2/2];
-		_i setMarkerBrush "Solid";
-		_i setMarkerDir _angle;
+		_i setMarkerColorLocal "ColorBlack";
+		_i setMarkerShapeLocal "RECTANGLE";
+		_i setMarkerSizeLocal [0.5,_distance2/2];
+		_i setMarkerBrushLocal "Solid";
+		_i setMarkerDirLocal _angle;
 
 		_markers pushBack _i;
 
@@ -512,27 +512,27 @@ _amount2 = _amount - _amount1;
 
 		_i = "mark2" + str (_battery1);
 		_i = createMarker [_i,[_posX2,_posY2]];
-		_i setMarkerColor "ColorBlack";
-		_i setMarkerShape "RECTANGLE";
-		_i setMarkerSize [0.5,_distance/2];
-		_i setMarkerBrush "Solid";
+		_i setMarkerColorLocal "ColorBlack";
+		_i setMarkerShapeLocal "RECTANGLE";
+		_i setMarkerSizeLocal [0.5,_distance/2];
+		_i setMarkerBrushLocal "Solid";
 		_i setMarkerDir _angle;
 
 		_markers pushBack _i;
 
 		_i = "mark3" + str (_battery1);
 		_i = createMarker [_i,_impactPosM];
-		_i setMarkerColor "ColorBlack";
-		_i setMarkerShape "ICON";
+		_i setMarkerColorLocal "ColorBlack";
+		_i setMarkerShapeLocal "ICON";
 		_i setMarkerType "mil_dot";
 
 		_markers pushBack _i;
 
 		_i = "mark4" + str (_battery1);
 		_i = createMarker [_i,_finalimpactM];
-		_i setMarkerColor "ColorRed";
-		_i setMarkerShape "ICON";
-		_i setMarkerType "mil_dot";
+		_i setMarkerColorLocal "ColorRed";
+		_i setMarkerShapeLocal "ICON";
+		_i setMarkerTypeLocal "mil_dot";
 		_i setMarkerText (str (round _distance) + "m" + " - ETA: " + str (round _eta) + " - " + _ammoG);
 
 		_markers pushBack _i;
@@ -591,7 +591,7 @@ _amount2 = _amount - _amount1;
 		_mark = "";
 
 		if ((count _markers) > 0) then {
-			_mark = _markers select ((count _markers) -1);
+			_mark = __markers select -1;
 		};
 
 		while {(!(_rEta < 5) and !(_TOF > 200) and (_alive))} do {

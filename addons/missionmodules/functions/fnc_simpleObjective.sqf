@@ -4,7 +4,7 @@ _logic = (_this select 0);
 _Commanders = [];
 
 _objName = _logic getVariable "_ObjName";
-if not (_objName isEqualTo "") then {_logic setVariable ["ObjName",_objName]};
+if !(_objName isEqualTo "") then {_logic setVariable ["ObjName",_objName]};
 
 {
     if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};
@@ -22,7 +22,7 @@ if not (_objName isEqualTo "") then {_logic setVariable ["ObjName",_objName]};
     if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"; _prefixT = "SetTakenG"};
     if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"; _prefixT = "SetTakenH"};
 
-    waitUntil {sleep 0.5; (not (isNil _Leader))};
+    waitUntil {sleep 0.5; (!(isNil _Leader))};
 
     _Leader = call compile _Leader;
 

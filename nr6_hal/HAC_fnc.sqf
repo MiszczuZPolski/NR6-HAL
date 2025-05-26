@@ -4065,124 +4065,124 @@ RYD_CloseEnemyB =
 // 		};
 // 	};
 
-RYD_WPSync =
-	{
-	private ["_trg","_otherWP","_group","_pos","_uPos","_gps","_timer","_endThis"];
+// RYD_WPSync =
+// 	{
+// 	private ["_trg","_otherWP","_group","_pos","_uPos","_gps","_timer","_endThis"];
 
-	_group = _this select 2;
-	_trg = group (_this select 1);
+// 	_group = _this select 2;
+// 	_trg = group (_this select 1);
 
-	if (isNull _trg) exitWith {};
+// 	if (isNull _trg) exitWith {};
 
-	_otherWP = _trg getVariable ["RYD_Attacks",[]];
+// 	_otherWP = _trg getVariable ["RYD_Attacks",[]];
 
-	_gps = [];
-	_positions = [];
+// 	_gps = [];
+// 	_positions = [];
 
-		{
-		_gps pushBack (_x select 0);
-		_positions pushBack (_x select 1);
-		}
-	forEach _otherWP;
+// 		{
+// 		_gps pushBack (_x select 0);
+// 		_positions pushBack (_x select 1);
+// 		}
+// 	forEach _otherWP;
 
-	_markT = markerText _i;
+// 	_markT = markerText _i;
 
-	_timer = time;
-	_endThis = false;
+// 	_timer = time;
+// 	_endThis = false;
 
-	waitUntil
-		{
-		sleep 5;
+// 	waitUntil
+// 		{
+// 		sleep 5;
 
-		switch (true) do
-			{
-			case (isNull _group): {_endThis = true};
-			case ((({alive _x} count (units _group)) < 1)): {_endThis = true};
-			case (_unitG getVariable ["Break",false]) : {_endThis = true; _unitG setVariable ["Break",false];};
-			case ((_group getVariable [("Resting" + (str _group)),false]) or {(_group getVariable ["RydHQ_MIA",false])}): {_endThis = true};
-			case ((fleeing (leader _group)) or {(captive (leader _group))}): {_endThis = true};
-			};
+// 		switch (true) do
+// 			{
+// 			case (isNull _group): {_endThis = true};
+// 			case ((({alive _x} count (units _group)) < 1)): {_endThis = true};
+// 			case (_unitG getVariable ["Break",false]) : {_endThis = true; _unitG setVariable ["Break",false];};
+// 			case ((_group getVariable [("Resting" + (str _group)),false]) or {(_group getVariable ["RydHQ_MIA",false])}): {_endThis = true};
+// 			case ((fleeing (leader _group)) or {(captive (leader _group))}): {_endThis = true};
+// 			};
 
-		if not (_endThis) then
-			{
-			_endThis = true;
+// 		if not (_endThis) then
+// 			{
+// 			_endThis = true;
 
-				{
-				_pos = _positions select _foreachIndex;
-				_uPos = position (vehicle (leader _x));
+// 				{
+// 				_pos = _positions select _foreachIndex;
+// 				_uPos = position (vehicle (leader _x));
 
-				if (((_pos distance2D _uPos) > 40) and {not (_pos isEqualTo [0,0,0])}) exitWith {_endThis = false};
-				}
-			forEach _gps
-			};
+// 				if (((_pos distance2D _uPos) > 40) and {not (_pos isEqualTo [0,0,0])}) exitWith {_endThis = false};
+// 				}
+// 			forEach _gps
+// 			};
 
-		if (_HQ getVariable ["RydHQ_Debug",false]) then
-			{
-			_i setMarkerText (_markT + "sync: " + (str (round (time - _timer))))
-			};
+// 		if (_HQ getVariable ["RydHQ_Debug",false]) then
+// 			{
+// 			_i setMarkerText (_markT + "sync: " + (str (round (time - _timer))))
+// 			};
 
-		((_endThis) or {(time - _timer) > 1800})
-		};
+// 		((_endThis) or {(time - _timer) > 1800})
+// 		};
 
-	if (_HQ getVariable ["RydHQ_Debug",false]) then
-		{
-		_i setMarkerText _markT
-		};
+// 	if (_HQ getVariable ["RydHQ_Debug",false]) then
+// 		{
+// 		_i setMarkerText _markT
+// 		};
 
-	_trg setVariable ["RYD_Attacks",[]];
-	};
+// 	_trg setVariable ["RYD_Attacks",[]];
+// 	};
 
-RYD_DbgMon =
-	{
-	_SCRname = "DbgMon";
+// RYD_DbgMon =
+// 	{
+// 	_SCRname = "DbgMon";
 
-	private ["_txtArr","_dbgMon","_txt"];
+// 	private ["_txtArr","_dbgMon","_txt"];
 
-	if (RydBB_Active) then
-		{
-		waitUntil
-			{
-			sleep 1;
-			not (isNil "RydBB_mapReady")
-			}
-		};
+// 	if (RydBB_Active) then
+// 		{
+// 		waitUntil
+// 			{
+// 			sleep 1;
+// 			not (isNil "RydBB_mapReady")
+// 			}
+// 		};
 
-	_txtArr = [];
+// 	_txtArr = [];
 
-	while {((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (RydHQE_Debug) or (RydHQF_Debug) or (RydHQG_Debug) or (RydHQH_Debug))} do
-		{
-		if (({(_x getVariable ["RydHQ_KIA",false])} count RydxHQ_AllHQ) == (count RydxHQ_AllHQ)) exitWith {};
-		_txtArr = [];
+// 	while {((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (RydHQE_Debug) or (RydHQF_Debug) or (RydHQG_Debug) or (RydHQH_Debug))} do
+// 		{
+// 		if (({(_x getVariable ["RydHQ_KIA",false])} count RydxHQ_AllHQ) == (count RydxHQ_AllHQ)) exitWith {};
+// 		_txtArr = [];
 
-			{
-			if not (isNil "_x") then
-				{
-				if not (isNull _x) then
-					{
-					if not (_x getVariable ["RydHQ_KIA",false]) then
-						{
-						_dbgMon = _x getVariable "DbgMon";
-						if not (isNil "_dbgMon") then
-							{
-							_txtArr pushBack _dbgMon;
-							_txtArr pushBack lineBreak;
-							}
-						}
-					}
-				}
-			}
-		forEach RydxHQ_AllHQ;
+// 			{
+// 			if not (isNil "_x") then
+// 				{
+// 				if not (isNull _x) then
+// 					{
+// 					if not (_x getVariable ["RydHQ_KIA",false]) then
+// 						{
+// 						_dbgMon = _x getVariable "DbgMon";
+// 						if not (isNil "_dbgMon") then
+// 							{
+// 							_txtArr pushBack _dbgMon;
+// 							_txtArr pushBack lineBreak;
+// 							}
+// 						}
+// 					}
+// 				}
+// 			}
+// 		forEach RydxHQ_AllHQ;
 
-		if ((count _txtArr) > 0) then
-			{
-			_txt = composeText _txtArr;
+// 		if ((count _txtArr) > 0) then
+// 			{
+// 			_txt = composeText _txtArr;
 
-			hintSilent _txt
-			};
+// 			hintSilent _txt
+// 			};
 
-		sleep 15
-		};
-	};
+// 		sleep 15
+// 		};
+// 	};
 
 RYD_LZ =
 	{

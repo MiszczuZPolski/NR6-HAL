@@ -1,6 +1,6 @@
 // [Side, Spawning helipads/objects (array), Starting aircraft (array), Availabe empty aircraft (array), Threshold (0 to 1), Leaders (aray), Delay time between checks (seconds), code to execute on spawned groups (_this stands for squad leader)] spawn NR6_fnc_AirReinforcementsB;
 
-private 
+private
     [
     "_side","_logic","_Commanders","_coreObj","_SpawnPads","_sideForces","_sidetick","_faction","_CurrentForces","_Pool","_Threshold","_Leaders","_SpawnRGroup","_CTR","_grp", "_GoodPads","_LiveForces","_CLiveForces","_CStartForces","_TickTime","_GoodsideForces","_ExtraArgs"
     ];
@@ -10,7 +10,7 @@ _logic = _this select 0;
 _Commanders = [];
 
 {
-	if ((typeOf _x) == "NR6_HAL_Leader_Module") then {waitUntil {sleep 0.5; (not (isNil (_x getVariable "LeaderType")))}; _Commanders pushBack (call compile (_x getVariable "LeaderType"))};
+	if ((typeOf _x) == "NR6_HAL_Leader_Module") then {waitUntil {sleep 0.5; (!(isNil (_x getVariable "LeaderType")))}; _Commanders pushBack (call compile (_x getVariable "LeaderType"))};
 } forEach (synchronizedObjects _logic);
 
 _side = call compile (_logic getVariable "_side");
@@ -28,7 +28,7 @@ if (isNil ("_TickTime")) then {_TickTime = 15};
 
 {
     if ((_x isKindOf "Air") and ((crew _x) isEqualTo [])) then {_sideForces pushBack _x};
-    if ((_x isKindOf "Air") and not ((crew _x) isEqualTo [])) then {_StartForces pushBack _x};
+    if ((_x isKindOf "Air") and !((crew _x) isEqualTo [])) then {_StartForces pushBack _x};
 } forEach (synchronizedObjects _coreObj);
 
 if (_StartForces isEqualTo []) then {_StartForces = [objNull]};
@@ -66,14 +66,14 @@ if (isNil ("LeaderHQH")) then {LeaderHQH = objNull};
 {
 
     [_side,_x,_Leaders] call SpawnARVicC;
-    
+
 } forEach _sideForces;
 
 
 sleep 20;
 private _counter = count _StartForces;
 
-while {_CStartForces < _counter} do 
+while {_CStartForces < _counter} do
 {
     _CStartForces = count _StartForces;
     sleep 20;
@@ -82,7 +82,7 @@ while {_CStartForces < _counter} do
 
 
 
-while {true} do 
+while {true} do
 
     {
 
@@ -93,19 +93,19 @@ while {true} do
         _crewCount = count _crewUnits;
         _crewSize = (_x getVariable ["Air_ReinforcementsNR6_CrewSize",0]);
 
-        if ((alive _x) and not (({not (_x in _crewUnits)} count (crew _x)) > 0) and (_crewCount >= _crewSize) and ((damage _x) < 0.4) and not (_x getVariable ["Air_ReinforcementsNR6_Taken",false])) then {
+        if ((alive _x) and !(({!(_x in _crewUnits)} count (crew _x)) > 0) and (_crewCount >= _crewSize) and ((damage _x) < 0.4) and !(_x getVariable ["Air_ReinforcementsNR6_Taken",false])) then {
 
             _GoodsideForces pushBack _x;
-            
+
         };
-    
+
     } forEach _sideForces;
 
 
     _CLiveForces = _LiveForces;
 
     {
-        if (not (alive _x) or not (canMove _x) or ((damage _x) > 0.8) or ((fuel _x) < 0.2)) then {_LiveForces = (_LiveForces - [_x])}
+        if (!(alive _x) or !(canMove _x) or ((damage _x) > 0.8) or ((fuel _x) < 0.2)) then {_LiveForces = (_LiveForces - [_x])}
     } forEach _CLiveForces;
 
     _CurrentForces = count _LiveForces;
@@ -113,22 +113,22 @@ while {true} do
     testfor = _GoodsideForces;
 
 
-    if ((_CurrentForces) < (_Threshold*_CStartForces)) then 
+    if ((_CurrentForces) < (_Threshold*_CStartForces)) then
         {
-            if ( not (_GoodsideForces isEqualTo [])) then {
+            if ( !(_GoodsideForces isEqualTo [])) then {
 
                 private ["_selectedAircraft"];
 
                 _selectedAircraft = [_side,_GoodsideForces,_Leaders] call SpawnARGroupC;
 
                 sleep 1;
-                
+
                 _LiveForces pushBack _selectedAircraft;
 
                (leader (_selectedAircraft getVariable ["Air_ReinforcementsNR6_Crew",grpNull])) call compile ((_logic getVariable ["_ExtraArgs",""]) + _DontLand);
 
-                    
-            };  
+
+            };
         };
 
     if (_GoodsideForces isEqualTo []) exitWith {};

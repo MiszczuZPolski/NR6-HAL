@@ -1,6 +1,6 @@
 _SCRname = "Boss";
 
-private 
+private
 	[
 	"_cntr","_lng","_nmbr","_sectors","_markers","_mark","_secpos","_sPosX","_sPosY","_sUrban","_sForest","_sHills","_sFlat","_sSea","_samplePos","_topArr","_sRoads","_bbCycle",
 	"_text","_nbr","_sum","_alpha","_count","_strArea","_loc10","_loc5","_loc2","_loc1","_locHill","_topArr","_frstV","_nmbr","_posGrpX","_sGr","_BBHQs","_BBSide","_urgent",
@@ -24,7 +24,7 @@ _BBHQs = (_this select 0) select 0;
 _BBSide = (_this select 0) select 1;
 _BBHQGrps = _this select 1;
 
-if ((_BBSide == "B") and ((count RydBBa_HQs) > 0)) then 
+if ((_BBSide == "B") and ((count RydBBa_HQs) > 0)) then
 	{
 	waitUntil
 		{
@@ -53,7 +53,7 @@ _cntr = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition");
 
 if (_BBSide == "A") then
 	{
-	if not (isNil "RydBB_MC") then
+	if !(isNil "RydBB_MC") then
 		{
 		if ((typeName RydBB_MC) isEqualTo "OBJECT") then {_cntr = getPosATL RydBB_MC} else {_cntr = RydBB_MC};
 		RydBB_MapC = _cntr;
@@ -61,7 +61,7 @@ if (_BBSide == "A") then
 	else
 		{
 		_mapSize = getNumber (configFile >> "CfgWorlds" >> worldName >> "mapSize");
-		
+
 		RydBB_MapXMax = _mapSize;
 		RydBB_MapYMax = RydBB_MapXMax;
 		RydBB_MapC = [_mapSize/2,_mapSize/2];
@@ -75,7 +75,7 @@ if (_BBSide == "A") then
 	//_mark = [_mark,_cntr,"ColorBlue","ICON",[1.5,1.5],0,1,"DOT",(str _cntr)] call RYD_Marker;
 
 	_lng = (_cntr select 0)*2;
-	if not (isNil "RydBB_MC") then
+	if !(isNil "RydBB_MC") then
 		{
 		if ((typeName RydBB_MC) isEqualTo "OBJECT") then
 			{
@@ -99,7 +99,7 @@ if (_BBSide == "A") then
 	RydBB_Sectors = ([_cntr,_lng,0,_nmbr] call RYD_Sectorize) select 0;
 /*
 	//_markers = [];
-	
+
 		{
 		diag_log format ["Sector: %1",_x];
 		//_mark = "sector" + str (random 1000);
@@ -108,7 +108,7 @@ if (_BBSide == "A") then
 		//_x setVariable ["Over_Mark",_mark];
 		}
 	foreach RydBB_Sectors;*/
-	
+
 
 	_nbr = 0;
 
@@ -116,7 +116,7 @@ if (_BBSide == "A") then
 	if (RydBB_Debug) then {diag_log "Big Boss studies the map."};
 
 		{
-		_x setVariable ["BBSec",true];		
+		_x setVariable ["BBSec",true];
 
 		_secpos = position _x;
 		_sPosX = _secpos select 0;
@@ -167,7 +167,7 @@ if (_BBSide == "A") then
 		_nbr = _nbr + 1;
 		_sum = count RydBB_Sectors;
 
-		if not (isMultiplayer) then
+		if !(isMultiplayer) then
 			{
 			progressLoadingScreen (_nbr/_sum)
 			}
@@ -197,16 +197,16 @@ _objRad = 25000;
 _cntr = (missionNamespace getVariable "BattleF") select 0;
 _lng = (missionNamespace getVariable "BattleF") select 1;
 
-if not (isNil "RydBB_MC") then
+if !(isNil "RydBB_MC") then
 	{
 	_objRad = _lng/2
 	};
 
-_loc10 = nearestLocations [_cntr, ["NameCityCapital"], _objRad]; 
-_loc5 = nearestLocations [_cntr, ["NameCity","Airport"], _objRad]; 
-_loc2 = nearestLocations [_cntr, ["NameVillage"], _objRad]; 
-_loc1 = nearestLocations [_cntr, ["BorderCrossing"], _objRad]; 
-_locHill = nearestLocations [_cntr, ["Hill","ViewPoint"], _objRad]; 
+_loc10 = nearestLocations [_cntr, ["NameCityCapital"], _objRad];
+_loc5 = nearestLocations [_cntr, ["NameCity","Airport"], _objRad];
+_loc2 = nearestLocations [_cntr, ["NameVillage"], _objRad];
+_loc1 = nearestLocations [_cntr, ["BorderCrossing"], _objRad];
+_locHill = nearestLocations [_cntr, ["Hill","ViewPoint"], _objRad];
 
 	{
 	_strArea pushBack [(position _x),10,false]
@@ -232,7 +232,7 @@ forEach _loc1;
 	{
 	_topArr = [(position _x),3] call RYD_TerraCognita;
 	_frstV = _topArr select 1;
-	if (_frstV > 0.25) then 
+	if (_frstV > 0.25) then
 		{
 		_strArea pushBack [(position _x),1,false]
 		}
@@ -245,8 +245,8 @@ forEach _locHill;
 
 _BBStr = [];
 
-if (_BBSide == "A") then {if not (isNil "RydBBa_Str") then {_BBStr = RydBBa_Str}};
-if (_BBSide == "B") then {if not (isNil "RydBBb_Str") then {_BBStr = RydBBb_Str}};
+if (_BBSide == "A") then {if !(isNil "RydBBa_Str") then {_BBStr = RydBBa_Str}};
+if (_BBSide == "B") then {if !(isNil "RydBBb_Str") then {_BBStr = RydBBb_Str}};
 
 _fixedInitStatus = [];
 
@@ -296,9 +296,9 @@ _strArea0 = [] + _strArea;
 		_sX = _sPnt select 0;
 		_sY = _sPnt select 1;
 
-		if (((_fPnt distance _sPnt) < 400) and not ((_fPnt select 0) == (_sPnt select 0))) then 
+		if (((_fPnt distance _sPnt) < 400) and !((_fPnt select 0) == (_sPnt select 0))) then
 			{
-			
+
 			if (_fVal > _sVal) then
 				{
 				_strArea set [_k,[[(_fX + _sX)/2,(_fY + _sY)/2,0],_fVal + _sVal,_fTkn]];
@@ -319,19 +319,19 @@ _strArea = _strArea - [0];
 
 _strArea0 = nil;
 
-{ 
+{
 	if (isNil {_x select 1}) then {_strArea set [_foreachIndex,[_x select 0,5,_x select 2]]}
 } forEach _strArea;
 
 
-if not (isNil "Debug") then {Debug setVariable ["d",_strArea]};
+if !(isNil "Debug") then {Debug setVariable ["d",_strArea]};
 
 switch (_BBSide) do
 	{
 	case ("A") : {missionNamespace setVariable ["A_SAreas",_strArea]};
 	case ("B") : {missionNamespace setVariable ["B_SAreas",_strArea]};
 	};
-	
+
 ////////////////////////////////////////////////////////////////////
 
 _bbCycle = 0;
@@ -350,7 +350,7 @@ _isLeftName = "A_isLeft";
 _isFlankName = "A_isFlank";
 _isRearName = "A_isRear";
 
-if (_BBSide == "B") then 
+if (_BBSide == "B") then
 	{
 	_leftFlankName = "LeftFlankB";
 	_rightFlankName = "RightFlankB";
@@ -369,7 +369,7 @@ _allAreTaken = true;
 
 while {(RydBB_Active)} do
 	{
-	if not (_BBalive) exitWith 
+	if !(_BBalive) exitWith
 		{
 		if (RydBB_Debug) then
 			{
@@ -378,18 +378,18 @@ while {(RydBB_Active)} do
 			};
 		};
 /*
-	waitUntil 
+	waitUntil
 		{
 		sleep 5;
 */
 		_allAreTaken = true;
 
 			{
-			if not (_x select 2) exitWith {_allAreTaken = false}
+			if !(_x select 2) exitWith {_allAreTaken = false}
 			}
 		forEach _strArea;
 
-		//not (_allAreTaken)
+		//!(_allAreTaken)
 		//};
 
 	_bbCycle = _bbCycle + 1;
@@ -399,11 +399,11 @@ while {(RydBB_Active)} do
 		_code =
 			{
 			_SCRName = "BossC1";
-			
+
 			private ["_HQg","_side","_HQg0"];
 
 			_HQg = _this select 0;
-			_side = _this select 1;	
+			_side = _this select 1;
 
 			_HQg0 = +_HQg;
 
@@ -414,7 +414,7 @@ while {(RydBB_Active)} do
 						{
 						_HQg = _HQg - [_x]
 						}
-					else 
+					else
 						{
 						if (({(alive _x)} count (units (group _x))) == 0) then
 							{
@@ -424,7 +424,7 @@ while {(RydBB_Active)} do
 					}
 				forEach _HQg0;
 
-				if ((count _HQg) == 0) exitWith 
+				if ((count _HQg) == 0) exitWith
 					{
 					if (RydBB_Debug) then
 						{
@@ -436,14 +436,14 @@ while {(RydBB_Active)} do
 				sleep 10;
 				};
 			};
-			
+
 		[[_BBHQs,_BBSide],_code] call RYD_Spawn
 		};
 
 	_BBHQs = [];
 
 		{
-		if not (isNull _x) then 
+		if !(isNull _x) then
 			{
 			if (({(alive _x)} count (units _x)) > 0) then
 				{
@@ -453,7 +453,7 @@ while {(RydBB_Active)} do
 		}
 	forEach _BBHQGrps;
 
-	if ((count _BBHQs) == 0) exitWith 
+	if ((count _BBHQs) == 0) exitWith
 		{
 		if (RydBB_Debug) then
 			{
@@ -525,7 +525,7 @@ while {(RydBB_Active)} do
 				{
 				_taken = _x select 2;
 
-				if not (_taken) then 
+				if !(_taken) then
 					{
 					_posStr = _x select 0;
 					_valStr = _x select 1;
@@ -548,7 +548,7 @@ while {(RydBB_Active)} do
 			_change = false;
 
 			_civF = ["CIV_F","CIV","CIV_RU","BIS_TK_CIV","BIS_CIV_special"];
-			if not (isNil ("RydBB_CivF")) then {_civF = RydBB_CivF};
+			if !(isNil ("RydBB_CivF")) then {_civF = RydBB_CivF};
 
 				{
 				_posStr = _x select 0;
@@ -565,7 +565,7 @@ while {(RydBB_Active)} do
 						{
 						_isCiv = false;
 						if ((faction (leader _x)) in _civF) then {_isCiv = true};
-						if not (_isCiv) then
+						if !(_isCiv) then
 							{
 							if (((vehicle (leader _x)) distance _posStr) < 500) exitWith {_enemyClose = true}
 							}
@@ -576,46 +576,46 @@ while {(RydBB_Active)} do
 				forEach (allGroups - _ownGroups);
 
 				_gDst = 1000000;
-				
+
 					{
 					_actDist = (vehicle (leader _x)) distance _posStr;
 					if (_actDist < _gDst) then {_gDst = _actDist}
 					}
 				forEach _ownGroups;
 
-				if (RydBB_CustomObjOnly) then 
-				
+				if (RydBB_CustomObjOnly) then
+
 					{
-					if ((((_mDist > _amDist) and (_mDist > _aDist) and (_amDist > _aDist) and (_aDist < 1000000)) or (_gDst < 500) or (_aDist < 1000)) and not (_enemyClose)) then 
+					if ((((_mDist > _amDist) and (_mDist > _aDist) and (_amDist > _aDist) and (_aDist < 1000000)) or (_gDst < 500) or (_aDist < 1000)) and !(_enemyClose)) then
 						{
-						if not (_taken) then {_change = true};
+						if !(_taken) then {_change = true};
 						_pos = _x select 0;
 						_pos = (_pos select 0) + (_pos select 1);
-						if not (_pos in _fixedInitStatus) then {_x set [2,true]};
+						if !(_pos in _fixedInitStatus) then {_x set [2,true]};
 						}
 					else
 						{
 						if (_taken) then {_change = true};
 						_pos = _x select 0;
 						_pos = (_pos select 0) + (_pos select 1);
-						if not (_pos in _fixedInitStatus) then {_x set [2,false]};
+						if !(_pos in _fixedInitStatus) then {_x set [2,false]};
 						}
 
 					} else {
 
-					if ((((_mDist > _amDist) and (_mDist > _aDist) and (_amDist > _aDist) and (_aDist < 5000)) or (_gDst < 500) or (_aDist < 1000)) and not (_enemyClose)) then 
+					if ((((_mDist > _amDist) and (_mDist > _aDist) and (_amDist > _aDist) and (_aDist < 5000)) or (_gDst < 500) or (_aDist < 1000)) and !(_enemyClose)) then
 						{
-						if not (_taken) then {_change = true};
+						if !(_taken) then {_change = true};
 						_pos = _x select 0;
 						_pos = (_pos select 0) + (_pos select 1);
-						if not (_pos in _fixedInitStatus) then {_x set [2,true]};
+						if !(_pos in _fixedInitStatus) then {_x set [2,true]};
 						}
 					else
 						{
 						if (_taken) then {_change = true};
 						_pos = _x select 0;
 						_pos = (_pos select 0) + (_pos select 1);
-						if not (_pos in _fixedInitStatus) then {_x set [2,false]};
+						if !(_pos in _fixedInitStatus) then {_x set [2,false]};
 						}
 					}
 				}
@@ -657,10 +657,10 @@ while {(RydBB_Active)} do
 		_attackAxis = [_ArmyPos,_mainPos,10] call RYD_AngTowards;
 
 		if (RydBB_Debug) then
-			{			
+			{
 			[[_strArea,_BBSide],RYD_ObjMark] call RYD_Spawn
 			};
-			
+
 		if (RydBB_Debug) then
 			{
 			RydBBa_SAL globalChat format ["Big Boss %1 orients the flanks.",_BBSide];
@@ -691,16 +691,16 @@ while {(RydBB_Active)} do
 			_isFlank = _where select 1;
 			_isRear = _where select 2;
 
-			if (_isLeft) then 
+			if (_isLeft) then
 				{
 				_leftSectors pushBack _x
-				} 
-			else 
+				}
+			else
 				{
 				_rightSectors pushBack _x
 				};
 
-			if not (_isFlank) then 
+			if !(_isFlank) then
 				{
 				_frontSectors pushBack _x
 				};
@@ -750,13 +750,13 @@ while {(RydBB_Active)} do
 
 			if (_isFlank) then
 				{
-				if (_isLeft) then 
+				if (_isLeft) then
 					{
 					_x set [3,_leftName];
 					_leftSA pushBack _x;
 					_leftSANmbr = _leftSANmbr + 1
-					} 
-				else 
+					}
+				else
 					{
 					_x set [3,_rightName];
 					_rightSA pushBack _x;
@@ -820,7 +820,7 @@ while {(RydBB_Active)} do
 		_flSMaxStr = _leftFlankName;
 		_flSpace = (missionNamespace getVariable _leftFlankName) select 1;
 
-		if not (_flSpace) then
+		if !(_flSpace) then
 			{
 				{
 				_fl = missionNamespace getVariable _x;
@@ -833,7 +833,7 @@ while {(RydBB_Active)} do
 		_flSAMaxStr = _leftFlankName;
 		_flSA = (missionNamespace getVariable _leftFlankName) select 2;
 
-		if not (_flSA) then
+		if !(_flSA) then
 			{
 				{
 				_fl = missionNamespace getVariable _x;
@@ -846,7 +846,7 @@ while {(RydBB_Active)} do
 		_flVMaxStr = _leftFlankName;
 		_flVeh = (missionNamespace getVariable _leftFlankName) select 3;
 
-		if not (_flVeh) then
+		if !(_flVeh) then
 			{
 				{
 				_fl = missionNamespace getVariable _x;
@@ -878,7 +878,7 @@ while {(RydBB_Active)} do
 			_forceChar = _ldrRep select 5;
 			_vehPerc = (_forceChar select 1) + (_forceChar select 2) + (_forceChar select 3);
 
-			if (_vehPerc >= _vehAv) then 
+			if (_vehPerc >= _vehAv) then
 				{
 				_moreVehHQ pushBack _x;
 				_x setVariable ["ForceProfile","V"]
@@ -908,7 +908,7 @@ while {(RydBB_Active)} do
 			_ldrRep = (_x getVariable "ForceRep") select 0;
 			_forceNum = _ldrRep select 1;
 
-			if (_forceNum >= _numAv) then 
+			if (_forceNum >= _numAv) then
 				{
 				_moreNumHQ pushBack _x;
 				_x setVariable ["NumProfile","A"]
@@ -937,14 +937,14 @@ while {(RydBB_Active)} do
 		_restHQ = _BBHQGrps - (_moreVehHQ + _moreNumHQ);
 
 		_goingReserve = [];
-		
+
 		_resCand = [];
 
 			{
 			if ((_x getVariable ["ForceProfile","V"]) == "I") then {_resCand pushBack _x}
 			}
 		forEach _moreNumHQ;
-		
+
 		while {(_resCount > 0)} do
 			{
 
@@ -970,8 +970,8 @@ while {(RydBB_Active)} do
 			_resCand = _resCand - [_ldr];
 			_resCount = _resCount - 1;
 			};
-	
-		if not (_allAreTaken) then
+
+		if !(_allAreTaken) then
 			{
 			if ((count _BBHQGrps) > 1) then
 				{
@@ -980,7 +980,7 @@ while {(RydBB_Active)} do
 					_ldr = _moreVehHQ select (floor (random (count _moreVehHQ)));
 					switch (_flVMaxStr) do
 						{
-						case (_leftFlankName) : 
+						case (_leftFlankName) :
 							{
 							_goingLeft pushBack _ldr;
 							_moreVehHQ = _moreVehHQ - [_ldr];
@@ -988,7 +988,7 @@ while {(RydBB_Active)} do
 							_flankCount = _flankCount - 1;
 							};
 
-						case (_rightFlankName) : 
+						case (_rightFlankName) :
 							{
 							_goingRight pushBack _ldr;
 							_moreVehHQ = _moreVehHQ - [_ldr];
@@ -996,7 +996,7 @@ while {(RydBB_Active)} do
 							_flankCount = _flankCount - 1
 							};
 
-						case (_centerFrontName) : 
+						case (_centerFrontName) :
 							{
 							_goingAhead pushBack _ldr;
 							_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1011,7 +1011,7 @@ while {(RydBB_Active)} do
 					_ldr = _moreNumHQ select (floor (random (count _moreNumHQ)));
 					switch (_flSAMaxStr) do
 						{
-						case (_leftFlankName) : 
+						case (_leftFlankName) :
 							{
 							_goingLeft pushBack _ldr;
 							_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1019,7 +1019,7 @@ while {(RydBB_Active)} do
 							_flankCount = _flankCount - 1;
 							};
 
-						case (_rightFlankName) : 
+						case (_rightFlankName) :
 							{
 							_goingRight pushBack _ldr;
 							_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1027,7 +1027,7 @@ while {(RydBB_Active)} do
 							_flankCount = _flankCount - 1
 							};
 
-						case (_centerFrontName) : 
+						case (_centerFrontName) :
 							{
 							_goingAhead pushBack _ldr;
 							_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1048,7 +1048,7 @@ while {(RydBB_Active)} do
 					_flankTwo = _rightFlankName;
 					_goingTwo = _goingRight;
 
-					if ((random 100) >= 50) then 
+					if ((random 100) >= 50) then
 						{
 						_flankOne = _rightFlankName;
 						_goingOne = _goingRight;
@@ -1058,11 +1058,11 @@ while {(RydBB_Active)} do
 
 					switch (true) do
 						{
-						case ((_ldr in _moreVehHQ) and (_ldr in _moreNumHQ) and (_rndF < 90)) : 
+						case ((_ldr in _moreVehHQ) and (_ldr in _moreNumHQ) and (_rndF < 90)) :
 							{
 							switch (true) do
 								{
-								case ((((_flVMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) : 
+								case ((((_flVMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingOne pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1070,7 +1070,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1;
 									};
 
-								case ((((_flVMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) : 
+								case ((((_flVMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingTwo pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1078,7 +1078,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1
 									};
 
-								case ((_centerCount > 0) and ((count _moreNumHQ) == 0)) : 
+								case ((_centerCount > 0) and ((count _moreNumHQ) == 0)) :
 									{
 									_goingAhead pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1086,7 +1086,7 @@ while {(RydBB_Active)} do
 									_centerCount = _centerCount - 1
 									};
 
-								case ((((_flSAMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) : 
+								case ((((_flSAMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingOne pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1094,7 +1094,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1;
 									};
 
-								case ((((_flSAMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) : 
+								case ((((_flSAMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingTwo pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1102,7 +1102,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1
 									};
 
-								case (_centerCount > 0) : 
+								case (_centerCount > 0) :
 									{
 									_goingAhead pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1110,7 +1110,7 @@ while {(RydBB_Active)} do
 									_centerCount = _centerCount - 1
 									};
 
-								default 
+								default
 									{
 									_rndF = random 100;
 
@@ -1132,12 +1132,12 @@ while {(RydBB_Active)} do
 								};
 							};
 
-						case ((_ldr in _moreVehHQ) and (_rndF < 90)) : 
+						case ((_ldr in _moreVehHQ) and (_rndF < 90)) :
 							{
 
 							switch (true) do
 								{
-								case ((((_flVMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) : 
+								case ((((_flVMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingOne pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1145,7 +1145,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1;
 									};
 
-								case ((((_flVMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) : 
+								case ((((_flVMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingTwo pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1153,7 +1153,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1
 									};
 
-								case (_centerCount > 0) : 
+								case (_centerCount > 0) :
 									{
 									_goingAhead pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1161,7 +1161,7 @@ while {(RydBB_Active)} do
 									_centerCount = _centerCount - 1
 									};
 
-								default 
+								default
 									{
 									_rndF = random 100;
 
@@ -1183,12 +1183,12 @@ while {(RydBB_Active)} do
 								};
 							};
 
-						case ((_ldr in _moreNumHQ) and (_rndF < 90)) : 
+						case ((_ldr in _moreNumHQ) and (_rndF < 90)) :
 							{
 
 							switch (true) do
 								{
-								case ((((_flSAMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) : 
+								case ((((_flSAMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingOne pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1196,7 +1196,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1;
 									};
 
-								case ((((_flSAMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) : 
+								case ((((_flSAMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingTwo pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1204,7 +1204,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1
 									};
 
-								case (_centerCount > 0) : 
+								case (_centerCount > 0) :
 									{
 									_goingAhead pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1212,7 +1212,7 @@ while {(RydBB_Active)} do
 									_centerCount = _centerCount - 1
 									};
 
-								default 
+								default
 									{
 									_rndF = random 100;
 
@@ -1234,7 +1234,7 @@ while {(RydBB_Active)} do
 								};
 							};
 
-						default 
+						default
 							{
 							if ((({((_x in _moreVehHQ) or (_x in _moreNumHQ))} count (_BBHQGrps - _goingReserve)) < (_flankCount + _centerCount)) or (_rndF >= 90)) then
 								{
@@ -1251,14 +1251,14 @@ while {(RydBB_Active)} do
 										};
 
 									case (_rndF < 66) :
-										{ 
+										{
 										_goingRight pushBack _ldr;
 										_moreVehHQ = _moreVehHQ - [_ldr];
 										_moreNumHQ = _moreNumHQ - [_ldr];
 										_flankCount = _flankCount - 1
 										};
 
-									default 
+									default
 										{
 										_goingAhead pushBack _ldr;
 										_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1272,12 +1272,12 @@ while {(RydBB_Active)} do
 					}
 				forEach _allFree;
 
-				if ((count (_BBHQGrps - (_goingReserve + _goingLeft + _goingRight + _goingAhead))) > 0) then 
+				if ((count (_BBHQGrps - (_goingReserve + _goingLeft + _goingRight + _goingAhead))) > 0) then
 					{
 
 						{
 						_ldr = _x;
-						if (_flankCount > 0) then 
+						if (_flankCount > 0) then
 							{
 							_rndF = random 100;
 
@@ -1292,7 +1292,7 @@ while {(RydBB_Active)} do
 									};
 
 								case (_rndF >= 50) :
-									{ 
+									{
 									_goingRight pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
 									_moreNumHQ = _moreNumHQ - [_ldr];
@@ -1332,7 +1332,7 @@ while {(RydBB_Active)} do
 			diag_log format ["Assignment of Big Boss %5 : Left: %1 Right: %2 Front: %3 Reserve: %4",_goingLeft,_goingRight,_goingAhead,_goingReserve,_BBSide];
 			};
 
-		if (((RydBBa_SimpleDebug) and (_BBSide == "A")) or ((RydBBb_SimpleDebug) and (_BBSide == "B"))) then 
+		if (((RydBBa_SimpleDebug) and (_BBSide == "A")) or ((RydBBb_SimpleDebug) and (_BBSide == "B"))) then
 			{
 			//[_BBHQGrps,_BBSide] spawn RYD_BBSimpleD
 			[[_BBHQGrps,_BBSide],RYD_BBSimpleD] call RYD_Spawn
@@ -1354,8 +1354,8 @@ while {(RydBB_Active)} do
 			case (isNull _x) : {_aliveHQ = false};
 			case (({alive _x} count (units _x)) < 1) : {_aliveHQ = false};
 			};
-			
-		if not (_aliveHQ) then {_goingReserve = _goingReserve - [_x]};
+
+		if !(_aliveHQ) then {_goingReserve = _goingReserve - [_x]};
 		}
 	forEach _goingReserve0;
 
@@ -1376,13 +1376,13 @@ while {(RydBB_Active)} do
 				case (isNull _x) : {_aliveHQ = false};
 				case (({alive _x} count (units _x)) < 1) : {_aliveHQ = false};
 				};
-			if not (_aliveHQ) then {_goingAhead = _goingAhead - [_x]};
+			if !(_aliveHQ) then {_goingAhead = _goingAhead - [_x]};
 			}
 		forEach _lastGAhead;
 
 		if ((count _goingAhead) < _lastGAheadN) then
 			{
-			if ((count _goingReserve) > 0) then 
+			if ((count _goingReserve) > 0) then
 				{
 				_newL = _goingReserve select 0;
 				_goingReserve = _goingReserve - [_newL];
@@ -1397,14 +1397,14 @@ while {(RydBB_Active)} do
 				case (isNull _x) : {_aliveHQ = false};
 				case (({alive _x} count (units _x)) < 1) : {_aliveHQ = false};
 				};
-				
-			if not (_aliveHQ) then {_goingLeft = _goingLeft - [_x]};
+
+			if !(_aliveHQ) then {_goingLeft = _goingLeft - [_x]};
 			}
 		forEach _lastGLeft;
 
 		if ((count _goingLeft) <  _lastGLeftN) then
 			{
-			if ((count _goingReserve) > 0) then 
+			if ((count _goingReserve) > 0) then
 				{
 				_newL = _goingReserve select 0;
 				_goingReserve = _goingReserve - [_newL];
@@ -1419,14 +1419,14 @@ while {(RydBB_Active)} do
 				case (isNull _x) : {_aliveHQ = false};
 				case (({alive _x} count (units _x)) < 1) : {_aliveHQ = false};
 				};
-				
-			if not (_aliveHQ) then {_goingRight = _goingRight - [_x]};
+
+			if !(_aliveHQ) then {_goingRight = _goingRight - [_x]};
 			}
 		forEach _lastGRight;
 
 		if ((count _goingRight) < _lastGRightN) then
 			{
-			if ((count _goingReserve) > 0) then 
+			if ((count _goingReserve) > 0) then
 				{
 				_newL = _goingReserve select 0;
 				_goingReserve = _goingReserve - [_newL];
@@ -1501,8 +1501,8 @@ while {(RydBB_Active)} do
 
 				_perDirPos = _mainPos;
 				_actT = _x getVariable "ActualTarget";
-				if not (isNil "_actT") then {_perDirPos = _actT select 0};
-				if not ((count _knEnemy) == 0) then
+				if !(isNil "_actT") then {_perDirPos = _actT select 0};
+				if !((count _knEnemy) == 0) then
 					{
 					_dpX = 0;
 					_dpY = 0;
@@ -1552,7 +1552,7 @@ while {(RydBB_Active)} do
 
 			{
 			_tkn = _x select 2;
-			if not (_tkn) then {_leftNotTaken pushBack _x}
+			if !(_tkn) then {_leftNotTaken pushBack _x}
 			}
 		forEach _leftSA;
 
@@ -1560,7 +1560,7 @@ while {(RydBB_Active)} do
 
 			{
 			_tkn = _x select 2;
-			if not (_tkn) then {_rightNotTaken pushBack _x}
+			if !(_tkn) then {_rightNotTaken pushBack _x}
 			}
 		forEach _rightSA;
 
@@ -1568,7 +1568,7 @@ while {(RydBB_Active)} do
 
 			{
 			_tkn = _x select 2;
-			if not (_tkn) then {_frontNotTaken pushBack _x}
+			if !(_tkn) then {_frontNotTaken pushBack _x}
 			}
 		forEach _frontSA;
 
@@ -1606,23 +1606,23 @@ while {(RydBB_Active)} do
 
 			_x setVariable ["ActualTarget",_chosenT];
 
-			if ((count _leftNotTaken) > 0) then 
+			if ((count _leftNotTaken) > 0) then
 				{
-				_leftNotTaken set [_indx,0]; 
+				_leftNotTaken set [_indx,0];
 				_leftNotTaken = _leftNotTaken - [0]
 				}
 			else
 				{
-				if ((count _frontNotTaken) > 0) then 
+				if ((count _frontNotTaken) > 0) then
 					{
-					_frontNotTaken set [_indx,0]; 
+					_frontNotTaken set [_indx,0];
 					_frontNotTaken = _frontNotTaken - [0]
 					}
 				else
 					{
-					if ((count _rightNotTaken) > 0) then 
+					if ((count _rightNotTaken) > 0) then
 						{
-						_rightNotTaken set [_indx,0]; 
+						_rightNotTaken set [_indx,0];
 						_rightNotTaken = _rightNotTaken - [0]
 						}
 					}
@@ -1664,23 +1664,23 @@ while {(RydBB_Active)} do
 
 			_x setVariable ["ActualTarget",_chosenT];
 
-			if ((count _rightNotTaken) > 0) then 
+			if ((count _rightNotTaken) > 0) then
 				{
-				_rightNotTaken set [_indx,0]; 
+				_rightNotTaken set [_indx,0];
 				_rightNotTaken = _rightNotTaken - [0]
 				}
 			else
 				{
-				if ((count _frontNotTaken) > 0) then 
+				if ((count _frontNotTaken) > 0) then
 					{
-					_frontNotTaken set [_indx,0]; 
+					_frontNotTaken set [_indx,0];
 					_frontNotTaken = _frontNotTaken - [0]
 					}
 				else
 					{
-					if ((count _leftNotTaken) > 0) then 
+					if ((count _leftNotTaken) > 0) then
 						{
-						_leftNotTaken set [_indx,0]; 
+						_leftNotTaken set [_indx,0];
 						_leftNotTaken = _leftNotTaken - [0]
 						}
 					}
@@ -1723,23 +1723,23 @@ while {(RydBB_Active)} do
 
 			_x setVariable ["ActualTarget",_chosenT];
 
-			if ((count _frontNotTaken) > 0) then 
+			if ((count _frontNotTaken) > 0) then
 				{
-				_frontNotTaken set [_indx,0]; 
+				_frontNotTaken set [_indx,0];
 				_frontNotTaken = _frontNotTaken - [0]
 				}
 			else
 				{
-				if ((count _leftNotTaken) > 0) then 
+				if ((count _leftNotTaken) > 0) then
 					{
-					_leftNotTaken set [_indx,0]; 
+					_leftNotTaken set [_indx,0];
 					_leftNotTaken = _leftNotTaken - [0]
 					}
 				else
 					{
-					if ((count _rightNotTaken) > 0) then 
+					if ((count _rightNotTaken) > 0) then
 						{
-						_rightNotTaken set [_indx,0]; 
+						_rightNotTaken set [_indx,0];
 						_rightNotTaken = _rightNotTaken - [0]
 						}
 					}
@@ -1759,8 +1759,8 @@ while {(RydBB_Active)} do
 				if (_aliveHQ) then
 					{
 					_pathDone = _x getVariable "PathDone";
-					if (isNil "_pathDone") then {_pathDone = true};		
-					
+					if (isNil "_pathDone") then {_pathDone = true};
+
 					if (_pathDone) then
 						{
 						_HQ = _x;
@@ -1773,7 +1773,7 @@ while {(RydBB_Active)} do
 						_HQ setVariable ["RydHQ_NObj",1];
 						_HQ setVariable ["BBDEF",false];
 
-						_areas = _leftNotTaken; 
+						_areas = _leftNotTaken;
 						_sctrs = _leftSectors;
 
 						switch (true) do
@@ -1811,7 +1811,7 @@ while {(RydBB_Active)} do
 						forEach _tgtsAround;
 
 						_AAOPts = [];
-						
+
 						{
 							_AAOPts pushBack (_x select 0)
 							}
@@ -1821,7 +1821,7 @@ while {(RydBB_Active)} do
 							_points pushBack _x
 							}
 						forEach [_HQpos,_acT];
-					
+
 						//[_front,+_points,1200] call RYD_LocMultiTransform;
 
 						//[_x,_tgtsAround,_tObj1,_tObj2,_tObj3,_tObj4,_BBHQGrps,_HQpos,_front,_secsAround,_goingReserve,_BBSide] spawn RYD_ExecutePath;
@@ -1857,7 +1857,7 @@ while {(RydBB_Active)} do
 		_HQpoints pushBack (getPosATL (vehicle (leader _x)))
 		}
 	forEach _BBHQGrps;
-	
+
 	_takenPoints = _points;
 
 	_points = [];
@@ -1918,7 +1918,7 @@ while {(RydBB_Active)} do
 
 	if (_BBSide == "A") then {RydBBa_Urgent = false} else {RydBBb_Urgent = false};
 
-	if (_BBCycle == 1) then 
+	if (_BBCycle == 1) then
 		{
 		//[_strArea,_BBSide,(_BBHQGrps select 0),_BBHQGrps] spawn RYD_ObjectivesMon
 		[[_strArea,_BBSide,(_BBHQGrps select 0),_BBHQGrps],RYD_ObjectivesMon] call RYD_Spawn;
@@ -1934,7 +1934,7 @@ while {(RydBB_Active)} do
 
 	_ctWait = time;
 	_ctVal = 20;
-	if not (isNil "RydBB_MainInterval") then {_ctVal = RydBB_MainInterval};
+	if !(isNil "RydBB_MainInterval") then {_ctVal = RydBB_MainInterval};
 
 	if (RydBB_Debug) then
 		{
@@ -1946,28 +1946,28 @@ while {(RydBB_Active)} do
 		{
 		sleep 60;
 
-		if (_BBSide == "A") then 
+		if (_BBSide == "A") then
 			{
-			if (RydBBa_Urgent) then 
+			if (RydBBa_Urgent) then
 				{
 				_ctVal = 0
 				}
 			}
-		else 
+		else
 			{
-			if (RydBBb_Urgent) then 
+			if (RydBBb_Urgent) then
 				{
 				_ctVal = 0
 				}
 			};
 
-		if not (RydBB_Active) then {_ctVal = 0};
+		if !(RydBB_Active) then {_ctVal = 0};
 
 		((time - _ctWait) >= (_ctVal * 60))
 		};
-		
-	if not (RydBB_Active) exitWith {};
-		
+
+	if !(RydBB_Active) exitWith {};
+
 	_urgent = RydBBa_Urgent;
 	if (_BBSide == "B") then {_urgent = RydBBb_Urgent};
 
@@ -1988,7 +1988,7 @@ while {(RydBB_Active)} do
 	if (_urgent) then
 		{
 			{
-			if not (isNull (group _x)) then {(group _x) setVariable ["PathDone",true]};
+			if !(isNull (group _x)) then {(group _x) setVariable ["PathDone",true]};
 			}
 		forEach _BBHQs
 		};
@@ -2001,16 +2001,16 @@ while {(RydBB_Active)} do
 		if (_BBSide == "B") then {_BBUnit = RydBBbHQ};
 
 		if (isNull _BBUnit) exitWith {_BBalive = false};
-		if not (alive _BBUnit) exitWith {_BBalive = false};
+		if !(alive _BBUnit) exitWith {_BBalive = false};
 		if (captive _BBUnit) then {_BBalive = false}
 		};
 
-	if not (_BBalive) then 
+	if !(_BBalive) then
 		{
 		if (_BBSide == "A") then {RydBBa_HQs = []} else {RydBBb_HQs = []}
 		};
 
-	if not (_BBalive) exitWith 
+	if !(_BBalive) exitWith
 		{
 		if (RydBB_Debug) then
 			{

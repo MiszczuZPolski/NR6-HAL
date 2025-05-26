@@ -55,7 +55,7 @@ _nothing = 0;
 	_veh = objNull;
 
 	if !(isNull (assignedVehicle _CL)) then {_veh = assignedVehicle _CL};
-	if !((vehicle _CL) == _CL) then {
+	if !(isNull objectParent _CL) then {
 		_veh = vehicle _CL;
 		if ((toLower (typeOf _veh)) in RydHQ_AllArty) then {_artFactor = 10} else {_vehFactor = 500 + (rating _veh)};
 	};

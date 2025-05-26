@@ -21,7 +21,7 @@ forEach _ally;
 
 _cAlly = count _ally;
 _midD = 20000;
-if not (_cAlly == 0) then {_midD = _distAllyS/_cAlly};
+if !(_cAlly == 0) then {_midD = _distAllyS/_cAlly};
 
 
 _distEnemyS = 0;
@@ -36,9 +36,9 @@ forEach _enemy;
 
 _cEnemy = count _enemy;
 _midDE = 20000;
-if not (_cEnemy == 0) then {_midDE = _distEnemyS/_cEnemy};
+if !(_cEnemy == 0) then {_midDE = _distEnemyS/_cEnemy};
 
-if (((_midD > _midDE) and (_midDE < 2000)) or (_nearE)) then 
+if (((_midD > _midDE) and (_midDE < 2000)) or (_nearE)) then
 	{
 	_HQ setVariable ["RydHQ_Recklessness",(_rInit + 0.2) * 10]
 	}

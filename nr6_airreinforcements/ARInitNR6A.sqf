@@ -17,7 +17,7 @@ SpawnARGroupA = {
 	_Leaders = _this select 3;
     _flight = _this select 4;
 
-    if not ((typeName (_Pool select 0)) isEqualTo "ARRAY") then {
+    if !((typeName (_Pool select 0)) isEqualTo "ARRAY") then {
 
          {_Pool set [_foreachindex,[_x,[],[],[]]]} forEach _Pool;
 
@@ -49,7 +49,7 @@ SpawnARGroupA = {
 
 
 
-    _grp = [_selectedPos,_side,_birds,_relpos] call BIS_fnc_spawnGroup; 
+    _grp = [_selectedPos,_side,_birds,_relpos] call BIS_fnc_spawnGroup;
     _grp setBehaviour "SAFE";
     _grp setCombatMode "GREEN";
 
@@ -58,7 +58,7 @@ SpawnARGroupA = {
     {
         _VC pushBackUnique (vehicle _x);
     } forEach (units _grp);
-    
+
     {
         _bird = _x;
         _settings = _bridssettings select _forEachIndex;
@@ -71,7 +71,7 @@ SpawnARGroupA = {
     if (_VC isKindof "Plane") then {
         _VC FlyInHeight (random [100,1000,3500]);
     };
-        
+
 
 
     } else {
@@ -92,10 +92,10 @@ SpawnARGroupA = {
 
     };
     */
-    {  
-        if (_side==(side _x)) then 
+    {
+        if (_side==(side _x)) then
             {
-            if (isNull _x) then {} else 
+            if (isNull _x) then {} else
                 {
             //    _x sideChat (format ["Air asset %2 deployed at grid: %1",mapGridPosition _selectedPos,groupId _grp]);
                 if (_x==LeaderHQ) then {RydHQ_Included pushBack _grp; (group LeaderHQ) setVariable ["RydHQ_Included",RydHQ_Included];};
@@ -106,7 +106,7 @@ SpawnARGroupA = {
                 if (_x==LeaderHQF) then {RydHQF_Included pushBack _grp; (group LeaderHQF) setVariable ["RydHQ_Included",RydHQF_Included];};
                 if (_x==LeaderHQG) then {RydHQG_Included pushBack _grp; (group LeaderHQG) setVariable ["RydHQ_Included",RydHQG_Included];};
                 if (_x==LeaderHQH) then {RydHQH_Included pushBack _grp; (group LeaderHQH) setVariable ["RydHQ_Included",RydHQH_Included];};
-                }; 
+                };
             };
 
     } forEach _Leaders;

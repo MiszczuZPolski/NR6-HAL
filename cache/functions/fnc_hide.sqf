@@ -7,7 +7,7 @@ private _CGR = "";
 _group setVariable ["zbe_hidden",true];
 
 {
-    if not (isPlayer _x) then {
+    if !(isPlayer _x) then {
 
         _CGR = _x;
 

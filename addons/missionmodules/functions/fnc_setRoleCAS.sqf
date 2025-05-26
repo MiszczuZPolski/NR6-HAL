@@ -19,7 +19,7 @@ _Commanders = [];
     if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
     if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
 
-    waitUntil {sleep 0.5; (not (isNil _Leader))};
+    waitUntil {sleep 0.5; (!(isNil _Leader))};
     _Leader = call compile _Leader;
 
     if (call compile ("isNil " + "'" + _prefix + "RCAS" + "'")) then {
@@ -29,7 +29,7 @@ _Commanders = [];
     };
 
     {
-        if not (_x isKindOf "Logic") then {
+        if !(_x isKindOf "Logic") then {
             _x call compile (_prefix + "NoAttack" + " pushback " + "(group _this)");
         } else {
             _x setVariable ["_ExtraArgs",(_logic getVariable ["_ExtraArgs",""]) + "; " + _prefix + "RCAS" + " pushback " + "(group _this)"];

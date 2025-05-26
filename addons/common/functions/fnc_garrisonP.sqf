@@ -53,7 +53,7 @@ private _fnc_code = {
 
         if (_alive) then {
             _leader = leader _group;
-            if not (alive _leader) then {_alive = false};
+            if !(alive _leader) then {_alive = false};
 
             if (_alive) then {
                 _neareastEnemy = _leader findNearestEnemy (vehicle _leader);

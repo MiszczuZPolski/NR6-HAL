@@ -29,7 +29,7 @@ for "_i" from 1 to _CFFMissions do {
 
 		if (_possible) then {
 				{
-					if not (isNull _x) then {
+					if !(isNull _x) then {
 						_x setVariable ["RydHQ_BatteryBusy", true]
 					};
 				} forEach (_bArr select 1);
@@ -48,7 +48,7 @@ for "_i" from 1 to _CFFMissions do {
 			_possible = _bArr select 0;
 			if (_possible) then {
 					{
-						if not (isNull _x) then {
+						if !(isNull _x) then {
 							_x setVariable ["RydHQ_BatteryBusy", true]
 						};
 					} forEach (_bArr select 1);

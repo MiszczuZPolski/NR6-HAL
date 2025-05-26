@@ -15,7 +15,7 @@ _cycleC = 0;
 
 if (isNil ("RydHQ_MAtt")) then {RydHQ_MAtt = false};
 _HQ setVariable ["RydHQ_MAtt",RydHQ_MAtt];
-if ((isNil ("RydHQ_Personality")) or not (_HQ getVariable ["RydHQ_MAtt",false])) then {RydHQ_Personality = "OTHER"};
+if ((isNil ("RydHQ_Personality")) or !(_HQ getVariable ["RydHQ_MAtt",false])) then {RydHQ_Personality = "OTHER"};
 _HQ setVariable ["RydHQ_Personality",RydHQ_Personality];
 
 if (isNil ("RydHQ_Recklessness")) then {RydHQ_Recklessness = 0.5};
@@ -42,7 +42,7 @@ if (isNil ("RydHQ_AmmoBoxes")) then
 	{
 	RydHQ_AmmoBoxes = [];
 
-	if not (isNil "RydHQ_AmmoDepot") then
+	if !(isNil "RydHQ_AmmoDepot") then
 		{
 		_radius = (triggerArea RydHQ_AmmoDepot) select 0;
 		RydHQ_AmmoBoxes = (getPosATL RydHQ_AmmoDepot) nearObjects ["ReammoBox_F",_radius]
@@ -174,7 +174,7 @@ while {true} do
 	if (({alive _x} count (units _HQ)) == 0) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
 	if (_HQ getVariable ["RydHQ_Surrender",false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
 
-	if not (_HQ getVariable ["RydHQ_Fast",false]) then
+	if !(_HQ getVariable ["RydHQ_Fast",false]) then
 		{
 		waitUntil
 			{
@@ -189,7 +189,7 @@ while {true} do
 
 	if (_cycleC > 1) then
 		{
-		if not (_lastHQ == (_HQ getVariable ["leaderHQ",objNull])) then {sleep (60 + (random 60))};
+		if !(_lastHQ == (_HQ getVariable ["leaderHQ",objNull])) then {sleep (60 + (random 60))};
 		};
 
 	if (_HQ getVariable ["RydHQ_KIA",false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
@@ -490,7 +490,7 @@ while {true} do
 
 
 	if ((isNil ("RydHQ_Order")) and (isNil {_HQ getVariable "RydHQ_Order"})) then {_HQ setVariable ["RydHQ_Order","ATTACK"]};
-	if ( not (isNil ("RydHQ_Order"))) then {
+	if ( !(isNil ("RydHQ_Order"))) then {
 		if (RydHQ_Order == "DEFEND") then {
 			_HQ setVariable ["RydHQ_Order","DEFEND"]
 		} else {
@@ -660,14 +660,14 @@ while {true} do
 		_HQ setVariable ["RydHQ_EyeOfBattle",[_midX/_nTc,_midY/_nTc,0]];
 		};
 
-	if not (isNil "RydHQ_DefFrontL") then {_HQ setVariable ["RydHQ_DefFrontL",RydHQ_DefFrontL]};
-	if not (isNil "RydHQ_DefFront1") then {_HQ setVariable ["RydHQ_DefFront1",RydHQ_DefFront1]};
-	if not (isNil "RydHQ_DefFront2") then {_HQ setVariable ["RydHQ_DefFront2",RydHQ_DefFront2]};
-	if not (isNil "RydHQ_DefFront3") then {_HQ setVariable ["RydHQ_DefFront3",RydHQ_DefFront3]};
-	if not (isNil "RydHQ_DefFront4") then {_HQ setVariable ["RydHQ_DefFront4",RydHQ_DefFront4]};
+	if !(isNil "RydHQ_DefFrontL") then {_HQ setVariable ["RydHQ_DefFrontL",RydHQ_DefFrontL]};
+	if !(isNil "RydHQ_DefFront1") then {_HQ setVariable ["RydHQ_DefFront1",RydHQ_DefFront1]};
+	if !(isNil "RydHQ_DefFront2") then {_HQ setVariable ["RydHQ_DefFront2",RydHQ_DefFront2]};
+	if !(isNil "RydHQ_DefFront3") then {_HQ setVariable ["RydHQ_DefFront3",RydHQ_DefFront3]};
+	if !(isNil "RydHQ_DefFront4") then {_HQ setVariable ["RydHQ_DefFront4",RydHQ_DefFront4]};
 
 	_civF = ["CIV_F","CIV","CIV_RU","BIS_TK_CIV","BIS_CIV_special"];
-	if not (isNil ("RydHQ_CivF")) then {_civF = RydHQ_CivF};
+	if !(isNil ("RydHQ_CivF")) then {_civF = RydHQ_CivF};
 	_HQ setVariable ["RydHQ_CivF",_civF];
 
 	if (isNil ("RydHQ_Def")) then {RydHQ_Def = []};

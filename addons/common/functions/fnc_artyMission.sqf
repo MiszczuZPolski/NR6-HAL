@@ -120,7 +120,7 @@ private _allAmmo = 0;
 					};
 				};
 
-				if !(_vehs < _amount) exitWith {}
+				if (_amount >_vehs) exitWith {}
 			} forEach (units _group);
 
 			if (_hasAmmo > 0) then {
@@ -130,11 +130,11 @@ private _allAmmo = 0;
 		};
 	};
 
-	if !(_hasAmmo < _amount) exitWith {};
-	if !(_allAmmo < _amount) exitWith {}
+	if (_amount > _hasAmmo ) exitWith {};
+	if (_amount > _allAmmo) exitWith {}
 } forEach _arty;
 
-if !((count _artyAv) == 0) then {
+if ((count _artyAv) > 0) then {
 	_battery = _artyAv;
 
 	_possible = true;

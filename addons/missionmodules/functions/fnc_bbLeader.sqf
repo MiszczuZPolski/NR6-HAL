@@ -28,7 +28,7 @@ if (isNil "RydBBb_HQs") then {RydBBb_HQs = []};
     if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
     if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
 
-    waitUntil {sleep 0.5; (not (isNil _Leader))};
+    waitUntil {sleep 0.5; (!(isNil _Leader))};
 
     _Leader = call compile _Leader;
 
