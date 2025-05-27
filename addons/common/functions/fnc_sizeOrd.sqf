@@ -1,24 +1,18 @@
+#include "..\script_component.hpp"
+
 private ["_array","_final","_highest","_ix"];
 
-	_array = +(_this select 0);
+_array = +(_this select 0);
 
-	_final = [];
+_final = [];
 
-	while {((count _array) > 0)} do
-		{
-		_highest = [_array] call RYD_FindBiggest;
-		_ix = _highest select 1;
-		_highest = _highest select 0;
+while {((count _array) > 0)} do {
+	private _result = [_array] call CBA_fnc_findMax;
+	_ix = _result select 1;
+	_highest = _result select 0;
+	_final pushBack _highest;
 
-		if not (isNil "_highest") then
-			{
-			if not (isNull _highest) then
-				{
-				_final pushBack _highest;
-				}
-			};
+	_array deleteAt _ix;
+};
 
-		_array deleteAt _ix;
-		};
-
-	_final
+_final

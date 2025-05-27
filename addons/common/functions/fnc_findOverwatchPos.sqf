@@ -1,3 +1,5 @@
+#include "..\script_component.hpp"
+
 private ["_pos","_tgtPos","_radius","_dir","_posASL","_tgtPosASL","_pool","_posX","_posY","_posX2","_posY2","_pool2","_isBlock","_pool3","_elevImp","_terrImp","_terr","_elev","_final","_value",
 	"_urban","_forest","_group","_dst","_vh"];
 

@@ -1,3 +1,5 @@
+#include "..\script_component.hpp"
+
 private ["_ChosenOne","_Type","_actionID"];
 
 	_ChosenOne = _this select 0;

@@ -1,3 +1,5 @@
+#include "..\script_component.hpp"
+
 private ["_waypoint","_pos","_nearestHouses","_nearestHouse","_posAll","_posAct","_chosen","_enterable","_stat","_oldStat","_isRoof"];
 
 params ["_waypoint"];

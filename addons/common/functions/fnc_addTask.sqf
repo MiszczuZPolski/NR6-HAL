@@ -1,4 +1,4 @@
-private ["_task","_tasks","_tName","_presentplayer"];
+#include "..\script_component.hpp"
 
 params ["_unit","_descr","_dstn","_type"];
 

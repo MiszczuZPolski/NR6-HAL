@@ -1,3 +1,5 @@
+#include "..\script_component.hpp"
+
 private ["_pos","_radius","_final","_isGood","_isFlat","_noRoad","_nearestRoad","_ct"];
 
 params ["_pos","_radius"];

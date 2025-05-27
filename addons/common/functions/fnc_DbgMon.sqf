@@ -1,3 +1,5 @@
+#include "..\script_component.hpp"
+
 private ["_txtArr","_dbgMon","_txt"];
 
 if (RydBB_Active) then {

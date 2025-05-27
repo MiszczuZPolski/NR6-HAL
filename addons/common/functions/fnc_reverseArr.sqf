@@ -1,4 +1,6 @@
 #include "..\script_component.hpp"
+
+#include "..\script_component.hpp"
 // Originally from HAC_fnc.sqf (RYD_ReverseArr)
 
 private ["_arr","_final","_amnt"];

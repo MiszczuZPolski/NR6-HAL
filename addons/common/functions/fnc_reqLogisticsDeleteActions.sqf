@@ -1,3 +1,5 @@
+#include "..\script_component.hpp"
+
 params ["_chosenOne"];
 
 _chosenOne = _this select 0;

@@ -1,3 +1,5 @@
+#include "..\script_component.hpp"
+
 private ["_array","_final","_random","_select"];
 
 	_array = _this select 0;

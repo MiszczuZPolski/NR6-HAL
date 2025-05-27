@@ -1,3 +1,5 @@
+#include "..\script_component.hpp"
+
 private ["_pos","_cam","_target","_pX","_pY","_pZ","_pos1","_pos2","_level","_roofed"];
 
 	_pos = _this select 0;

@@ -1,4 +1,6 @@
-	private ["_array","_final","_highest","_ix"];
+#include "..\script_component.hpp"
+
+private ["_array","_final","_highest","_ix"];
 
 	_array = +(_this select 0);
 

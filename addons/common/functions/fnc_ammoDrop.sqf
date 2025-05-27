@@ -1,3 +1,5 @@
+#include "..\script_component.hpp"
+
 params ["_cargo","_ammoBox","_benef"];
 
 private _type = typeOf _ammoBox;
