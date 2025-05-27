@@ -1,5 +1,4 @@
-RYD_StatusQuo =
-	{
+RYD_StatusQuo = {
 	_SCRname = "SQ";
 	_orderFirst = _HQ getVariable "RydHQ_Orderfirst";
 
@@ -1573,7 +1572,7 @@ RYD_StatusQuo =
 			}
 		forEach _friends
 		};
-	};
+};
 
 // RYD_isInside =
 // 	{
@@ -1778,8 +1777,7 @@ RYD_StatusQuo =
 // 		}
 // 	};
 
-RYD_LF_Loop =
-	{
+RYD_LF_Loop = {
 	_leader = _this select 0;
 	_HQ = (_this select 3) select 0;
 	_maxD = -1;
@@ -1929,10 +1927,9 @@ RYD_LF_Loop =
 		waitUntil {(isNil "BIS_liveFeed")};
 		_leader groupChat "Video link terminated.";
 		};
-	};
+};
 
-RYD_FindClosest =
-	{
+RYD_FindClosest = {
 	private ["_ref","_objects","_closest","_dstMin","_dstAct"];
 
 	_ref = _this select 0;
@@ -1958,7 +1955,7 @@ RYD_FindClosest =
 		};
 
 	_closest
-	};
+};
 
 /*RYD_FindClosestWithIndex =
 	{
@@ -1998,8 +1995,7 @@ RYD_FindClosest =
 	[_closest,_clIndex]
 	};*/
 
-RYD_ClusterC =
-	{
+RYD_ClusterC = {
 	private ["_points","_clusters","_checked","_newCluster","_point","_range"];
 
 	_points = _this select 0;
@@ -2031,7 +2027,7 @@ RYD_ClusterC =
 	forEach _points;
 
 	_clusters
-	};
+};
 
 // RYD_Spawn =
 // 	{
@@ -2206,8 +2202,7 @@ RYD_ClusterC =
 // 		}
 // 	};
 
-RYD_PresentRHQ =
-	{
+RYD_PresentRHQ = {
 	private ["_allVehs","_allUnits","_vehClass","_wpClass","_magClass","_ammoClass","_addedU","_addedV","_veh","_vehClass2","_weapons","_hasLaserD","_wpClass2","_type","_mags",
 	"_isDriver","_turrets","_mainT","_isArmed","_isAA","_isAT","_weaps","_trt","_wps","_wp","_muzzles","_ammo","_ammoC","_dam","_isCargo"];
 
@@ -2458,7 +2453,7 @@ RYD_PresentRHQ =
 
 					waitUntil {
 
-//						sleep 0.0000001;
+                    //						sleep 0.0000001;
 
 						_canFire = false;
 						_timeOut = false;
@@ -2468,7 +2463,7 @@ RYD_PresentRHQ =
 						_canFire = _posCheck inRangeOfArtillery [[_lPiece],_mainAmmoType];
 
 						if (_canFire) then {
-//							_minRange = (_minRange - 100);
+                            //							_minRange = (_minRange - 100);
 							_checkRange = _minRange;
 							_canFire = false;
 							for "_i" from 100 to 0 step -25 do {
@@ -2489,7 +2484,7 @@ RYD_PresentRHQ =
 						((_canFire) or (_timeOut))
 					};
 
-//					_vehO setVariable ["RHQ_RangeMin",_minRange];
+                    //					_vehO setVariable ["RHQ_RangeMin",_minRange];
 					missionNamespace setVariable ["RHQ_ClassRangeMin" + str (_veh),_minRange];
 
 					_checkLoop = false;
@@ -2501,7 +2496,7 @@ RYD_PresentRHQ =
 
 					waitUntil {
 
-//						sleep 0.0000001;
+                        //						sleep 0.0000001;
 
 						_canFire = true;
 						_timeOut = false;
@@ -2511,7 +2506,7 @@ RYD_PresentRHQ =
 						_canFire = _posCheck inRangeOfArtillery [[_lPiece],_mainAmmoType];
 
 						if not (_canFire) then {
-//							_maxRange = (_maxRange - 1000);
+                            //							_maxRange = (_maxRange - 1000);
 							_checkRange = _maxRange;
 							_canFire = true;
 							for "_i" from 1000 to 0 step -25 do {
@@ -2533,8 +2528,8 @@ RYD_PresentRHQ =
 						(not (_canFire) or (_timeOut))
 					};
 
-//					_vehO setVariable ["RHQ_RangeMax",_maxRange];
-//					_vehO setVariable ["RHQ_RangeDefined",true];
+                    //					_vehO setVariable ["RHQ_RangeMax",_maxRange];
+                    //					_vehO setVariable ["RHQ_RangeDefined",true];
 					missionNamespace setVariable ["RHQ_ClassRangeMax" + str (_veh),_maxRange];
 					missionNamespace setVariable ["RHQ_ClassRangeDefined" + str (_veh),true];
 
@@ -2869,11 +2864,9 @@ RYD_PresentRHQ =
 	RHQ_Crew = RHQ_Crew - ["b_uav_ai","i_uav_ai","o_uav_ai"];
 
 	true
-	};
+};
 
-HAL_FBFTLOOP =
-
-	{
+HAL_FBFTLOOP = {
 
 		private ["_SidePLY","_IgnoredPLY","_RydMarks","_MarkGrps","_checkFriends","_OldMarkGrps","_mrk","_mrk2","_OldRydMarks","_RydOrd","_OldRydOrd","_RydMarksOrd","_OldRydMarksOrd"];
 
@@ -3029,11 +3022,9 @@ HAL_FBFTLOOP =
 		};
 
 
-	};
+};
 
-HAL_EBFT =
-
-	{
+HAL_EBFT = {
 		private ["_SidePLY","_IgnoredPLY","_RydMarks","_MarkGrps","_checkFriends","_OldMarkGrps","_mrk","_mrk2","_OldRydMarks"];
 
 		_HQ = (_this select 0);
@@ -3123,11 +3114,9 @@ HAL_EBFT =
 
 			_HQ setVariable ["RydMarkGrpE",_MarkGrps];
 			_HQ setVariable ["RydMarksE",_RydMarks];
-	};
+};
 
-HAL_SecTasks =
-
-	{
+HAL_SecTasks = {
 		private ["_leader","_side","_HQ","_taskedGroups","_taskedGroups"];
 
 		_HQ = _this select 0;
@@ -3237,11 +3226,9 @@ HAL_SecTasks =
 				sleep 15;
 			};
 		};
-	};
+};
 
-RYD_PresentRHQLoop =
-
-	{
+RYD_PresentRHQLoop = {
 		sleep 60;
 		while {RydxHQ_RHQAutoFill} do {
 
@@ -3249,10 +3236,9 @@ RYD_PresentRHQLoop =
 			[] spawn RYD_PresentRHQ;
 			sleep 60;
 		};
-	};
+};
 
-RYD_deployUAV =
-	{
+RYD_deployUAV = {
 	private ["_gp","_pos","_HQ","_uav","_hasUAV","_myPos","_ang","_unit","_backpack","_backPackClass","_assClass","_uavClass","_sPos","_uav","_gpUAV","_mPos","_wp","_timer","_alive","_nE","_excl","_alt"];
 
 	_gp = _this select 0;//uav team
@@ -3396,4 +3382,4 @@ RYD_deployUAV =
 	forEach (units _gp);
 
 	_hasUAV
-	};
+};

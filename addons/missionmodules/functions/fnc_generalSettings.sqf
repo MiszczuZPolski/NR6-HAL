@@ -1,7 +1,7 @@
-private ["_logic"];
+params ["_logic"];
 
-_logic = (_this select 0);
 
+//to be replace with GVAR
 RydxHQ_ReconCargo = (_logic getVariable "RydxHQ_ReconCargo");
 RydxHQ_SynchroAttack = (_logic getVariable "RydxHQ_SynchroAttack");
 RydxHQ_InfoMarkersID = (_logic getVariable "RydxHQ_InfoMarkersID");
