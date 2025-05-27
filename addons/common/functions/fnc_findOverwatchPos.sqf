@@ -1,88 +1,71 @@
 #include "..\script_component.hpp"
 
 private ["_pos","_tgtPos","_radius","_dir","_posASL","_tgtPosASL","_pool","_posX","_posY","_posX2","_posY2","_pool2","_isBlock","_pool3","_elevImp","_terrImp","_terr","_elev","_final","_value",
-	"_urban","_forest","_group","_dst","_vh"];
+	"_urban","_forest","_group","_dst","_vehicle"];
 
-	_pos = _this select 0;//ATL
-	_tgtPos = _this select 1;//ATL
-	_tgtPos = [_tgtPos select 0,_tgtPos select 1,1.5];
-	_radius = _this select 2;
-	_elevImp = 1;
-	if ((count _this) > 3) then {_elevImp = _this select 3};
-	_terrImp = 1;
-	if ((count _this) > 4) then {_terrImp = _this select 4};
-	_group = grpNull;
-	if ((count _this) > 5) then {_group = _this select 5};
-	_vh = vehicle (leader _group);
 
-	_tgtPosASL = [_tgtPos select 0,_tgtPos select 1,getTerrainHeightASL [_tgtPos select 0,_tgtPos select 1] + 1.5];
+params ["_pos", "_tgtPos", "_radius", "_elevImp", "_terrImp", "_group"];
 
-	_pool = [];
+_tgtPos = [_tgtPos select 0,_tgtPos select 1, 1.5];
 
-	_posX = _pos select 0;
-	_posY = _pos select 1;
+private _vehicle = vehicle (leader _group);
 
-	for "_i" from 1 to 100 do
-		{
-		_posX2 = _posX + (random (2 * _radius)) - _radius;
-		_posY2 = _posY + (random (2 * _radius)) - _radius;
+private _tgtPosASL = [_tgtPos select 0, _tgtPos select 1, getTerrainHeightASL [_tgtPos select 0, _tgtPos select 1] + 1.5];
 
-		if not (surfaceIsWater [_posX2,_posY2]) then {_pool pushBack [_posX2,_posY2,1]}
-		};
+private _pool = [];
 
-	_pool2 = [];
+private _randomizedPosition = [_pos, _radius] call CBA_fnc_randPos;
+_randomizedPosition params ["_posX", "_posY"];
 
-		{
-		_isBlock = terrainIntersect [_x, _tgtPos];
-		if not (_isBlock) then
-			{
-			_pool2 pushBack _x
-			}
-		}
-	forEach _pool;
+if !(surfaceIsWater [_posX, _posY]) then {_pool pushBack [_posX, _posY, 1]};
 
-	if ((count _pool2) == 0) then {_pool2 = _pool};
+private _pool2 = [];
+private _isBlock = false;
 
-	_pool3 = [];
+{
+	_isBlock = terrainIntersect [_x, _tgtPos];
+	if !(_isBlock) then {
+		_pool2 pushBack _x;
+	};
+} forEach _pool;
 
-		{
-		_isBlock = lineIntersects [[_x select 0,_x select 1,getTerrainHeightASL [_x select 0,_x select 1] + 1], _tgtPosASL];
-		if not (_isBlock) then
-			{
-			_pool3 pushBack _x
-			}
-		}
-	forEach _pool2;
+if ((count _pool2) == 0) then {_pool2 = _pool};
 
-	if ((count _pool3) == 0) then {_pool3 = _pool2};
+private _pool3 = [];
 
-		{
-		_value = [_x,1,1] call RYD_TerraCognita;
-		_urban = _value select 0;
-		_forest = _value select 1;
+{
+	_isBlock = lineIntersects [[_x select 0, _x select 1, getTerrainHeightASL [_x select 0, _x select 1] + 1], _tgtPosASL];
+	if !(_isBlock) then {
+		_pool3 pushBack _x;
+	};
+} forEach _pool2;
 
-		_terr = (_urban + _forest) * 100;
+if ((count _pool3) == 0) then {_pool3 = _pool2};
 
-		_posX = _x select 0;
-		_posY = _x select 1;
-		_elev = getTerrainHeightASL [_posX,_posY];
-		_dst = 0;
-		if not (isNull _group) then
-			{
-			_dst = ([_posX,_posY] distance _vh)/1000
-			};
+{
+	_value = [_x, 1, 1] call RYD_TerraCognita;
+	_urban = _value select 0;
+	_forest = _value select 1;
 
-		_x pushBack ((_terr * _terrImp) + (_elev * _elevImp))/(1 + _dst)
-		}
-	forEach _pool3;
+	_terr = (_urban + _forest) * 100;
 
-	_pool3 = [_pool3] call RYD_ValueOrd;
+	_posX = _x select 0;
+	_posY = _x select 1;
+	_elev = getTerrainHeightASL [_posX,_posY];
+	_dst = 0;
+	if !(isNull _group) then {
+		_dst = ([_posX,_posY] distance _vehicle)/1000;
+	};
 
-	_final = [];
+	_x pushBack ((_terr * _terrImp) + (_elev * _elevImp))/(1 + _dst);
+} forEach _pool3;
 
-		{
-		_final pushBack [_x select 0,_x select 1]
-		}
-	forEach _pool3;
+_pool3 = [_pool3] call RYD_ValueOrd;
 
-	_final
+_final = [];
+
+{
+	_final pushBack [_x select 0, _x select 1];
+} forEach _pool3;
+
+_final
