@@ -1,41 +1,47 @@
-private ["_logic","_Commanders","_Leader","_prefix","_area","_trig"];
+#include "..\script_component.hpp"
 
-_logic = (_this select 0);
-_Commanders = [];
+params ["_logic", "_units", "_activated"];
+
+private _commanders = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};
+    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
-    _Leader = (_x getVariable "LeaderType");
+    private _leader = (_x getVariable "LeaderType");
+    private _prefix = "";
 
-    if (_Leader == "LeaderHQ") then {_prefix = "RydHQ_"};
-    if (_Leader == "LeaderHQB") then {_prefix = "RydHQB_"};
-    if (_Leader == "LeaderHQC") then {_prefix = "RydHQC_"};
-    if (_Leader == "LeaderHQD") then {_prefix = "RydHQD_"};
-    if (_Leader == "LeaderHQE") then {_prefix = "RydHQE_"};
-    if (_Leader == "LeaderHQF") then {_prefix = "RydHQF_"};
-    if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
-    if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
+    switch (_leader) do {
+        case "LeaderHQ": {_prefix = "RydHQ_";};
+        case "LeaderHQB": {_prefix = "RydHQB_";};
+        case "LeaderHQC": {_prefix = "RydHQC_";};
+        case "LeaderHQD": {_prefix = "RydHQD_";};
+        case "LeaderHQE": {_prefix = "RydHQE_";};
+        case "LeaderHQF": {_prefix = "RydHQF_";};
+        case "LeaderHQG": {_prefix = "RydHQG_";};
+        case "LeaderHQH": {_prefix = "RydHQH_";};
+    };
 
     _logic call compile (_prefix + "Front" + " = " + str (_logic getVariable "RydHQ_Front"));
 
-    if (_Leader == "LeaderHQ") then {_prefix = "A"};
-    if (_Leader == "LeaderHQB") then {_prefix = "B"};
-    if (_Leader == "LeaderHQC") then {_prefix = "C"};
-    if (_Leader == "LeaderHQD") then {_prefix = "D"};
-    if (_Leader == "LeaderHQE") then {_prefix = "E"};
-    if (_Leader == "LeaderHQF") then {_prefix = "F"};
-    if (_Leader == "LeaderHQG") then {_prefix = "G"};
-    if (_Leader == "LeaderHQH") then {_prefix = "H"};
+    switch (_leader) do {
+        case "LeaderHQ": {_prefix = "A";};
+        case "LeaderHQB": {_prefix = "B";};
+        case "LeaderHQC": {_prefix = "C";};
+        case "LeaderHQD": {_prefix = "D";};
+        case "LeaderHQE": {_prefix = "E";};
+        case "LeaderHQF": {_prefix = "F";};
+        case "LeaderHQG": {_prefix = "G";};
+        case "LeaderHQH": {_prefix = "H";};
+    };
 
-    _area = _logic getVariable ["objectArea",[0,0,0,true,0]];
+    private _area = _logic getVariable ["objectArea", [0, 0, 0, true, 0]];
 
-    _trig = createTrigger ["EmptyDetector",getPos _logic];
-    _trig setTriggerArea [_area select 0,_area select 1, _area select 2, _area select 3];
+    private _trigger = createTrigger ["EmptyDetector", getPos _logic];
+    _trigger setTriggerArea [_area select 0, _area select 1, _area select 2, _area select 3];
 
-    _trig call compile ("HET_F" + _prefix + " = _this");
+    _trigger call compile ("HET_F" + _prefix + " = _this");
 
 
-} forEach _Commanders;
+} forEach _commanders;

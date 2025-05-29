@@ -1,41 +1,53 @@
-private ["_logic","_Commanders","_Leader","_prefix"];
+#include "..\script_component.hpp"
 
-_logic = (_this select 0);
-_Commanders = [];
+params ["_logic", "_units", "_activated"];
+
+private _commanders = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};
+    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
-    _Leader = (_x getVariable "LeaderType");
+    private _leader = (_x getVariable "LeaderType");
+    private _prefix = "";
 
-    if (_Leader == "LeaderHQ") then {_prefix = "RydHQ_"};
-    if (_Leader == "LeaderHQB") then {_prefix = "RydHQB_"};
-    if (_Leader == "LeaderHQC") then {_prefix = "RydHQC_"};
-    if (_Leader == "LeaderHQD") then {_prefix = "RydHQD_"};
-    if (_Leader == "LeaderHQE") then {_prefix = "RydHQE_"};
-    if (_Leader == "LeaderHQF") then {_prefix = "RydHQF_"};
-    if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
-    if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
-
-    waitUntil {sleep 0.5; (!(isNil _Leader))};
-
-    _Leader = call compile _Leader;
-
-    if (call compile ("isNil " + "'" + _prefix + "Garrison" + "'")) then {
-
-        call compile (_prefix + "Garrison" + " = " + "[]");
-
+    switch (_leader) do {
+        case "LeaderHQ": {_prefix = "RydHQ_";};
+        case "LeaderHQB": {_prefix = "RydHQB_";};
+        case "LeaderHQC": {_prefix = "RydHQC_";};
+        case "LeaderHQD": {_prefix = "RydHQD_";};
+        case "LeaderHQE": {_prefix = "RydHQE_";};
+        case "LeaderHQF": {_prefix = "RydHQF_";};
+        case "LeaderHQG": {_prefix = "RydHQG_";};
+        case "LeaderHQH": {_prefix = "RydHQH_";};
     };
 
+
+    [{
+        params ["_leader"];
+        !isNil _leader;
+    },
     {
-        if !(_x isKindOf "Logic") then {
-            _x call compile (_prefix + "Garrison" + " pushback " + "(group _this)");
-        } else {
-            _x setVariable ["_ExtraArgs",(_logic getVariable ["_ExtraArgs",""]) + "; " + _prefix + "Garrison" + " pushback " + "(group _this)"];
+        params ["_leader", "_prefix"];
+
+        _leader = call compile _leader;
+
+        if (call compile ("isNil " + "'" + _prefix + "Garrison" + "'")) then {
+
+            call compile (_prefix + "Garrison" + " = " + "[]");
+
         };
 
-    } forEach (synchronizedObjects _logic);
+        {
+            if !(_x isKindOf "Logic") then {
+                _x call compile (_prefix + "Garrison" + " pushback " + "(group _this)");
+            } else {
+                _x setVariable ["_ExtraArgs", (_logic getVariable ["_ExtraArgs", ""]) + "; " + _prefix + "Garrison" + " pushback " + "(group _this)"];
+            };
 
-} forEach _Commanders;
+        } forEach (synchronizedObjects _logic);
+    },
+    [_leader, _prefix]] call CBA_fnc_waitUntilAndExecute;
+
+} forEach _commanders;
