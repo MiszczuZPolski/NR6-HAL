@@ -1,18 +1,29 @@
 #include "..\script_component.hpp"
 
 // Originally from HAC_fnc.sqf (RYD_ReverseArr)
+// Reverses an array and returns a new reversed array.
 
-private ["_arr","_final","_amnt"];
+/*
+	Description:
+		Reverses the order of elements in an array and returns a new array.
+		The original array is not modified.
 
-	_arr = _this select 0;
-	_amnt = count _arr;
+	Parameter(s):
+		_this select 0: ARRAY - The array to be reversed.
+					   (Handled by `params` in the improved version)
 
-	_final = [];
+	Returns:
+		ARRAY - A new array with elements in reverse order.
+				Returns an empty array if the input was not a valid array (due to `params` behavior).
+*/
 
-		{
-		_amnt = _amnt - 1;
-		_final set [_amnt,_x]
-		}
-	forEach _arr;
+params [["_arrayToReverse", [], [[]]]]; // Ensures input is an array, defaults to [] if not or if no param
 
-	_final
+// Create a shallow copy of the input array
+private _reversedArray = +_arrayToReverse;
+
+// Reverse the copy in-place
+reverse _reversedArray;
+
+// Return the reversed copy
+_reversedArray
