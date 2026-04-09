@@ -189,7 +189,7 @@ while {true} do
 
 	if (_cycleC > 1) then
 		{
-		if !(_lastHQ == (_HQ getVariable ["leaderHQ",objNull])) then {sleep (60 + (random 60))};
+		if (_lastHQ != (_HQ getVariable ["leaderHQ",objNull])) then {sleep (60 + (random 60))};
 		};
 
 	if (_HQ getVariable ["RydHQ_KIA",false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};

@@ -95,7 +95,7 @@ if (count _watchPos < 2) then {
     };
 
     // Choose the closest exit if any are valid
-    if (count _exits > 0) then {
+    if (_exits isNotEqualTo []) then {
         private _closestExit = [_uPosASL, _exits] call RYD_FindClosest;
         _watchPos = _closestExit;
     };

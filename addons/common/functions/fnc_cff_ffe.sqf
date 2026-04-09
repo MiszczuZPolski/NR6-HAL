@@ -79,7 +79,7 @@ _amount2 = _amount - _amount1;
 	_accF = 2;
 
 	_againcheck = _battery1 getVariable [("CFF_Trg" + _batname),objNull];
-	if !(_request) then {if !((str _againcheck) == (str _target)) then {_againF = 1}};
+	if !(_request) then {if ((str _againcheck) != (str _target)) then {_againF = 1}};
 
 	_RydAccF = 1;
 

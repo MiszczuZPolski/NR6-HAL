@@ -20,7 +20,7 @@ private _hasUAV = false;
     private _unit = _x;
     private _backpack = unitBackpack _unit;
 
-    if (!isNull _backpack && { _unit == vehicle _unit }) then {
+    if (!isNull _backpack && { isNull objectParent _unit }) then {
         private _backPackClass = typeOf _backpack;
         private _assClass = configFile >> "CfgVehicles" >> _backPackClass >> "assembleInfo";
 

@@ -34,7 +34,7 @@ private _locationDescription = "";
 
 // Check for nearby map markers/locations
 private _nearestLocations = nearestLocations [_position, ["Hill", "NameCityCapital", "NameCity", "NameVillage", "NameLocal", "Strategic", "StrongpointArea"], 600];
-if (count _nearestLocations > 0) then {
+if (_nearestLocations isNotEqualTo []) then {
     _locationDescription = text (_nearestLocations select 0) + ", ";
 };
 

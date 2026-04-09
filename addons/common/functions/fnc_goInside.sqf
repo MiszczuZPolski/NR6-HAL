@@ -13,12 +13,12 @@ private _nearestHouses = _pos nearObjects ["House", 100];
 
 private _nearestHouse = objNull;
 
-if ((count _nearestHouses) > 0) then {
+if (_nearestHouses isNotEqualTo []) then {
     _nearestHouse = _nearestHouses select (floor (random (count _nearestHouses)));
     _nearestHouses = _nearestHouses - [_nearestHouse];
 
     private _enterable = true;
-    if !(((_nearestHouse buildingPos 0) distance [0,0,0]) > 1) then {_enterable = false};
+    if (((_nearestHouse buildingPos 0) distance [0,0,0]) <= 1) then {_enterable = false};
 
     if !(_enterable) then {
         while {((count _nearestHouses) > 0)} do {
@@ -26,7 +26,7 @@ if ((count _nearestHouses) > 0) then {
             _nearestHouses = _nearestHouses - [_nearestHouse];
 
             _enterable = true;
-            if !(((_nearestHouse buildingPos 0) distance [0,0,0]) > 1) then {_enterable = false};
+            if (((_nearestHouse buildingPos 0) distance [0,0,0]) <= 1) then {_enterable = false};
             if (_enterable) exitWith {}
         };
     };
@@ -48,7 +48,7 @@ if ((count _nearestHouses) > 0) then {
         };
     };
 
-    if ((count _posAll) > 0) then {
+    if (_posAll isNotEqualTo []) then {
         _chosen = _posAll select (floor (random (count _posAll)));
 
         _waypoint setWaypointPosition [_chosen, 0];

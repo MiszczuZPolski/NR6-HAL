@@ -23,7 +23,7 @@ _nothing = 0;
 					if !(_taken) then {
 						if (((getPosATL _potL) select 2) < 20) then {
 							if ((abs(speed _potL)) < 50) then {
-								if ((count (weapons (leader _potential))) > 0) then {
+								if (weapons leader _potential isNotEqualTo []) then {
 									if !((leader _potential) isKindOf "civilian") then {
 										if !(captive _potL) then {
 											if !(_potential in _targets) then {
@@ -68,7 +68,7 @@ _nothing = 0;
 		if (((side _x) getFriend (side _CL)) >= 0.6) then {
 			_vh = vehicle _x;
 			_crowdFactor = _crowdFactor + 0.2;
-			if !(_x == _vh) then {
+			if (_x != _vh) then {
 				_crowdFactor = _crowdFactor + 0.2;
 				if ((toLower (typeOf _vh)) in RydHQ_AllArty) then {
 					_crowdFactor = _crowdFactor + 0.2
@@ -100,7 +100,7 @@ _ValMax = 0;
 } forEach _targets;
 
 if (isNull _target) then {
-	if ((count _targets) > 0) then {
+	if (_targets isNotEqualTo []) then {
 		_target = _targets select (floor (random (count _targets)))
 	} else {
 		_nothing = 1

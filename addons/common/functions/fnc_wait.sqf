@@ -203,7 +203,7 @@ waitUntil {
 
         // Check speed factor if enabled
         if (_checkSpeed) then {
-            if (!missionNamespace getVariable ["RydxHQ_SynchroAttack", false]) then {
+            if (!(missionNamespace getVariable ["RydxHQ_SynchroAttack", false])) then {
                 if (abs (speed (vehicle (leader _driverGroup))) < 0.05) then {
                     _timer = _timer + 1;
                 };

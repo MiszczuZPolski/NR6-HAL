@@ -30,7 +30,7 @@ private _allUnits = units _group;
 
     sleep 0.05;
 
-    if ((count (weapons _unit)) > 0) then {
+    if (weapons _unit isNotEqualTo []) then {
 
         private _type = (weapons _unit) select 0;
         private _muzzles = getArray (configFile >> "cfgWeapons" >> _type >> "muzzles");

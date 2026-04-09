@@ -21,7 +21,7 @@ params ["_group", "_points", "_HQ"];
 
     _wp = [[_group],_x,"MOVE","AWARE","YELLOW","LIMITED",["true",""],false,0.01,[10,15,20],_formation] call RYD_WPadd;
 
-    if ((count _posAll) > 0) then {
+    if (_posAll isNotEqualTo []) then {
         _wp waypointAttachVehicle _nHouse;
         sleep 0.05;
         _wp setWaypointHousePosition (floor (random (count _posAll)))

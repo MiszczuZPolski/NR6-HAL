@@ -23,7 +23,7 @@ switch (_kind) do {
 
 (group _trg) setVariable ["HAC_Attacked", [_infEnough, _armEnough, _airEnough, _snpEnough, _navEnough]];
 
-if !(_kind == "AirAttacked") then {
+if (_kind != "AirAttacked") then {
     private _isAttacked = (group _trg) getVariable [_kind + str (group _trg), 0];
     if (_isAttacked > 0) then {
         (group _trg) setVariable [_kind + str (group _trg), _isAttacked - 1];

@@ -20,7 +20,7 @@ _Boxes = [];
     if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
     if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
 
-    if !(_Boxes isEqualTo []) then {
+    if (_Boxes isNotEqualTo []) then {
 
         _Boxes call compile (_prefix + "AmmoBoxes" + " = _this");
 

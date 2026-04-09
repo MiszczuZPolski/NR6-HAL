@@ -17,7 +17,7 @@ RydxHQ_Handles pushBack _handle;
         }
     else
         {
-        if !(_x isEqualTo 0) then
+        if (_x isNotEqualTo 0) then
             {
             if (scriptDone _x) then
                 {

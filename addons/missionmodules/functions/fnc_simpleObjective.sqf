@@ -4,7 +4,7 @@ _logic = (_this select 0);
 _Commanders = [];
 
 _objName = _logic getVariable "_ObjName";
-if !(_objName isEqualTo "") then {_logic setVariable ["ObjName",_objName]};
+if (_objName isNotEqualTo "") then {_logic setVariable ["ObjName",_objName]};
 
 {
     if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};

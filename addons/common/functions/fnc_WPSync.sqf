@@ -43,7 +43,7 @@ waitUntil {
             _pos = _positions select _foreachIndex;
             _uPos = position (vehicle (leader _x));
 
-            if (((_pos distance2D _uPos) > 40) and {!(_pos isEqualTo [0,0,0])}) exitWith {_endThis = false};
+            if (((_pos distance2D _uPos) > 40) and {(_pos isNotEqualTo [0,0,0])}) exitWith {_endThis = false};
         } forEach _gps;
     };
 

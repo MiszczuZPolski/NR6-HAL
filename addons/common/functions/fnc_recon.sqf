@@ -58,7 +58,7 @@ private _final = [];
     if (_pass) then { _final pushBack _x };
 } forEach _gps;
 
-if ((count _final) > 0) then {
+if (_final isNotEqualTo []) then {
     _final = _final select { (vehicle (leader _x)) distance _trg < _lmt };
     _final = [_final, [], { (vehicle (leader _x)) distance _trg }, "ASCEND"] call BIS_fnc_sortBy;
 };

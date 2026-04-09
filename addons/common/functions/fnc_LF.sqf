@@ -28,7 +28,7 @@ if  !(RydHQ_LF) then
 
     _vPos = [0,50,2];
 
-    if !(_src == _vh) then {
+    if (_src != _vh) then {
         _vPos = [0,30,0];
 
         _pX = 0;

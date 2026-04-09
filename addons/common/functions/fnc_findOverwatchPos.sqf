@@ -29,7 +29,7 @@ private _isBlock = false;
 	};
 } forEach _pool;
 
-if ((count _pool2) == 0) then {_pool2 = _pool};
+if (_pool2 isEqualTo []) then {_pool2 = _pool};
 
 private _pool3 = [];
 
@@ -40,7 +40,7 @@ private _pool3 = [];
 	};
 } forEach _pool2;
 
-if ((count _pool3) == 0) then {_pool3 = _pool2};
+if (_pool3 isEqualTo []) then {_pool3 = _pool2};
 
 {
 	_value = [_x, 1, 1] call RYD_TerraCognita;

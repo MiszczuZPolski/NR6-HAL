@@ -29,7 +29,7 @@ _Commanders = [];
     };
 
     {
-        if !((typeOf _x) == "NR6_HAL_Leader_Module") then {
+        if ((typeOf _x) != "NR6_HAL_Leader_Module") then {
             _x call compile (_prefix + "Included" + " pushback " + "(group _this)");
         };
     } forEach (synchronizedObjects _logic);

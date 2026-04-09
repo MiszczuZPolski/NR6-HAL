@@ -43,7 +43,7 @@ private _rest = _amount - (_perGun * _aGuns);
 
 {
 	_shots = _x getVariable ["RydHQ_MyShots", 0];
-	if !(_shots > _perGun) then {
+	if (_shots <= _perGun) then {
 		_x setVariable ["RydHQ_ShotsToFire", _shots];
 		_amount = _amount - _shots;
 		_rest = _rest + (_perGun - _shots);
@@ -109,7 +109,7 @@ private _fnc_code = {
 
 					waitUntil {
 						sleep 0.1;
-						(!((_vehicle getVariable ["RydHQ_ShotFired2",0]) < (_vehicle getVariable ["RydHQ_ShotsToFire",1])) || ((time - _ct) > 15))
+						((_vehicle getVariable ["RydHQ_ShotFired2",0]) >= (_vehicle getVariable ["RydHQ_ShotsToFire",1]) || ((time - _ct) > 15))
 					};
 
 					_vehicle setVariable ["RydHQ_ShotFired", true];

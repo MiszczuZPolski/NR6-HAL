@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 
-params ["pos"];
+params ["_pos"];
 
 private _posX = -1;
 private _posY = -1;

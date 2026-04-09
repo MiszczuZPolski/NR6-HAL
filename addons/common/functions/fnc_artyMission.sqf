@@ -114,8 +114,8 @@ private _allAmmo = 0;
 								_vehs = _vehs + 1
 							};
 
-							if !(_hasAmmo < _amount) exitWith {};
-							if !(_allAmmo < _amount) exitWith {}
+							if (_hasAmmo >= _amount) exitWith {};
+							if (_allAmmo >= _amount) exitWith {}
 						} forEach (magazinesAmmo _vehicle);
 					};
 				};
@@ -134,7 +134,7 @@ private _allAmmo = 0;
 	if (_amount > _allAmmo) exitWith {}
 } forEach _arty;
 
-if ((count _artyAv) > 0) then {
+if (_artyAv isNotEqualTo []) then {
 	_battery = _artyAv;
 
 	_possible = true;

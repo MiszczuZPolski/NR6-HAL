@@ -29,7 +29,7 @@ while {((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (
         };
     } forEach RydxHQ_AllHQ;
 
-    if ((count _txtArr) > 0) then {
+    if (_txtArr isNotEqualTo []) then {
         _txt = composeText _txtArr;
 
         hintSilent _txt
