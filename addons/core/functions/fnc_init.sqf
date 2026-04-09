@@ -117,107 +117,28 @@ private _clI = [Map_Independent_R,Map_Independent_G,Map_Independent_B,Map_Indepe
 private _clU = [Map_Unknown_R,Map_Unknown_G,Map_Unknown_B,Map_Unknown_A];
 
 
-if !(isNull leaderHQ) then {
-	_gp = group leaderHQ;
-	RydxHQ_AllLeaders set [(count RydxHQ_AllLeaders),leaderHQ];
-	RydxHQ_AllHQ set [(count RydxHQ_AllHQ),_gp];
-	_gp setVariable ["RydHQ_CodeSign","A"];
-
-	if !(isNil ("HET_FA")) then {
-		_gp setVariable ["RydHQ_Front", HET_FA]
+{
+	params ["_leaderName", "_codeSign", "_frontVar"];
+	private _leader = missionNamespace getVariable [_leaderName, objNull];
+	if !(isNull _leader) then {
+		private _gp = group _leader;
+		RydxHQ_AllLeaders pushBack _leader;
+		RydxHQ_AllHQ pushBack _gp;
+		_gp setVariable ["RydHQ_CodeSign", _codeSign];
+		if !(isNil _frontVar) then {
+			_gp setVariable ["RydHQ_Front", missionNamespace getVariable _frontVar]
+		};
 	};
-};
-
-if !(isNull leaderHQB) then
-	{
-	_gp = group leaderHQB;
-	RydxHQ_AllLeaders set [(count RydxHQ_AllLeaders),leaderHQB];
-	RydxHQ_AllHQ set [(count RydxHQ_AllHQ),_gp];
-	_gp setVariable ["RydHQ_CodeSign","B"];
-
-	if !(isNil ("HET_FB")) then
-		{
-		_gp setVariable ["RydHQ_Front",HET_FB]
-		}
-	};
-
-if !(isNull leaderHQC) then
-	{
-	_gp = group leaderHQC;
-	RydxHQ_AllLeaders set [(count RydxHQ_AllLeaders),leaderHQC];
-	RydxHQ_AllHQ set [(count RydxHQ_AllHQ),_gp];
-	_gp setVariable ["RydHQ_CodeSign","C"];
-
-	if !(isNil ("HET_FC")) then
-		{
-		_gp setVariable ["RydHQ_Front",HET_FC]
-		}
-	};
-
-if !(isNull leaderHQD) then
-	{
-	_gp = group leaderHQD;
-	RydxHQ_AllLeaders set [(count RydxHQ_AllLeaders),leaderHQD];
-	RydxHQ_AllHQ set [(count RydxHQ_AllHQ),_gp];
-	_gp setVariable ["RydHQ_CodeSign","D"];
-
-	if !(isNil ("HET_FD")) then
-		{
-		_gp setVariable ["RydHQ_Front",HET_FD]
-		}
-	};
-
-if !(isNull leaderHQE) then
-	{
-	_gp = group leaderHQE;
-	RydxHQ_AllLeaders set [(count RydxHQ_AllLeaders),leaderHQE];
-	RydxHQ_AllHQ set [(count RydxHQ_AllHQ),_gp];
-	_gp setVariable ["RydHQ_CodeSign","E"];
-
-	if !(isNil ("HET_FE")) then
-		{
-		_gp setVariable ["RydHQ_Front",HET_FE]
-		}
-	};
-
-if !(isNull leaderHQF) then
-	{
-	_gp = group leaderHQF;
-	RydxHQ_AllLeaders set [(count RydxHQ_AllLeaders),leaderHQF];
-	RydxHQ_AllHQ set [(count RydxHQ_AllHQ),_gp];
-	_gp setVariable ["RydHQ_CodeSign","F"];
-
-	if !(isNil ("HET_FF")) then
-		{
-		_gp setVariable ["RydHQ_Front",HET_FF]
-		}
-	};
-
-if !(isNull leaderHQG) then
-	{
-	_gp = group leaderHQG;
-	RydxHQ_AllLeaders set [(count RydxHQ_AllLeaders),leaderHQG];
-	RydxHQ_AllHQ set [(count RydxHQ_AllHQ),_gp];
-	_gp setVariable ["RydHQ_CodeSign","G"];
-
-	if !(isNil ("HET_FG")) then
-		{
-		_gp setVariable ["RydHQ_Front",HET_FG]
-		}
-	};
-
-if !(isNull leaderHQH) then
-	{
-	_gp = group leaderHQH;
-	RydxHQ_AllLeaders set [(count RydxHQ_AllLeaders),leaderHQH];
-	RydxHQ_AllHQ set [(count RydxHQ_AllHQ),_gp];
-	_gp setVariable ["RydHQ_CodeSign","H"];
-
-	if !(isNil ("HET_FH")) then
-		{
-		_gp setVariable ["RydHQ_Front",HET_FH]
-		}
-	};
+} forEach [
+	["leaderHQ",  "A", "HET_FA"],
+	["leaderHQB", "B", "HET_FB"],
+	["leaderHQC", "C", "HET_FC"],
+	["leaderHQD", "D", "HET_FD"],
+	["leaderHQE", "E", "HET_FE"],
+	["leaderHQF", "F", "HET_FF"],
+	["leaderHQG", "G", "HET_FG"],
+	["leaderHQH", "H", "HET_FH"]
+];
 
 [] call compile preprocessFile (RYD_Path + "Front.sqf");
 
@@ -258,14 +179,27 @@ if (RydBB_Active) then
 
 if (((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (RydHQE_Debug) or (RydHQF_Debug) or (RydHQG_Debug) or (RydHQH_Debug)) and (RydHQ_DbgMon)) then {[[],RYD_DbgMon] call RYD_Spawn};
 
-if !(isNull leaderHQ) then {publicVariable "leaderHQ"; [[(group leaderHQ)],A_HQSitRep] call RYD_Spawn; [[(group leaderHQ)],HAL_FBFTLOOP] call RYD_Spawn; [[(group leaderHQ)],HAL_SecTasks] call RYD_Spawn; sleep 5};
-if !(isNull leaderHQB) then {publicVariable "leaderHQB"; [[(group leaderHQB)],B_HQSitRep] call RYD_Spawn; [[(group leaderHQB)],HAL_FBFTLOOP] call RYD_Spawn; [[(group leaderHQB)],HAL_SecTasks] call RYD_Spawn; sleep 5};
-if !(isNull leaderHQC) then {publicVariable "leaderHQC"; [[(group leaderHQC)],C_HQSitRep] call RYD_Spawn; [[(group leaderHQC)],HAL_FBFTLOOP] call RYD_Spawn; [[(group leaderHQC)],HAL_SecTasks] call RYD_Spawn; sleep 5};
-if !(isNull leaderHQD) then {publicVariable "leaderHQD"; [[(group leaderHQD)],D_HQSitRep] call RYD_Spawn; [[(group leaderHQD)],HAL_FBFTLOOP] call RYD_Spawn; [[(group leaderHQD)],HAL_SecTasks] call RYD_Spawn; sleep 5};
-if !(isNull leaderHQE) then {publicVariable "leaderHQE"; [[(group leaderHQE)],E_HQSitRep] call RYD_Spawn; [[(group leaderHQE)],HAL_FBFTLOOP] call RYD_Spawn; [[(group leaderHQE)],HAL_SecTasks] call RYD_Spawn; sleep 5};
-if !(isNull leaderHQF) then {publicVariable "leaderHQF"; [[(group leaderHQF)],F_HQSitRep] call RYD_Spawn; [[(group leaderHQF)],HAL_FBFTLOOP] call RYD_Spawn; [[(group leaderHQF)],HAL_SecTasks] call RYD_Spawn; sleep 5};
-if !(isNull leaderHQG) then {publicVariable "leaderHQG"; [[(group leaderHQG)],G_HQSitRep] call RYD_Spawn; [[(group leaderHQG)],HAL_FBFTLOOP] call RYD_Spawn; [[(group leaderHQG)],HAL_SecTasks] call RYD_Spawn; sleep 5};
-if !(isNull leaderHQH) then {publicVariable "leaderHQH"; [[(group leaderHQH)],H_HQSitRep] call RYD_Spawn; [[(group leaderHQH)],HAL_FBFTLOOP] call RYD_Spawn; [[(group leaderHQH)],HAL_SecTasks] call RYD_Spawn; sleep 5};
+{
+	params ["_leaderName", "_codeSign"];
+	private _leader = missionNamespace getVariable [_leaderName, objNull];
+	if !(isNull _leader) then {
+		publicVariable _leaderName;
+		private _gp = group _leader;
+		[[_gp], missionNamespace getVariable (_codeSign + "_HQSitRep")] call RYD_Spawn;
+		[[_gp], HAL_FBFTLOOP] call RYD_Spawn;
+		[[_gp], HAL_SecTasks] call RYD_Spawn;
+		sleep 5;
+	};
+} forEach [
+	["leaderHQ",  "A"],
+	["leaderHQB", "B"],
+	["leaderHQC", "C"],
+	["leaderHQD", "D"],
+	["leaderHQE", "E"],
+	["leaderHQF", "F"],
+	["leaderHQG", "G"],
+	["leaderHQH", "H"]
+];
 
 if ((count RydHQ_GroupMarks) > 0) then
 	{
