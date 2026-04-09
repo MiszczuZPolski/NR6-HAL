@@ -38,86 +38,86 @@
 // 	[_xPos + _nX, _yPos + _nY, 0]
 // };
 
-RYD_RandomAroundB =
-	{//[[_posX,_posY],100] call RYD_RandomAround
-	private ["_pos","_X","_Y","_radius","_radiusMax","_angle"];
+// RYD_RandomAroundB =
+// 	{//[[_posX,_posY],100] call RYD_RandomAround
+// 	private ["_pos","_X","_Y","_radius","_radiusMax","_angle"];
 
-	_pos = _this select 0;
-	_radiusMax = _this select 1;
+// 	_pos = _this select 0;
+// 	_radiusMax = _this select 1;
 
-	_angle = random 360;
-	_radius = random _radiusMax;
+// 	_angle = random 360;
+// 	_radius = random _radiusMax;
 
-	_X = _radius * sin _angle;
-	_Y = _radius * cos _angle;
+// 	_X = _radius * sin _angle;
+// 	_Y = _radius * cos _angle;
 
-	_pos = [(_pos select 0) + _X,(_pos select 1) + _Y,0];
+// 	_pos = [(_pos select 0) + _X,(_pos select 1) + _Y,0];
 
-	_pos
-	};
+// 	_pos
+// 	};
 
-RYD_RandomAroundMM =
-	{//based on Muzzleflash' function
-	private ["_pos","_xPos","_yPos","_a","_b","_dir","_angle","_mag","_nX","_nY","_temp"];
+// RYD_RandomAroundMM =
+// 	{//based on Muzzleflash' function
+// 	private ["_pos","_xPos","_yPos","_a","_b","_dir","_angle","_mag","_nX","_nY","_temp"];
 
-	_pos = _this select 0;
-	_a = _this select 1;
-	_b = _this select 2;
+// 	_pos = _this select 0;
+// 	_a = _this select 1;
+// 	_b = _this select 2;
 
-	_b = _b - _a;
+// 	_b = _b - _a;
 
-	_xPos = _pos select 0;
-	_yPos = _pos select 1;
+// 	_xPos = _pos select 0;
+// 	_yPos = _pos select 1;
 
-	_dir = random 360;
+// 	_dir = random 360;
 
-	_mag = _a + (sqrt ((random _b) * _b));
-	_nX = _mag * (sin _dir);
-	_nY = _mag * (cos _dir);
+// 	_mag = _a + (sqrt ((random _b) * _b));
+// 	_nX = _mag * (sin _dir);
+// 	_nY = _mag * (cos _dir);
 
-	_pos = [_xPos + _nX, _yPos + _nY,0];
+// 	_pos = [_xPos + _nX, _yPos + _nY,0];
 
-	_pos
-	};
+// 	_pos
+// 	};
 
-RYD_PointToSecDst =
-	{
-	private ["_p1","_p2","_pc","_d","_d0","_d1","_d2","_x1","_y1","_x2","_y2","_xc","_yc","_a","_b"];
+// RYD_PointToSecDst =
+// 	{
+// 	private ["_p1","_p2","_pc","_d","_d0","_d1","_d2","_x1","_y1","_x2","_y2","_xc","_yc","_a","_b"];
 
-	_p1 = _this select 0;//ATL
-	_p2 = _this select 1;//ATL
-	_pc = _this select 2;//ATL
+// 	_p1 = _this select 0;//ATL
+// 	_p2 = _this select 1;//ATL
+// 	_pc = _this select 2;//ATL
 
-	_d0 = _p1 distance _p2;
-	_d1 = _pc distance _p1;
-	_d2 = _pc distance _p2;
+// 	_d0 = _p1 distance _p2;
+// 	_d1 = _pc distance _p1;
+// 	_d2 = _pc distance _p2;
 
-	_d = _d1;
+// 	_d = _d1;
 
-	switch (true) do
-		{
-		case (((_d0 * _d0) + (_d1 * _d1)) <= (_d2 * _d2)) : {_d = _d1};
-		case (((_d0 * _d0) + (_d2 * _d2)) <= (_d1 * _d1)) : {_d = _d2};
-		default
-			{
-			_x1 = _p1 select 0;
-			_y1 = _p1 select 1;
+// 	switch (true) do
+// 		{
+// 		case (((_d0 * _d0) + (_d1 * _d1)) <= (_d2 * _d2)) : {_d = _d1};
+// 		case (((_d0 * _d0) + (_d2 * _d2)) <= (_d1 * _d1)) : {_d = _d2};
+// 		default
+// 			{
+// 			_x1 = _p1 select 0;
+// 			_y1 = _p1 select 1;
 
-			_x2 = _p2 select 0;
-			_y2 = _p2 select 1;
+// 			_x2 = _p2 select 0;
+// 			_y2 = _p2 select 1;
 
-			_xc = _pc select 0;
-			_yc = _pc select 1;
+// 			_xc = _pc select 0;
+// 			_yc = _pc select 1;
 
-			_a = (_y2 - _y1)/(_x2 - _x1);
-			_b = _y1 - _x1 * _a;
+// 			_a = (_y2 - _y1)/(_x2 - _x1);
+// 			_b = _y1 - _x1 * _a;
 
-			_d = abs (((_a/_b) * _xc) + ((-1/_b) * _yc) + 1)/(sqrt (((_a/_b) * (_a/_b)) + (1/(_b * _b))));
-			}
-		};
+// 			_d = abs (((_a/_b) * _xc) + ((-1/_b) * _yc) + 1)/(sqrt (((_a/_b) * (_a/_b)) + (1/(_b * _b))));
+// 			}
+// 		};
 
-	_d
-	};
+// 	_d
+// 	};
 // RYD_GarrP = {
 // 	params ["_group", "_points", "_HQ"];
 // 	_SCRname = "GarrP";
@@ -196,404 +196,405 @@ RYD_PointToSecDst =
 // 	[[_group, _HQ], _code] call RYD_Spawn
 // };
 
-RYD_GarrS =
-	{
-	private ["_unit","_pos","_timer","_alive","_dst","_taken","_gar","_i","_vel","_sum","_posLast","_dst2","_HQ","_bld","_ix"];
-
-	_unit = _this select 0;
-	_pos = _this select 1;
-	_bld = _this select 2;
-	_taken = _this select 3;
-	_HQ = _this select 4;
-
-	_unit doMove _pos;
-
-	//_i = [_pos,_unit,"markPos","ColorBrown","ICON","mil_box","Pos","",[0.3,0.3]] call RYD_Mark;
-
-	_timer = 0;
-	_alive = true;
-
-	_posLast = getPosASL _unit;
-
-	waitUntil
-		{
-		_dst = 0;
-		if not (isNull _unit) then {_dst = _unit distance _pos};
-		sleep 0.1;
-		_dst2 = 0;
-		if not (isNull _unit) then {_dst2 = _unit distance _pos};
-
-		switch (true) do
-			{
-			case (isNull _unit) : {_alive = false};
-			case (not (alive _unit)) : {_alive = false};
-			case (_HQ getVariable ["RydHQ_KIA",false]) : {_alive = false};
-			case ((group _unit) getVariable ["RydHQ_MIA",false]) : {_alive = false;(group _unit) setVariable ["RydHQ_MIA",nil]}
-			};
-
-		if (_dst2 >= _dst) then {_timer = _timer + 1};
-
-		((unitReady _unit) or (_timer > 240) or not (_alive))
-		};
-
-	if not (_alive) exitWith {};
-
-	doStop _unit;
-
-	_dir = getDir _bld;
-
-	_uPosASL = getPosASL _unit;
-	_watchPos = [];
-	_unitP = "UP";
-
-	for "_i" from _dir to (_dir + 270) step 90 do
-		{
-		_cPosASL = [_uPosASL,_i,5] call RYD_PosTowards2D;
-		_isLOS = [_cPosASL,_cPosASL,1.5,20,_unit,objNull] call RYD_LOSCheck;
-
-		if (_isLOS) then
-			{
-			_isLOS = [_uPosASL,_cPosASL,1.5,1.5,_unit,objNull] call RYD_LOSCheck;
-
-			if (_isLOS) then
-				{
-				_watchPos = ASLToATL _cPosASL
-				}
-			}
-		};
-
-	if ((count _watchPos) < 2) then
-		{
-		_unitP = "MIDDLE";
-		_exits = [];
-		_exitAct = _bld buildingExit 0;
-		_ct = 0;
-
-		while {((_exitAct distance [0,0,0]) > 0)} do
-			{
-			_isLOS = [_uPosASL,ATLToASL _exitAct,1.5,1.5,_unit,objNull] call RYD_LOSCheck;
-			if (_isLOS) then
-				{
-				_exits pushBack _exitAct;
-				};
-
-			_ct = _ct + 1;
-			_exitAct = _Bld buildingExit _ct;
-			};
-
-		if ((count _exits) > 0) then
-			{
-			_closestExit = [_uPosASL,_exits] call RYD_FindClosest;
-			_watchPos = _closestExit
-			}
-		};
-
-	if ((count _watchPos) < 2) then
-		{
-		_unitP = "MIDDLE";
-		_chosenDir = random 360;
-		_maxDst = 1;
-		_dir = getDir _bld;
-		for "_i" from _dir to (_dir + 270) step 90 do
-			{
-			_isLOS = true;
-			_dst = 1;
-
-			while {_isLOS} do
-				{
-				_cPosASL = [_uPosASL,_i,_dst] call RYD_PosTowards2D;
-				_isLOS = [_uPosASL,_cPosASL,1.5,1.5,_unit,objNull] call RYD_LOSCheck;
-				_dst = _dst + 1;
-				if (_dst > 50) exitWith {};
-				};
-
-			if (_dst > _maxDst) then
-				{
-				_maxDst = _dst;
-				_chosenDir = _i;
-				};
-
-			_watchPos = ASLToATL ([_uPosASL,_chosenDir,5] call RYD_PosTowards2D);
-			};
-		};
-
-	_watchDir = [_uPosASL,_watchPos,5] call RYD_AngTowards;
-
-	_unit setUnitPos _unitP;
-	_unit setDir _watchDir;
-	_unit doWatch _watchPos;
-
-	waitUntil
-		{
-		sleep 30;
-		switch (true) do
-			{
-			case (isNull _unit) : {_alive = false};
-			case (not (alive _unit)) : {_alive = false};
-			case (_HQ getVariable ["RydHQ_KIA",false]) : {_alive = false};
-			case ((group _unit) getVariable ["RydHQ_MIA",false]) : {_alive = false;(group _unit) setVariable ["RydHQ_MIA",nil]}
-			};
-
-		_gar = (group _unit) getVariable ("Garrisoned" + (str (group _unit)));
-		if not (_gar) then {_alive = false};
-		not (_alive)
-		};
-
-	_ix = _taken select 1;
-	_taken = _taken select 0;
-	_taken deleteAt _ix;
-	};
-
-RYD_AmmoCount =
-	{//[_group] call RYD_AmmoCount
-	private ["_group","_ct","_ncVeh","_gVeh"];
-
-	_group = _this select 0;
-
-	_ncVeh = [];
-	if ((count _this) > 1) then {_ncVeh = _this select 1};
-	_gVeh = [];
-
-	{if not (_x == (vehicle _x)) then {_gVeh pushBackUnique (vehicle _x)}} forEach (units _group);
-
-	_ct = 0;
-
-		{
-		_ct = _ct + (count (magazines (_x)));
-//		if ((toLower (typeOf (vehicle _x))) in _ncVeh) then {_ct = _ct + (count (magazines _x))}
-		}
-	forEach (units _group);
-
-		{
-		_ct = _ct + (count (magazineCargo  (_x)));
-		}
-	forEach _gVeh;
-
-	_ct
-	};
-
-RYD_AmmoFullCount =
-	{//[_group] call RYD_AmmoFullCount
-	private ["_group","_ct","_ncVeh","_checked","_vh","_magsD","_am","_ctMax","_mCount","_magsM","_tp","_back","_magsB","_mag","_magEntry","_trt","_vehicles"];
-
-	_group = _this select 0;
-
-	_ncVeh = [];
-	if ((count _this) > 1) then {_ncVeh = _this select 1};
-
-	_checked = [];
-	_vehicles = [];
-
-	_ct = 0;
-	_ctMax = 0;
-	//_ctM = 0;
-	//_ctMMax = 0;
-
-		{
-		_vh = _x;
-		if not ((vehicle _x) == _x) then {_vehicles pushBackUnique (vehicle _x)};
-		_tp = typeOf _x;
-
-		switch (true) do
-			{
-			case (not (_vh in _checked)) :
-				{
-				_checked pushBackUnique _vh;
-
-				_magsM = 0;
-
-				_trt = (configFile >> "CfgVehicles" >> (typeOf _vh) >> "Turrets" >> "MainTurret");
-
-				if (isClass _trt) then
-					{
-					_magsM = (getArray (_trt >> "magazines"));
-					}
-				else
-					{
-					_magsM = (getArray (configFile >> "CfgVehicles" >> (typeOf _vh) >> "magazines"));
-					};
-
-				//_ctMMax = _ctMMax + ({((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0)} count _magsM);
-
-					{
-					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0) then
-						{
-						_mCount = getNumber (configFile >> "CfgMagazines" >> _x >> "count");
-						_ctMax = _ctMax + _mCount;
-						}
-					}
-				forEach _magsM;
-
-				_magsD = magazinesAmmo _vh;
-
-					{
-					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0) then
-						{
-						_ct = _ct + (_x select 1)
-						}
-					}
-				forEach _magsD;
-
-				//_ctM = _ctM + ({((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0)} count _magsD);
-				}
-			}
-		}
-	forEach (units _group);
-
-	{
-		_vh = vehicle _x;
-		_tp = typeOf _x;
-
-		switch (true) do
-			{
-			case ((toLower (typeOf _vh)) in _ncVeh) :
-				{
-				_magsM = getArray (configFile >> "CfgVehicles" >> _tp >> "magazines");
-
-				//_ctMMax = _ctMMax + ({(getNumber ((configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0)} count _magsM);
-
-					{
-					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0) then
-						{
-						_mCount = getNumber (configFile >> "CfgMagazines" >> _x >> "count");
-						_ctMax = _ctMax + _mCount;
-						}
-					}
-				forEach _magsM;
-
-				_back = getText (configFile >> "CfgVehicles" >> _tp >> "backpack");
-
-				if not (_back in [""]) then
-					{
-					_magsB = (configFile >> "CfgVehicles" >> _back >> "TransportMagazines");
-
-					for "_i" from 1 to (count _magsB) do
-						{
-						_magEntry = _magsB select (_i - 1);
-						_mag = getText (_magEntry >> "magazine");
-
-						if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _mag >> "ammo")) >> "Hit")) > 0) then
-							{
-							_am = getNumber (_magEntry >> "count");
-							_mCount = getNumber (configFile >> "CfgMagazines" >> _mag >> "count");
-							_ctMax = _ctMax + (_mCount * _am);
-							//_ctMMax = _ctMMax + _am;
-							}
-						}
-					};
-
-				_magsD = magazinesAmmoFull _x;
-
-					{
-					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0) then
-						{
-						_ct = _ct + (_x select 1)
-						}
-					}
-				forEach _magsD;
-
-				//_ctM = _ctM + ({((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0)} count _magsD)
-				};
-
-			case (not (_vh in _checked)) :
-				{
-				_checked pushBackUnique _vh;
-
-				_magsM = 0;
-
-				_trt = (configFile >> "CfgVehicles" >> (typeOf _vh) >> "Turrets" >> "MainTurret");
-
-				if (isClass _trt) then
-					{
-					_magsM = (getArray (_trt >> "magazines"));
-					}
-				else
-					{
-					_magsM = (getArray (configFile >> "CfgVehicles" >> (typeOf _vh) >> "magazines"));
-					};
-
-				//_ctMMax = _ctMMax + ({((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0)} count _magsM);
-
-					{
-					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0) then
-						{
-						_mCount = getNumber (configFile >> "CfgMagazines" >> _x >> "count");
-						_ctMax = _ctMax + _mCount;
-						}
-					}
-				forEach _magsM;
-
-				_magsD = magazinesAmmo _vh;
-
-					{
-					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0) then
-						{
-						_ct = _ct + (_x select 1)
-						}
-					}
-				forEach _magsD;
-
-				//_ctM = _ctM + ({((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0)} count _magsD);
-				}
-			}
-		}
-	forEach (_vehicles);
-
-	(_ct/(_ctMax max 1))//(_ct/(_ctMax max 1)) min (_ctM/(_ctMMax max 1))
-	};
-
-RYD_Mark =
-	{//[_pos,_ref,_pfx,_cl,_shp,_tp,_dTxt,_ifPTxt,_sz,_dir] call RYD_Mark;
-	private ["_pos","_ref","_pfx","_cl","_shp","_tp","_dTxt","_ifPTxt","_sz","_dir","_txt","_i"];
-
-	_pos = _this select 0;
-	_ref = _this select 1;
-	_pfx = _this select 2;
-
-	_cl = _this select 3;
-	_shp = _this select 4;
-	_tp = _this select 5;
-	_dTxt = _this select 6;
-	_ifPTxt = _this select 7;
-
-	_sz = [1,1];
-	if ((count _this) > 8) then {_sz = _this select 8};
-
-	_dir = 0;
-	if ((count _this) > 9) then {_dir = _this select 9};
-
-	_txt = _dTxt;
-
-	if (typeName _ref == "GROUP") then
-		{
-		if (isPlayer (leader _ref)) then {_txt = _dTxt }
-		};
-
-	if ((typeName _pos) == "OBJECT") then {_pos = position _pos};
-
-	if not ((typeName _pos) == "ARRAY") exitWith {};
-	if ((_pos select 0) == 0) exitWith {};
-	if ((count _pos) < 2) exitWith {};
-//diag_log format ["mark: %1 pos: %2 col: %3 size: %4 dir: %5 text: %6",_pfx + (str _ref),_pos,_cl,_sz,_dir,_txt];
-
-	if (isNil "_pos") exitWith {};
-
-	_i = _pfx + (str _ref);
-	_i = createMarker [_i,_pos];
-	_i setMarkerColor _cl;
-	_i setMarkerShape _shp;
-	if (_shp =="ICON") then {_i setMarkerType _tp} else {_i setMarkerBrush _tp};
-	_i setMarkerSize _sz;
-	_i setMarkerDir _dir;
-	_i setMarkerText _txt;
-
-	RydxHQ_Markers pushBack _i;
-
-	_i
-	};
+// RYD_GarrS =
+// 	{
+// 	private ["_unit","_pos","_timer","_alive","_dst","_taken","_gar","_i","_vel","_sum","_posLast","_dst2","_HQ","_bld","_ix"];
+
+// 	_unit = _this select 0;
+// 	_pos = _this select 1;
+// 	_bld = _this select 2;
+// 	_taken = _this select 3;
+// 	_HQ = _this select 4;
+
+// 	_unit doMove _pos;
+
+// 	//_i = [_pos,_unit,"markPos","ColorBrown","ICON","mil_box","Pos","",[0.3,0.3]] call RYD_Mark;
+
+// 	_timer = 0;
+// 	_alive = true;
+
+// 	_posLast = getPosASL _unit;
+
+// 	waitUntil
+// 		{
+// 		_dst = 0;
+// 		if not (isNull _unit) then {_dst = _unit distance _pos};
+// 		sleep 0.1;
+// 		_dst2 = 0;
+// 		if not (isNull _unit) then {_dst2 = _unit distance _pos};
+
+// 		switch (true) do
+// 			{
+// 			case (isNull _unit) : {_alive = false};
+// 			case (not (alive _unit)) : {_alive = false};
+// 			case (_HQ getVariable ["RydHQ_KIA",false]) : {_alive = false};
+// 			case ((group _unit) getVariable ["RydHQ_MIA",false]) : {_alive = false;(group _unit) setVariable ["RydHQ_MIA",nil]}
+// 			};
+
+// 		if (_dst2 >= _dst) then {_timer = _timer + 1};
+
+// 		((unitReady _unit) or (_timer > 240) or not (_alive))
+// 		};
+
+// 	if not (_alive) exitWith {};
+
+// 	doStop _unit;
+
+// 	_dir = getDir _bld;
+
+// 	_uPosASL = getPosASL _unit;
+// 	_watchPos = [];
+// 	_unitP = "UP";
+
+// 	for "_i" from _dir to (_dir + 270) step 90 do
+// 		{
+// 		_cPosASL = [_uPosASL,_i,5] call RYD_PosTowards2D;
+// 		_isLOS = [_cPosASL,_cPosASL,1.5,20,_unit,objNull] call RYD_LOSCheck;
+
+// 		if (_isLOS) then
+// 			{
+// 			_isLOS = [_uPosASL,_cPosASL,1.5,1.5,_unit,objNull] call RYD_LOSCheck;
+
+// 			if (_isLOS) then
+// 				{
+// 				_watchPos = ASLToATL _cPosASL
+// 				}
+// 			}
+// 		};
+
+// 	if ((count _watchPos) < 2) then
+// 		{
+// 		_unitP = "MIDDLE";
+// 		_exits = [];
+// 		_exitAct = _bld buildingExit 0;
+// 		_ct = 0;
+
+// 		while {((_exitAct distance [0,0,0]) > 0)} do
+// 			{
+// 			_isLOS = [_uPosASL,ATLToASL _exitAct,1.5,1.5,_unit,objNull] call RYD_LOSCheck;
+// 			if (_isLOS) then
+// 				{
+// 				_exits pushBack _exitAct;
+// 				};
+
+// 			_ct = _ct + 1;
+// 			_exitAct = _Bld buildingExit _ct;
+// 			};
+
+// 		if ((count _exits) > 0) then
+// 			{
+// 			_closestExit = [_uPosASL,_exits] call RYD_FindClosest;
+// 			_watchPos = _closestExit
+// 			}
+// 		};
+
+// 	if ((count _watchPos) < 2) then
+// 		{
+// 		_unitP = "MIDDLE";
+// 		_chosenDir = random 360;
+// 		_maxDst = 1;
+// 		_dir = getDir _bld;
+// 		for "_i" from _dir to (_dir + 270) step 90 do
+// 			{
+// 			_isLOS = true;
+// 			_dst = 1;
+
+// 			while {_isLOS} do
+// 				{
+// 				_cPosASL = [_uPosASL,_i,_dst] call RYD_PosTowards2D;
+// 				_isLOS = [_uPosASL,_cPosASL,1.5,1.5,_unit,objNull] call RYD_LOSCheck;
+// 				_dst = _dst + 1;
+// 				if (_dst > 50) exitWith {};
+// 				};
+
+// 			if (_dst > _maxDst) then
+// 				{
+// 				_maxDst = _dst;
+// 				_chosenDir = _i;
+// 				};
+
+// 			_watchPos = ASLToATL ([_uPosASL,_chosenDir,5] call RYD_PosTowards2D);
+// 			};
+// 		};
+
+// 	_watchDir = [_uPosASL,_watchPos,5] call RYD_AngTowards;
+
+// 	_unit setUnitPos _unitP;
+// 	_unit setDir _watchDir;
+// 	_unit doWatch _watchPos;
+
+// 	waitUntil
+// 		{
+// 		sleep 30;
+// 		switch (true) do
+// 			{
+// 			case (isNull _unit) : {_alive = false};
+// 			case (not (alive _unit)) : {_alive = false};
+// 			case (_HQ getVariable ["RydHQ_KIA",false]) : {_alive = false};
+// 			case ((group _unit) getVariable ["RydHQ_MIA",false]) : {_alive = false;(group _unit) setVariable ["RydHQ_MIA",nil]}
+// 			};
+
+// 		_gar = (group _unit) getVariable ("Garrisoned" + (str (group _unit)));
+// 		if not (_gar) then {_alive = false};
+// 		not (_alive)
+// 		};
+
+// 	_ix = _taken select 1;
+// 	_taken = _taken select 0;
+// 	_taken deleteAt _ix;
+// 	};
+
+// RYD_AmmoCount =
+// 	{//[_group] call RYD_AmmoCount
+// 	private ["_group","_ct","_ncVeh","_gVeh"];
+
+// 	_group = _this select 0;
+
+// 	_ncVeh = [];
+// 	if ((count _this) > 1) then {_ncVeh = _this select 1};
+// 	_gVeh = [];
+
+// 	{if not (_x == (vehicle _x)) then {_gVeh pushBackUnique (vehicle _x)}} forEach (units _group);
+
+// 	_ct = 0;
+
+// 		{
+// 		_ct = _ct + (count (magazines (_x)));
+// //		if ((toLower (typeOf (vehicle _x))) in _ncVeh) then {_ct = _ct + (count (magazines _x))}
+// 		}
+// 	forEach (units _group);
+
+// 		{
+// 		_ct = _ct + (count (magazineCargo  (_x)));
+// 		}
+// 	forEach _gVeh;
+
+// 	_ct
+// 	};
+
+// RYD_AmmoFullCount =
+// 	{//[_group] call RYD_AmmoFullCount
+// 	private ["_group","_ct","_ncVeh","_checked","_vh","_magsD","_am","_ctMax","_mCount","_magsM","_tp","_back","_magsB","_mag","_magEntry","_trt","_vehicles"];
+
+// 	_group = _this select 0;
+
+// 	_ncVeh = [];
+// 	if ((count _this) > 1) then {_ncVeh = _this select 1};
+
+// 	_checked = [];
+// 	_vehicles = [];
+
+// 	_ct = 0;
+// 	_ctMax = 0;
+// 	//_ctM = 0;
+// 	//_ctMMax = 0;
+
+// 		{
+// 		_vh = _x;
+// 		if not ((vehicle _x) == _x) then {_vehicles pushBackUnique (vehicle _x)};
+// 		_tp = typeOf _x;
+
+// 		switch (true) do
+// 			{
+// 			case (not (_vh in _checked)) :
+// 				{
+// 				_checked pushBackUnique _vh;
+
+// 				_magsM = 0;
+
+// 				_trt = (configFile >> "CfgVehicles" >> (typeOf _vh) >> "Turrets" >> "MainTurret");
+
+// 				if (isClass _trt) then
+// 					{
+// 					_magsM = (getArray (_trt >> "magazines"));
+// 					}
+// 				else
+// 					{
+// 					_magsM = (getArray (configFile >> "CfgVehicles" >> (typeOf _vh) >> "magazines"));
+// 					};
+
+// 				//_ctMMax = _ctMMax + ({((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0)} count _magsM);
+
+// 					{
+// 					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0) then
+// 						{
+// 						_mCount = getNumber (configFile >> "CfgMagazines" >> _x >> "count");
+// 						_ctMax = _ctMax + _mCount;
+// 						}
+// 					}
+// 				forEach _magsM;
+
+// 				_magsD = magazinesAmmo _vh;
+
+// 					{
+// 					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0) then
+// 						{
+// 						_ct = _ct + (_x select 1)
+// 						}
+// 					}
+// 				forEach _magsD;
+
+// 				//_ctM = _ctM + ({((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0)} count _magsD);
+// 				}
+// 			}
+// 		}
+// 	forEach (units _group);
+
+// 	{
+// 		_vh = vehicle _x;
+// 		_tp = typeOf _x;
+
+// 		switch (true) do
+// 			{
+// 			case ((toLower (typeOf _vh)) in _ncVeh) :
+// 				{
+// 				_magsM = getArray (configFile >> "CfgVehicles" >> _tp >> "magazines");
+
+// 				//_ctMMax = _ctMMax + ({(getNumber ((configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0)} count _magsM);
+
+// 					{
+// 					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0) then
+// 						{
+// 						_mCount = getNumber (configFile >> "CfgMagazines" >> _x >> "count");
+// 						_ctMax = _ctMax + _mCount;
+// 						}
+// 					}
+// 				forEach _magsM;
+
+// 				_back = getText (configFile >> "CfgVehicles" >> _tp >> "backpack");
+
+// 				if not (_back in [""]) then
+// 					{
+// 					_magsB = (configFile >> "CfgVehicles" >> _back >> "TransportMagazines");
+
+// 					for "_i" from 1 to (count _magsB) do
+// 						{
+// 						_magEntry = _magsB select (_i - 1);
+// 						_mag = getText (_magEntry >> "magazine");
+
+// 						if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _mag >> "ammo")) >> "Hit")) > 0) then
+// 							{
+// 							_am = getNumber (_magEntry >> "count");
+// 							_mCount = getNumber (configFile >> "CfgMagazines" >> _mag >> "count");
+// 							_ctMax = _ctMax + (_mCount * _am);
+// 							//_ctMMax = _ctMMax + _am;
+// 							}
+// 						}
+// 					};
+
+// 				_magsD = magazinesAmmoFull _x;
+
+// 					{
+// 					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0) then
+// 						{
+// 						_ct = _ct + (_x select 1)
+// 						}
+// 					}
+// 				forEach _magsD;
+
+// 				//_ctM = _ctM + ({((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0)} count _magsD)
+// 				};
+
+// 			case (not (_vh in _checked)) :
+// 				{
+// 				_checked pushBackUnique _vh;
+
+// 				_magsM = 0;
+
+// 				_trt = (configFile >> "CfgVehicles" >> (typeOf _vh) >> "Turrets" >> "MainTurret");
+
+// 				if (isClass _trt) then
+// 					{
+// 					_magsM = (getArray (_trt >> "magazines"));
+// 					}
+// 				else
+// 					{
+// 					_magsM = (getArray (configFile >> "CfgVehicles" >> (typeOf _vh) >> "magazines"));
+// 					};
+
+// 				//_ctMMax = _ctMMax + ({((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0)} count _magsM);
+
+// 					{
+// 					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> _x >> "ammo")) >> "Hit")) > 0) then
+// 						{
+// 						_mCount = getNumber (configFile >> "CfgMagazines" >> _x >> "count");
+// 						_ctMax = _ctMax + _mCount;
+// 						}
+// 					}
+// 				forEach _magsM;
+
+// 				_magsD = magazinesAmmo _vh;
+
+// 					{
+// 					if ((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0) then
+// 						{
+// 						_ct = _ct + (_x select 1)
+// 						}
+// 					}
+// 				forEach _magsD;
+
+// 				//_ctM = _ctM + ({((getNumber (configFile >> "CfgAmmo" >> (getText (configFile >> "CfgMagazines" >> (_x select 0) >> "ammo")) >> "Hit")) > 0)} count _magsD);
+// 				}
+// 			}
+// 		}
+// 	forEach (_vehicles);
+
+// 	(_ct/(_ctMax max 1))//(_ct/(_ctMax max 1)) min (_ctM/(_ctMMax max 1))
+// 	};
+
+// RYD_Mark =
+// 	{//[_pos,_ref,_pfx,_cl,_shp,_tp,_dTxt,_ifPTxt,_sz,_dir] call RYD_Mark;
+// 	private ["_pos","_ref","_pfx","_cl","_shp","_tp","_dTxt","_ifPTxt","_sz","_dir","_txt","_i"];
+
+// 	_pos = _this select 0;
+// 	_ref = _this select 1;
+// 	_pfx = _this select 2;
+
+// 	_cl = _this select 3;
+// 	_shp = _this select 4;
+// 	_tp = _this select 5;
+// 	_dTxt = _this select 6;
+// 	_ifPTxt = _this select 7;
+
+// 	_sz = [1,1];
+// 	if ((count _this) > 8) then {_sz = _this select 8};
+
+// 	_dir = 0;
+// 	if ((count _this) > 9) then {_dir = _this select 9};
+
+// 	_txt = _dTxt;
+
+// 	if (typeName _ref == "GROUP") then
+// 		{
+// 		if (isPlayer (leader _ref)) then {_txt = _dTxt }
+// 		};
+
+// 	if ((typeName _pos) == "OBJECT") then {_pos = position _pos};
+
+// 	if not ((typeName _pos) == "ARRAY") exitWith {};
+// 	if ((_pos select 0) == 0) exitWith {};
+// 	if ((count _pos) < 2) exitWith {};
+// //diag_log format ["mark: %1 pos: %2 col: %3 size: %4 dir: %5 text: %6",_pfx + (str _ref),_pos,_cl,_sz,_dir,_txt];
+
+// 	if (isNil "_pos") exitWith {};
+
+// 	_i = _pfx + (str _ref);
+// 	_i = createMarker [_i,_pos];
+// 	_i setMarkerColor _cl;
+// 	_i setMarkerShape _shp;
+// 	if (_shp =="ICON") then {_i setMarkerType _tp} else {_i setMarkerBrush _tp};
+// 	_i setMarkerSize _sz;
+// 	_i setMarkerDir _dir;
+// 	_i setMarkerText _txt;
+
+// 	RydxHQ_Markers pushBack _i;
+
+// 	_i
+// 	};
 
 RYD_WPadd =
-	{//[_group,_pos,_tp,_beh,_CM,_spd,_sts,_crr,_rds,_TO,_formation] call RYD_WPadd;
+	{
+    //[_group,_pos,_tp,_beh,_CM,_spd,_sts,_crr,_rds,_TO,_formation] call RYD_WPadd;
 	private
 		[
 		"_group","_HQ","_pos","_tp","_beh","_CM","_spd","_sts","_crr","_rds","_TO","_formation","_wp","_vh",
@@ -901,74 +902,74 @@ RYD_WPadd =
 	_wp
 	};
 
-RYD_TerraCognita =
-	{
-	private ["_position","_posX","_posY","_radius","_precision","_sourcesCount","_urban","_forest","_hills","_flat","_sea","_valS","_value","_val0","_samples","_sGr","_hprev","_hcurr","_samplePos","_i","_rds"];
+// RYD_TerraCognita =
+// 	{
+// 	private ["_position","_posX","_posY","_radius","_precision","_sourcesCount","_urban","_forest","_hills","_flat","_sea","_valS","_value","_val0","_samples","_sGr","_hprev","_hcurr","_samplePos","_i","_rds"];
 
-	_position = _this select 0;
-	_samples = _this select 1;
-	_rds = 100;
-	if ((count _this) > 2) then {_rds = _this select 2};
+// 	_position = _this select 0;
+// 	_samples = _this select 1;
+// 	_rds = 100;
+// 	if ((count _this) > 2) then {_rds = _this select 2};
 
-	if not ((typeName _position) == "ARRAY") then {_position = getPosATL _position};
+// 	if not ((typeName _position) == "ARRAY") then {_position = getPosATL _position};
 
-	_posX = _position select 0;
-	_posY = _position select 1;
+// 	_posX = _position select 0;
+// 	_posY = _position select 1;
 
-	_radius = 5;
-	_precision = 1;
-	_sourcesCount = 1;
+// 	_radius = 5;
+// 	_precision = 1;
+// 	_sourcesCount = 1;
 
-	_urban = 0;
-	_forest = 0;
-	_hills = 0;
-	_flat = 0;
-	_sea = 0;
+// 	_urban = 0;
+// 	_forest = 0;
+// 	_hills = 0;
+// 	_flat = 0;
+// 	_sea = 0;
 
-	_sGr = 0;
-	_hprev = getTerrainHeightASL [_posX,_posY];
+// 	_sGr = 0;
+// 	_hprev = getTerrainHeightASL [_posX,_posY];
 
-	for "_i" from 1 to 10 do
-		{
-		_samplePos = [_posX + ((random (_rds * 2)) - _rds),_posY + ((random (_rds * 2)) - _rds)];
-		_hcurr = getTerrainHeightASL _samplePos;
-		_sGr = _sGr + abs (_hcurr - _hprev)
-		};
+// 	for "_i" from 1 to 10 do
+// 		{
+// 		_samplePos = [_posX + ((random (_rds * 2)) - _rds),_posY + ((random (_rds * 2)) - _rds)];
+// 		_hcurr = getTerrainHeightASL _samplePos;
+// 		_sGr = _sGr + abs (_hcurr - _hprev)
+// 		};
 
-	_sGr = _sGr/10;
+// 	_sGr = _sGr/10;
 
-		{
-		_valS = 0;
+// 		{
+// 		_valS = 0;
 
-		for "_i" from 1 to _samples do
-			{
-			_position = [_posX + (random (_rds/5)) - (_rds/10),_posY + (random (_rds/5)) - (_rds/10)];
+// 		for "_i" from 1 to _samples do
+// 			{
+// 			_position = [_posX + (random (_rds/5)) - (_rds/10),_posY + (random (_rds/5)) - (_rds/10)];
 
 
-			_value = selectBestPlaces [_position,_radius,_x,_precision,_sourcesCount];
+// 			_value = selectBestPlaces [_position,_radius,_x,_precision,_sourcesCount];
 
-			_val0 = _value select 0;
-			_val0 = _val0 select 1;
+// 			_val0 = _value select 0;
+// 			_val0 = _val0 select 1;
 
-			_valS = _valS + _val0;
-			};
+// 			_valS = _valS + _val0;
+// 			};
 
-		_valS = _valS/_samples;
+// 		_valS = _valS/_samples;
 
-		switch (_x) do
-			{
-			case ("Houses") : {_urban = _urban + _valS};
-			case ("Trees") : {_forest = _forest + (_valS/3)};
-			case ("Forest") : {_forest = _forest + _valS};
-			case ("Hills") : {_hills = _hills + _valS};
-			case ("Meadow") : {_flat = _flat + _valS};
-			case ("Sea") : {_sea = _sea + _valS};
-			};
-		}
-	forEach ["Houses","Trees","Forest","Hills","Meadow","Sea"];
+// 		switch (_x) do
+// 			{
+// 			case ("Houses") : {_urban = _urban + _valS};
+// 			case ("Trees") : {_forest = _forest + (_valS/3)};
+// 			case ("Forest") : {_forest = _forest + _valS};
+// 			case ("Hills") : {_hills = _hills + _valS};
+// 			case ("Meadow") : {_flat = _flat + _valS};
+// 			case ("Sea") : {_sea = _sea + _valS};
+// 			};
+// 		}
+// 	forEach ["Houses","Trees","Forest","Hills","Meadow","Sea"];
 
-	[_urban,_forest,_hills,_flat,_sea,_sGr]
-	};
+// 	[_urban,_forest,_hills,_flat,_sea,_sGr]
+// 	};
 
 RYD_GoLaunch =
 	{
@@ -1759,54 +1760,54 @@ RYD_VarReductor =
 		}
 	};
 
-RYD_CloseEnemy =
-	{
-	private ["_pos","_eG","_limit","_tooClose","_dst"];
+// RYD_CloseEnemy =
+// 	{
+// 	private ["_pos","_eG","_limit","_tooClose","_dst"];
 
-	_pos = _this select 0;
-	_eG = _this select 1;
-	_limit = _this select 2;
+// 	_pos = _this select 0;
+// 	_eG = _this select 1;
+// 	_limit = _this select 2;
 
-	if ((count _eG) == 0) exitWith {false};
+// 	if ((count _eG) == 0) exitWith {false};
 
-	_tooClose = false;
+// 	_tooClose = false;
 
-	_dst = 100000;
+// 	_dst = 100000;
 
-		{
-		_dst = (vehicle (leader _x)) distance _pos;
-		if (_dst < _limit) exitWith {_tooClose = true}
-		}
-	forEach _eG;
+// 		{
+// 		_dst = (vehicle (leader _x)) distance _pos;
+// 		if (_dst < _limit) exitWith {_tooClose = true}
+// 		}
+// 	forEach _eG;
 
-	_tooClose
-	};
+// 	_tooClose
+// 	};
 
-RYD_CloseEnemyB =
-	{
-	private ["_pos","_eG","_limit","_tooClose","_dstM","_dstAct","_closest"];
+// RYD_CloseEnemyB =
+// 	{
+// 	private ["_pos","_eG","_limit","_tooClose","_dstM","_dstAct","_closest"];
 
-	_pos = _this select 0;
-	_eG = _this select 1;
-	_limit = _this select 2;
+// 	_pos = _this select 0;
+// 	_eG = _this select 1;
+// 	_limit = _this select 2;
 
-	if ((count _eG) == 0) exitWith {[false,100000,grpNull]};
+// 	if ((count _eG) == 0) exitWith {[false,100000,grpNull]};
 
-	_tooClose = false;
+// 	_tooClose = false;
 
-	_dstM = 100000;
-	_closest = _eG select 0;
+// 	_dstM = 100000;
+// 	_closest = _eG select 0;
 
-		{
-		_dstAct = (vehicle (leader _x)) distance _pos;
-		if (_dstAct < _dstM) then {_closest = _x;_dstM = _dstAct}
-		}
-	forEach _eG;
+// 		{
+// 		_dstAct = (vehicle (leader _x)) distance _pos;
+// 		if (_dstAct < _dstM) then {_closest = _x;_dstM = _dstAct}
+// 		}
+// 	forEach _eG;
 
-	if (_dstM < _limit) then {_tooClose = true};
+// 	if (_dstM < _limit) then {_tooClose = true};
 
-	[_tooClose,_dstM,_closest]
-	};
+// 	[_tooClose,_dstM,_closest]
+// 	};
 
 // RYD_Wait = {
 // 	private ["_group","_int","_int0","_ammoF","_speedF","_enemyF","_tolerance","_air","_cargo","_timer","_alive","_enemy","_UL","_DAV","_GDV","_AV","_inside","_outside","_own","_wplimit","_isBusy","_busy",
