@@ -592,6 +592,7 @@
 // 	_i
 // 	};
 
+/* RYD_WPadd -> replaced by CBA_fnc_addWaypoint
 RYD_WPadd =
 	{
     //[_group,_pos,_tp,_beh,_CM,_spd,_sts,_crr,_rds,_TO,_formation] call RYD_WPadd;
@@ -901,6 +902,7 @@ RYD_WPadd =
 		};
 	_wp
 	};
+*/
 
 // RYD_TerraCognita =
 // 	{
@@ -971,6 +973,7 @@ RYD_WPadd =
 // 	[_urban,_forest,_hills,_flat,_sea,_sGr]
 // 	};
 
+/* RYD_GoLaunch -> migrated to fnc_goLaunch.sqf
 RYD_GoLaunch =
 	{
 	private ["_kind","_code"];
@@ -991,7 +994,9 @@ RYD_GoLaunch =
 
 	_code
 	};
+*/
 
+/* RYD_FindClosestWithIndex -> dead code once DistOrd/DistOrdC replaced by CBA_fnc_sortNestedArray
 RYD_FindClosestWithIndex =
 	{
 	private ["_ref","_objects","_closest","_dstMin","_dstAct","_index","_clIndex","_clst","_act"];
@@ -1032,6 +1037,7 @@ RYD_FindClosestWithIndex =
 
 	[_closest,_clIndex]
 	};
+*/
 
 /*RYD_FindClosestWithIndex =
 	{
@@ -1067,6 +1073,7 @@ RYD_FindClosestWithIndex =
 	[_closest,_clIndex]
 	};*/
 
+/* RYD_DistOrd -> replaced by CBA_fnc_sortNestedArray
 RYD_DistOrd =
 	{
 	private ["_array","_point","_final","_closest","_ix","_limit","_clst"];
@@ -1095,7 +1102,9 @@ RYD_DistOrd =
 
 	_final
 	};
+*/
 
+/* RYD_DistOrdC -> replaced by CBA_fnc_sortNestedArray
 RYD_DistOrdC =
 	{
 	private ["_array","_first","_point","_dst","_limit","_final","_VL"];
@@ -1122,7 +1131,9 @@ RYD_DistOrdC =
 
 	_final
 	};
+*/
 
+/* RYD_DistOrdD -> migrated to fnc_distOrdD.sqf
 RYD_DistOrdD =
 	{
 	private ["_array","_first","_point","_dst","_limit","_final","_VL","_pos","_sort"];
@@ -1165,7 +1176,9 @@ RYD_DistOrdD =
 
 	_final
 	};
+*/
 
+/* RYD_Recon -> migrated to fnc_recon.sqf
 RYD_Recon =
 	{
 	private ["_ammo","_gps","_IR","_garrA","_recAv","_flankAv","_AOnlyA","_exhA","_final","_pass","_trg","_lmt","_rcArr","_nCargo","_busy","_isRAir","_NCVeh","_Unable"];
@@ -1258,6 +1271,7 @@ RYD_Recon =
 
 	_final
 	};
+*/
 
 RYD_Dispatcher =
 	{
@@ -1726,6 +1740,7 @@ RYD_Dispatcher =
 	forEach _threat
 	};
 
+/* RYD_VarReductor -> migrated to fnc_varReductor.sqf
 RYD_VarReductor =
 	{
 	private ["_trg","_kind","_HAC_Attacked","_infEnough","_armEnough","_airEnough","_isAttacked","_snpEnough","_navEnough"];
@@ -1759,6 +1774,7 @@ RYD_VarReductor =
 		if (_isAttacked > 0) then {(group _trg) setVariable [(_kind + (str (group _trg))),_isAttacked - 1]}
 		}
 	};
+*/
 
 // RYD_CloseEnemy =
 // 	{
@@ -5421,6 +5437,7 @@ RYD_VarReductor =
 // 	_roofed
 // 	};
 
+/* RYD_RHQCheck -> migrated to fnc_rhqCheck.sqf
 RYD_RHQCheck =
 	{
 	private ["_type","_noInTotal","_noInAdditional","_noInBasic","_civF","_total","_basicrhq","_Additionalrhq","_Inf","_Art","_HArmor","_LArmor","_Cars","_Air","_Naval","_Static","_Other","_specFor",
@@ -5540,6 +5557,7 @@ RYD_RHQCheck =
 
 	"RHQ CHECK" hintC format ["Forgotten classes: %1\nClasses not present in basic categories: %2\n(see RPT file for detailed forgotten classes list)",count _noInTotal,count _noInBasic];
 	};
+*/
 
 // RYD_LOSCheck =
 // 	{

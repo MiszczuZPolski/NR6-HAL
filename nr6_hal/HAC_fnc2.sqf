@@ -1995,6 +1995,7 @@ RYD_FindClosest = {
 	[_closest,_clIndex]
 	};*/
 
+/* RYD_ClusterC -> migrated to fnc_clusterC.sqf
 RYD_ClusterC = {
 	private ["_points","_clusters","_checked","_newCluster","_point","_range"];
 
@@ -2028,6 +2029,7 @@ RYD_ClusterC = {
 
 	_clusters
 };
+*/
 
 // RYD_Spawn =
 // 	{
@@ -3238,6 +3240,7 @@ RYD_PresentRHQLoop = {
 		};
 };
 
+/* RYD_deployUAV -> migrated to fnc_deployUAV.sqf
 RYD_deployUAV = {
 	private ["_gp","_pos","_HQ","_uav","_hasUAV","_myPos","_ang","_unit","_backpack","_backPackClass","_assClass","_uavClass","_sPos","_uav","_gpUAV","_mPos","_wp","_timer","_alive","_nE","_excl","_alt"];
 
@@ -3383,3 +3386,4 @@ RYD_deployUAV = {
 
 	_hasUAV
 };
+*/
