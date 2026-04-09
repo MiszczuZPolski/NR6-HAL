@@ -1,7 +1,5 @@
 #include "..\script_component.hpp"
 
-private ["_txtArr","_dbgMon","_txt"];
-
 if (RydBB_Active) then {
     waitUntil {
         sleep 1;
@@ -9,10 +7,12 @@ if (RydBB_Active) then {
     };
 };
 
-_txtArr = [];
+private _txtArr = [];
+private _txt = "";
+private _dbgMon = "";
 
 while {((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (RydHQE_Debug) or (RydHQF_Debug) or (RydHQG_Debug) or (RydHQH_Debug))} do {
-    if (({(_x getVariable ["RydHQ_KIA",false])} count RydxHQ_AllHQ) == (count RydxHQ_AllHQ)) exitWith {};
+    if (({(_x getVariable ["RydHQ_KIA",false])} count EGVAR(core,allHQ)) == (count EGVAR(core,allHQ))) exitWith {};
     _txtArr = [];
 
     {
@@ -27,7 +27,7 @@ while {((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (
                 };
             };
         };
-    } forEach RydxHQ_AllHQ;
+    } forEach GVAR(allHQ);
 
     if (_txtArr isNotEqualTo []) then {
         _txt = composeText _txtArr;

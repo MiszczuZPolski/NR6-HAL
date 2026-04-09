@@ -58,7 +58,7 @@ if (_isDebugEnabled) then {
 
                     if !(_x getVariable ["RydHQ_MarkerES", false]) then {
                         private _marker = [(position (vehicle (leader _x))), _x, "markDanger",
-                                         "ColorGreen", "ICON", "mil_dot", (str _dangerValue), ""] call FUNC(mark);
+                                         "ColorGreen", "ICON", "mil_dot", (str _dangerValue), ""] call EFUNC(common,mark);
                         _x setVariable ["RydHQ_MarkerES", true];
                     };
 

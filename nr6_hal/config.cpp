@@ -7,7 +7,7 @@ class CfgPatches
 		units[]=
 		{
 			"NR6_HAL_Core_Module",
-			"NR6_HAL_Leader_Module",
+			QGVAR(Leader_Module),
 			"NR6_HAL_Leader_Settings_Module",
 			"NR6_HAL_GenSettings_Module",
 			"NR6_HAL_Leader_BehSettings_Module",

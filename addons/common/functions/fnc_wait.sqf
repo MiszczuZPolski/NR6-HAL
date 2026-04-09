@@ -269,9 +269,9 @@ waitUntil {
 
         if (_checkAmmo && !isNil "_boxedAt") then {
             _boxedAt = getPosATL _boxedAt;
-            _boxedAt = [_boxedAt, 20] call FUNC(randomAround);
+            _boxedAt = [_boxedAt, 20] call FUNC(positionAround);
             private _wp = [_group, [_boxedAt select 0, _boxedAt select 1], "MOVE", "AWARE", "GREEN", "FULL",
-                ["true", "deletewaypoint [(group this), 0]"]] call FUNC(WPadd);
+                ["true", "deletewaypoint [(group this), 0]"]] call EFUNC(common,WPadd);
             _boxedAt = nil;
             _group setVariable ["isBoxed", nil];
         };
@@ -293,7 +293,7 @@ waitUntil {
                 _group setVariable ["RydHQ_WaitingTarget", nil];
                 _timer = _tolerance + 10;
             } else {
-                private _frontArea = _HQ getVariable ["RydHQ_Front", locationNull];
+                private _frontArea = _HQ getVariable [QEGVAR(core,front), locationNull];
                 if (!isNull _frontArea) then {
                     if !((getPosATL _waitingTarget) in _frontArea) then {
                         [_group] call FUNC(deleteWaypoint);

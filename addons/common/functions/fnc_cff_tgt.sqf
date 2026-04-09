@@ -77,7 +77,7 @@ _nothing = 0;
 		};
 	} forEach _nearImp;
 
-	if (_CL in RydxHQ_AllLeaders) then {_HQFactor = 20};
+	if (_CL in EGVAR(core,allLeaders)) then {_HQFactor = 20};
 
 	if (_nearCiv) then {
 		_targets deleteAt _foreachIndex

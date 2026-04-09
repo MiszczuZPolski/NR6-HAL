@@ -2,7 +2,7 @@
 
 params ["_artG","_knownEnemies","_enemyArmor","_friends","_Debug","_ldr"];
 
-private _fr = (group _ldr) getVariable ["RydHQ_Front", locationNull];
+private _fr = (group _ldr) getVariable [QEGVAR(core,front), locationNull];
 if !(isNull _fr) then {
 	_knownEnemies = [_knownEnemies, [], {_ldr distance (vehicle _x) }, "ASCEND",{((getPosATL (vehicle _x)) in _fr)}] call BIS_fnc_sortBy;
 };

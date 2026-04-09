@@ -1311,7 +1311,7 @@ class CfgVehicles
 		};
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_Front
+			class GVAR(front)
 			{
 				displayName="Enable Front";
 				description="Enables the usage of a limited area of operations for a commander. This module will serve as the front area.";

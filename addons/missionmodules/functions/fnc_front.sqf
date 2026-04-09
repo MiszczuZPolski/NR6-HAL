@@ -5,7 +5,7 @@ params ["_logic", "_units", "_activated"];
 private _commanders = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_commanders pushBack _x};
+    if ((typeOf _x) == QGVAR(Leader_Module)) then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
@@ -23,7 +23,7 @@ private _commanders = [];
         case "LeaderHQH": {_prefix = "RydHQH_";};
     };
 
-    _logic call compile (_prefix + "Front" + " = " + str (_logic getVariable "RydHQ_Front"));
+    _logic call compile (_prefix + "Front" + " = " + str (_logic getVariable QGVAR(front)));
 
     switch (_leader) do {
         case "LeaderHQ": {_prefix = "A";};

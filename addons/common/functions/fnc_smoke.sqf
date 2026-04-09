@@ -70,14 +70,14 @@ private _smokeCount = 0;
                 ];
 
                 // Add some randomness to avoid predictable patterns
-                _smokePos = [_smokePos, 5 * (_distance/200)] call FUNC(randomAround);
+                _smokePos = [_smokePos, 5 * (_distance/200)] call EFUNC(common,positionAround);
                 _smokePos set [2, _height];
 
                 // Calculate 2D distance for wind effects
                 private _distance2D = [(_smokePos select 0),(_smokePos select 1)] distance _firePosASL;
 
                 // Create a decoy target for aiming
-                private _decoy = [_smokePos] call FUNC(createDecoy);
+                private _decoy = [_smokePos] call EFUNC(common,createDecoy);
 
                 // Different handling for grenade launchers vs thrown smoke
                 if (_muzzleName in ["EGLM", "GL_3GL_F"]) then {

@@ -23,7 +23,7 @@ private _ct = 0;
 while {!(_isGood)} do {
     _ct = _ct + 1;
     if (_ct > 30) exitWith {};
-    _pos = [_pos, _radius] call RYD_RandomAround;
+    _pos = [_pos, _radius] call EFUNC(common,positionAround);
 
     _isGood = true;
 

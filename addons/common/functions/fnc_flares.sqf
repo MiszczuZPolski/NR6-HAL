@@ -118,7 +118,7 @@ while {_isDefending} do {
                                                     0
                                                 ];
 
-                                                _flarePos = [_flarePos, 20 * (_distance/200)] call FUNC(randomAround);
+                                                _flarePos = [_flarePos, 20 * (_distance/200)] call FUNC(positionAround);
                                                 _flarePos set [2, _height];
 
                                                 // Create an invisible target for aiming

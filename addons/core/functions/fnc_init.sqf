@@ -108,8 +108,8 @@ HAL_fnc_getSize = compile preprocessFileLineNumbers "A3\modules_f\marta\data\scr
 //used to "compile" list of units types usable by AI
 if (RydHQ_RHQCheck) then {[] call RYD_RHQCheck};
 
-RydxHQ_AllLeaders = [];
-RydxHQ_AllHQ = [];
+GVAR(allLeaders) = [];
+GVAR(allHQ) = [];
 
 private _clB = [Map_BLUFOR_R,Map_BLUFOR_G,Map_BLUFOR_B,Map_BLUFOR_A];
 private _clO = [Map_OPFOR_R,Map_OPFOR_G,Map_OPFOR_B,Map_OPFOR_A];
@@ -122,11 +122,11 @@ private _clU = [Map_Unknown_R,Map_Unknown_G,Map_Unknown_B,Map_Unknown_A];
 	private _leader = missionNamespace getVariable [_leaderName, objNull];
 	if !(isNull _leader) then {
 		private _gp = group _leader;
-		RydxHQ_AllLeaders pushBack _leader;
-		RydxHQ_AllHQ pushBack _gp;
+		GVAR(allLeaders) pushBack _leader;
+		GVAR(allHQ) pushBack _gp;
 		_gp setVariable ["RydHQ_CodeSign", _codeSign];
 		if !(isNil _frontVar) then {
-			_gp setVariable ["RydHQ_Front", missionNamespace getVariable _frontVar]
+			_gp setVariable [QGVAR(front), missionNamespace getVariable _frontVar]
 		};
 	};
 } forEach [
@@ -140,13 +140,14 @@ private _clU = [Map_Unknown_R,Map_Unknown_G,Map_Unknown_B,Map_Unknown_A];
 	["leaderHQH", "H", "HET_FH"]
 ];
 
-[] call compile preprocessFile (RYD_Path + "Front.sqf");
+[] call FUNC(front);
 
-if (RydHQ_TimeM) then
-	{
+//raczej do wyjebania
+if (RydHQ_TimeM) then {
 	[([player] + (switchableUnits - [player]))] call RYD_TimeMachine
-	};
+};
 
+//system grand commander
 if (RydBB_Active) then
 	{
 	call compile preprocessFile (RYD_Path + "Boss_fnc.sqf");
@@ -175,7 +176,7 @@ if (RydBB_Active) then
 		sleep 1;
 		}
 	forEach [[RydBBa_HQs,"A"],[RydBBb_HQs,"B"]];
-	};
+};
 
 if (((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (RydHQE_Debug) or (RydHQF_Debug) or (RydHQG_Debug) or (RydHQH_Debug)) and (RydHQ_DbgMon)) then {[[],RYD_DbgMon] call RYD_Spawn};
 
@@ -201,11 +202,13 @@ if (((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (Ryd
 	["leaderHQH", "H"]
 ];
 
-if ((count RydHQ_GroupMarks) > 0) then
-	{
-	[RydHQ_GroupMarks,RYD_GroupMarkerLoop] call RYD_Spawn
-	};
 
+if ((count RydHQ_GroupMarks) > 0) then {
+	[RydHQ_GroupMarks, RYD_GroupMarkerLoop] call RYD_Spawn;
+};
+
+
+//akcje dla graczy?
 if (RydxHQ_Actions) then {
-nul = [] execVM  (RYD_Path + "SquadTaskingNR6.sqf");
+    nul = [] execVM  (RYD_Path + "SquadTaskingNR6.sqf");
 };

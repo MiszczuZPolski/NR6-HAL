@@ -1,3 +1,4 @@
+#include "..\script_component.hpp"
 private ["_logic","_Commanders","_Boxes","_Leader","_prefix","_area","_trig"];
 
 _logic = (_this select 0);
@@ -5,7 +6,7 @@ _Commanders = [];
 _Boxes = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x} else {_Boxes pushBack _x};
+    if ((typeOf _x) == QGVAR(Leader_Module)) then {_Commanders pushBack _x} else {_Boxes pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {

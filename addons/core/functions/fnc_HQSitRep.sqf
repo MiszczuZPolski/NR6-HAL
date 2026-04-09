@@ -170,20 +170,20 @@ while {true} do
 
 	_HQ setVariable ["RydHQ_NCVeh",_NCCargo_class + (_Support_class - ["MH60S"])];
 
-	if (isNull _HQ) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
-	if (({alive _x} count (units _HQ)) == 0) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
-	if (_HQ getVariable ["RydHQ_Surrender",false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
+	if (isNull _HQ) exitWith {GVAR(allHQ) = GVAR(allHQ) - [_HQ]};
+	if (({alive _x} count (units _HQ)) == 0) exitWith {GVAR(allHQ) = GVAR(allHQ) - [_HQ]};
+	if (_HQ getVariable ["RydHQ_Surrender",false]) exitWith {GVAR(allHQ) = GVAR(allHQ) - [_HQ]};
 
 	if !(_HQ getVariable ["RydHQ_Fast",false]) then
 		{
 		waitUntil
 			{
 			sleep 0.1;
-			((({(_x getVariable ["RydHQ_Pending",false])} count RydxHQ_AllHQ) == 0) or (_HQ getVariable ["RydHQ_KIA",false]))
+			((({(_x getVariable ["RydHQ_Pending",false])} count GVAR(allHQ)) == 0) or (_HQ getVariable ["RydHQ_KIA",false]))
 			}
 		};
 
-	if (_HQ getVariable ["RydHQ_KIA",false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
+	if (_HQ getVariable ["RydHQ_KIA",false]) exitWith {GVAR(allHQ) = GVAR(allHQ) - [_HQ]};
 
 	_HQ setVariable ["RydHQ_Pending",true];
 
@@ -192,7 +192,7 @@ while {true} do
 		if (_lastHQ != (_HQ getVariable ["leaderHQ",objNull])) then {sleep (60 + (random 60))};
 		};
 
-	if (_HQ getVariable ["RydHQ_KIA",false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
+	if (_HQ getVariable ["RydHQ_KIA",false]) exitWith {GVAR(allHQ) = GVAR(allHQ) - [_HQ]};
 
 	_lastHQ = (leader _HQ);
 

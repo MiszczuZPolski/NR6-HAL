@@ -1,3 +1,4 @@
+#include "..\script_component.hpp"
 private ["_logic","_Commanders","_Leader","_prefix","_objName","_prefixT"];
 
 _logic = (_this select 0);
@@ -7,7 +8,7 @@ _objName = _logic getVariable "_ObjName";
 if (_objName isNotEqualTo "") then {_logic setVariable ["ObjName",_objName]};
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};
+    if ((typeOf _x) == QGVAR(Leader_Module)) then {_Commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
