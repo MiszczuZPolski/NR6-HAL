@@ -20,3 +20,11 @@ select_parse_number = false
 not_private = false
 var_all_caps = false
 unused = false
+# Phase 1 legacy debt — tightened in Phase 3 per D-11
+undefined = false        # L-S13 undefined_variable (fnc_WPSync, fnc_findHighestWithIndex, fnc_garrisonP)
+extra_not = false        # L-S19 unneeded_not (fnc_cff_ffe)
+config_of = false        # L-S30 typeof_configof (fnc_ammoFullCount, fnc_groupMarkerLoop, fnc_cff_ffe)
+
+[lints.config]
+# Phase 1 legacy debt — tightened in Phase 3 per D-11
+unused_external = false  # L-C14 unused external class (missionmodules/CfgVehicles.hpp AttributeValues)
