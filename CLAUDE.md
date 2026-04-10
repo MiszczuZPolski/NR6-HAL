@@ -275,3 +275,15 @@ Do not make direct repo edits outside a GSD workflow unless the user explicitly 
 > Profile not yet configured. Run `/gsd-profile-user` to generate your developer profile.
 > This section is managed by `generate-claude-profile` -- do not edit manually.
 <!-- GSD:profile-end -->
+
+## Build Environment Notes
+
+### BBW1 — Arma 3 Tools Not Installed (Accepted Environment Notice)
+
+HEMTT emits `BBW1` when the Arma 3 Tools suite (binarization toolchain) is absent from the build environment. This is an **environment capability notice, not a code defect**.
+
+**Policy:** BBW1 is accepted as a known environment condition on machines without Arma 3 Tools installed. It does not indicate a build failure, missing source file, or incorrect configuration. The zero-warnings build gate defined in BUILD-02 explicitly excludes BBW1 from its warning count — only `L-S*` and `L-C*` lint codes constitute real warnings.
+
+**If binarization is needed:** Install Arma 3 Tools via Steam (free, part of Arma 3 Tools app). HEMTT will then silently skip the BBW1 notice and produce `.sqfc` binarized output.
+
+**Resolution tracking:** BBW1 closed as accepted environment notice in Phase 1 plan 01-05 (2026-04-10).
