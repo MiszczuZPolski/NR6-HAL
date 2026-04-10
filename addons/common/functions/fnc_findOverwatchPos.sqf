@@ -43,7 +43,7 @@ private _pool3 = [];
 if (_pool3 isEqualTo []) then {_pool3 = _pool2};
 
 {
-	_value = [_x, 1, 1] call RYD_TerraCognita;
+	_value = [_x, 1, 1] call FUNC(terraCognita);
 	_urban = _value select 0;
 	_forest = _value select 1;
 

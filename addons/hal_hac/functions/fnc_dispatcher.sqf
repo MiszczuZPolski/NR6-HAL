@@ -230,7 +230,7 @@ _mpl = 1 + _reck;
         _trg = vehicle (leader _x);
         _tPos = getPosATL _trg;
 
-        _topo = [_trg,5] call RYD_TerraCognita;
+        _topo = [_trg,5] call EFUNC(common,terraCognita);
 
         _sCity = 100 * (_topo select 0);
         _sForest = 100 * (_topo select 1);

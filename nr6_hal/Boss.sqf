@@ -96,7 +96,7 @@ if (_BBSide == "A") then
 
 	missionNamespace setVariable ["BattleF",[_cntr,_lng,_nmbr]];
 
-	RydBB_Sectors = ([_cntr,_lng,0,_nmbr] call RYD_Sectorize) select 0;
+	RydBB_Sectors = ([_cntr,_lng,0,_nmbr] call EFUNC(hal_boss,sectorize)) select 0;
 /*
 	//_markers = [];
 
@@ -134,7 +134,7 @@ if (_BBSide == "A") then
 			{
 			_samplePos = [_sPosX + ((random 500) - 250),_sPosY + ((random 500) - 250)];
 
-			_topArr = [_samplePos,1] call RYD_TerraCognita;
+			_topArr = [_samplePos,1] call EFUNC(common,terraCognita);
 
 			_sUrban = _sUrban + (_topArr select 0);
 			_sForest = _sForest + (_topArr select 1);
@@ -230,7 +230,7 @@ forEach _loc1;
 
 
 	{
-	_topArr = [(position _x),3] call RYD_TerraCognita;
+	_topArr = [(position _x),3] call EFUNC(common,terraCognita);
 	_frstV = _topArr select 1;
 	if (_frstV > 0.25) then
 		{
@@ -437,7 +437,7 @@ while {(RydBB_Active)} do
 				};
 			};
 
-		[[_BBHQs,_BBSide],_code] call RYD_Spawn
+		[[_BBHQs,_BBSide],_code] call EFUNC(common,spawn)
 		};
 
 	_BBHQs = [];
@@ -468,7 +468,7 @@ while {(RydBB_Active)} do
 		diag_log format ["Big Boss %1 is analyzing forces...",_BBSide]
 		};
 
-	_ForcesRep = [_BBHQGrps] call RYD_ForceAnalyze;
+	_ForcesRep = [_BBHQGrps] call EFUNC(hal_boss,forceAnalyze);
 
 	_ownGroups = (_ForcesRep select 0) select ((count (_ForcesRep select 0)) - 1);
 	_hostileGroups = (_ForcesRep select 1) select ((count (_ForcesRep select 1)) - 1);
@@ -654,11 +654,11 @@ while {(RydBB_Active)} do
 		//_mark = "Main" + (str (random 1000));
 		//_mark = [_mark,_mainPos,"ColorRed","ICON",[1,1],0,1,"mil_triangle",""] call RYD_Marker;
 
-		_attackAxis = [_ArmyPos,_mainPos,10] call RYD_AngTowards;
+		_attackAxis = [_ArmyPos,_mainPos,10] call EFUNC(common,angleTowards);
 
 		if (RydBB_Debug) then
 			{
-			[[_strArea,_BBSide],RYD_ObjMark] call RYD_Spawn
+			[[_strArea,_BBSide],EFUNC(hal_boss,objMark)] call EFUNC(common,spawn)
 			};
 
 		if (RydBB_Debug) then
@@ -668,13 +668,13 @@ while {(RydBB_Active)} do
 			};
 
 			{
-			_isLeft = ([(getPosATL (vehicle (leader _x))),_ArmyPos,_attackAxis] call RYD_WhereIs) select 0;
+			_isLeft = ([(getPosATL (vehicle (leader _x))),_ArmyPos,_attackAxis] call EFUNC(hal_boss,whereIs)) select 0;
 			_x setVariable ["isLeft",_isLeft]
 			}
 		forEach _BBHQGrps;
 
 			{
-			_isLeft = ([(_x select 0),_ArmyPos,_attackAxis] call RYD_WhereIs) select 0;
+			_isLeft = ([(_x select 0),_ArmyPos,_attackAxis] call EFUNC(hal_boss,whereIs)) select 0;
 			_x set [3,_isLeft]
 			}
 		forEach _strArea;
@@ -686,7 +686,7 @@ while {(RydBB_Active)} do
 		_frontSectors = [];
 
 			{
-			_where = [(position _x),_ArmyPos,_attackAxis] call RYD_WhereIs;
+			_where = [(position _x),_ArmyPos,_attackAxis] call EFUNC(hal_boss,whereIs);
 			_isLeft = _where select 0;
 			_isFlank = _where select 1;
 			_isRear = _where select 2;
@@ -717,19 +717,19 @@ while {(RydBB_Active)} do
 			diag_log format ["Big Boss %1 assigns front sections to divisions.",_BBSide]
 			};
 
-		_leftAn = [_leftSectors] call RYD_TopoAnalize;
+		_leftAn = [_leftSectors] call EFUNC(hal_boss,topoAnalize);
 
 		_leftSectors = _leftAn select 0;
 		_leftInf = _leftAn select 1;
 		_leftVeh = _leftAn select 2;
 
-		_rightAn = [_rightSectors] call RYD_TopoAnalize;
+		_rightAn = [_rightSectors] call EFUNC(hal_boss,topoAnalize);
 
 		_rightSectors = _rightAn select 0;
 		_rightInf = _rightAn select 1;
 		_rightVeh = _rightAn select 2;
 
-		_frontAn = [_frontSectors] call RYD_TopoAnalize;
+		_frontAn = [_frontSectors] call EFUNC(hal_boss,topoAnalize);
 
 		_frontSectors = _frontAn select 0;
 		_frontInf = _frontAn select 1;
@@ -743,7 +743,7 @@ while {(RydBB_Active)} do
 		_frontSA = [];
 
 			{
-			_where = [(_x select 0),_ArmyPos,_attackAxis] call RYD_WhereIs;
+			_where = [(_x select 0),_ArmyPos,_attackAxis] call EFUNC(hal_boss,whereIs);
 			_isLeft = _where select 0;
 			_isFlank = _where select 1;
 			_isRear = _where select 2;
@@ -1335,7 +1335,7 @@ while {(RydBB_Active)} do
 		if (((RydBBa_SimpleDebug) and (_BBSide == "A")) or ((RydBBb_SimpleDebug) and (_BBSide == "B"))) then
 			{
 			//[_BBHQGrps,_BBSide] spawn RYD_BBSimpleD
-			[[_BBHQGrps,_BBSide],RYD_BBSimpleD] call RYD_Spawn
+			[[_BBHQGrps,_BBSide],EFUNC(hal_boss,BBSimpleD)] call EFUNC(common,spawn)
 			};
 		};
 
@@ -1524,12 +1524,12 @@ while {(RydBB_Active)} do
 				_dirAdd = -60;
 
 					{
-					_angle = [_HQPos,_perDirPos,10] call RYD_AngTowards;
+					_angle = [_HQPos,_perDirPos,10] call EFUNC(common,angleTowards);
 					_angle = _angle + _dirAdd;
 
 					_dirAdd = _dirAdd + 40;
 
-					_perPos = [_HQPos,_angle,(350 + (random 100))] call RYD_PosTowards2D;
+					_perPos = [_HQPos,_angle,(350 + (random 100))] call EFUNC(common,positionTowards2D);
 
 					_perX = _perPos select 0;
 					_perY = _perPos select 1;
@@ -1796,7 +1796,7 @@ while {(RydBB_Active)} do
 
 						_HQpos = getPosATL (vehicle (leader _x));
 
-						_pathRep = [_sctrs,_areas,_HQpos,_acT,_BBSide] call RYD_Itinerary;
+						_pathRep = [_sctrs,_areas,_HQpos,_acT,_BBSide] call EFUNC(hal_boss,itinerary);
 
 						_secsAround = _pathRep select 0;
 						//_tgtsAround = _pathRep select 1;
@@ -1826,7 +1826,7 @@ while {(RydBB_Active)} do
 
 						//[_x,_tgtsAround,_tObj1,_tObj2,_tObj3,_tObj4,_BBHQGrps,_HQpos,_front,_secsAround,_goingReserve,_BBSide] spawn RYD_ExecutePath;
 
-						[[_x,_tgtsAround,_tObj1,_tObj2,_tObj3,_tObj4,_BBHQGrps,_HQpos,_front,_secsAround,_goingReserve,_BBSide,_AAOPts],RYD_ExecutePath] call RYD_Spawn;
+						[[_x,_tgtsAround,_tObj1,_tObj2,_tObj3,_tObj4,_BBHQGrps,_HQpos,_front,_secsAround,_goingReserve,_BBSide,_AAOPts],EFUNC(hal_boss,executePath)] call EFUNC(common,spawn);
 
 						waitUntil
 							{
@@ -1890,7 +1890,7 @@ while {(RydBB_Active)} do
 
 	/*
 				{
-				_mark = [(str (random 1000)),_x,"ColorOrange","ICON",[0.5,0.5],0,1,"DOT","R"] call RYD_Marker;
+				_mark = [(str (random 1000)),_x,"ColorOrange","ICON",[0.5,0.5],0,1,"DOT","R"] call EFUNC(hal_boss,marker);
 				}
 			foreach _points;
 	*/
@@ -1898,7 +1898,7 @@ while {(RydBB_Active)} do
 
 			//[_x,_goingAhead,_tObj1,_tObj2,_tObj3,_tObj4,_BBHQs,_front,_takenPoints,_hostileGroups,_BBSide] spawn RYD_ReserveExecuting;
 
-			[[_x,_goingAhead,_tObj1,_tObj2,_tObj3,_tObj4,_BBHQs,_front,_takenPoints,_hostileGroups,_BBSide],RYD_ReserveExecuting] call RYD_Spawn;
+			[[_x,_goingAhead,_tObj1,_tObj2,_tObj3,_tObj4,_BBHQs,_front,_takenPoints,_hostileGroups,_BBSide],EFUNC(hal_boss,reserveExecuting)] call EFUNC(common,spawn);
 
 			waitUntil
 				{
@@ -1921,7 +1921,7 @@ while {(RydBB_Active)} do
 	if (_BBCycle == 1) then
 		{
 		//[_strArea,_BBSide,(_BBHQGrps select 0),_BBHQGrps] spawn RYD_ObjectivesMon
-		[[_strArea,_BBSide,(_BBHQGrps select 0),_BBHQGrps],RYD_ObjectivesMon] call RYD_Spawn;
+		[[_strArea,_BBSide,(_BBHQGrps select 0),_BBHQGrps],EFUNC(hal_boss,objectivesMon)] call EFUNC(common,spawn);
 		};
 
 	if ((_BBSide == "A") and (_BBCycle == 1)) then {RydBBa_Init = true};
