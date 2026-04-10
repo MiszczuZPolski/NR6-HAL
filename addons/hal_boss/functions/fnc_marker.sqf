@@ -30,12 +30,12 @@ if (isNil "_pos") exitWith {};
 
 private _i = _name;
 _i = createMarker [_i,_pos];
-_i setMarkerColor _cl;
-_i setMarkerShape _shape;
-_i setMarkerSize _size;
-_i setMarkerDir _dir;
-if !(_shape == "ICON") then {_i setMarkerBrush _brush} else {_i setMarkerType _type};
-_i setMarkerAlpha _alpha;
+_i setMarkerColorLocal _cl;
+_i setMarkerShapeLocal _shape;
+_i setMarkerSizeLocal _size;
+_i setMarkerDirLocal _dir;
+if !(_shape == "ICON") then {_i setMarkerBrushLocal _brush} else {_i setMarkerTypeLocal _type};
+_i setMarkerAlphaLocal _alpha;
 _i setMarkerText _text;
 
 RydxHQ_Markers set [(count RydxHQ_Markers),_i];

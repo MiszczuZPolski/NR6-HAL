@@ -42,7 +42,7 @@ while {((RydBB_Active) and {(RydBB_Debug)})} do
 
         _mark = _markers select _foreachIndex;
 
-        _mark setMarkerColor _color;
+        _mark setMarkerColorLocal _color;
         _mark setMarkerAlpha _alpha;
     } forEach _strArea;
     };

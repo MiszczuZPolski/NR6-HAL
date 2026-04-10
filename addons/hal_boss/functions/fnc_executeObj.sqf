@@ -311,16 +311,16 @@ waitUntil
                                 {
                                     if !(_x isKindOf "Man") then
                                         {
-                                        if ((count (crew _x)) == 0) then {_AllV = _AllV - [_x]};
-                                        if ((count (crew _x)) > 0) then {_AllV = _AllV - [_x] + (crew _x)};
+                                        if ((crew _x) isEqualTo []) then {_AllV = _AllV - [_x]};
+                                        if ((crew _x) isNotEqualTo []) then {_AllV = _AllV - [_x] + (crew _x)};
                                         }
                                 } forEach _AllV0;
 
                                 {
                                     if !(_x isKindOf "Man") then
                                         {
-                                        if ((count (crew _x)) == 0) then {_AllV2 = _AllV2 - [_x]};
-                                        if ((count (crew _x)) > 0) then {_AllV2 = _AllV2 - [_x] + (crew _x)};
+                                        if ((crew _x) isEqualTo []) then {_AllV2 = _AllV2 - [_x]};
+                                        if ((crew _x) isNotEqualTo []) then {_AllV2 = _AllV2 - [_x] + (crew _x)};
                                         }
                                 } forEach _AllV20;
 

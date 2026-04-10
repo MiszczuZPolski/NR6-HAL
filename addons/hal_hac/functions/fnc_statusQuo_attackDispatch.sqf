@@ -76,13 +76,13 @@ if (((((_HQ getVariable ["RydHQ_Circumspection",0.5]) + (_HQ getVariable ["RydHQ
             }
         forEach (RydxHQ_AllLeaders - [(_HQ getVariable ["leaderHQ",(leader _HQ)])]);
 
-        if ((count _SFTgts) == 0) then
+        if (_SFTgts isEqualTo []) then
             {
             _chance = _chance/2;
             _SFTgts = _EnArtG
             };
 
-        if ((count _SFTgts) == 0) then
+        if (_SFTgts isEqualTo []) then
             {
             _chance = _chance/3;
             _SFTgts = _EnStaticG

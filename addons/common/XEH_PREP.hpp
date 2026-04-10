@@ -36,6 +36,7 @@ PREP(flatLandNoRoad);
 PREP(garrisonP);
 PREP(garrisonS);
 PREP(goInside);
+PREP(goLaunch);
 PREP(groupMarkerLoop);
 PREP(isInside);
 PREP(isNight);

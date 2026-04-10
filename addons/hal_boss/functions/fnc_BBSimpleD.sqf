@@ -91,8 +91,8 @@ while {(({!(isNull _x)} count _HQs) > 0)} do
                         }
                     else
                         {
-                        _arrow setMarkerPos _frCenter;
-                        _arrow setMarkerDir _angle;
+                        _arrow setMarkerPosLocal _frCenter;
+                        _arrow setMarkerDirLocal _angle;
                         _arrow setMarkerSize [({(({alive _x} count (units _x)) > 0)} count _frs)/10,_lng/500]
                         }
                     }
@@ -188,8 +188,8 @@ while {(({!(isNull _x)} count _HQs) > 0)} do
 
                 if (_sizeBatt > _oldSize) then
                     {
-                    _battle setMarkerColor _colorBatt;
-                    _battle setMarkerSize [_sizeBatt,_sizeBatt];
+                    _battle setMarkerColorLocal _colorBatt;
+                    _battle setMarkerSizeLocal [_sizeBatt,_sizeBatt];
                     _battle setMarkerDir (_angleBatt - 90)
                     }
                 }

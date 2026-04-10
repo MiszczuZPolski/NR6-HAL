@@ -55,7 +55,7 @@ while {not (isNull _HQ)} do {
 
                     private _nL = nearestLocations [(getPos _x), ["Hill","NameCityCapital","NameCity","NameVillage","NameLocal","Strategic","StrongpointArea"], 500];
 
-                    if ((count _nL) > 0) then {
+                    if (_nL isNotEqualTo []) then {
                         _nL = _nL select 0;
                         _where = (text _nL);
                         _ObjName = _where;
