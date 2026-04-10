@@ -22,6 +22,8 @@ releases/*
 keys/*
 .hemtt/local
 .hemttout
+.hemttprivatekey
 ####
 hemtt.exe
 ArmaScriptCompiler.exe
+.planning/
