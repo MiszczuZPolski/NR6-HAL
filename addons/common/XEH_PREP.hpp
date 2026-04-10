@@ -62,4 +62,5 @@ PREP(smoke);
 PREP(spawn);
 PREP(terraCognita);
 PREP(valueOrd);
+PREP(varReductor);
 PREP(wait);
