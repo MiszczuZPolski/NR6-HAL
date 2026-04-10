@@ -106,7 +106,7 @@ HAL_fnc_getType = compile preprocessFileLineNumbers "A3\modules_f\marta\data\scr
 HAL_fnc_getSize = compile preprocessFileLineNumbers "A3\modules_f\marta\data\scripts\fnc_getSize.sqf";
 
 //used to "compile" list of units types usable by AI
-if (RydHQ_RHQCheck) then {[] call RYD_RHQCheck};
+if (RydHQ_RHQCheck) then {[] call EFUNC(common,rhqCheck)};
 
 RydxHQ_AllLeaders = [];
 RydxHQ_AllHQ = [];
@@ -186,8 +186,8 @@ if (((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (Ryd
 		publicVariable _leaderName;
 		private _gp = group _leader;
 		[[_gp], missionNamespace getVariable (_codeSign + "_HQSitRep")] call RYD_Spawn;
-		[[_gp], HAL_FBFTLOOP] call RYD_Spawn;
-		[[_gp], HAL_SecTasks] call RYD_Spawn;
+		[[_gp], EFUNC(hal_boss,FBFTLOOP)] call EFUNC(common,spawn);
+		[[_gp], EFUNC(hal_boss,SecTasks)] call EFUNC(common,spawn);
 		sleep 5;
 	};
 } forEach [

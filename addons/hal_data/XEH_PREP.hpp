@@ -1,3 +1,4 @@
 // Functions registered here in Phase 3 when extraction begins.
-// PREP(functionName);
 PREP(initWeaponClasses);
+PREP(presentRHQ);
+PREP(presentRHQLoop);

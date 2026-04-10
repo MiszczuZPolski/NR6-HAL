@@ -54,6 +54,7 @@ PREP(randomOrdB);
 PREP(reqLogisticsActions);
 PREP(reqLogisticsDeleteActions);
 PREP(reqTransportActions);
+PREP(rhqCheck);
 PREP(resetAI);
 PREP(reverseArr);
 PREP(roofOver);

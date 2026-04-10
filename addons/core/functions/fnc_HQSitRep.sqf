@@ -110,7 +110,7 @@ while {true} do
 
 	if (RydxHQ_RHQAutoFill) then
 	{
-	[] call RYD_PresentRHQ
+	[] call EFUNC(hal_data,presentRHQ)
 	};
 
 	_specFor_class = RHQ_SpecFor + RYD_WS_specFor_class - RHQs_SpecFor;
@@ -683,5 +683,5 @@ while {true} do
 		default {_HQ setVariable ["RydHQ_Obj",RydHQ_Obj4]};
 		};
 
-	call RYD_StatusQuo;
+	[_HQ, _cycleC, _lastReset, [], _civF] call EFUNC(hal_hac,statusQuo);
 	};
