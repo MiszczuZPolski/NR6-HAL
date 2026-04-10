@@ -12,3 +12,11 @@ include = [
 
 [version]
 git_hash = 0
+
+[lints.sqf]
+command_case = false
+if_not_else = false
+select_parse_number = false
+not_private = false
+var_all_caps = false
+unused = false
