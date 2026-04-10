@@ -30,13 +30,13 @@ while {true} do {
 
 					if not (RydxHQ_ActionsAceOnly) then {
 
-						[_x] remoteExecCall ["ActionMfnc",_x];
+						[_x] remoteExecCall ["hal_tasking_fnc_actionMfnc",_x];
 						
 					};
 
 					if ((isClass(configFile >> "CfgPatches" >> "ace_main")) and not (_x getVariable ["HAL_TaskMenuAdded",false])) then {
 
-					[_x] remoteExecCall ["ACEActionMfnc",_x];				
+					[_x] remoteExecCall ["hal_tasking_fnc_aceActionMfnc",_x];				
 					
 					};
 					_x setVariable ["HAL_TaskMenuAdded",true];
@@ -47,12 +47,12 @@ while {true} do {
 
 					if not (RydxHQ_ActionsAceOnly) then {
 
-						[_x] remoteExecCall ["ActionMfncR",_x];
+						[_x] remoteExecCall ["hal_tasking_fnc_actionMfncR",_x];
 						
 					};
 					if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-						[_x] remoteExecCall ["ACEActionMfncR",_x];
+						[_x] remoteExecCall ["hal_tasking_fnc_aceActionMfncR",_x];
 
 					};
 					_x setVariable ["HAL_TaskMenuAdded",false];
@@ -70,12 +70,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action1fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action1fnc",_x];
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction1fnc",_x];				
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction1fnc",_x];				
 					
 				};
 				_x setVariable ["HAL_Task1Added",true];
@@ -85,13 +85,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action2fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action2fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction2fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction2fnc",_x];
 					
 				};
 
@@ -102,13 +102,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action3fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action3fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction3fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction3fnc",_x];
 					
 				};
 
@@ -119,12 +119,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action1fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action1fncR",_x];
 
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction1fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction1fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task1Added",false];
@@ -135,12 +135,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action2fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action2fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction2fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction2fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task2Added",false];
@@ -151,12 +151,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action3fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action3fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction3fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction3fncR",_x];
 					
 				};
 				_x setVariable ["HAL_Task3Added",false];
@@ -173,13 +173,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action4fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action4fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction4fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction4fnc",_x];
 					
 				};
 
@@ -190,12 +190,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action4fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action4fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction4fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction4fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task4Added",false];
@@ -206,13 +206,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action5fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action5fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction5fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction5fnc",_x];
 					
 				};
 
@@ -223,12 +223,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action5fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action5fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction5fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction5fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task5Added",false];
@@ -239,13 +239,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action6fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action6fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction6fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction6fnc",_x];
 					
 				};
 
@@ -256,12 +256,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action6fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action6fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction6fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction6fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task6Added",false];
@@ -272,13 +272,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action7fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action7fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction7fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction7fnc",_x];
 					
 				};
 
@@ -289,12 +289,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action7fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action7fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction7fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction7fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task7Added",false];
@@ -307,13 +307,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action8fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action8fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction8fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction8fnc",_x];
 					
 				};
 
@@ -324,12 +324,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action8fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action8fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction8fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction8fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task8Added",false];
@@ -340,13 +340,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action9fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action9fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction9fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction9fnc",_x];
 					
 				};
 
@@ -357,12 +357,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action9fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action9fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction9fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction9fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task9Added",false];
@@ -373,13 +373,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action10fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action10fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction10fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction10fnc",_x];
 					
 				};
 
@@ -390,12 +390,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action10fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action10fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction10fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction10fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task10Added",false];
@@ -406,13 +406,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action11fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action11fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction11fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction11fnc",_x];
 					
 				};
 
@@ -423,12 +423,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action11fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action11fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction11fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction11fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task11Added",false];
@@ -439,13 +439,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action12fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action12fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction12fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction12fnc",_x];
 					
 				};
 
@@ -456,12 +456,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action12fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action12fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction12fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction12fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task12Added",false];
@@ -472,13 +472,13 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action13fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action13fnc",_x];
 					
 				};
 
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction13fnc",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction13fnc",_x];
 					
 				};
 
@@ -489,12 +489,12 @@ while {true} do {
 
 				if not (RydxHQ_ActionsAceOnly) then {
 
-					[_x] remoteExecCall ["Action13fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_action13fncR",_x];
 					
 				};
 				if (isClass(configFile >> "CfgPatches" >> "ace_main")) then {
 
-					[_x] remoteExecCall ["ACEAction13fncR",_x];
+					[_x] remoteExecCall ["hal_tasking_fnc_aceAction13fncR",_x];
 
 				};
 				_x setVariable ["HAL_Task13Added",false];

@@ -93,13 +93,8 @@ publicVariable "RYD_WS_ArtyMarks";
 
 RYD_Path = "\NR6_HAL\";
 
-//move this to functions folder
-
-// call compile preprocessFile (RYD_Path + "HAC_fnc.sqf");
-// call compile preprocessFile (RYD_Path + "HAC_fnc2.sqf");
-// call compile preprocessFile (RYD_Path + "VarInit.sqf");
-// call compile preprocessFile (RYD_Path + "TaskMenu.sqf");
-// call compile preprocessFile (RYD_Path + "TaskInitNR6.sqf");
+// TaskInitNR6.sqf 72 Action* callbacks are now loaded via hal_tasking addon's CBA preInit path (Phase 3, Plan 05).
+// Legacy preprocessFile loaders (HAC_fnc, HAC_fnc2, VarInit, TaskMenu, TaskInitNR6) removed during Phase 3.
 
 //can be replaced with getMarkerType and getMarkerSize
 HAL_fnc_getType = compile preprocessFileLineNumbers "A3\modules_f\marta\data\scripts\fnc_getType.sqf";
