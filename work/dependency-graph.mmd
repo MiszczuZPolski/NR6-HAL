@@ -1,0 +1,152 @@
+flowchart LR
+    subgraph hal_data["hal_data (RHQLibrary.sqf + HAC_fnc2.sqf)"]
+        WS_specFor[RYD_WS_specFor_class]
+        WS_recon[RYD_WS_recon_class]
+        WS_FO[RYD_WS_FO_class]
+        WS_snipers[RYD_WS_snipers_class]
+        WS_ATinf[RYD_WS_ATinf_class]
+        WS_AAinf[RYD_WS_AAinf_class]
+        WS_Inf[RYD_WS_Inf_class]
+        WS_Art[RYD_WS_Art_class]
+        WS_HArmor[RYD_WS_HArmor_class]
+        WS_MArmor[RYD_WS_MArmor_class]
+        WS_LArmor[RYD_WS_LArmor_class]
+        WS_LArmorAT[RYD_WS_LArmorAT_class]
+        WS_Cars[RYD_WS_Cars_class]
+        WS_Air[RYD_WS_Air_class]
+        WS_BAir[RYD_WS_BAir_class]
+        WS_RAir[RYD_WS_RAir_class]
+        WS_NCAir[RYD_WS_NCAir_class]
+        WS_Naval[RYD_WS_Naval_class]
+        WS_Static[RYD_WS_Static_class]
+        WS_StaticAA[RYD_WS_StaticAA_class]
+        WS_StaticAT[RYD_WS_StaticAT_class]
+        WS_Support[RYD_WS_Support_class]
+        WS_Cargo[RYD_WS_Cargo_class]
+        WS_NCCargo[RYD_WS_NCCargo_class]
+        WS_Crew[RYD_WS_Crew_class]
+        WS_Other[RYD_WS_Other_class]
+        WS_rep[RYD_WS_rep]
+        WS_med[RYD_WS_med]
+        WS_fuel[RYD_WS_fuel]
+        WS_ammo[RYD_WS_ammo]
+        WS_AllClasses[RYD_WS_AllClasses]
+        PresentRHQ[RYD_PresentRHQ]
+        PresentRHQLoop[RYD_PresentRHQLoop]
+    end
+
+    subgraph hal_hac["hal_hac (HAC_fnc.sqf + HAC_fnc2.sqf)"]
+        Dispatcher[RYD_Dispatcher]
+        FindClosestWithIndex[RYD_FindClosestWithIndex dead?]
+        DistOrd[RYD_DistOrd dead?]
+        DistOrdC[RYD_DistOrdC dead?]
+        LF_Loop[RYD_LF_Loop dead?]
+    end
+
+    subgraph hal_boss["hal_boss (Boss_fnc.sqf + HAC_fnc2.sqf)"]
+        Marker[RYD_Marker]
+        DistOrdB[RYD_DistOrdB]
+        WhereIs[RYD_WhereIs]
+        TerraCognita[RYD_TerraCognita DUAL]
+        Sectorize[RYD_Sectorize]
+        LocLineTransform[RYD_LocLineTransform]
+        LocMultiTransform[RYD_LocMultiTransform]
+        ForceCount[RYD_ForceCount]
+        ForceAnalyze[RYD_ForceAnalyze]
+        TopoAnalize[RYD_TopoAnalize]
+        Itinerary[RYD_Itinerary]
+        ExecuteObj[RYD_ExecuteObj]
+        ExecutePath[RYD_ExecutePath]
+        ReserveExecuting[RYD_ReserveExecuting]
+        ObjectivesMon[RYD_ObjectivesMon]
+        ObjMark[RYD_ObjMark]
+        ClusterA[RYD_ClusterA]
+        ClusterB[RYD_ClusterB]
+        Cluster[RYD_Cluster]
+        isOnMap[RYD_isOnMap]
+        BBSimpleD[RYD_BBSimpleD]
+        StatusQuo[RYD_StatusQuo]
+        FBFTLOOP[HAL_FBFTLOOP]
+        EBFT[HAL_EBFT]
+        SecTasks[HAL_SecTasks]
+        BossLoop[Boss.sqf main loop]
+    end
+
+    subgraph hal_tasking["hal_tasking (TaskInitNR6.sqf + SquadTaskingNR6.sqf)"]
+        ActionMfnc[ActionMfnc]
+        ACEActionMfnc[ACEActionMfnc]
+        ActionMfncR[ActionMfncR]
+        ACEActionMfncR[ACEActionMfncR]
+        Action1ct[Action1ct]
+        Action1fnc[Action1fnc]
+        Action2ct[Action2ct]
+        Action2fnc[Action2fnc]
+        Action3ct[Action3ct]
+        Action3fnc[Action3fnc]
+        ActionSlots["Action4..13 ct/fnc/fncR\nACEAction1..13fnc/fncR\n(52 symbols)"]
+        ActionGTct[ActionGTct]
+        ActionArtct[ActionArtct]
+        ActionArt2ct[ActionArt2ct]
+        SquadTaskingLoop[SquadTaskingNR6 loop]
+    end
+
+    %% hal_data internal edges
+    WS_Inf --> WS_AllClasses
+    WS_Art --> WS_AllClasses
+    WS_HArmor --> WS_AllClasses
+    WS_MArmor --> WS_AllClasses
+    WS_LArmor --> WS_AllClasses
+    WS_Cars --> WS_AllClasses
+    WS_Air --> WS_AllClasses
+    WS_Naval --> WS_AllClasses
+    WS_Static --> WS_AllClasses
+    WS_Support --> WS_AllClasses
+    WS_Other --> WS_AllClasses
+    WS_AllClasses --> PresentRHQ
+    PresentRHQ --> PresentRHQLoop
+
+    %% hal_boss internal edges — direct calls
+    Marker --> ObjMark
+    Marker --> ExecuteObj
+    Marker --> ExecutePath
+    Marker --> ReserveExecuting
+    Marker --> BBSimpleD
+    DistOrdB --> ExecutePath
+    LocLineTransform --> Itinerary
+    LocLineTransform --> ExecuteObj
+    LocLineTransform --> ReserveExecuting
+    ClusterA --> Cluster
+    ClusterB --> Cluster
+    Cluster --> BBSimpleD
+    isOnMap --> BBSimpleD
+    Itinerary --> BossLoop
+    ForceAnalyze --> BossLoop
+    ForceCount --> BossLoop
+    WhereIs --> BossLoop
+    TopoAnalize --> BossLoop
+    Sectorize --> BossLoop
+    TerraCognita --> BossLoop
+    LocMultiTransform --> BossLoop
+    EBFT --> StatusQuo
+
+    %% hal_boss value-pass / spawn edges (dotted)
+    ExecuteObj -.value_pass.-> ExecutePath
+    ObjMark -.value_pass.-> BossLoop
+    BBSimpleD -.value_pass.-> BossLoop
+    ExecutePath -.value_pass.-> BossLoop
+    ReserveExecuting -.value_pass.-> BossLoop
+    ObjectivesMon -.value_pass.-> BossLoop
+    StatusQuo -.spawn.-> EBFT
+
+    %% cross-tier edges: hal_data → hal_boss
+    PresentRHQ -.reads.-> WS_AllClasses
+
+    %% cross-tier edges: hal_tasking dispatch (dotted = string remoteExecCall)
+    SquadTaskingLoop -.remoteExecCall.-> ActionMfnc
+    SquadTaskingLoop -.remoteExecCall.-> ACEActionMfnc
+    SquadTaskingLoop -.remoteExecCall.-> ActionMfncR
+    SquadTaskingLoop -.remoteExecCall.-> ACEActionMfncR
+    SquadTaskingLoop -.remoteExecCall.-> Action1fnc
+    SquadTaskingLoop -.remoteExecCall.-> Action2fnc
+    SquadTaskingLoop -.remoteExecCall.-> Action3fnc
+    SquadTaskingLoop -.remoteExecCall.-> ActionSlots
