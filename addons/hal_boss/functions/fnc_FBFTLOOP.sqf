@@ -52,13 +52,15 @@ while {not (isNull _HQ)} do {
         _RydOrd = _HQ getVariable ["RydHQ_OrdnanceDrops",[]];
 
             {
-                private ["_mrk","_mrkcolor","_mrktype","_mrktext","_mrk2","_mrksize","_distance","_dx","_dY","_angle","_dXb","_dYb","_posX","_posY","_mrk3"];
+                private "_mrk";
+                private "_mrk2";
+                private "_mrktext";
 
                 _mrk = _x getVariable "FirstMarkF";
                 if (isNil "_mrk") then {_mrk = createMarker ["markF" + (str _x),(leader _x)];_x setVariable ["FirstMarkF",_mrk];};
-                _mrkcolor = format ["Color%1", side _x];
-                _mrktype = _x call HAL_fnc_getType;
-                _mrksize = [_x,units _x,_mrktype] call HAL_fnc_getSize;
+                private _mrkcolor = format ["Color%1", side _x];
+                private _mrktype = _x call HAL_fnc_getType;
+                private _mrksize = [_x,units _x,_mrktype] call HAL_fnc_getSize;
 
                 switch (side _x) do {
 
@@ -109,11 +111,12 @@ while {not (isNull _HQ)} do {
             } forEach _MarkGrps;
 
             {
-                private ["_mrk","_mrkcolor","_mrktype"];
+                private "_mrk";
+                private "_mrktype";
 
                 _mrk = _x getVariable "FirstMarkOrd";
                 if (isNil "_mrk") then {_mrk = createMarker ["markOrd" + (str _x),_x];_x setVariable ["FirstMarkOrd",_mrk];};
-                _mrkcolor = format ["Color%1", side (leader _HQ)];
+                private _mrkcolor = format ["Color%1", side (leader _HQ)];
 
                 switch (side (leader _HQ)) do {
 
