@@ -9,34 +9,22 @@
  */
 params ["_HQ"];
 
-private _SidePLY = [];
-private _IgnoredPLY = [];
-private _RydMarks = [];
+private _OldMarkGrps = _HQ getVariable ["RydMarkGrpE",[]];
+private _OldRydMarks = _HQ getVariable ["RydMarksE",[]];
+
 private _MarkGrps = [];
-private _checkFriends = [];
-private _OldMarkGrps = [];
-private _mrk = "";
-private _mrk2 = "";
-private _OldRydMarks = [];
-
-_OldMarkGrps = _HQ getVariable ["RydMarkGrpE",[]];
-_OldRydMarks = _HQ getVariable ["RydMarksE",[]];
-
-_MarkGrps = [];
-_RydMarks = [];
+private _RydMarks = [];
 
 if (_HQ getVariable ["RydHQ_InfoMarkers",false]) then {
 
     _MarkGrps = (_HQ getVariable ["RydHQ_KnEnemiesG",[]]);
 
         {
-            private ["_mrk","_mrkcolor","_mrktype","_mrktext","_mrk2","_mrksize","_distance","_dx","_dY","_angle","_dXb","_dYb","_posX","_posY","_mrk3"];
-
-            _mrk = _x getVariable "FirstMarkE";
+            private _mrk = _x getVariable "FirstMarkE";
             if (isNil "_mrk") then {_mrk = createMarker ["markE" + (str _x),(leader _x)];_x setVariable ["FirstMarkE",_mrk];};
-            _mrkcolor = format ["Color%1", side _x];
-            _mrktype = _x call HAL_fnc_getType;
-            _mrksize = [_x,units _x,_mrktype] call HAL_fnc_getSize;
+            private _mrkcolor = format ["Color%1", side _x];
+            private _mrktype = _x call HAL_fnc_getType;
+            private _mrksize = [_x,units _x,_mrktype] call HAL_fnc_getSize;
 
             switch (side _x) do {
 
@@ -50,6 +38,7 @@ if (_HQ getVariable ["RydHQ_InfoMarkers",false]) then {
             _mrk setMarkerTypeLocal _mrktype;
             _mrk setMarkerColorLocal _mrkcolor;
 
+            private "_mrk2";
             if not (_mrksize == -1) then {
 
                 _mrk2 = _x getVariable "FirstMarkE2";
@@ -58,7 +47,7 @@ if (_HQ getVariable ["RydHQ_InfoMarkers",false]) then {
 
             };
 
-            _mrktext = _x getVariable ["Ryd_MarkText",nil];
+            private _mrktext = _x getVariable ["Ryd_MarkText",nil];
 
             if (isNil "_mrktext") then {
 
