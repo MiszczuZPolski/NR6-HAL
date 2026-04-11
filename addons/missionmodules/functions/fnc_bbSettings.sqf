@@ -1,9 +1,10 @@
+#include "..\script_component.hpp"
 private ["_logic"];
 
 _logic = (_this select 0);
 
-RydBB_CustomObjOnly = (_logic getVariable "RydBB_CustomObjOnly");
-RydBB_LRelocating = (_logic getVariable "RydBB_LRelocating");
+GVAR(customObjOnly) = (_logic getVariable QGVAR(customObjOnly));
+GVAR(lRelocating) = (_logic getVariable QGVAR(lRelocating));
 
-RydBB_MainInterval = (_logic getVariable "RydBB_MainInterval");
+GVAR(mainInterval) = (_logic getVariable QGVAR(mainInterval));
 //RydBB_BBOnMap = (_logic getVariable "RydBB_BBOnMap");

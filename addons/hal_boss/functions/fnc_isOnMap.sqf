@@ -15,10 +15,10 @@ private _pY = _pos select 1;
 private _mapMinX = 0;
 private _mapMinY = 0;
 
-if !(isNil "RydBB_MC") then
+if !(isNil QEGVAR(missionmodules,mC)) then
     {
-    _mapMinX = RydBB_MapXMin;
-    _mapMinY = RydBB_MapYMin
+    _mapMinX = EGVAR(missionmodules,mapXMin);
+    _mapMinY = EGVAR(missionmodules,mapYMin)
     };
 
 if (_pX < _mapMinX) then
@@ -33,13 +33,13 @@ else
         }
     else
         {
-        if (_pX > RydBB_MapXMax) then
+        if (_pX > EGVAR(missionmodules,mapXMax)) then
             {
             _onMap = false
             }
         else
             {
-            if (_pY > RydBB_MapYMax) then
+            if (_pY > EGVAR(missionmodules,mapYMax)) then
                 {
                 _onMap = false
                 }

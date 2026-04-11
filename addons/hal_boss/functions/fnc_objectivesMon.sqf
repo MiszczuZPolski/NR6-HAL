@@ -10,10 +10,10 @@
  */
 params ["_area", "_BBSide", "_HQ", "_HQs"];
 
-while {(RydBB_Active)} do
+while {(EGVAR(missionmodules,active))} do
     {
     sleep 15;//60
-    if !(RydBB_Active) exitWith {};
+    if !(EGVAR(missionmodules,active)) exitWith {};
 
     private _SideAllies = [];
     private _SideEnemies = [];

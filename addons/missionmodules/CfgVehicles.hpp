@@ -2683,21 +2683,21 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydBB_CustomObjOnly
+			class GVAR(customObjOnly)
 			{
 				displayName="No Auto Objectives";
 				description="HC will only consider user placed objectives instead of scanning the map for strategic locations.";
 				typeName="BOOL";
 				defaultValue="True";
 			};
-			class RydBB_LRelocating
+			class GVAR(lRelocating)
 			{
 				displayName="Commanders Relocate";
 				description="HC controlled conmmanders will relocate to objectives recently captured. This is used for HC mode as the legacy relocation works differently.";
 				typeName="BOOL";
 				defaultValue="False";
 			};
-			class RydBB_MainInterval
+			class GVAR(mainInterval)
 			{
 				displayName="HC Cycle (Minutes)";
 				description="Delay between HC computation cycles.";

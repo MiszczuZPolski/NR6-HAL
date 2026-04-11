@@ -1,0 +1,9 @@
+{
+  "RydBB_Debug": "missionmodules",
+  "RydBB_MC": "missionmodules",
+  "RydBB_MapXMax": "missionmodules",
+  "RydBB_MapXMin": "missionmodules",
+  "RydBB_MapYMax": "missionmodules",
+  "RydBB_MapYMin": "missionmodules",
+  "RydBB_mapReady": "missionmodules"
+}

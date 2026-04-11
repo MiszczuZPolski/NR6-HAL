@@ -23,10 +23,10 @@ private _markers = [];
     _markers pushBack _mark
 } forEach _strArea;
 
-while {((RydBB_Active) and {(RydBB_Debug)})} do
+while {((EGVAR(missionmodules,active)) and {(EGVAR(missionmodules,debug))})} do
     {
     sleep 10;
-    if !(RydBB_Active) exitWith {};
+    if !(EGVAR(missionmodules,active)) exitWith {};
 
     {
         private _obj = _x;

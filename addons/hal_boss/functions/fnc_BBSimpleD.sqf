@@ -13,7 +13,7 @@ sleep 60;
 while {(({!(isNull _x)} count _HQs) > 0)} do
     {
     if (({!(isNull _x)} count _HQs) == 0) exitWith {};
-    if !(RydBB_Active) exitWith {};
+    if !(EGVAR(missionmodules,active)) exitWith {};
 
     private _enPos = [];
     private _frCenters = [];

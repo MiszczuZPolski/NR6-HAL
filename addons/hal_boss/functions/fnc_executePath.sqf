@@ -43,7 +43,7 @@ private _pCnt = 0;
 private _m = "";
 private _marksT = [];
 
-if (RydBB_Debug) then
+if (EGVAR(missionmodules,debug)) then
     {
     {
         _pCnt = _pCnt + 1;
@@ -101,9 +101,9 @@ waitUntil {
     ((_HQ getVariable ["BBObj1Done",false]) and (_HQ getVariable ["BBObj2Done",false]) and (_HQ getVariable ["BBObj3Done",false]) and (_HQ getVariable ["BBObj4Done",false]))
 };
 
-if !(RydBB_Active) exitWith {};
+if !(EGVAR(missionmodules,active)) exitWith {};
 
-if (RydBB_Debug) then
+if (EGVAR(missionmodules,debug)) then
     {
     {
         deleteMarker _x

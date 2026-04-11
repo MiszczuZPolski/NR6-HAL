@@ -142,7 +142,7 @@ if (RydHQ_TimeM) then
 	[([player] + (switchableUnits - [player]))] call EFUNC(common,TimeMachine)
 	};
 
-if (RydBB_Active) then
+if (EGVAR(missionmodules,active)) then
 	{
 	call compile preprocessFile (GVAR(path) + "Boss_fnc.sqf");
 	RydBBa_InitDone = false;

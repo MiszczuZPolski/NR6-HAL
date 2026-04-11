@@ -1,3 +1,4 @@
+#include "..\script_component.hpp"
 private ["_Leader","_logic","_grp","_LeaderType"];
 
 _logic = (_this select 0);
@@ -6,7 +7,7 @@ _LeaderType = (_logic getVariable "BBLeader");
 
 _logic call compile (_LeaderType + " = _this");
 
-RydBB_Active = true;
+GVAR(active) = true;
 
 _Commanders = [];
 if (isNil "RydBBa_HQs") then {RydBBa_HQs = []};

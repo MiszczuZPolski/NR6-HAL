@@ -2,10 +2,10 @@
 
 private ["_txtArr","_dbgMon","_txt"];
 
-if (RydBB_Active) then {
+if (EGVAR(missionmodules,active)) then {
     waitUntil {
         sleep 1;
-        !(isNil "RydBB_mapReady")
+        !(isNil QEGVAR(missionmodules,mapReady))
     };
 };
 

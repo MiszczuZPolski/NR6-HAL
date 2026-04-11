@@ -46,7 +46,7 @@ if (_Side == "B") then {_lColor = "ColorRed"};
 
 private "_m";
 private "_i";
-if ((RydBB_Debug) or ((RydBBa_SimpleDebug) and (_Side == "A")) or ((RydBBb_SimpleDebug) and (_Side == "B"))) then
+if ((EGVAR(missionmodules,debug)) or ((RydBBa_SimpleDebug) and (_Side == "A")) or ((RydBBb_SimpleDebug) and (_Side == "B"))) then
     {
     if (_i == 0) then {_m = [(_actO select 0),_HQ,"markBBCurrent",_lColor,"ICON","mil_triangle","Current target for " + (str (leader _HQ)),"",[0.5,0.5]] call EFUNC(common,mark)} else {_m setMarkerPos (_actO select 0)};
     };
@@ -151,7 +151,7 @@ waitUntil
         case (isNil "_HQ") : {_alive = false};
         case (isNull _HQ) : {_alive = false};
         case (({alive _x} count (units _HQ) < 1)) : {_alive = false};
-        case !(RydBB_Active) : {_alive = false};
+        case !(EGVAR(missionmodules,active)) : {_alive = false};
         };
 
     if (_alive) then
@@ -293,7 +293,7 @@ waitUntil
                                 case (isNil "_HQ") : {_alive = false};
                                 case (isNull _HQ) : {_alive = false};
                                 case (({alive _x} count (units _HQ)) < 1) : {_alive = false};
-                                case !(RydBB_Active) : {_alive = false};
+                                case !(EGVAR(missionmodules,active)) : {_alive = false};
                                 };
 
                             if (_alive) then
@@ -485,7 +485,7 @@ if (_garrPool == 0) then
                         case (isNull (_unitG)) : {_alive = false};
                         case (({alive _x} count (units _unitG)) < 1) : {_alive = false};
                         case ((time - _ct) > 60) : {_alive = false};
-                        case !(RydBB_Active) : {_alive = false};
+                        case !(EGVAR(missionmodules,active)) : {_alive = false};
                         };
 
                     _MIApass = false;
@@ -514,9 +514,9 @@ _HQ setVariable ["BBProgress",_BBProg + 1];
 _HandledArray = _HandledArray - [_cSum];
 missionNamespace setVariable [_varName,_HandledArray];
 
-if !(RydBB_Active) exitWith {};
+if !(EGVAR(missionmodules,active)) exitWith {};
 
-if (RydBB_LRelocating) then
+if (EGVAR(missionmodules,lRelocating)) then
     {
     [_HQ] call CBA_fnc_clearWaypoints;
     private _wp = [_HQ,_actOPos,"HOLD","AWARE","GREEN","LIMITED",["true",""],true,50,[0,0,0],"FILE"] call EFUNC(common,WPadd)

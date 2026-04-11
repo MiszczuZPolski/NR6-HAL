@@ -200,7 +200,7 @@ if (_cycleC == 1) then
         [_ArtG,(_HQ getVariable ["RydHQ_ArtyShells",1])] call EFUNC(common,artyPrep);
         };
 
-    if ((RydBB_Active) and ((_HQ getVariable ["leaderHQ",(leader _HQ)]) in (RydBBa_HQs + RydBBb_HQs))) then
+    if ((EGVAR(missionmodules,active)) and ((_HQ getVariable ["leaderHQ",(leader _HQ)]) in (RydBBa_HQs + RydBBb_HQs))) then
         {
         _HQ setVariable ["RydHQ_readyForBB",true];
         _HQ setVariable ["RydHQ_Pending",false];

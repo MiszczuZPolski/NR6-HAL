@@ -28,7 +28,7 @@ if ((count _ahead) > 0) then
         {
         case (isNull _HQ) : {_aliveHQ = false};
         case (({alive _x} count (units _HQ)) < 1) : {_aliveHQ = false};
-        case !(RydBB_Active) : {_alive = false};
+        case !(EGVAR(missionmodules,active)) : {_alive = false};
         };
 
     if (_aliveHQ) then
@@ -227,7 +227,7 @@ if ((count _hostileG) > 0) then
 
 private _wp = [_HQ,_HQnewPos,"HOLD","AWARE","GREEN","LIMITED",["true",""],true,50,[0,0,0],"FILE"] call EFUNC(common,WPadd);
 
-if (RydBB_Debug) then
+if (EGVAR(missionmodules,debug)) then
     {
     private "_m";
     _m = _HQ getVariable "ResMark";
