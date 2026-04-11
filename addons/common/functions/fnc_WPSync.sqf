@@ -3,6 +3,14 @@
 
 params ["_waypoint", "_unit", "_group"];
 
+// NOTE: Phase 3-06 — these variables (_i, _unitG, _HQ) were already undeclared in the
+// legacy RYD_WPSync body and this function has no active callers in addons/. Declared
+// here as private to silence L-S13 without altering the (dormant) code path. Full rewrite
+// deferred to a future phase when an actual caller is wired up.
+private _i = "";
+private _unitG = grpNull;
+private _HQ = grpNull;
+
 private _trg = group _unit;
 
 if (isNull _trg) exitWith {};

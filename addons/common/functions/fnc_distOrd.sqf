@@ -13,7 +13,7 @@ params ["_array", "_point", "_limit"];
 private _arr = +_array;
 private _final = [];
 
-while {(({not ((typeName _x) in [(typeName "")])} count _arr) > 0)} do {
+while {(({not ((typeName _x) in ["STRING"])} count _arr) > 0)} do {
     private _result = [_point, _arr] call FUNC(findClosestWithIndex);
     private _ix = _result select 1;
     private _closest = _result select 0;

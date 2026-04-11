@@ -21,7 +21,7 @@ not_private = false
 var_all_caps = false
 unused = false
 # Phase 1 legacy debt — tightened in Phase 3 per D-11
-undefined = false        # L-S13 undefined_variable (fnc_WPSync, fnc_findHighestWithIndex, fnc_garrisonP)
+undefined = true         # L-S13 undefined_variable — tightened in Phase 3-06 (D-11 closure) to catch bare RYD_* regressions
 extra_not = false        # L-S19 unneeded_not (fnc_cff_ffe)
 config_of = false        # L-S30 typeof_configof (fnc_ammoFullCount, fnc_groupMarkerLoop, fnc_cff_ffe)
 

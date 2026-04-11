@@ -3,6 +3,8 @@
 
 params ["_group", "_points", "_HQ"];
 
+private _formation = "DIAMOND";
+
 {
     private _nHouse = _x nearestObject "House";
     private _posAll = [];
@@ -16,7 +18,6 @@ params ["_group", "_points", "_HQ"];
         _posAct = _nHouse buildingPos _i;
     };
 
-    private _formation = "DIAMOND";
     if (isPlayer (leader _group)) then {_formation = formation _group;} else {_formation = "DIAMOND";};
 
     _wp = [[_group],_x,"MOVE","AWARE","YELLOW","LIMITED",["true",""],false,0.01,[10,15,20],_formation] call FUNC(WPadd);

@@ -4,11 +4,11 @@
 params ["_array","_ix"];
 
 private _highest = [];
+private _clIndex = 0;
 
 if ((count _array) > 0) then {
     _highest = _array select 0;
     private _index = 0;
-    private _clIndex = 0;
     private _valMax = _highest select _ix;
 
     {
