@@ -6,11 +6,9 @@
  * @return {nil}
  */
 
-	private ["_Unit","_Action"];
+	params ["_Unit"];
 
-	_Unit = _this select 0;
-
-	_Action = _Unit addAction ["[HAL Supports] Request Infantry Support", 
+	private _Action = _Unit addAction ["[HAL Supports] Request Infantry Support",
 		"
 		[_this select 3] remoteExec ['hal_tasking_fnc_action5ct',2]
 		"
