@@ -113,57 +113,57 @@ while {true} do
 	[] call EFUNC(hal_data,presentRHQ)
 	};
 
-	_specFor_class = RHQ_SpecFor + RYD_WS_specFor_class - RHQs_SpecFor;
+	_specFor_class = RHQ_SpecFor + EGVAR(hal_data,wS_specFor_class) - RHQs_SpecFor;
 
-	_recon_class = RHQ_Recon + RYD_WS_recon_class - RHQs_Recon;
+	_recon_class = RHQ_Recon + EGVAR(hal_data,wS_recon_class) - RHQs_Recon;
 
-	_FO_class = RHQ_FO + RYD_WS_FO_class - RHQs_FO;
+	_FO_class = RHQ_FO + EGVAR(hal_data,wS_FO_class) - RHQs_FO;
 
-	_snipers_class = RHQ_Snipers + RYD_WS_snipers_class - RHQs_Snipers;
+	_snipers_class = RHQ_Snipers + EGVAR(hal_data,wS_snipers_class) - RHQs_Snipers;
 
-	_ATinf_class = RHQ_ATInf + RYD_WS_ATinf_class - RHQs_ATInf;
+	_ATinf_class = RHQ_ATInf + EGVAR(hal_data,wS_ATinf_class) - RHQs_ATInf;
 
-	_AAinf_class = RHQ_AAInf + RYD_WS_AAinf_class - RHQs_AAInf;
+	_AAinf_class = RHQ_AAInf + EGVAR(hal_data,wS_AAinf_class) - RHQs_AAInf;
 
-	_Inf_class = RHQ_Inf + RYD_WS_Inf_class - RHQs_Inf;
+	_Inf_class = RHQ_Inf + EGVAR(hal_data,wS_Inf_class) - RHQs_Inf;
 
-	_Art_class = RHQ_Art + RYD_WS_Art_class - RHQs_Art;
+	_Art_class = RHQ_Art + EGVAR(hal_data,wS_Art_class) - RHQs_Art;
 
-	_HArmor_class = RHQ_HArmor + RYD_WS_HArmor_class - RHQs_HArmor;
+	_HArmor_class = RHQ_HArmor + EGVAR(hal_data,wS_HArmor_class) - RHQs_HArmor;
 
-	_MArmor_class = RHQ_MArmor + RYD_WS_MArmor_class - RHQs_MArmor;
+	_MArmor_class = RHQ_MArmor + EGVAR(hal_data,wS_MArmor_class) - RHQs_MArmor;
 
-	_LArmor_class = RHQ_LArmor + RYD_WS_LArmor_class - RHQs_LArmor;
+	_LArmor_class = RHQ_LArmor + EGVAR(hal_data,wS_LArmor_class) - RHQs_LArmor;
 
-	_LArmorAT_class = RHQ_LArmorAT + RYD_WS_LArmorAT_class - RHQs_LArmorAT;
+	_LArmorAT_class = RHQ_LArmorAT + EGVAR(hal_data,wS_LArmorAT_class) - RHQs_LArmorAT;
 
-	_Cars_class = RHQ_Cars + RYD_WS_Cars_class - RHQs_Cars;
+	_Cars_class = RHQ_Cars + EGVAR(hal_data,wS_Cars_class) - RHQs_Cars;
 
-	_Air_class = RHQ_Air + RYD_WS_Air_class - RHQs_Air;
+	_Air_class = RHQ_Air + EGVAR(hal_data,wS_Air_class) - RHQs_Air;
 
-	_BAir_class = RHQ_BAir + RYD_WS_BAir_class - RHQs_BAir;
+	_BAir_class = RHQ_BAir + EGVAR(hal_data,wS_BAir_class) - RHQs_BAir;
 
-	_RAir_class = RHQ_RAir + RYD_WS_RAir_class - RHQs_RAir;
+	_RAir_class = RHQ_RAir + EGVAR(hal_data,wS_RAir_class) - RHQs_RAir;
 
-	_NCAir_class = RHQ_NCAir + RYD_WS_NCAir_class - RHQs_NCAir;
+	_NCAir_class = RHQ_NCAir + EGVAR(hal_data,wS_NCAir_class) - RHQs_NCAir;
 
-	_Naval_class = RHQ_Naval + RYD_WS_Naval_class - RHQs_Naval;
+	_Naval_class = RHQ_Naval + EGVAR(hal_data,wS_Naval_class) - RHQs_Naval;
 
-	_Static_class = RHQ_Static + RYD_WS_Static_class - RHQs_Static;
+	_Static_class = RHQ_Static + EGVAR(hal_data,wS_Static_class) - RHQs_Static;
 
-	_StaticAA_class = RHQ_StaticAA + RYD_WS_StaticAA_class - RHQs_StaticAA;
+	_StaticAA_class = RHQ_StaticAA + EGVAR(hal_data,wS_StaticAA_class) - RHQs_StaticAA;
 
-	_StaticAT_class = RHQ_StaticAT + RYD_WS_StaticAT_class - RHQs_StaticAT;
+	_StaticAT_class = RHQ_StaticAT + EGVAR(hal_data,wS_StaticAT_class) - RHQs_StaticAT;
 
-	_Support_class = RHQ_Support + RYD_WS_Support_class - RHQs_Support;
+	_Support_class = RHQ_Support + EGVAR(hal_data,wS_Support_class) - RHQs_Support;
 
-	_Cargo_class = RHQ_Cargo + RYD_WS_Cargo_class - RHQs_Cargo;
+	_Cargo_class = RHQ_Cargo + EGVAR(hal_data,wS_Cargo_class) - RHQs_Cargo;
 
-	_NCCargo_class = RHQ_NCCargo + RYD_WS_NCCargo_class - RHQs_NCCargo;
+	_NCCargo_class = RHQ_NCCargo + EGVAR(hal_data,wS_NCCargo_class) - RHQs_NCCargo;
 
-	_Crew_class = RHQ_Crew + RYD_WS_Crew_class - RHQs_Crew;
+	_Crew_class = RHQ_Crew + EGVAR(hal_data,wS_Crew_class) - RHQs_Crew;
 
-	_Other_class = RHQ_Other + RYD_WS_Other_class;
+	_Other_class = RHQ_Other + EGVAR(hal_data,wS_Other_class);
 
 	_NCrewInf_class = _Inf_class - _Crew_class;
 	_Cargo_class = _Cargo_class - (_Support_class - ["MH60S"]);

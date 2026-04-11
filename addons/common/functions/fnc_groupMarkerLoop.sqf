@@ -5,7 +5,7 @@
 		sleep 5;
 
 			{
-			_myMark = _x getVariable ["RYD_ItsMyMark",""];
+			_myMark = _x getVariable [QGVAR(itsMyMark),""];
 			if (({alive _x} count (units _x)) > 0) then
 				{
 				_side = side _x;
@@ -31,7 +31,7 @@
 						_myMark setMarkerTypeLocal "mil_dot";
 						_myMark setMarkerSize [0.75,0.75];
 
-						_x setVariable ["RYD_ItsMyMark",_myMark]
+						_x setVariable [QGVAR(itsMyMark),_myMark]
 						}
 					else
 						{

@@ -8,11 +8,11 @@ params [];
 
 // ---- Data arrays copied verbatim from nr6_hal/RHQLibrary.sqf lines 1–752 ----
 
-RYD_WS_specFor_class =
+GVAR(wS_specFor_class) =
 	[
 	];
 
-RYD_WS_recon_class =
+GVAR(wS_recon_class) =
 	[
 	"o_recon_exp_f",
 	"o_recon_f",
@@ -48,7 +48,7 @@ RYD_WS_recon_class =
 	"b_ugv_01_rcws_f"
 	];
 
-RYD_WS_FO_class =
+GVAR(wS_FO_class) =
 	[
 	"i_spotter_f",
 	"o_spotter_f",
@@ -57,7 +57,7 @@ RYD_WS_FO_class =
 	"b_recon_jtac_f"
 	];
 
-RYD_WS_snipers_class =
+GVAR(wS_snipers_class) =
 	[
 	"i_sniper_f",
 	"o_sniper_f",
@@ -71,7 +71,7 @@ RYD_WS_snipers_class =
 	"o_soldieru_m_f"
 	];
 
-RYD_WS_ATinf_class =
+GVAR(wS_ATinf_class) =
 	[
 	"i_soldier_at_f",
 	"i_soldier_lat_f",
@@ -87,7 +87,7 @@ RYD_WS_ATinf_class =
 	"b_recon_lat_f"
 	];
 
-RYD_WS_AAinf_class =
+GVAR(wS_AAinf_class) =
 	[
 	"i_soldier_aa_f",
 	"b_soldier_aa_f",
@@ -97,7 +97,7 @@ RYD_WS_AAinf_class =
 	"o_soldieru_aa_f"
 	];
 
-RYD_WS_Inf_class =
+GVAR(wS_Inf_class) =
 	[
 	"i_crew_f",
 	"i_engineer_f",
@@ -269,7 +269,7 @@ RYD_WS_Inf_class =
 	"i_g_resistanceleader_f"
 	];
 
-RYD_WS_Art_class =
+GVAR(wS_Art_class) =
 	[
 	"b_mbt_01_arty_f",
 	"o_mbt_02_arty_f",
@@ -286,7 +286,7 @@ RYD_WS_Art_class =
 	"i_g_mortar_01_f"
 	];
 
-RYD_WS_HArmor_class =
+GVAR(wS_HArmor_class) =
 	[
 	"b_mbt_01_cannon_f",
 	"b_mbt_01_tusk_f",
@@ -294,11 +294,11 @@ RYD_WS_HArmor_class =
 	"i_mbt_03_cannon_f"
 	];
 
-RYD_WS_MArmor_class =
+GVAR(wS_MArmor_class) =
 	[
 	];
 
-RYD_WS_LArmor_class =
+GVAR(wS_LArmor_class) =
 	[
 	"i_apc_wheeled_03_cannon_f",
 	"o_apc_tracked_02_aa_f",
@@ -310,7 +310,7 @@ RYD_WS_LArmor_class =
 	"i_apc_tracked_03_cannon_f"
 	];
 
-RYD_WS_LArmorAT_class =
+GVAR(wS_LArmorAT_class) =
 	[
 	"b_apc_wheeled_01_cannon_f",
 	"i_apc_wheeled_03_cannon_f",
@@ -318,7 +318,7 @@ RYD_WS_LArmorAT_class =
 	"i_apc_tracked_03_cannon_f"
 	];
 
-RYD_WS_Cars_class =
+GVAR(wS_Cars_class) =
 	[
 	"i_mrap_03_f",
 	"i_mrap_03_gmg_f",
@@ -373,7 +373,7 @@ RYD_WS_Cars_class =
 	"b_ugv_01_rcws_f"
 	];
 
-RYD_WS_Air_class =
+GVAR(wS_Air_class) =
 	[
 	"i_heli_transport_02_f",
 	"i_plane_fighter_03_aa_f",
@@ -416,14 +416,14 @@ RYD_WS_Air_class =
 	"o_heli_transport_04_covered_f"
 	];
 
-RYD_WS_BAir_class =
+GVAR(wS_BAir_class) =
 	[
 	"i_plane_fighter_03_cas_f",
 	"b_plane_cas_01_f",
 	"o_plane_cas_02_f"
 	];
 
-RYD_WS_RAir_class =
+GVAR(wS_RAir_class) =
 	[
 	"i_uav_01_f",
 	"i_uav_02_cas_f",
@@ -436,7 +436,7 @@ RYD_WS_RAir_class =
 	"b_uav_02_f"
 	];
 
-RYD_WS_NCAir_class =
+GVAR(wS_NCAir_class) =
 	[
 	"i_heli_transport_02_f",
 	"o_heli_light_02_unarmed_f",
@@ -453,7 +453,7 @@ RYD_WS_NCAir_class =
 	"b_uav_02_f"
 	];
 
-RYD_WS_Naval_class =
+GVAR(wS_Naval_class) =
 	[
 	"i_boat_armed_01_minigun_f",
 	"i_boat_transport_01_f",
@@ -469,7 +469,7 @@ RYD_WS_Naval_class =
 	"b_sdv_01_f"
 	];
 
-RYD_WS_Static_class =
+GVAR(wS_Static_class) =
 	[
 	"i_gmg_01_a_f",
 	"i_gmg_01_f",
@@ -504,21 +504,21 @@ RYD_WS_Static_class =
 	"i_g_mortar_01_f"
 	];
 
-RYD_WS_StaticAA_class =
+GVAR(wS_StaticAA_class) =
 	[
 	"i_static_aa_f",
 	"o_static_aa_f",
 	"b_static_aa_f"
 	];
 
-RYD_WS_StaticAT_class =
+GVAR(wS_StaticAT_class) =
 	[
 	"i_static_at_f",
 	"o_static_at_f",
 	"b_static_at_f"
 	];
 
-RYD_WS_Support_class =
+GVAR(wS_Support_class) =
 	[
 	"i_truck_02_ammo_f",
 	"i_truck_02_box_f",
@@ -545,7 +545,7 @@ RYD_WS_Support_class =
 	"o_heli_transport_04_repair_f"
 	];
 
-RYD_WS_Cargo_class =
+GVAR(wS_Cargo_class) =
 	[
 	"i_heli_transport_02_f",
 	"o_heli_attack_02_black_f",
@@ -613,7 +613,7 @@ RYD_WS_Cargo_class =
 	"o_heli_transport_04_covered_f"
 	];
 
-RYD_WS_NCCargo_class =
+GVAR(wS_NCCargo_class) =
 	[
 	"i_heli_transport_02_f",
 	"o_heli_light_02_unarmed_f",
@@ -655,7 +655,7 @@ RYD_WS_NCCargo_class =
 	"o_heli_transport_04_covered_f"
 	];
 
-RYD_WS_Crew_class =
+GVAR(wS_Crew_class) =
 	[
 	"i_crew_f",
 	"i_helicrew_f",
@@ -672,14 +672,14 @@ RYD_WS_Crew_class =
 	"b_story_pilot_f"
 	];
 
-RYD_WS_Other_class =
+GVAR(wS_Other_class) =
 	[
 	"i_uav_ai",
 	"o_uav_ai",
 	"b_uav_ai"
 	];
 
-RYD_WS_rep =
+GVAR(wS_rep) =
 	[
 	"o_truck_03_repair_f",
 	"i_truck_02_box_f",
@@ -700,7 +700,7 @@ RYD_WS_rep =
 	"RHS_Ural_Repair_VV_01"
 	];
 
-RYD_WS_med =
+GVAR(wS_med) =
 	[
 	"o_truck_03_medical_f",
 	"i_truck_02_medical_f",
@@ -719,7 +719,7 @@ RYD_WS_med =
 	"rhs_gaz66_ap2_vv"
 	];
 
-RYD_WS_fuel =
+GVAR(wS_fuel) =
 	[
 	"o_truck_03_fuel_f",
 	"i_truck_02_fuel_f",
@@ -738,7 +738,7 @@ RYD_WS_fuel =
 	"RHS_Ural_Fuel_MSV_01"
 	];
 
-RYD_WS_ammo =
+GVAR(wS_ammo) =
 	[
 	"o_truck_03_ammo_f",
 	"i_truck_02_ammo_f",
@@ -759,6 +759,6 @@ RYD_WS_ammo =
 	];
 
 // Composite — must come AFTER the 11 sub-arrays it concatenates (per §8 PREP ordering note)
-RYD_WS_AllClasses = RYD_WS_Inf_class + RYD_WS_Art_class + RYD_WS_HArmor_class + RYD_WS_MArmor_class + RYD_WS_LArmor_class + RYD_WS_Cars_class + RYD_WS_Air_class + RYD_WS_Naval_class + RYD_WS_Static_class + RYD_WS_Support_class + RYD_WS_Other_class;
+GVAR(wS_AllClasses) = GVAR(wS_Inf_class) + GVAR(wS_Art_class) + GVAR(wS_HArmor_class) + GVAR(wS_MArmor_class) + GVAR(wS_LArmor_class) + GVAR(wS_Cars_class) + GVAR(wS_Air_class) + GVAR(wS_Naval_class) + GVAR(wS_Static_class) + GVAR(wS_Support_class) + GVAR(wS_Other_class);
 
 nil

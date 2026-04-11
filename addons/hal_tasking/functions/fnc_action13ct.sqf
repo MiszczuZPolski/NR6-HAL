@@ -24,7 +24,7 @@
 
 	sleep 5;
 
-	private _Pool = RHQ_Rep + RYD_WS_rep - RHQs_Rep;
+	private _Pool = RHQ_Rep + EGVAR(hal_data,wS_rep) - RHQs_Rep;
 
 	private _FixBoy = objNull;
 

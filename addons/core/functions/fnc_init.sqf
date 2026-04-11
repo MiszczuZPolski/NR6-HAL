@@ -88,10 +88,10 @@ publicVariable "RydxHQ_CargoObjRange";
 RydxHQ_ReconCargo = missionNamespace getVariable ["RydxHQ_ReconCargo",false];
 publicVariable "RydxHQ_ReconCargo";
 
-RYD_WS_ArtyMarks = missionNamespace getVariable ["RYD_WS_ArtyMarks",false];
-publicVariable "RYD_WS_ArtyMarks";
+GVAR(wS_ArtyMarks) = missionNamespace getVariable [QGVAR(wS_ArtyMarks),false];
+publicVariable QGVAR(wS_ArtyMarks);
 
-RYD_Path = "\NR6_HAL\";
+GVAR(path) = "\NR6_HAL\";
 
 // TaskInitNR6.sqf 72 Action* callbacks are now loaded via hal_tasking addon's CBA preInit path (Phase 3, Plan 05).
 // Legacy preprocessFile loaders (HAC_fnc, HAC_fnc2, VarInit, TaskMenu, TaskInitNR6) removed during Phase 3.
@@ -135,7 +135,7 @@ private _clU = [Map_Unknown_R,Map_Unknown_G,Map_Unknown_B,Map_Unknown_A];
 	["leaderHQH", "H", "HET_FH"]
 ];
 
-[] call compile preprocessFile (RYD_Path + "Front.sqf");
+[] call compile preprocessFile (GVAR(path) + "Front.sqf");
 
 if (RydHQ_TimeM) then
 	{
@@ -144,7 +144,7 @@ if (RydHQ_TimeM) then
 
 if (RydBB_Active) then
 	{
-	call compile preprocessFile (RYD_Path + "Boss_fnc.sqf");
+	call compile preprocessFile (GVAR(path) + "Boss_fnc.sqf");
 	RydBBa_InitDone = false;
 	RydBBb_InitDone = false;
 
@@ -202,5 +202,5 @@ if ((count RydHQ_GroupMarks) > 0) then
 	};
 
 if (RydxHQ_Actions) then {
-nul = [] execVM  (RYD_Path + "SquadTaskingNR6.sqf");
+nul = [] execVM  (GVAR(path) + "SquadTaskingNR6.sqf");
 };

@@ -24,7 +24,7 @@
 
 	sleep 5;
 
-	private _Pool = RHQ_Med + RYD_WS_med - RHQs_Med;
+	private _Pool = RHQ_Med + EGVAR(hal_data,wS_med) - RHQs_Med;
 
 	private _MedBoy = objNull;
 

@@ -449,7 +449,7 @@ _amount2 = _amount - _amount1;
 	(_battery select 0) setVariable ["RydHQ_Break",false];
 
 	if !(_Debug) then {
-		_Debug = RYD_WS_ArtyMarks
+		_Debug = EGVAR(core,wS_ArtyMarks)
 	};
 
 	if (_Debug) then {

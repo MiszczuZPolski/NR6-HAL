@@ -32,15 +32,15 @@ private _isAA = false;
 private _isAT = false;
 private _isCargo = false;
 
-RYD_WS_AllClasses = RYD_WS_Inf_class + RYD_WS_Art_class + RYD_WS_HArmor_class + RYD_WS_MArmor_class + RYD_WS_LArmor_class + RYD_WS_Cars_class + RYD_WS_Air_class + RYD_WS_Naval_class + RYD_WS_Static_class + RYD_WS_Support_class + RYD_WS_Other_class;
+GVAR(wS_AllClasses) = GVAR(wS_Inf_class) + GVAR(wS_Art_class) + GVAR(wS_HArmor_class) + GVAR(wS_MArmor_class) + GVAR(wS_LArmor_class) + GVAR(wS_Cars_class) + GVAR(wS_Air_class) + GVAR(wS_Naval_class) + GVAR(wS_Static_class) + GVAR(wS_Support_class) + GVAR(wS_Other_class);
 
     {
     if ((side _x) in [west,east,resistance]) then
         {
         _vh = toLower (typeOf _x);
-        if not (_vh in RYD_WS_AllClasses) then
+        if not (_vh in GVAR(wS_AllClasses)) then
             {
-            RYD_WS_AllClasses pushBackUnique _vh;
+            GVAR(wS_AllClasses) pushBackUnique _vh;
             _allVehs pushBack _x
             }
         }
@@ -51,9 +51,9 @@ forEach vehicles;
     if ((side _x) in [west,east,resistance]) then
         {
         _vh = toLower (typeOf _x);
-        if not (_vh in RYD_WS_AllClasses) then
+        if not (_vh in GVAR(wS_AllClasses)) then
             {
-            RYD_WS_AllClasses pushBackUnique _vh;
+            GVAR(wS_AllClasses) pushBackUnique _vh;
             _allUnits pushBack _x
             }
         }
@@ -620,7 +620,7 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
                 {
                 _crew = toLower (getText _crew);
 
-                if not (_crew in (RYD_WS_Crew_class + RHQ_Crew)) then
+                if not (_crew in (GVAR(wS_Crew_class) + RHQ_Crew)) then
                     {
                     RHQ_Crew pushBackUnique _crew;
                     }

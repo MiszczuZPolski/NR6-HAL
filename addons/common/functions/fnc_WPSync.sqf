@@ -15,7 +15,7 @@ private _trg = group _unit;
 
 if (isNull _trg) exitWith {};
 
-private _otherWP = _trg getVariable ["RYD_Attacks", []];
+private _otherWP = _trg getVariable [QGVAR(attacks), []];
 
 private _gps = [];
 private _positions = [];
@@ -66,4 +66,4 @@ if (_HQ getVariable ["RydHQ_Debug",false]) then {
     _i setMarkerText _markT;
 };
 
-_trg setVariable ["RYD_Attacks",[]];
+_trg setVariable [QGVAR(attacks),[]];

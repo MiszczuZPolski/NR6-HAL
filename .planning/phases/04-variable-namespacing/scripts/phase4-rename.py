@@ -338,7 +338,13 @@ def walk_sources(root: Path):
 
 
 def classify_scope(text: str, pos: int, name: str) -> str:
-    """Given a match position in raw text, decide a coarse scope label."""
+    """Given a match position in raw text, decide a coarse scope label.
+
+    This classifier is position-sensitive: it inspects only the tokens
+    IMMEDIATELY before the match (on the same line). That matters on lines
+    like `RYD_X = missionNamespace getVariable ["RYD_X", false];` where the
+    same name appears twice with different scopes — LHS assignment vs
+    getVariable key literal."""
     # Look backwards on the same line for hints.
     line_start = text.rfind("\n", 0, pos) + 1
     line_end = text.find("\n", pos)
@@ -346,23 +352,23 @@ def classify_scope(text: str, pos: int, name: str) -> str:
         line_end = len(text)
     line = text[line_start:line_end]
     before = line[: pos - line_start]
-    after = line[pos - line_start :]
 
-    if re.search(rf'setVariable\s*\[\s*"$', before) or re.search(
-            rf'setVariable\s*\[\s*"{re.escape(name)}"', line):
+    # String-literal wrappers — the match is inside a "..." that follows
+    # one of these constructs. Check position-relative, not line-global.
+    if re.search(r'setVariable\s*\[\s*"$', before):
         return "setVariable_key"
-    if re.search(rf'getVariable\s*\[\s*"$', before) or re.search(
-            rf'getVariable\s*\[\s*"{re.escape(name)}"', line):
+    if re.search(r'getVariable\s*\[\s*"$', before):
         return "getVariable_key"
-    if re.search(rf'publicVariable\s+"$', before) or re.search(
-            rf'publicVariable\s+"{re.escape(name)}"', line):
+    if re.search(r'publicVariable\s+"$', before):
         return "publicVariable_string"
-    if re.search(rf'isNil\s+"$', before) or re.search(
-            rf'isNil\s+"{re.escape(name)}"', line):
+    if re.search(r'isNil\s+"$', before):
         return "isNil_guard"
     # Top-level assignment heuristic: identifier is the first non-whitespace
-    # token on the line and is followed by `=` (not `==`).
-    if re.match(rf"^\s*{re.escape(name)}\s*=(?!=)", line):
+    # token on the line and is followed by `=` (not `==`). Position-relative:
+    # `before` must be whitespace only, and what follows the match on the
+    # same line must start with `=` (but not `==`).
+    after = line[pos - line_start + len(name):]
+    if before.strip() == "" and re.match(r"^\s*=(?!=)", after):
         return "global_assignment"
     return "global_read"
 
@@ -468,11 +474,30 @@ def scan_map(root: Path, prefix: str, owner_overrides: dict) -> dict:
 def detect_dispatch_files(root: Path, prefix: str) -> set[Path]:
     """Return the set of source files that appear to build a legacy-prefix
     identifier at runtime via `call compile (...)`. These are NOT auto-
-    rewritten — Q7 requires manual expansion."""
-    regex = re.compile(
-        rf'call\s+compile\s*\([^)]*(?:{PREFIX_CORE[prefix]}|_prefix\s*\+)',
-        re.IGNORECASE,
+    rewritten — Q7 requires manual expansion.
+
+    IMPORTANT:
+    - `call compile preprocessFile (path)` and
+      `call compile preprocessFileLineNumbers (path)` are file-content
+      loaders, NOT runtime identifier eval, so they are EXCLUDED.
+    - The `_prefix + ...` string-building pattern only constructs multi-HQ
+      identifiers (RydHQ_, RydHQB_, ...), so it is ONLY flagged for the
+      RydHQ_ batch. For other prefixes (RYD_, RHQ_, RydBB_, RydxHQ_), only a
+      direct string-literal reference like `"RYD_Name"` inside a
+      `call compile (...)` qualifies as a dispatch site."""
+    patterns = []
+    # Bare `call compile "PREFIX...` or `call compile ("PREFIX...` — direct
+    # string-literal eval of a legacy identifier.
+    patterns.append(
+        rf'call\s+compile\s+(?!preprocessFile)\(?\s*"{PREFIX_CORE[prefix]}'
     )
+    # Runtime-prefix dispatch (`_prefix + "Name"`) is only meaningful for
+    # the RydHQ_ batch per D-02.
+    if prefix == "RydHQ_":
+        patterns.append(
+            r'call\s+compile\s+(?!preprocessFile)\(?[^)]*_prefix\s*\+'
+        )
+    regex = re.compile("|".join(f"(?:{p})" for p in patterns), re.IGNORECASE)
     hits: set[Path] = set()
     for file_path in walk_sources(root):
         try:
@@ -833,6 +858,25 @@ def main() -> int:
     print(f"scanning {root} for prefix {args.prefix}...", file=sys.stderr)
     rename_map = scan_map(root, args.prefix, overrides)
     print(f"found {len(rename_map)} unique legacy names", file=sys.stderr)
+
+    # Populate macro forms on each entry BEFORE the rewrite pass. rewrite_text
+    # reads entry["new_macro_owner_form"] / extern / q_macro_* directly from
+    # the in-memory rename_map, so these fields must exist before we rewrite.
+    for legacy, entry in rename_map.items():
+        owner = entry["addon_owner"] or "UNKNOWN"
+        try:
+            macros = canonical_macros(legacy, args.prefix, owner)
+        except Exception as exc:
+            entry["notes"] = (entry.get("notes") or "") + f" macro-build-error:{exc}"
+            macros = {
+                "stripped_name": "",
+                "new_macro_owner_form": legacy,
+                "new_macro_extern_form": legacy,
+                "new_q_macro_owner_form": f'"{legacy}"',
+                "new_q_macro_extern_form": f'"{legacy}"',
+                "new_literal_expansion": legacy,
+            }
+        entry.update(macros)
 
     dispatch_files = detect_dispatch_files(root, args.prefix)
     whitelisted = {Path(p).resolve() for p in args.allow_dispatch_file}
