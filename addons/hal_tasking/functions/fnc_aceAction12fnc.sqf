@@ -6,11 +6,9 @@
  * @return {nil}
  */
 
-	private ["_Unit","_ACEAction","_ACEActionL"];
+	params ["_Unit"];
 
-	_Unit = _this select 0;
-
-	_ACEAction = ["HALReqMASupp","Request Aerial Medical Support","",{
+	private _ACEAction = ["HALReqMASupp","Request Aerial Medical Support","",{
 
 		[_target] remoteExec ['hal_tasking_fnc_action12ct',2]
 

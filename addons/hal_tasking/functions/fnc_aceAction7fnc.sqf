@@ -6,11 +6,9 @@
  * @return {nil}
  */
 
-	private ["_Unit","_ACEAction"];
+	params ["_Unit"];
 
-	_Unit = _this select 0;
-
-	_ACEAction = ["HALReqTra","Request Transport Support","",{
+	private _ACEAction = ["HALReqTra","Request Transport Support","",{
 
 		[_target] remoteExec ['hal_tasking_fnc_action7ct',2]
 
