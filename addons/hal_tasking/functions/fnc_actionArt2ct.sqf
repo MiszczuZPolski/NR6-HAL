@@ -6,15 +6,10 @@
  * @return {nil}
  */
 
-	_HQ = (_this select 0);
-	_FO = (_this select 1);
-	_pos = (_this select 2);
-	_selectedPiece = (_this select 3);
-	_selectedOrd = (_this select 4);
-	_amnt = (_this select 5);
+	params ["_HQ","_FO","_pos","_selectedPiece","_selectedOrd","_amnt"];
 
 
-	_bArr = [_pos,[_selectedPiece],_selectedOrd,_amnt,_FO] call EFUNC(common,artyMission);
+	private _bArr = [_pos,[_selectedPiece],_selectedOrd,_amnt,_FO] call EFUNC(common,artyMission);
 
 	if ((_bArr select 0) and not (_selectedPiece getVariable ["RydHQ_BatteryBusy",false])) then {
 		_selectedPiece setVariable ["RydHQ_BatteryBusy",true];

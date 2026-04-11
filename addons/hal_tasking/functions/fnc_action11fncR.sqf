@@ -6,9 +6,7 @@
  * @return {nil}
  */
 
-	private ["_Unit","_Action"];
+	params ["_Unit"];
 
-	_Unit = _this select 0;
-
-	_Action = _Unit getVariable "HAL_ReqMSuppID";
+	private _Action = _Unit getVariable "HAL_ReqMSuppID";
 	_Unit removeAction _Action;
