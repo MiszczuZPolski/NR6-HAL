@@ -10,8 +10,8 @@
  * @param {Group} _HQ The HQ group ((_this select 3) select 0)
  * @return {nil}
  */
-private _leader = _this select 0;
-private _HQ = (_this select 3) select 0;
+params ["_leader", "", "", "_hqArr"];
+private _HQ = _hqArr select 0;
 private _maxD = -1;
 private _friends = [];
 
