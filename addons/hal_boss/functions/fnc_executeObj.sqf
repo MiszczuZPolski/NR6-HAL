@@ -223,7 +223,7 @@ waitUntil
 
                 } forEach _allied;
 
-                if ((count _KnEn) > 0) then
+                if (_KnEn isNotEqualTo []) then
                     {
                     _chosenPos = [];
                     _maxTempt = 0;
