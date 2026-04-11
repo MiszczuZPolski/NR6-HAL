@@ -1,0 +1,1137 @@
+{
+  "$schema": "phase-4-rename-map-v1",
+  "generated_at": "2026-04-11T20:14:06.883589Z",
+  "prefix_batch": "RHQ_",
+  "entries": [
+    {
+      "legacy_name": "RHQ_AAInf",
+      "new_macro_owner_form": "GVAR(aAInf)",
+      "new_macro_extern_form": "EGVAR(hal_data,aAInf)",
+      "new_literal_expansion": "hal_hal_data_aAInf",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 17,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 126,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 158,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 513,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_ATInf",
+      "new_macro_owner_form": "GVAR(aTInf)",
+      "new_macro_extern_form": "EGVAR(hal_data,aTInf)",
+      "new_literal_expansion": "hal_hal_data_aTInf",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 16,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 124,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 153,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 524,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Air",
+      "new_macro_owner_form": "GVAR(air)",
+      "new_macro_extern_form": "EGVAR(hal_data,air)",
+      "new_literal_expansion": "hal_hal_data_air",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 25,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 142,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 463,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Ammo",
+      "new_macro_owner_form": "GVAR(ammo)",
+      "new_macro_extern_form": "EGVAR(hal_data,ammo)",
+      "new_literal_expansion": "hal_hal_data_ammo",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 38,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 565,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 567,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action9ct.sqf",
+          "line": 27,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Art",
+      "new_macro_owner_form": "GVAR(art)",
+      "new_macro_extern_form": "EGVAR(hal_data,art)",
+      "new_literal_expansion": "hal_hal_data_art",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_artyMission.sqf",
+          "line": 74,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 19,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 130,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 241,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 495,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_BAir",
+      "new_macro_owner_form": "GVAR(bAir)",
+      "new_macro_extern_form": "EGVAR(hal_data,bAir)",
+      "new_literal_expansion": "hal_hal_data_bAir",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 26,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 144,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Cargo",
+      "new_macro_owner_form": "GVAR(cargo)",
+      "new_macro_extern_form": "EGVAR(hal_data,cargo)",
+      "new_literal_expansion": "hal_hal_data_cargo",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 34,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 160,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 488,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Cars",
+      "new_macro_owner_form": "GVAR(cars)",
+      "new_macro_extern_form": "EGVAR(hal_data,cars)",
+      "new_literal_expansion": "hal_hal_data_cars",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 24,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 140,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 458,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_ClassRangeDefined",
+      "new_macro_owner_form": "GVAR(classRangeDefined)",
+      "new_macro_extern_form": "EGVAR(hal_data,classRangeDefined)",
+      "new_literal_expansion": "hal_hal_data_classRangeDefined",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "getVariable_key",
+        "setVariable_key"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 243,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 318,
+          "scope": "setVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_ClassRangeMax",
+      "new_macro_owner_form": "GVAR(classRangeMax)",
+      "new_macro_extern_form": "EGVAR(hal_data,classRangeMax)",
+      "new_literal_expansion": "hal_hal_data_classRangeMax",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "getVariable_key",
+        "setVariable_key"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 317,
+          "scope": "setVariable_key"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_actionArtct.sqf",
+          "line": 41,
+          "scope": "getVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_ClassRangeMin",
+      "new_macro_owner_form": "GVAR(classRangeMin)",
+      "new_macro_extern_form": "EGVAR(hal_data,classRangeMin)",
+      "new_literal_expansion": "hal_hal_data_classRangeMin",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "getVariable_key",
+        "setVariable_key"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 283,
+          "scope": "setVariable_key"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_actionArtct.sqf",
+          "line": 40,
+          "scope": "getVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Crew",
+      "new_macro_owner_form": "GVAR(crew)",
+      "new_macro_extern_form": "EGVAR(hal_data,crew)",
+      "new_literal_expansion": "hal_hal_data_crew",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 36,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 164,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 623,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 625,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 648,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 648,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_FO",
+      "new_macro_owner_form": "GVAR(fO)",
+      "new_macro_extern_form": "EGVAR(hal_data,fO)",
+      "new_literal_expansion": "hal_hal_data_fO",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 14,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 120,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 107,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Fuel",
+      "new_macro_owner_form": "GVAR(fuel)",
+      "new_macro_extern_form": "EGVAR(hal_data,fuel)",
+      "new_literal_expansion": "hal_hal_data_fuel",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 39,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 578,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 580,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action10ct.sqf",
+          "line": 27,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_HArmor",
+      "new_macro_owner_form": "GVAR(hArmor)",
+      "new_macro_extern_form": "EGVAR(hal_data,hArmor)",
+      "new_literal_expansion": "hal_hal_data_hArmor",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 20,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 132,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 459,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 495,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 495,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Inf",
+      "new_macro_owner_form": "GVAR(inf)",
+      "new_macro_extern_form": "EGVAR(hal_data,inf)",
+      "new_literal_expansion": "hal_hal_data_inf",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 18,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 128,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 68,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 647,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 647,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_LArmor",
+      "new_macro_owner_form": "GVAR(lArmor)",
+      "new_macro_extern_form": "EGVAR(hal_data,lArmor)",
+      "new_literal_expansion": "hal_hal_data_lArmor",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 22,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 136,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 460,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_LArmorAT",
+      "new_macro_owner_form": "GVAR(lArmorAT)",
+      "new_macro_extern_form": "EGVAR(hal_data,lArmorAT)",
+      "new_literal_expansion": "hal_hal_data_lArmorAT",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 23,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 138,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 518,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_MArmor",
+      "new_macro_owner_form": "GVAR(mArmor)",
+      "new_macro_extern_form": "EGVAR(hal_data,mArmor)",
+      "new_literal_expansion": "hal_hal_data_mArmor",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 21,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 134,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Med",
+      "new_macro_owner_form": "GVAR(med)",
+      "new_macro_extern_form": "EGVAR(hal_data,med)",
+      "new_literal_expansion": "hal_hal_data_med",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 40,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 604,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 606,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action11ct.sqf",
+          "line": 27,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action12ct.sqf",
+          "line": 27,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_NCAir",
+      "new_macro_owner_form": "GVAR(nCAir)",
+      "new_macro_extern_form": "EGVAR(hal_data,nCAir)",
+      "new_literal_expansion": "hal_hal_data_nCAir",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 28,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 148,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 467,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_NCCargo",
+      "new_macro_owner_form": "GVAR(nCCargo)",
+      "new_macro_extern_form": "EGVAR(hal_data,nCCargo)",
+      "new_literal_expansion": "hal_hal_data_nCCargo",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 162,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 491,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Naval",
+      "new_macro_owner_form": "GVAR(naval)",
+      "new_macro_extern_form": "EGVAR(hal_data,naval)",
+      "new_literal_expansion": "hal_hal_data_naval",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 29,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 150,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 483,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Other",
+      "new_macro_owner_form": "GVAR(other)",
+      "new_macro_extern_form": "EGVAR(hal_data,other)",
+      "new_literal_expansion": "hal_hal_data_other",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 37,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 166,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_RAir",
+      "new_macro_owner_form": "GVAR(rAir)",
+      "new_macro_extern_form": "EGVAR(hal_data,rAir)",
+      "new_literal_expansion": "hal_hal_data_rAir",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 27,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 146,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 479,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Recon",
+      "new_macro_owner_form": "GVAR(recon)",
+      "new_macro_extern_form": "EGVAR(hal_data,recon)",
+      "new_literal_expansion": "hal_hal_data_recon",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 13,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 118,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 82,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Rep",
+      "new_macro_owner_form": "GVAR(rep)",
+      "new_macro_extern_form": "EGVAR(hal_data,rep)",
+      "new_literal_expansion": "hal_hal_data_rep",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 41,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 591,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 593,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action13ct.sqf",
+          "line": 27,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_RocketArty",
+      "new_macro_owner_form": "GVAR(rocketArty)",
+      "new_macro_extern_form": "EGVAR(hal_data,rocketArty)",
+      "new_literal_expansion": "hal_hal_data_rocketArty",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_artyMission.sqf",
+          "line": 53,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Snipers",
+      "new_macro_owner_form": "GVAR(snipers)",
+      "new_macro_extern_form": "EGVAR(hal_data,snipers)",
+      "new_literal_expansion": "hal_hal_data_snipers",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 15,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 122,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 76,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_SpecFor",
+      "new_macro_owner_form": "GVAR(specFor)",
+      "new_macro_extern_form": "EGVAR(hal_data,specFor)",
+      "new_literal_expansion": "hal_hal_data_specFor",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 12,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 116,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Static",
+      "new_macro_owner_form": "GVAR(static)",
+      "new_macro_extern_form": "EGVAR(hal_data,static)",
+      "new_literal_expansion": "hal_hal_data_static",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 30,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 152,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 538,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_StaticAA",
+      "new_macro_owner_form": "GVAR(staticAA)",
+      "new_macro_extern_form": "EGVAR(hal_data,staticAA)",
+      "new_literal_expansion": "hal_hal_data_staticAA",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 31,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 154,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 554,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_StaticAT",
+      "new_macro_owner_form": "GVAR(staticAT)",
+      "new_macro_extern_form": "EGVAR(hal_data,staticAT)",
+      "new_literal_expansion": "hal_hal_data_staticAT",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 32,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 156,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 555,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RHQ_Support",
+      "new_macro_owner_form": "GVAR(support)",
+      "new_macro_extern_form": "EGVAR(hal_data,support)",
+      "new_literal_expansion": "hal_hal_data_support",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 33,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 158,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 570,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 572,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 583,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 585,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 596,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 598,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 609,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 611,
+          "scope": "global_read"
+        }
+      ]
+    }
+  ]
+}

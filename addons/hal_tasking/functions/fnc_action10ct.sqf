@@ -24,7 +24,7 @@
 
 	sleep 5;
 
-	private _Pool = RHQ_Fuel + EGVAR(hal_data,wS_fuel) - RHQs_Fuel;
+	private _Pool = EGVAR(hal_data,fuel) + EGVAR(hal_data,wS_fuel) - RHQs_Fuel;
 
 	private _FuelBoy = objNull;
 

@@ -37,8 +37,8 @@ private _reqArtyMarks = [];
 	private _pos = position _lPiece;
 	if ((vehicle (leader _x)) == (leader _x)) exitWith {};
 	private _MrkTxt = (getText (configFile >> "CfgVehicles" >> typeOf (vehicle (leader _x)) >> "displayName")) + " (" + (groupId _x) + ")";
-	private _minRange = missionNamespace getVariable ["RHQ_ClassRangeMin" + str (_veh),0];
-	private _maxRange = missionNamespace getVariable ["RHQ_ClassRangeMax" + str (_veh),0];
+	private _minRange = missionNamespace getVariable [QEGVAR(hal_data,classRangeMin) + str (_veh),0];
+	private _maxRange = missionNamespace getVariable [QEGVAR(hal_data,classRangeMax) + str (_veh),0];
 
 	private _ctrPosMrk = createMarkerLocal ["ctrMark" + (str _x), position _lPiece];
 	_ctrPosMrk setMarkerTypeLocal "mil_triangle";

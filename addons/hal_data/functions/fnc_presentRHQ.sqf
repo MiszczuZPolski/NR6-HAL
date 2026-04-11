@@ -65,7 +65,7 @@ forEach allUnits;
     if not (_veh in _addedU) then
         {
         _addedU pushBack _veh;
-        RHQ_Inf pushBackUnique _veh;
+        GVAR(inf) pushBackUnique _veh;
 
         _vehClass2 = _vehClass >> _veh;
 
@@ -73,13 +73,13 @@ forEach allUnits;
             {
             if ((toLower (getText (_vehClass2 >> "textSingular"))) isEqualTo "sniper") then
                 {
-                RHQ_Snipers pushBackUnique _veh
+                GVAR(snipers) pushBackUnique _veh
                 }
             else
                 {
                 private _weapons = getArray (_vehClass2 >> "weapons");
 
-                RHQ_Recon pushBackUnique _veh;
+                GVAR(recon) pushBackUnique _veh;
 
                 _hasLaserD = false;
 
@@ -104,7 +104,7 @@ forEach allUnits;
 
                 if (_hasLaserD) then
                     {
-                    RHQ_FO pushBackUnique _veh
+                    GVAR(fO) pushBackUnique _veh
                     }
                 };
             };
@@ -150,12 +150,12 @@ forEach allUnits;
 
                         if (_isAT) then
                             {
-                            RHQ_ATInf pushBackUnique _veh
+                            GVAR(aTInf) pushBackUnique _veh
                             };
 
                         if (_isAA) then
                             {
-                            RHQ_AAInf pushBackUnique _veh
+                            GVAR(aAInf) pushBackUnique _veh
                             };
                         }
                     };
@@ -238,9 +238,9 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
 
         if (_isArty) then
             {
-            RHQ_Art pushBackUnique _veh;
+            GVAR(art) pushBackUnique _veh;
 
-            if not (missionNamespace getVariable ["RHQ_ClassRangeDefined" + str (_veh),false]) then {
+            if not (missionNamespace getVariable [QGVAR(classRangeDefined) + str (_veh),false]) then {
 
                 private _lPiece = _vehO;
                 private _pos = position _lPiece;
@@ -280,7 +280,7 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
                     ((_canFire) or (_timeOut))
                 };
 
-                missionNamespace setVariable ["RHQ_ClassRangeMin" + str (_veh),_minRange];
+                missionNamespace setVariable [QGVAR(classRangeMin) + str (_veh),_minRange];
 
                 _checkLoop = false;
                 _posCheck = position _lPiece;
@@ -314,8 +314,8 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
                     (not (_canFire) or (_timeOut))
                 };
 
-                missionNamespace setVariable ["RHQ_ClassRangeMax" + str (_veh),_maxRange];
-                missionNamespace setVariable ["RHQ_ClassRangeDefined" + str (_veh),true];
+                missionNamespace setVariable [QGVAR(classRangeMax) + str (_veh),_maxRange];
+                missionNamespace setVariable [QGVAR(classRangeDefined) + str (_veh),true];
 
             };
 
@@ -455,16 +455,16 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
             {
             switch (_type) do
                 {
-                case ("car") : {RHQ_Cars pushBackUnique _veh};
-                case ("tank") : {RHQ_HArmor pushBackUnique _veh};
-                case ("wheeled_apc_f") : {RHQ_LArmor pushBackUnique _veh};
+                case ("car") : {GVAR(cars) pushBackUnique _veh};
+                case ("tank") : {GVAR(hArmor) pushBackUnique _veh};
+                case ("wheeled_apc_f") : {GVAR(lArmor) pushBackUnique _veh};
                 case ("air") :
                     {
-                    RHQ_Air pushBackUnique _veh;
+                    GVAR(air) pushBackUnique _veh;
 
                     if not (_isArmed) then
                         {
-                        RHQ_NCAir pushBackUnique _veh;
+                        GVAR(nCAir) pushBackUnique _veh;
                         };
 
                     private _isUAV = (getNumber (_vehClass2 >> "Uav")) > 0;
@@ -476,23 +476,23 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
 
                     if (_isUAV) then
                         {
-                        RHQ_RAir pushBackUnique _veh
+                        GVAR(rAir) pushBackUnique _veh
                         }
                     };
 
-                case ("ship") : {RHQ_Naval pushBackUnique _veh};
+                case ("ship") : {GVAR(naval) pushBackUnique _veh};
                 };
 
             if (_isCargo) then
                 {
-                RHQ_Cargo pushBackUnique _veh;
+                GVAR(cargo) pushBackUnique _veh;
                 if not (_isArmed) then
                     {
-                    RHQ_NCCargo pushBackUnique _veh;
+                    GVAR(nCCargo) pushBackUnique _veh;
                     }
                 };
 
-            RHQ_HArmor = RHQ_HArmor - RHQ_Art;
+            GVAR(hArmor) = GVAR(hArmor) - GVAR(art);
 
             if (_isArmed) then
                 {
@@ -510,18 +510,18 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
                     _isAA = (getNumber (_ammoC >> "airLock")) > 1;
                     _isAT = ((((getNumber (_ammoC >> "irLock")) + (getNumber (_ammoC >> "laserLock"))) > 0) and {((getNumber (_ammoC >> "airLock")) < 2)});
 
-                    if ((_isAA) and {not (_type isEqualTo "air")}) then {RHQ_AAInf pushBackUnique _veh};
+                    if ((_isAA) and {not (_type isEqualTo "air")}) then {GVAR(aAInf) pushBackUnique _veh};
                     if (_isAT) then
                         {
                         if (_type isEqualTo "wheeled_apc_f") then
                             {
-                            RHQ_LArmorAT pushBackUnique _veh
+                            GVAR(lArmorAT) pushBackUnique _veh
                             }
                         else
                             {
                             if (_type isEqualTo "car") then
                                 {
-                                RHQ_ATInf pushBackUnique _veh
+                                GVAR(aTInf) pushBackUnique _veh
                                 }
                             }
                         };
@@ -535,7 +535,7 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
             {
             if (_isArmed) then
                 {
-                RHQ_Static pushBackUnique _veh;
+                GVAR(static) pushBackUnique _veh;
 
                 _mags = magazines _vehO;
 
@@ -551,8 +551,8 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
                     _isAA = (getNumber (_ammoC >> "airLock")) > 1;
                     _isAT = ((((getNumber (_ammoC >> "irLock")) + (getNumber (_ammoC >> "laserLock"))) > 0) and {((getNumber (_ammoC >> "airLock")) < 2)});
 
-                    if (_isAA) then {RHQ_StaticAA pushBackUnique _veh};
-                    if (_isAT) then {RHQ_StaticAT pushBackUnique _veh};
+                    if (_isAA) then {GVAR(staticAA) pushBackUnique _veh};
+                    if (_isAT) then {GVAR(staticAT) pushBackUnique _veh};
 
                     if ((_isAA) or {(_isAT)}) exitWith {}
                     }
@@ -562,53 +562,53 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
 
         if (_isAmmoS) then
             {
-            if not (_veh in RHQ_Ammo) then
+            if not (_veh in GVAR(ammo)) then
                 {
-                RHQ_Ammo pushBackUnique _veh
+                GVAR(ammo) pushBackUnique _veh
                 };
 
-            if not (_veh in RHQ_Support) then
+            if not (_veh in GVAR(support)) then
                 {
-                RHQ_Support pushBackUnique _veh
+                GVAR(support) pushBackUnique _veh
                 }
             };
 
         if (_isFuelS) then
             {
-            if not (_veh in RHQ_Fuel) then
+            if not (_veh in GVAR(fuel)) then
                 {
-                RHQ_Fuel pushBackUnique _veh
+                GVAR(fuel) pushBackUnique _veh
                 };
 
-            if not (_veh in RHQ_Support) then
+            if not (_veh in GVAR(support)) then
                 {
-                RHQ_Support pushBackUnique _veh
+                GVAR(support) pushBackUnique _veh
                 }
             };
 
         if (_isRepS) then
             {
-            if not (_veh in RHQ_Rep) then
+            if not (_veh in GVAR(rep)) then
                 {
-                RHQ_Rep pushBackUnique _veh
+                GVAR(rep) pushBackUnique _veh
                 };
 
-            if not (_veh in RHQ_Support) then
+            if not (_veh in GVAR(support)) then
                 {
-                RHQ_Support pushBackUnique _veh
+                GVAR(support) pushBackUnique _veh
                 }
             };
 
         if (_isMedS) then
             {
-            if not (_veh in RHQ_Med) then
+            if not (_veh in GVAR(med)) then
                 {
-                RHQ_Med pushBackUnique _veh
+                GVAR(med) pushBackUnique _veh
                 };
 
-            if not (_veh in RHQ_Support) then
+            if not (_veh in GVAR(support)) then
                 {
-                RHQ_Support pushBackUnique _veh
+                GVAR(support) pushBackUnique _veh
                 }
             };
 
@@ -620,9 +620,9 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
                 {
                 _crew = toLower (getText _crew);
 
-                if not (_crew in (GVAR(wS_Crew_class) + RHQ_Crew)) then
+                if not (_crew in (GVAR(wS_Crew_class) + GVAR(crew))) then
                     {
-                    RHQ_Crew pushBackUnique _crew;
+                    GVAR(crew) pushBackUnique _crew;
                     }
                 }
             }
@@ -644,7 +644,7 @@ forEach RydHQ_OtherArty;
 
 publicVariable "RydHQ_OtherArty";
 
-RHQ_Inf = RHQ_Inf - ["b_uav_ai","i_uav_ai","o_uav_ai"];
-RHQ_Crew = RHQ_Crew - ["b_uav_ai","i_uav_ai","o_uav_ai"];
+GVAR(inf) = GVAR(inf) - ["b_uav_ai","i_uav_ai","o_uav_ai"];
+GVAR(crew) = GVAR(crew) - ["b_uav_ai","i_uav_ai","o_uav_ai"];
 
 true

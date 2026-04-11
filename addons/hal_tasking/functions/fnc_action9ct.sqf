@@ -24,7 +24,7 @@
 
 	sleep 5;
 
-	private _Pool = RHQ_Ammo + EGVAR(hal_data,wS_ammo) - RHQs_Ammo;
+	private _Pool = EGVAR(hal_data,ammo) + EGVAR(hal_data,wS_ammo) - RHQs_Ammo;
 
 	private _AmmoBoy = objNull;
 
