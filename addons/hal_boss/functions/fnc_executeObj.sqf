@@ -21,34 +21,10 @@
  * @param {Object} _o4 Objective marker 4
  * @return {Nothing}
  */
-_SCRname = "ExecuteObj";
 
-private ["_HQ","_areas","_o1","_o2","_o3","_o4","_allied","_HQpos","_sortedA","_i","_nObj","_actO","_nObj","_KnEn","_KnEnAct","_VLpos","_enX","_enY","_ct","_VHQpos","_front","_afront",
-        "_frPos","_frDir","_frDim","_chosenPos","_maxTempt","_actTempt","_sectors","_ownKnEn","_ownForce","_ctOwn","_alliedForce","_alliedGarrisons","_alliedExhausted","_inFlank","_Garrisons","_exhausted",
-        "_prop","_enPos","_dst","_val","_profile","_j","_pCnt","_m","_checkPos","_actPos","_indx","_check","_reserve","_garrPool","_fG","_garrison","_chosen","_dstMin","_actG","_actDst","_side",
-        "_AllV","_Civs","_AllV2","_Civs2","_AllV0","_AllV20","_NearAllies","_NearEnemies","_actOPos","_mChange","_marksT","_firstP","_actP","_angleM","_centerPoint","_mr1","_mr2","_lM","_wp",
-        "_varName","_HandledArray","_cSum","_reck","_cons","_limit","_lColor","_alive","_AAO","_AAOPts","_BBAOObj","_Unable","_UnableArr","_noGarrAround","_SideAllies","_SideEnemies"];
+params ["_sortedA", "_HQ", "_side", "_BBAOObj", "_AAO", "_allied", "_front", "_frPos", "_frDir", "_frDim", "_reserve", "_HandledArray", "_varName", "_o1", "_o2", "_o3", "_o4"];
 
-_sortedA = _this select 0;
-_HQ = _this select 1;
-_side = _this select 2;
-_BBAOObj = _this select 3;
-_AAO = _this select 4;
-_allied = _this select 5;
-_front = _this select 6;
-_frPos = _this select 7;
-_frDir = _this select 8;
-_frDim = _this select 9;
-_reserve = _this select 10;
-_HandledArray = _this select 11;
-_varName = _this select 12;
-_o1 = _this select 13;
-_o2 = _this select 14;
-_o3 = _this select 15;
-_o4 = _this select 16;
-
-
-_actO = _sortedA select (_BBAOObj - 1);
+private _actO = _sortedA select (_BBAOObj - 1);
 
 //[_actO,_HQ,_side,_BBAOObj,_AAO,_allied,_front,_frPos,_frDir,_frDim,_reserve,_HandledArray,_varName]
 
@@ -58,16 +34,18 @@ if (_BBAOObj == 3) then {_HQ setVariable ["BBObj3Done",false]};
 if (_BBAOObj == 4) then {_HQ setVariable ["BBObj4Done",false]};
 
 
-_cSum = 0;
+private _cSum = 0;
 
 {
     _cSum = _cSum + _x
 } forEach (_actO select 0);
 
-_actOPos = [(_actO select 0) select 0,(_actO select 0) select 1,0];
-_lColor = "ColorBlue";
+private _actOPos = [(_actO select 0) select 0,(_actO select 0) select 1,0];
+private _lColor = "ColorBlue";
 if (_Side == "B") then {_lColor = "ColorRed"};
 
+private "_m";
+private "_i";
 if ((RydBB_Debug) or ((RydBBa_SimpleDebug) and (_Side == "A")) or ((RydBBb_SimpleDebug) and (_Side == "B"))) then
     {
     if (_i == 0) then {_m = [(_actO select 0),_HQ,"markBBCurrent",_lColor,"ICON","mil_triangle","Current target for " + (str (leader _HQ)),"",[0.5,0.5]] call EFUNC(common,mark)} else {_m setMarkerPos (_actO select 0)};
@@ -121,7 +99,46 @@ if (_BBAOObj == 4) then
 
 //if (_AAOPts) then {_HQ setVariable ["RydHQ_Objectives",_AAOPts]};
 
-_alive = true;
+private _alive = true;
+
+private _KnEn = [];
+private "_inFlank";
+private _ownKnEn = [];
+private _ownForce = [];
+private _Garrisons = [];
+private _exhausted = [];
+private _alliedForce = 0;
+private _ctOwn = 0;
+private _prop = 100;
+private _KnEnAct = [];
+private _afront = locationNull;
+private _alliedGarrisons = [];
+private _alliedExhausted = [];
+private _ct = 0;
+private _enX = 0;
+private _enY = 0;
+private _VLpos = [0,0,0];
+private _chosenPos = [];
+private _maxTempt = 0;
+private _VHQpos = [0,0,0];
+private _enPos = [0,0,0];
+private _dst = 0;
+private _val = 0;
+private _actTempt = 0;
+private _nObj = 1;
+private _reck = 0.5;
+private _cons = 0.5;
+private _limit = 10;
+private _SideAllies = [];
+private _SideEnemies = [];
+private _AllV = [];
+private _Civs = [];
+private _AllV2 = [];
+private _Civs2 = [];
+private _AllV0 = [];
+private _AllV20 = [];
+private _NearAllies = 0;
+private _NearEnemies = 0;
 
 waitUntil
     {
@@ -383,9 +400,15 @@ waitUntil
 
 if !(_alive) exitWith {};
 
-_garrPool = 0;
-_UnableArr = [];
-_noGarrAround = true;
+private _garrPool = 0;
+private _UnableArr = [];
+private _noGarrAround = true;
+private _fG = [];
+private _garrison = [];
+private _chosen = objNull;
+private _dstMin = 0;
+private _actG = grpNull;
+private _actDst = 0;
 
 {
     {
@@ -437,14 +460,16 @@ if (_garrPool == 0) then
                 }
         } forEach _fG;
 
-        _code =
+        private _code =
             {
-            _unitG = _this select 0;
-            _HQ = _this select 1;
+            params ["_unitG", "_HQ"];
 
-            _busy = _unitG getVariable [("Busy" + (str _unitG)),false];
+            private _busy = _unitG getVariable [("Busy" + (str _unitG)),false];
 
-            _alive = true;
+            private _alive = true;
+            private _ct = 0;
+            private "_MIApass";
+            private "_MIAPass";
 
             if (_busy) then
                 {
@@ -474,7 +499,7 @@ if (_garrPool == 0) then
                 };
 
             _unitG setVariable ["Busy" + (str _unitG),true];
-            _garrison = _HQ getVariable ["RydHQ_Garrison",[]];
+            private _garrison = _HQ getVariable ["RydHQ_Garrison",[]];
             _garrison pushBack _unitG;
             _HQ setVariable ["RydHQ_Garrison",_garrison];
             };
@@ -483,7 +508,7 @@ if (_garrPool == 0) then
         }
     };
 
-_BBProg = _HQ getVariable ["BBProgress",0];
+private _BBProg = _HQ getVariable ["BBProgress",0];
 _HQ setVariable ["BBProgress",_BBProg + 1];
 
 _HandledArray = _HandledArray - [_cSum];
@@ -494,7 +519,7 @@ if !(RydBB_Active) exitWith {};
 if (RydBB_LRelocating) then
     {
     [_HQ] call CBA_fnc_clearWaypoints;
-    _wp = [_HQ,_actOPos,"HOLD","AWARE","GREEN","LIMITED",["true",""],true,50,[0,0,0],"FILE"] call EFUNC(common,WPadd)
+    private _wp = [_HQ,_actOPos,"HOLD","AWARE","GREEN","LIMITED",["true",""],true,50,[0,0,0],"FILE"] call EFUNC(common,WPadd)
     };
 if (_BBAOObj == 1) then {_HQ setVariable ["BBObj1Done",true]};
 if (_BBAOObj == 2) then {_HQ setVariable ["BBObj2Done",true]};
