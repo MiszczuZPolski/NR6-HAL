@@ -6,11 +6,9 @@
  * @return {nil}
  */
 
-	private ["_Unit","_Action"];
+	params ["_Unit"];
 
-	_Unit = _this select 0;
-
-	_Action = _Unit addAction ["[HAL] Show Communication Menu", 
+	private _Action = _Unit addAction ["[HAL] Show Communication Menu",
 		"
 		showCommandingMenu '#USER:NR6_Player_Menu';
 		"

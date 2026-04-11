@@ -6,11 +6,9 @@
  * @return {nil}
  */
 
-	private ["_Unit","_ACEAction"];
+	params ["_Unit"];
 
-	_Unit = _this select 0;
-
-	_ACEAction = ["HALDisableTasking","Disable Tasking","",{
+	private _ACEAction = ["HALDisableTasking","Disable Tasking","",{
 
 			[_target] remoteExecCall ['hal_tasking_fnc_action2ct',2]
 

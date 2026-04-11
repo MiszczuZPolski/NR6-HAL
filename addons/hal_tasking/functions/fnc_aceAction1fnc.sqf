@@ -6,12 +6,10 @@
  * @return {nil}
  */
 
-	private ["_Unit","_ACEAction","_ACEActionP"];
+	params ["_Unit"];
 
-	_Unit = _this select 0;
-
-	_ACEActionP = ["ACEActionP","HAL Tasking","",{},{true}] call ace_interact_menu_fnc_createAction;
-	_ACEAction = ["HALDenyAssignedTask","Deny Assigned Task","",{
+	private _ACEActionP = ["ACEActionP","HAL Tasking","",{},{true}] call ace_interact_menu_fnc_createAction;
+	private _ACEAction = ["HALDenyAssignedTask","Deny Assigned Task","",{
 
 		[_target] remoteExec ['hal_tasking_fnc_action1ct',2]
 				

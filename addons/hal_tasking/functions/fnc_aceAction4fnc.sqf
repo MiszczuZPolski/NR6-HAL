@@ -6,15 +6,13 @@
  * @return {nil}
  */
 
-	private ["_Unit","_ACEAction","_ACEActionR"];
+	params ["_Unit"];
 
-	_Unit = _this select 0;
-
-	_ACEActionR = ["ACEActionR","HAL Supports","",{},{true}] call ace_interact_menu_fnc_createAction;
+	private _ACEActionR = ["ACEActionR","HAL Supports","",{},{true}] call ace_interact_menu_fnc_createAction;
 
 	[_Unit, 1, ["ACE_SelfActions"], _ACEActionR] call ace_interact_menu_fnc_addActionToObject;
 
-	_ACEAction = ["HALReqAir","Request Air Support","",{
+	private _ACEAction = ["HALReqAir","Request Air Support","",{
 
 		[_target] remoteExec ['hal_tasking_fnc_action4ct',2]
 
