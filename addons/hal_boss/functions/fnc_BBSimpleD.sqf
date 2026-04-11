@@ -6,11 +6,7 @@
  * @param {String} _BBSide Side identifier ("A" or "B")
  * @return {Nothing} Runs as persistent loop while any HQ alive
  */
-private ["_HQs","_BBSide","_clusters","_enPos","_ens","_centers","_center","_amounts","_amount","_midX","_midY","_frs","_frCenters","_frCenter","_lPos","_lng","_angle","_arrow","_colorArr","_mainCenter",
-"_amounts","_amount","_battles","_battle","_angleBatt","_tooClose","_mPos","_mSize","_dstAct","_colorBatt","_sizeBatt","_oldSize","_HQPosMark","_HQ"];
-
-_HQs = _this select 0;
-_BBSide = _this select 1;
+params ["_HQs", "_BBSide"];
 
 sleep 60;
 
@@ -19,12 +15,12 @@ while {(({!(isNull _x)} count _HQs) > 0)} do
     if (({!(isNull _x)} count _HQs) == 0) exitWith {};
     if !(RydBB_Active) exitWith {};
 
-    _enPos = [];
-    _frCenters = [];
+    private _enPos = [];
+    private _frCenters = [];
 
     {
-        _HQ = _x;
-        _alive = true;
+        private _HQ = _x;
+        private _alive = true;
 
         switch (true) do
             {
@@ -35,17 +31,18 @@ while {(({!(isNull _x)} count _HQs) > 0)} do
 
         if (_alive) then
             {
-            _ens = _x getVariable ["RydHQ_KnEnPos",[]];
-            _frs = _x getVariable ["RydHQ_Friends",[]];
+            private _ens = _x getVariable ["RydHQ_KnEnPos",[]];
+            private _frs = _x getVariable ["RydHQ_Friends",[]];
 
             _enPos = _enPos + _ens;
 
+            private "_lPos";
             _lPos = _x getVariable "LastCenter";
-            _frCenter = getPosATL (vehicle (leader _x));
+            private _frCenter = getPosATL (vehicle (leader _x));
             if !(isNil "_lPos") then {_frCenter = _lPos};
 
-            _midX = 0;
-            _midY = 0;
+            private _midX = 0;
+            private _midY = 0;
 
             {
                 _midX = _midX + ((getPosATL (vehicle (leader _x))) select 0);
@@ -71,18 +68,18 @@ while {(({!(isNull _x)} count _HQs) > 0)} do
 
             _frCenters pushBack _frCenter;
 
-            _colorArr = "ColorBlue";
+            private _colorArr = "ColorBlue";
             if (_BBSide == "B") then {_colorArr = "ColorRed"};
 
             if !(isNil "_lPos") then
                 {
-                _lng = _lPos distance _frCenter;
+                private _lng = _lPos distance _frCenter;
 
                 if (_lng > 100) then
                     {
-                    _angle = [_lPos,_frCenter,5] call EFUNC(common,angleTowards);
+                    private _angle = [_lPos,_frCenter,5] call EFUNC(common,angleTowards);
 
-                    _arrow = _x getVariable ["ArrowMark",""];
+                    private _arrow = _x getVariable ["ArrowMark",""];
 
                     if (_arrow == "") then
                         {
@@ -98,7 +95,7 @@ while {(({!(isNull _x)} count _HQs) > 0)} do
                     }
                 };
 
-            _HQPosMark = _x getVariable ["HQPosMark",""];
+            private _HQPosMark = _x getVariable ["HQPosMark",""];
             if (_HQPosMark == "") then
                 {
                 _HQPosMark = [(getPosATL (vehicle (leader _x))),_x,"HQMark",_colorArr,"ICON","mil_box","Position of " + (str (leader _x)),"",[0.5,0.5]] call EFUNC(common,mark);
@@ -115,25 +112,25 @@ while {(({!(isNull _x)} count _HQs) > 0)} do
             }
     } forEach _HQs;
 
-    _midX = 0;
-    _midY = 0;
+    private _midX = 0;
+    private _midY = 0;
 
     {
         _midX = _midX + (_x select 0);
         _midY = _midY + (_x select 1);
     } forEach _frCenters;
 
-    _mainCenter = [_midX/(count _HQs),_midY/(count _HQs),0];
+    private _mainCenter = [_midX/(count _HQs),_midY/(count _HQs),0];
 
-    _clusters = [];
+    private _clusters = [];
 
     if ((count _enPos) > 0) then {_clusters = [_enPos] call FUNC(cluster)};
 
-    _centers = [];
-    _amounts = [];
+    private _centers = [];
+    private _amounts = [];
 
     {
-        _amount = count _x;
+        private _amount = count _x;
 
         if (_amount > 2) then
             {
@@ -150,30 +147,30 @@ while {(({!(isNull _x)} count _HQs) > 0)} do
             }
     } forEach _clusters;
 
-    _battles = missionNamespace getVariable ["Battlemarks",[]];
-    _battle = "";
+    private _battles = missionNamespace getVariable ["Battlemarks",[]];
+    private _battle = "";
 
     {
-        _center = _x;
+        private _center = _x;
         if ([_center] call FUNC(isOnMap)) then
             {
-            _tooClose = false;
+            private _tooClose = false;
 
             {
-                _mPos = getMarkerPos _x;
-                _mSize = getMarkerSize _x;
+                private _mPos = getMarkerPos _x;
+                private _mSize = getMarkerSize _x;
                 _mSize = ((_mSize select 0) + (_mSize select 1)) * 100;
-                _dstAct = _center distance _mPos;
+                private _dstAct = _center distance _mPos;
 
                 if (_mSize > _dstAct) exitWith {_tooClose = true;_battle = _x}
             } forEach _battles;
 
-            _colorBatt = "ColorBlue";
+            private _colorBatt = "ColorBlue";
             if (_BBSide == "B") then {_colorBatt = "ColorRed"};
-            _sizeBatt = (_amounts select _foreachIndex)/6;
+            private _sizeBatt = (_amounts select _foreachIndex)/6;
             if (_sizeBatt > 5) then {_sizeBatt = 5};
 
-            _angleBatt = [_mainCenter,_x,0] call EFUNC(common,angleTowards);
+            private _angleBatt = [_mainCenter,_x,0] call EFUNC(common,angleTowards);
 
             if !(_tooClose) then
                 {
@@ -183,7 +180,7 @@ while {(({!(isNull _x)} count _HQs) > 0)} do
                 }
             else
                 {
-                _oldSize = getMarkerSize _battle;
+                private _oldSize = getMarkerSize _battle;
                 _oldSize = _oldSize select 0;
 
                 if (_sizeBatt > _oldSize) then
