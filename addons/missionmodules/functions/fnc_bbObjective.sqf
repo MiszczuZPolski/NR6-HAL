@@ -1,3 +1,4 @@
+#include "..\script_component.hpp"
 private ["_logic","_Commanders"];
 
 _logic = (_this select 0);

@@ -1,3 +1,4 @@
+#include "..\script_component.hpp"
 params ["_logic"];
 
 private _commanders = [];
