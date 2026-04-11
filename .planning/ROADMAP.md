@@ -80,7 +80,7 @@
 **Plans**: 6 plans (1 tool scaffold + 5 per-prefix atomic batches per D-03)
   - [x] 04-00-PLAN.md — Build Python rename tool (phase4-rename.py) + scaffold rename-map JSON schema (pre-plan tool task)
   - [x] 04-01-PLAN.md — Rename RYD_* -> GVAR/EGVAR (shakedown batch, smallest) (VAR-01..04)
-  - [ ] 04-02-PLAN.md — Rename RHQ_* -> GVAR(hal_data,*) family (weapon class arrays) (VAR-01..04)
+  - [x] 04-02-PLAN.md — Rename RHQ_* -> GVAR(hal_data,*) family (weapon class arrays) (VAR-01..04)
   - [ ] 04-03-PLAN.md — Rename RydBB_* -> GVAR(missionmodules,*) + bbZone dispatch rewrite (VAR-01..04)
   - [ ] 04-04-PLAN.md — Rename RydHQ_* + multi-HQ siblings + reconstruct 11 runtime-format dispatch sites (largest, non-autonomous) (VAR-01..04)
   - [ ] 04-05-PLAN.md — Rename RydxHQ_* + resolve ReconCargo owner collision + AIChatter writer survey + consolidate rename-map.json (VAR-01..04)
