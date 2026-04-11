@@ -6,15 +6,13 @@
  * @return {nil}
  */
 
-	private ["_Unit","_Action"];
+params ["_Unit"];
 
-	_Unit = _this select 0;
+private _Action = _Unit addAction ["[HAL Tasking] Disable Tasking",
+	"
+	[_this select 3] remoteExecCall ['hal_tasking_fnc_action2ct',2]
+	"
+	,
+	_Unit,-2.1,false,false,"","_target isEqualTo (vehicle player)",0.01];
 
-	_Action = _Unit addAction ["[HAL Tasking] Disable Tasking", 
-		"
-		[_this select 3] remoteExecCall ['hal_tasking_fnc_action2ct',2]
-		"
-		, 
-		_Unit,-2.1,false,false,"","_target isEqualTo (vehicle player)",0.01];
-
-	_Unit setVariable ["HAL_TaskDisabledID",_Action];
+_Unit setVariable ["HAL_TaskDisabledID",_Action];

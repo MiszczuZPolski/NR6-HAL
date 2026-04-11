@@ -6,9 +6,7 @@
  * @return {nil}
  */
 
-	private ["_Unit","_Action"];
+params ["_Unit"];
 
-	_Unit = _this select 0;
-
-	_Action = _Unit addAction ["[HAL Tasking] Deny Assigned Task","[_this select 3] remoteExec ['hal_tasking_fnc_action1ct',2]",_Unit,-2,false,false,"","_target isEqualTo (vehicle player)",0.01];
-	_Unit setVariable ["HAL_TaskAddedID",_Action];
+private _Action = _Unit addAction ["[HAL Tasking] Deny Assigned Task","[_this select 3] remoteExec ['hal_tasking_fnc_action1ct',2]",_Unit,-2,false,false,"","_target isEqualTo (vehicle player)",0.01];
+_Unit setVariable ["HAL_TaskAddedID",_Action];

@@ -6,6 +6,9 @@
  * @return {nil}
  */
 
-	[(_this select 0),'Command, we are unavailable for further tasking - Over'] remoteExecCall ["RYD_MP_Sidechat"];
-	group (_this select 0) setVariable ['Unable',true];
-	group (_this select 0) setVariable ['BUnable',true];
+params ["_unit"];
+private _grp = group _unit;
+
+[_unit,'Command, we are unavailable for further tasking - Over'] remoteExecCall ["RYD_MP_Sidechat"];
+_grp setVariable ['Unable',true];
+_grp setVariable ['BUnable',true];

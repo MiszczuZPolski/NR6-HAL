@@ -6,16 +6,19 @@
  * @return {nil}
  */
 
-	(group (_this select 0)) setVariable [('Resting' + (str (group (_this select 0)))),false]; 
-	(group (_this select 0)) setVariable [('Garrisoned' + (str (group (_this select 0)))),false];
-	(group (_this select 0)) setVariable [('NOGarrisoned' + (str (group (_this select 0)))),true];
+params ["_unit"];
+private _grp = group _unit;
+
+_grp setVariable [('Resting' + (str _grp)),false];
+_grp setVariable [('Garrisoned' + (str _grp)),false];
+_grp setVariable [('NOGarrisoned' + (str _grp)),true];
 
 
-	[(_this select 0),RydxHQ_AIC_OrdDen,'OrdDen'] call EFUNC(common,AIChatter);
-	deleteWaypoint [(group (_this select 0)),(currentWaypoint (group (_this select 0)))];
+[_unit,RydxHQ_AIC_OrdDen,'OrdDen'] call EFUNC(common,AIChatter);
+deleteWaypoint [_grp,(currentWaypoint _grp)];
 
-	{
-	[_x,'CANCELED',true] call BIS_fnc_taskSetState;
-	} forEach ((group (_this select 0)) getVariable ['HACAddedTasks',[]]);
+{
+[_x,'CANCELED',true] call BIS_fnc_taskSetState;
+} forEach (_grp getVariable ['HACAddedTasks',[]]);
 
-	if ((group (_this select 0)) getVariable ["Busy" + str (group (_this select 0)),true]) then {(group (_this select 0)) setVariable ["Break",true]};
+if (_grp getVariable ["Busy" + str _grp,true]) then {_grp setVariable ["Break",true]};
