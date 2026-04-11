@@ -139,7 +139,7 @@ private _clU = [Map_Unknown_R,Map_Unknown_G,Map_Unknown_B,Map_Unknown_A];
 
 if (RydHQ_TimeM) then
 	{
-	[([player] + (switchableUnits - [player]))] call RYD_TimeMachine
+	[([player] + (switchableUnits - [player]))] call EFUNC(common,TimeMachine)
 	};
 
 if (RydBB_Active) then
@@ -164,7 +164,7 @@ if (RydBB_Active) then
 				_x setVariable ["BBProgress",0]
 				}
 			forEach _BBHQGrps;
-			[[_x,_BBHQGrps],Boss] call RYD_Spawn
+			[[_x,_BBHQGrps],Boss] call EFUNC(common,spawn)
 			};
 
 		sleep 1;
@@ -172,7 +172,7 @@ if (RydBB_Active) then
 	forEach [[RydBBa_HQs,"A"],[RydBBb_HQs,"B"]];
 	};
 
-if (((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (RydHQE_Debug) or (RydHQF_Debug) or (RydHQG_Debug) or (RydHQH_Debug)) and (RydHQ_DbgMon)) then {[[],RYD_DbgMon] call RYD_Spawn};
+if (((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (RydHQE_Debug) or (RydHQF_Debug) or (RydHQG_Debug) or (RydHQH_Debug)) and (RydHQ_DbgMon)) then {[[],EFUNC(common,DbgMon)] call EFUNC(common,spawn)};
 
 {
 	params ["_leaderName", "_codeSign"];
@@ -180,7 +180,7 @@ if (((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (Ryd
 	if !(isNull _leader) then {
 		publicVariable _leaderName;
 		private _gp = group _leader;
-		[[_gp], missionNamespace getVariable (_codeSign + "_HQSitRep")] call RYD_Spawn;
+		[[_gp], missionNamespace getVariable (_codeSign + "_HQSitRep")] call EFUNC(common,spawn);
 		[[_gp], EFUNC(hal_boss,FBFTLOOP)] call EFUNC(common,spawn);
 		[[_gp], EFUNC(hal_boss,SecTasks)] call EFUNC(common,spawn);
 		sleep 5;
@@ -198,7 +198,7 @@ if (((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (Ryd
 
 if ((count RydHQ_GroupMarks) > 0) then
 	{
-	[RydHQ_GroupMarks,RYD_GroupMarkerLoop] call RYD_Spawn
+	[RydHQ_GroupMarks,EFUNC(common,groupMarkerLoop)] call EFUNC(common,spawn)
 	};
 
 if (RydxHQ_Actions) then {

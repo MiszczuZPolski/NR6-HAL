@@ -269,7 +269,7 @@ _mpl = 1 + _reck;
                     forEach _force;
                     };
 
-                _SortedForce = [_force,_tPos,10000*_range] call RYD_DistOrd;
+                _SortedForce = [_force,_tPos,10000*_range] call EFUNC(common,distOrd);
 
                 _SortedForce = _FTFinPool + (_SortedForce - _FTFinPool);
 
@@ -285,7 +285,7 @@ _mpl = 1 + _reck;
 
                     _positive = true;
 
-                    _ammo = [_chosen,_NCVeh] call RYD_AmmoCount;
+                    _ammo = [_chosen,_NCVeh] call EFUNC(common,ammoCount);
 
                     switch (true) do
                         {
@@ -348,7 +348,7 @@ _mpl = 1 + _reck;
                                                 if (_pattern in ["AIR","AIRCAP"]) then
                                                     {
                                                     _Airmpl = 0;
-                                                    if ([] call RYD_IsNight) then {_Airmpl = 3};
+                                                    if ([] call EFUNC(common,isNight)) then {_Airmpl = 3};
                                                     if ((((random 100) * (1 + _reck)) < ((_Airmpl + overcast) * 30)) and not ((random 100) > 95)) then
                                                         {
                                                         _positive = false
@@ -368,10 +368,10 @@ _mpl = 1 + _reck;
 
                                                         if ((_chosen in _allAir) and ((count _AAthreat) > 0)) then
                                                             {
-                                                            _thRep = [_chVP,_AAthreat,25000] call RYD_CloseEnemyB;
+                                                            _thRep = [_chVP,_AAthreat,25000] call EFUNC(common,closeEnemyB);
                                                             _isClose = _thRep select 0;
                                                             _clstE = getPosATL (vehicle (leader (_thRep select 2)));
-                                                            _enDst = [_chVP,_tPos,_clstE] call RYD_PointToSecDst;
+                                                            _enDst = [_chVP,_tPos,_clstE] call EFUNC(common,pointToSecondaryDistance);
 
                                                             if ((_isClose) and (_enDst > 0) and (_enDst < 1500)) then
                                                                 {
@@ -386,10 +386,10 @@ _mpl = 1 + _reck;
                                                             {
                                                             if ((_chosen in (_LArmorG + _HArmorG)) and ((count _ATthreat) > 0)) then
                                                                 {
-                                                                _thRep = [_chVP,_ATthreat,25000] call RYD_CloseEnemyB;
+                                                                _thRep = [_chVP,_ATthreat,25000] call EFUNC(common,closeEnemyB);
                                                                 _isClose = _thRep select 0;
                                                                 _clstE = getPosATL (vehicle (leader (_thRep select 2)));
-                                                                _enDst = [_chVP,_tPos,_clstE] call RYD_PointToSecDst;
+                                                                _enDst = [_chVP,_tPos,_clstE] call EFUNC(common,pointToSecondaryDistance);
 
                                                                 if ((_isClose) and (_enDst > 0) and (_enDst < 1500)) then
                                                                     {
@@ -425,10 +425,10 @@ _mpl = 1 + _reck;
                             {
                             if ((count _ATthreat) > 0) then
                                 {
-                                _thRep = [_chVP,_ATthreat,25000] call RYD_CloseEnemyB;
+                                _thRep = [_chVP,_ATthreat,25000] call EFUNC(common,closeEnemyB);
                                 _isClose = _thRep select 0;
                                 _clstE = getPosATL (vehicle (leader (_thRep select 2)));
-                                _enDst = [_chVP,_tPos,_clstE] call RYD_PointToSecDst;
+                                _enDst = [_chVP,_tPos,_clstE] call EFUNC(common,pointToSecondaryDistance);
 
                                 if ((_isClose) and (_enDst > 0) and (_enDst < 1500)) then
                                     {
@@ -443,10 +443,10 @@ _mpl = 1 + _reck;
                                 {
                                 if ((count _armorATthreat) > 0) then
                                     {
-                                    _thRep = [_chVP,_ATthreat,25000] call RYD_CloseEnemyB;
+                                    _thRep = [_chVP,_ATthreat,25000] call EFUNC(common,closeEnemyB);
                                     _isClose = _thRep select 0;
                                     _clstE = getPosATL (vehicle (leader (_thRep select 2)));
-                                    _enDst = [_chVP,_tPos,_clstE] call RYD_PointToSecDst;
+                                    _enDst = [_chVP,_tPos,_clstE] call EFUNC(common,pointToSecondaryDistance);
 
                                     if ((_isClose) and (_enDst > 0) and (_enDst < 1500)) then
                                         {
@@ -464,10 +464,10 @@ _mpl = 1 + _reck;
                             {
                             if ((count _AAthreat) > 0) then
                                 {
-                                _thRep = [_chVP,_ATthreat,25000] call RYD_CloseEnemyB;
+                                _thRep = [_chVP,_ATthreat,25000] call EFUNC(common,closeEnemyB);
                                 _isClose = _thRep select 0;
                                 _clstE = getPosATL (vehicle (leader (_thRep select 2)));
-                                _enDst = [_chVP,_tPos,_clstE] call RYD_PointToSecDst;
+                                _enDst = [_chVP,_tPos,_clstE] call EFUNC(common,pointToSecondaryDistance);
 
                                 if ((_isClose) and (_enDst > 0) and (_enDst < 1500)) then
                                     {
@@ -488,7 +488,7 @@ _mpl = 1 + _reck;
                         _HQ setVariable ["RydHQ_AttackAv",(_HQ getVariable ["RydHQ_AttackAv",[]]) - [_chosen]];
                         //[_chosen,_trg,_HQ] spawn ([_pattern] call RYD_GoLaunch);
 
-                        [[_chosen,_trg,_HQ],([_pattern] call RYD_GoLaunch)] call RYD_Spawn;
+                        [[_chosen,_trg,_HQ],([_pattern] call EFUNC(common,goLaunch))] call EFUNC(common,spawn);
                         _limit = _limit - 1
                         };
 

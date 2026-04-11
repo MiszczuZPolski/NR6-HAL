@@ -5,7 +5,7 @@ _HQ setVariable ["leaderHQ",(leader _HQ)];
 _csN = +RydHQ_CallSignsN;
 
 {
-	_nouns = [_x] call RYD_RandomOrdB;
+	_nouns = [_x] call EFUNC(common,randomOrdB);
 	_csN set [_foreachIndex,_nouns]
 } forEach _csN;
 
@@ -33,7 +33,7 @@ _HQ setVariable ["RydHQ_Fineness",RydHQ_Fineness];
 
 [_HQ] call FUNC(personality);
 
-[[_HQ],HAL_LHQ] call RYD_Spawn;
+[[_HQ],HAL_LHQ] call EFUNC(common,spawn);
 
 if (isNil ("RydHQ_Boxed")) then {RydHQ_Boxed = []};
 _HQ setVariable ["RydHQ_Boxed",RydHQ_Boxed];
