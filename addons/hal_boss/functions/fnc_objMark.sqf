@@ -6,20 +6,17 @@
  * @param {String} _BBSide Side identifier ("A" or "B")
  * @return {Nothing} Runs as persistent loop while RydBB_Active and RydBB_Debug
  */
-_SCRName = "ObjMark";
+params ["_strArea", "_BBSide"];
 
-_strArea = _this select 0;
-_BBSide = _this select 1;
-
-_markers = [];
+private _markers = [];
 
 {
-    _posStr = _x select 0;
-    _valStr = _x select 1;
-    _taken = _x select 2;
-    _mark = "StrArea" + (str (random 1000));
-    _color = "ColorYellow";
-    _alpha = 0.1;
+    private _posStr = _x select 0;
+    private _valStr = _x select 1;
+    private _taken = _x select 2;
+    private _mark = "StrArea" + (str (random 1000));
+    private _color = "ColorYellow";
+    private _alpha = 0.1;
     if ((_taken) and (_BBSide == "A")) then {_color = "ColorBlue";_alpha = 0.5};
     if ((_taken) and (_BBSide == "B")) then {_color = "ColorRed";_alpha = 0.5};
     _mark = [_mark,_posStr,_color,"ICON",[_valStr/2,_valStr/2],0,_alpha,"mil_dot",(str _valStr)] call FUNC(marker);
@@ -32,15 +29,15 @@ while {((RydBB_Active) and {(RydBB_Debug)})} do
     if !(RydBB_Active) exitWith {};
 
     {
-        _obj = _x;
-        _taken = _obj select 2;
-        _color = "ColorYellow";
-        _alpha = 0.1;
+        private _obj = _x;
+        private _taken = _obj select 2;
+        private _color = "ColorYellow";
+        private _alpha = 0.1;
 
         if ((_taken) and (_BBSide == "A")) then {_color = "ColorBlue";_alpha = 0.5};
         if ((_taken) and (_BBSide == "B")) then {_color = "ColorRed";_alpha = 0.5};
 
-        _mark = _markers select _foreachIndex;
+        private _mark = _markers select _foreachIndex;
 
         _mark setMarkerColorLocal _color;
         _mark setMarkerAlpha _alpha;
