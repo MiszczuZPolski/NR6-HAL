@@ -6,8 +6,6 @@
  * @return {nil}
  */
 
-	private ["_Unit"];
-
-	_Unit = _this select 0;
+	params ["_Unit"];
 
 	[_Unit,1,["ACE_SelfActions","HALMenu"]] call ace_interact_menu_fnc_removeActionFromObject;

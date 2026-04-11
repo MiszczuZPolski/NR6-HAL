@@ -6,11 +6,9 @@
  * @return {nil}
  */
 
-	private ["_Unit","_ACEAction"];
+	params ["_Unit"];
 
-	_Unit = _this select 0;
-
-	_ACEAction = ["HALMenu","[HAL] Show Communication Menu","",{
+	private _ACEAction = ["HALMenu","[HAL] Show Communication Menu","",{
 
 		showCommandingMenu '#USER:NR6_Player_Menu';
 
