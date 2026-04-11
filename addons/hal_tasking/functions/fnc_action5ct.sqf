@@ -20,7 +20,7 @@ if not (isNil "LeaderHQF") then {if (_grp in ((group LeaderHQF) getVariable ["Ry
 if not (isNil "LeaderHQG") then {if (_grp in ((group LeaderHQG) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQG)}};
 if not (isNil "LeaderHQH") then {if (_grp in ((group LeaderHQH) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQH)}};
 
-[_unit, 'Command, requesting infantry support at our position - Over'] remoteExecCall ["RYD_MP_Sidechat"];
+[_unit, 'Command, requesting infantry support at our position - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 
 sleep 3;
 
@@ -51,7 +51,7 @@ if (not (_x getVariable [("Busy" + (str _x)),false]) and not (_x == _grp) and no
 };
 } forEach (((_HQ getVariable ["RydHQ_NCrewInfG",[]]) - (_HQ getVariable ["RydHQ_SpecForG",[]])) + ((_HQ getVariable ["RydHQ_CarsG",[]]) - ((_HQ getVariable ["RydHQ_ATInfG",[]]) + (_HQ getVariable ["RydHQ_AAInfG",[]]) + (_HQ getVariable ["RydHQ_SupportG",[]]) + (_HQ getVariable ["RydHQ_NCCargoG",[]]))));
 
-if (_chosen isEqualTo grpNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No infantry squads are available at the moment - Out'] remoteExecCall ["RYD_MP_Sidechat"]};
+if (_chosen isEqualTo grpNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No infantry squads are available at the moment - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};
 
 
 _chosen setVariable ["Busy" + (str _chosen),true];
@@ -59,4 +59,4 @@ _HQ setVariable ["RydHQ_AttackAv",(_HQ getVariable ["RydHQ_AttackAv",[]]) - [_ch
 
 [[_chosen,_trg,_HQ,_request],(["INF"] call EFUNC(common,goLaunch))] call EFUNC(common,spawn);
 
-[leader _HQ, (groupId _grp) + ', ' + (groupId _chosen) + ' has been dispatched - Out'] remoteExecCall ["RYD_MP_Sidechat"];
+[leader _HQ, (groupId _grp) + ', ' + (groupId _chosen) + ' has been dispatched - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];

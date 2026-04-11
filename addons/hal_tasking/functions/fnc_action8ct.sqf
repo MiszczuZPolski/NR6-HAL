@@ -20,7 +20,7 @@
 	if not (isNil "LeaderHQG") then {if (_grp in ((group LeaderHQG) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQG)}};
 	if not (isNil "LeaderHQH") then {if (_grp in ((group LeaderHQH) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQH)}};
 
-	[_unit, 'Command, requesting ammunition drop - Over'] remoteExecCall ["RYD_MP_Sidechat"];
+	[_unit, 'Command, requesting ammunition drop - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 
 	sleep 5;
 
@@ -31,13 +31,13 @@
 		if ( not (_x getVariable [("Busy" + _unitvar),false]) and not (_x == _grp) and not (_x getVariable ["Unable",false]) and not (_x isEqualTo grpNull) and (canMove (vehicle (leader _x))) and not ((vehicle (leader _x)) == (leader _x))) exitWith {_FlyBoy = _x};
 	} forEach (_HQ getVariable ["RydHQ_AmmoDrop",[]]);
 
-	if (_FlyBoy isEqualTo objNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No supply services are currently available - Out'] remoteExecCall ["RYD_MP_Sidechat"]};
+	if (_FlyBoy isEqualTo objNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No supply services are currently available - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};
 
-	if not ((count (_HQ getVariable ["RydHQ_AmmoBoxes",[]])) > 0) exitWith {[leader _HQ, (groupId _grp) + ', negative. Supplies have been depleted - Out'] remoteExecCall ["RYD_MP_Sidechat"]};
+	if not ((count (_HQ getVariable ["RydHQ_AmmoBoxes",[]])) > 0) exitWith {[leader _HQ, (groupId _grp) + ', negative. Supplies have been depleted - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};
 
 	private _ammoBox = (_HQ getVariable ["RydHQ_AmmoBoxes",[]]) select 0;
 	_HQ setVariable ["RydHQ_AmmoBoxes",(_HQ getVariable ["RydHQ_AmmoBoxes",[]]) - [_ammoBox]];
 
 	[[assignedVehicle (leader _FlyBoy),(vehicle _unit),[],[],true,_ammoBox,_HQ],HAL_GoAmmoSupp] call EFUNC(common,spawn);
 
-	[leader _HQ, (groupId _grp) + ', affirmative. Supplies are on their way - Out'] remoteExecCall ["RYD_MP_Sidechat"];
+	[leader _HQ, (groupId _grp) + ', affirmative. Supplies are on their way - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];

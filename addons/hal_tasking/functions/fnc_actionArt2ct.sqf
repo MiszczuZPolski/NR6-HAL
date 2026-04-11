@@ -15,10 +15,10 @@
 		_selectedPiece setVariable ["RydHQ_BatteryBusy",true];
 		[_bArr select 1,_pos,_bArr select 2,_bArr select 3,_HQ getVariable ["RydHQ_Friends",[]],_HQ getVariable ["RydHQ_ArtyMarks",false],_selectedOrd,(_amnt) min (_bArr select 4),true] spawn EFUNC(common,CFF_FFE);
 		sleep 5;
-		[leader _HQ, "Affirmative. " + (groupId _selectedPiece) + " executing requested fire support - Out"] remoteExecCall ["RYD_MP_Sidechat"];
+		[leader _HQ, "Affirmative. " + (groupId _selectedPiece) + " executing requested fire support - Out"] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 		_FO setVariable ["HALArtPos",nil,true];
 	} else {
 		sleep 5;
-		[leader _HQ, "Negative. " + (groupId _selectedPiece) + " unable to execute requested fire support - Out"] remoteExecCall ["RYD_MP_Sidechat"];
+		[leader _HQ, "Negative. " + (groupId _selectedPiece) + " unable to execute requested fire support - Out"] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 		_FO setVariable ["HALArtPos",nil,true];
 	};

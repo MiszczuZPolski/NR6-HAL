@@ -20,7 +20,7 @@
 	if not (isNil "LeaderHQG") then {if (_grp in ((group LeaderHQG) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQG)}};
 	if not (isNil "LeaderHQH") then {if (_grp in ((group LeaderHQH) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQH)}};
 
-	[_unit, 'Command, requesting fuel truck - Over'] remoteExecCall ["RYD_MP_Sidechat"];
+	[_unit, 'Command, requesting fuel truck - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 
 	sleep 5;
 
@@ -33,8 +33,8 @@
 		if ( not ((group _x) getVariable [("Busy" + _unitvar),false]) and not ((group _x) == _grp) and not ((group _x) getVariable ["Unable",false]) and not ((group _x) isEqualTo grpNull) and (canMove _x) and ((toLower (typeOf (assignedVehicle (leader (group _x))))) in _Pool) and not ((group _x) in ((_HQ getVariable ["RydHQ_SpecForG",[]]) + (_HQ getVariable ["RydHQ_CargoOnly",[]]))))  exitWith {_FuelBoy = _x};
 	} forEach (_HQ getVariable ["RydHQ_Support",[]]);
 
-	if (_FuelBoy isEqualTo objNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No refueling services are currently available - Out'] remoteExecCall ["RYD_MP_Sidechat"]};
+	if (_FuelBoy isEqualTo objNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No refueling services are currently available - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};
 
 	[[_FuelBoy,(vehicle _unit),[],_HQ,true],HAL_GoFuelSupp] call EFUNC(common,spawn);
 
-	[leader _HQ, (groupId _grp) + ', affirmative. fuel truck is on its way - Out'] remoteExecCall ["RYD_MP_Sidechat"];
+	[leader _HQ, (groupId _grp) + ', affirmative. fuel truck is on its way - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];

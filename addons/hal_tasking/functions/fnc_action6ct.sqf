@@ -20,7 +20,7 @@
 	if not (isNil "LeaderHQG") then {if (_grp in ((group LeaderHQG) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQG)}};
 	if not (isNil "LeaderHQH") then {if (_grp in ((group LeaderHQH) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQH)}};
 
-	[_unit, 'Command, requesting armored support at our position - Over'] remoteExecCall ["RYD_MP_Sidechat"];
+	[_unit, 'Command, requesting armored support at our position - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 
 	sleep 3;
 
@@ -51,11 +51,11 @@
 	};
 	} forEach ((_HQ getVariable ["RydHQ_HArmorG",[]]) + (_HQ getVariable ["RydHQ_LArmorATG",[]]));
 
-	if (_chosen isEqualTo grpNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No armored units are available at the moment - Out'] remoteExecCall ["RYD_MP_Sidechat"]};
+	if (_chosen isEqualTo grpNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No armored units are available at the moment - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};
 
 	_chosen setVariable ["Busy" + (str _chosen),true];
 	_HQ setVariable ["RydHQ_AttackAv",(_HQ getVariable ["RydHQ_AttackAv",[]]) - [_chosen]];
 
 	[[_chosen,_trg,_HQ,_request],(["ARM"] call EFUNC(common,goLaunch))] call EFUNC(common,spawn);
 
-	[leader _HQ, (groupId _grp) + ', ' + (groupId _chosen) + ' has been dispatched - Out'] remoteExecCall ["RYD_MP_Sidechat"];
+	[leader _HQ, (groupId _grp) + ', ' + (groupId _chosen) + ' has been dispatched - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];

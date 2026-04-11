@@ -20,13 +20,13 @@ if not (isNil "LeaderHQF") then {if (_grp in ((group LeaderHQF) getVariable ["Ry
 if not (isNil "LeaderHQG") then {if (_grp in ((group LeaderHQG) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQG)}};
 if not (isNil "LeaderHQH") then {if (_grp in ((group LeaderHQH) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQH)}};
 
-[_unit, 'Command, requesting airlift - Over'] remoteExecCall ["RYD_MP_Sidechat"];
+[_unit, 'Command, requesting airlift - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 
 private _unitG = _grp;
 private _unitvar = str _unitG;
 
-if not (_unitG getVariable [("CC" + _unitvar), true]) exitWith {sleep 5; [leader _HQ, (groupId _unitG) + ', negative. Transport already assigned - Out'] remoteExecCall ["RYD_MP_Sidechat"]};
-if (_unitG getVariable ["CargoCheckLoopActive", false]) exitWith {sleep 5; [leader _HQ, (groupId _unitG) + ', request pending. You are already on standby for transport - Over'] remoteExecCall ["RYD_MP_Sidechat"]};
+if not (_unitG getVariable [("CC" + _unitvar), true]) exitWith {sleep 5; [leader _HQ, (groupId _unitG) + ', negative. Transport already assigned - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};
+if (_unitG getVariable ["CargoCheckLoopActive", false]) exitWith {sleep 5; [leader _HQ, (groupId _unitG) + ', request pending. You are already on standby for transport - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};
 
 _unitG setVariable ["CargoCheckLoopActive", true,true];
 
@@ -41,7 +41,7 @@ _TransportPriority pushBackUnique _grp;
 sleep 15;
 
 if (_unitG getVariable ["CargoChosen", false]) exitWith {
-	[leader _HQ, (groupId _grp) + ', affirmative. ' + (groupId (group (_unitG getVariable ["AssignedCargo" + (str _unitG),objNull]))) + ' has been assigned - Out'] remoteExecCall ["RYD_MP_Sidechat"];
+	[leader _HQ, (groupId _grp) + ', affirmative. ' + (groupId (group (_unitG getVariable ["AssignedCargo" + (str _unitG),objNull]))) + ' has been assigned - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 	_TransportPriority = (leader _HQ) getVariable ["RydHQ_TransportPriorityAir",[]];
 	_TransportPriority = _TransportPriority - [_grp];
 	(leader _HQ) setVariable ["RydHQ_TransportPriorityAir",_TransportPriority,true];
@@ -51,13 +51,13 @@ if (_unitG getVariable ["CargoChosen", false]) exitWith {
 
 if (not (_unitG getVariable ["CargoChosen", false])) then {
 
-	[leader _HQ, (groupId _unitG) + ', copy. No air transport is available at this time. if transport becomes available in the next ' + (str (RydxHQ_PlayerCargoCheckLoopTime)) + ' minutes, it will be assigned to you - Over'] remoteExecCall ["RYD_MP_Sidechat"];
+	[leader _HQ, (groupId _unitG) + ', copy. No air transport is available at this time. if transport becomes available in the next ' + (str (RydxHQ_PlayerCargoCheckLoopTime)) + ' minutes, it will be assigned to you - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 
 	private _AbortAction = _unit addAction ["Cancel " + "Air" + " Transport Request",
 	{
 		params ["_target", "_caller", "_id", "_args"];
 
-		[_args, 'Command, cancel air transport request - Over'] remoteExecCall ["RYD_MP_Sidechat"];
+		[_args, 'Command, cancel air transport request - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 
 		(group _args) setVariable ["CargoCheckLoopAbort",true,true];
 
@@ -92,7 +92,7 @@ _TransportPriority = _TransportPriority - [_grp];
 
 _unitG setVariable ["CargoCheckLoopActive", false,true];
 
-if (_unitG getVariable ["CargoCheckLoopAbort",false]) exitWith {_unitG setVariable ["CargoCheckLoopAbort",false,true]; [leader _HQ, (groupId _unitG) + ', copy. Air transport request canceled - Out'] remoteExecCall ["RYD_MP_Sidechat"];};
+if (_unitG getVariable ["CargoCheckLoopAbort",false]) exitWith {_unitG setVariable ["CargoCheckLoopAbort",false,true]; [leader _HQ, (groupId _unitG) + ', copy. Air transport request canceled - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];};
 
-if (_unitG getVariable ["CargoChosen", false]) exitWith {[leader _HQ, (groupId _unitG) + ', update on your request. ' + (groupId (group (_unitG getVariable ["AssignedCargo" + (str _unitG),objNull]))) + ' has been assigned - Out'] remoteExecCall ["RYD_MP_Sidechat"];};
-if (not (_unitG getVariable ["CargoChosen", false])) exitWith {[leader _HQ, (groupId _unitG) + ', update on your request. No air transport available. - Out'] remoteExecCall ["RYD_MP_Sidechat"]};
+if (_unitG getVariable ["CargoChosen", false]) exitWith {[leader _HQ, (groupId _unitG) + ', update on your request. ' + (groupId (group (_unitG getVariable ["AssignedCargo" + (str _unitG),objNull]))) + ' has been assigned - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];};
+if (not (_unitG getVariable ["CargoChosen", false])) exitWith {[leader _HQ, (groupId _unitG) + ', update on your request. No air transport available. - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};

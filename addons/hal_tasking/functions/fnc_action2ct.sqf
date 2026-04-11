@@ -9,6 +9,6 @@
 params ["_unit"];
 private _grp = group _unit;
 
-[_unit,'Command, we are unavailable for further tasking - Over'] remoteExecCall ["RYD_MP_Sidechat"];
+[_unit,'Command, we are unavailable for further tasking - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 _grp setVariable ['Unable',true];
 _grp setVariable ['BUnable',true];

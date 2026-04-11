@@ -183,7 +183,7 @@ if ((_unit getVariable "HALArtAmnt") == 0) exitWith {hint "Artillery Request Can
 
 
 
-[_unit, "Command, requesting fire support at GRID: " + (mapGridPosition (_unit getVariable ["HALArtPos",nil])) + " - Over"] remoteExecCall ["RYD_MP_Sidechat"];
+[_unit, "Command, requesting fire support at GRID: " + (mapGridPosition (_unit getVariable ["HALArtPos",nil])) + " - Over"] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 
 [_HQ,_unit,_unit getVariable ["HALArtPos",nil],_selectedPiece,_selectedOrd,_unit getVariable ["HALArtAmnt",nil]] remoteExec ["hal_tasking_fnc_actionArt2ct",2];
 

@@ -10,7 +10,7 @@ private ["_ChosenOne","_Type","_actionID"];
 	{
 
 	(_this select 3) setVariable ["HAL_Requested",false,true];
-	[(_this select 0)] remoteExecCall ["RYD_ReqLogisticsDelete_Actions"];
+	[(_this select 0)] remoteExecCall ["hal_common_fnc_reqLogisticsDeleteActions"];
 
 	}
 	,
