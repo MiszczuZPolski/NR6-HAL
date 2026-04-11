@@ -48,7 +48,7 @@ if  !(RydHQ_LF) then
         _inside = true;
 
         while {_inside} do {
-            _inside = [_vh,[_pX,_pY,_pZ],6,[[1],[1]]] call RYD_isInside;
+            _inside = [_vh,[_pX,_pY,_pZ],6,[[1],[1]]] call FUNC(isInside);
             _pZ = _pZ + (0.01 * _sign);
         };
 
@@ -92,7 +92,7 @@ if  !(RydHQ_LF) then
         };
     };
 
-    [[_src,_vPos], _fnc_code] call RYD_Spawn
+    [[_src,_vPos], _fnc_code] call FUNC(spawn)
 } else {
     if (isNil "RydxHQ_LFTerminating") then {
         RydxHQ_LFTerminating = true;

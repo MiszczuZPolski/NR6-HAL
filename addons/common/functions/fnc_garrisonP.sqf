@@ -19,7 +19,7 @@ params ["_group", "_points", "_HQ"];
     private _formation = "DIAMOND";
     if (isPlayer (leader _group)) then {_formation = formation _group;} else {_formation = "DIAMOND";};
 
-    _wp = [[_group],_x,"MOVE","AWARE","YELLOW","LIMITED",["true",""],false,0.01,[10,15,20],_formation] call RYD_WPadd;
+    _wp = [[_group],_x,"MOVE","AWARE","YELLOW","LIMITED",["true",""],false,0.01,[10,15,20],_formation] call FUNC(WPadd);
 
     if (_posAll isNotEqualTo []) then {
         _wp waypointAttachVehicle _nHouse;
@@ -28,7 +28,7 @@ params ["_group", "_points", "_HQ"];
     };
 } forEach _points;
 
-_wp = [[_group], _points select 0, "CYCLE", "AWARE", "YELLOW", "LIMITED", ["true",""], false, 0.01, [10,15,20], _formation] call RYD_WPadd;
+_wp = [[_group], _points select 0, "CYCLE", "AWARE", "YELLOW", "LIMITED", ["true",""], false, 0.01, [10,15,20], _formation] call FUNC(WPadd);
 
 private _fnc_code = {
     params ["_group", "_HQ"];
@@ -67,4 +67,4 @@ private _fnc_code = {
     _group setVariable ["Garrisoned" + (str _group), false]
 };
 
-[[_group, _HQ], _fnc_code] call RYD_Spawn
+[[_group, _HQ], _fnc_code] call FUNC(spawn)

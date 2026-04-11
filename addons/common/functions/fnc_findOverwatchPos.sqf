@@ -60,7 +60,7 @@ if (_pool3 isEqualTo []) then {_pool3 = _pool2};
 	_x pushBack ((_terr * _terrImp) + (_elev * _elevImp))/(1 + _dst);
 } forEach _pool3;
 
-_pool3 = [_pool3] call RYD_ValueOrd;
+_pool3 = [_pool3] call FUNC(valueOrd);
 
 _final = [];
 

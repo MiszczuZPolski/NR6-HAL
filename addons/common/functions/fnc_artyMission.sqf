@@ -161,16 +161,16 @@ if (_artyAv isNotEqualTo []) then {
 			private _positionFO = getPosASL _FO;
 
 			if (_ammoG == "ILLUM") then {
-					[_battery,_pos,_ammo,_amount] call RYD_CFF_Fire;
+					[_battery,_pos,_ammo,_amount] call FUNC(cff_fire);
 			} else {
-				private _angle = [_positionFO, _pos, 10] call RYD_AngTowards;
-				private _pos2 = [_pos, _angle + 110,200 + (random 100) - 50] call RYD_PosTowards2D;
-				private _pos3 = [_pos, _angle - 110,200 + (random 100) - 50] call RYD_PosTowards2D;
+				private _angle = [_positionFO, _pos, 10] call FUNC(angleTowards);
+				private _pos2 = [_pos, _angle + 110,200 + (random 100) - 50] call FUNC(positionTowards2D);
+				private _pos3 = [_pos, _angle - 110,200 + (random 100) - 50] call FUNC(positionTowards2D);
 				//_i2 = [_pos2,(random 1000),"markArty","ColorRed","ICON","mil_dot",_ammoG,"",[0.75,0.75]] call RYD_Mark;
 				//_i3 = [_pos3,(random 1000),"markArty","ColorRed","ICON","mil_dot",_ammoG,"",[0.75,0.75]] call RYD_Mark;
 
 				{
-					[_battery, _x, _ammo,ceil (_amount/3)] call RYD_CFF_Fire;
+					[_battery, _x, _ammo,ceil (_amount/3)] call FUNC(cff_fire);
 
 					_ct = 0;
 					waitUntil {
@@ -213,7 +213,7 @@ if (_artyAv isNotEqualTo []) then {
 			} forEach _battery;
 		};
 
-		[[_battery,_pos,_ammoArr,_FO,_amount,_ammoG], _fnc_code] call RYD_Spawn
+		[[_battery,_pos,_ammoArr,_FO,_amount,_ammoG], _fnc_code] call FUNC(spawn)
 	};
 };
 

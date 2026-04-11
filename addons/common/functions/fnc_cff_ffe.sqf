@@ -349,8 +349,8 @@ _amount2 = _amount - _amount1;
 
 		if (_dSum < _exDst) then {
 			//if (_transdir < 0) then {_transdir = _transdir + 360};
-			_angle = [_targetPos,(getPosASL _stRS),1] call RYD_AngTowards;
-			_impactPos = [(getPosASL _stRS),_angle,(_exDst - _dSum)] call RYD_PosTowards2D
+			_angle = [_targetPos,(getPosASL _stRS),1] call FUNC(angleTowards);
+			_impactPos = [(getPosASL _stRS),_angle,(_exDst - _dSum)] call FUNC(positionTowards2D)
 		} else {
 			_rPos = getPosASL _stRS;
 			_impactPos = [_rPos select 0,_rPos select 1]
@@ -625,13 +625,13 @@ _amount2 = _amount - _amount1;
 		};
 	};
 
-	[[_battery,_distance,_eta,_ammoG,_batlead,_target,_markers,_request],_code] call RYD_Spawn;
+	[[_battery,_distance,_eta,_ammoG,_batlead,_target,_markers,_request],_code] call FUNC(spawn);
 
-	_eta = [_battery,_finalimpact,_ammo,_amount] call RYD_CFF_Fire;
+	_eta = [_battery,_finalimpact,_ammo,_amount] call FUNC(cff_fire);
 
 	_UL = _batlead1;
 
-	if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_ArtFire,"ArtFire"] call RYD_AIChatter};
+	if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_ArtFire,"ArtFire"] call FUNC(AIChatter)};
 
 	_alive = (_eta > 0);
 

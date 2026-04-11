@@ -13,7 +13,7 @@ if ((count _isFlat) <= 1) then {
     _isGood = false
 } else {
     private _noRoad = true;
-    private _nearestRoad = [_pos, 20] call RYD_NearestRoad;
+    private _nearestRoad = [_pos, 20] call FUNC(nearestRoad);
     if (!(isNull _nearestRoad) || (isOnRoad _pos)) then {
         _isGood = false;
     };
@@ -23,7 +23,7 @@ private _ct = 0;
 while {!(_isGood)} do {
     _ct = _ct + 1;
     if (_ct > 30) exitWith {};
-    _pos = [_pos, _radius] call RYD_RandomAround;
+    _pos = [_pos, _radius] call FUNC(randomAround);
 
     _isGood = true;
 
@@ -32,7 +32,7 @@ while {!(_isGood)} do {
         _isGood = false
     } else {
         _noRoad = true;
-        _nearestRoad = [_pos,20] call RYD_NearestRoad;
+        _nearestRoad = [_pos,20] call FUNC(nearestRoad);
         if (!(isNull _nearestRoad) || (isOnRoad _pos)) then {
             _isGood = false;
         };

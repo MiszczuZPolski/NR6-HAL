@@ -162,7 +162,7 @@ if ((count _guns) < 1) exitWith {-1};
 					_eta = _newEta;
 				};
 
-				[[_vehicle,_pos,_ammoC],_fnc_code] call RYD_Spawn;
+				[[_vehicle,_pos,_ammoC],_fnc_code] call FUNC(spawn);
 			};
 		};
 	};
