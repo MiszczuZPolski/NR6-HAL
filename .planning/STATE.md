@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-05-PLAN.md — Phase 4 CLOSED
-last_updated: "2026-04-12T07:25:28.073Z"
+stopped_at: Completed 05-01-PLAN.md — Extraction Wave 1
+last_updated: "2026-04-12T20:15:16.269Z"
 progress:
   total_phases: 5
-  completed_phases: 3
-  total_plans: 24
-  completed_plans: 23
-  percent: 96
+  completed_phases: 4
+  total_plans: 33
+  completed_plans: 25
+  percent: 76
 ---
 
 # Project State: NR6-HAL ACE3 Refactor
@@ -31,24 +31,23 @@ progress:
 
 ## Current Position
 
-Phase: 04 (variable-namespacing) — EXECUTING
-Plan: 0 of 5 (pre-plan tool build) complete
-**Phase:** 4 — Variable Namespacing
-**Plan:** 04-00 complete (phase4-rename.py tool + README + 14/14 self-test pass)
-**Status:** Executing — plans 04-01..04-05 (per-prefix batches) are next, in wave order
+Phase: 05 (settings-localization-compat-cleanup) — EXECUTING
+**Phase:** 5 — Settings, Localization, Compat & Cleanup
+**Plan:** 05-01 complete (Extraction Wave 1 — VarInit defaults + TimeM + TaskMenu + Sound/CfgRadio)
+**Status:** Executing — plans 05-02..05-09 remain (Extraction Waves 2-3, dead-var audit, CBA settings, stringtable, compat, behavior tests, cleanup)
 
 **Progress:**
 
-[██████████] 96%
+[████████░░] 76%
 [Phase 1] Addon Skeleton & Build Foundation   [x] Complete
 [Phase 2] Dependency Mapping                  [x] Complete
 [Phase 3] Function Extraction                 [x] Complete
-[Phase 4] Variable Namespacing                [~] In progress (4/5 batches complete)
-[Phase 5] Settings, Localization, Compat      [ ] Not started
+[Phase 4] Variable Namespacing                [x] Complete
+[Phase 5] Settings, Localization, Compat      [~] In progress (1/9 plans complete)
 
 ```
 
-Overall: 3/5 phases complete (phase 4 in progress — pre-plan tool shipped)
+Overall: 4/5 phases complete (Phase 5 in progress — 1/9 plans complete)
 
 ---
 
@@ -83,6 +82,7 @@ Overall: 3/5 phases complete (phase 4 in progress — pre-plan tool shipped)
 | Phase 04-variable-namespacing P01 | ~900s | 2 tasks | 17 files |
 | Phase 04-variable-namespacing P02 | 600s | 2 tasks | 10 files |
 | Phase 04-variable-namespacing P05 | 293 | 3 tasks | 37 files |
+| Phase 05 P01 | 5m | 2 tasks | 321 files |
 
 ### Performance Metrics
 
@@ -119,7 +119,7 @@ Overall: 3/5 phases complete (phase 4 in progress — pre-plan tool shipped)
 
 ## Session Continuity
 
-**Stopped at:** Completed 04-05-PLAN.md — Phase 4 CLOSED
+**Stopped at:** Completed 05-01-PLAN.md — Extraction Wave 1
 
 **Context for next session:**
 
