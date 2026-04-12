@@ -38,6 +38,6 @@
 	private _ammoBox = (_HQ getVariable [QEGVAR(core,ammoBoxes),[]]) select 0;
 	_HQ setVariable [QEGVAR(core,ammoBoxes),(_HQ getVariable [QEGVAR(core,ammoBoxes),[]]) - [_ammoBox]];
 
-	[[assignedVehicle (leader _FlyBoy),(vehicle _unit),[],[],true,_ammoBox,_HQ],HAL_GoAmmoSupp] call EFUNC(common,spawn);
+	[[assignedVehicle (leader _FlyBoy),(vehicle _unit),[],[],true,_ammoBox,_HQ],EFUNC(hal_hac,goAmmoSupp)] call EFUNC(common,spawn);
 
 	[leader _HQ, (groupId _grp) + ', affirmative. Supplies are on their way - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];

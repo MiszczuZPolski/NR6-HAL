@@ -35,6 +35,6 @@
 
 	if (_FuelBoy isEqualTo objNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No refueling services are currently available - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};
 
-	[[_FuelBoy,(vehicle _unit),[],_HQ,true],HAL_GoFuelSupp] call EFUNC(common,spawn);
+	[[_FuelBoy,(vehicle _unit),[],_HQ,true],EFUNC(hal_hac,goFuelSupp)] call EFUNC(common,spawn);
 
 	[leader _HQ, (groupId _grp) + ', affirmative. fuel truck is on its way - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];

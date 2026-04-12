@@ -123,7 +123,7 @@ while {true} do {
                     if (_HQ getVariable [QEGVAR(core,sMed),true]) then
                         {
                         _ctMedS = time;
-                        [_HQ] call HAL_SuppMed;
+                        [_HQ] call FUNC(suppMed);
                         }
                     };
 
@@ -132,7 +132,7 @@ while {true} do {
                     if (_HQ getVariable [QEGVAR(core,sFuel),true]) then
                         {
                         _ctFuel = time;
-                        [_HQ] call HAL_SuppFuel;
+                        [_HQ] call FUNC(suppFuel);
                         }
                     };
 
@@ -141,7 +141,7 @@ while {true} do {
                     if (_HQ getVariable [QEGVAR(core,sRep),true]) then
                         {
                         _ctRep = time;
-                        [_HQ] call HAL_SuppRep;
+                        [_HQ] call FUNC(suppRep);
                         }
                     };
                 };
@@ -153,7 +153,7 @@ while {true} do {
                     if (_HQ getVariable [QEGVAR(core,sAmmo),true]) then
                         {
                         _ctAmmo = time;
-                        [_HQ] call HAL_SuppAmmo;
+                        [_HQ] call FUNC(suppAmmo);
                         }
                     };
                 };

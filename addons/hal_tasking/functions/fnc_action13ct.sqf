@@ -35,6 +35,6 @@
 
 	if (_FixBoy isEqualTo objNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No repair trucks are currently available - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};
 
-	[[_FixBoy,(vehicle _unit),[],_HQ,true],HAL_GoRepSupp] call EFUNC(common,spawn);
+	[[_FixBoy,(vehicle _unit),[],_HQ,true],EFUNC(hal_hac,goRepSupp)] call EFUNC(common,spawn);
 
 	[leader _HQ, (groupId _grp) + ', affirmative. Repair truck is on its way - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];

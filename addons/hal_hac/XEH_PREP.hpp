@@ -46,5 +46,14 @@ PREP(goRecon);
 PREP(goRest);
 PREP(sCargo);
 PREP(garrison);
+// Supply/support scripts (Plan 05-04 Wave 4)
+PREP(goAmmoSupp);
+PREP(goFuelSupp);
+PREP(goMedSupp);
+PREP(goRepSupp);
+PREP(suppAmmo);
+PREP(suppFuel);
+PREP(suppMed);
+PREP(suppRep);
 // StatusQuo trunk (must be last — depends on all sub-functions above)
 PREP(statusQuo);

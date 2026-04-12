@@ -35,6 +35,6 @@
 
 	if (_AmmoBoy isEqualTo objNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No rearming services are currently available - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};
 
-	[[_AmmoBoy,(vehicle _unit),[],[],false,objNull,_HQ,true],HAL_GoAmmoSupp] call EFUNC(common,spawn);
+	[[_AmmoBoy,(vehicle _unit),[],[],false,objNull,_HQ,true],EFUNC(hal_hac,goAmmoSupp)] call EFUNC(common,spawn);
 
 	[leader _HQ, (groupId _grp) + ', affirmative. Ammunition truck is on its way - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];

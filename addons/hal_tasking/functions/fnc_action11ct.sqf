@@ -35,6 +35,6 @@
 
 	if (_MedBoy isEqualTo objNull) exitWith {[leader _HQ, (groupId _grp) + ', negative. No ambulances are currently available - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"]};
 
-	[[_MedBoy,(vehicle _unit),[],_HQ,true],HAL_GoMedSupp] call EFUNC(common,spawn);
+	[[_MedBoy,(vehicle _unit),[],_HQ,true],EFUNC(hal_hac,goMedSupp)] call EFUNC(common,spawn);
 
 	[leader _HQ, (groupId _grp) + ', affirmative. Ambulance is on its way - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
