@@ -1,4 +1,5 @@
 // Functions registered here in Phase 3 when extraction begins.
+PREP(desperation);
 PREP(dispatcher);
 // StatusQuo sub-functions (leaf-first order)
 PREP(statusQuo_init);
