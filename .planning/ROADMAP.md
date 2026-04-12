@@ -83,7 +83,7 @@
   - [x] 04-02-PLAN.md — Rename RHQ_* -> GVAR(hal_data,*) family (weapon class arrays) (VAR-01..04)
   - [x] 04-03-PLAN.md — Rename RydBB_* -> GVAR(missionmodules,*) + bbZone dispatch rewrite (VAR-01..04)
   - [x] 04-04-PLAN.md — Rename RydHQ_* + multi-HQ siblings + reconstruct 11 runtime-format dispatch sites (largest, non-autonomous) (VAR-01..04)
-  - [ ] 04-05-PLAN.md — Rename RydxHQ_* + resolve ReconCargo owner collision + AIChatter writer survey + consolidate rename-map.json (VAR-01..04)
+  - [x] 04-05-PLAN.md — Rename RydxHQ_* + resolve ReconCargo owner collision + AIChatter writer survey + consolidate rename-map.json (VAR-01..04)
 
 ### Phase 5: Settings, Localization, Compat & Cleanup
 **Goal**: CBA settings, English stringtable, compatibility addon, and legacy removal are complete — the project builds cleanly, old missions still work, and AI behavior is verified identical
