@@ -25,16 +25,17 @@ private _commanders = [];
 
     private _leaderObj = call compile _leaderName;
 
-    missionNamespace setVariable [QGVAR(cargoFind) + _letter,   _logic getVariable [QGVAR(cargoFind), false]];
-    missionNamespace setVariable [QGVAR(noAirCargo) + _letter,  _logic getVariable [QGVAR(noAirCargo), false]];
-    missionNamespace setVariable [QGVAR(noLandCargo) + _letter, _logic getVariable [QGVAR(noLandCargo), false]];
-    missionNamespace setVariable [QGVAR(sMed) + _letter,        _logic getVariable [QGVAR(sMed), false]];
-    missionNamespace setVariable [QGVAR(sFuel) + _letter,       _logic getVariable [QGVAR(sFuel), false]];
-    missionNamespace setVariable [QGVAR(sAmmo) + _letter,       _logic getVariable [QGVAR(sAmmo), false]];
-    missionNamespace setVariable [QGVAR(sRep) + _letter,        _logic getVariable [QGVAR(sRep), false]];
-    missionNamespace setVariable [QGVAR(supportWP) + _letter,   _logic getVariable [QGVAR(supportWP), false]];
-    missionNamespace setVariable [QGVAR(artyShells) + _letter,  _logic getVariable [QGVAR(artyShells), 0]];
-    missionNamespace setVariable [QGVAR(airEvac) + _letter,     _logic getVariable [QGVAR(airEvac), false]];
-    missionNamespace setVariable [QGVAR(supportRTB) + _letter,  _logic getVariable [QGVAR(supportRTB), false]];
+    // Editor module overrides CBA setting; CBA setting is the fallback default.
+    missionNamespace setVariable [QEGVAR(core,cargoFind)   + _letter, _logic getVariable [QEGVAR(core,cargoFind),   EGVAR(core,cargoFind)]];
+    missionNamespace setVariable [QEGVAR(core,noAirCargo)  + _letter, _logic getVariable [QEGVAR(core,noAirCargo),  EGVAR(core,noAirCargo)]];
+    missionNamespace setVariable [QEGVAR(core,noLandCargo) + _letter, _logic getVariable [QEGVAR(core,noLandCargo), EGVAR(core,noLandCargo)]];
+    missionNamespace setVariable [QEGVAR(core,sMed)        + _letter, _logic getVariable [QEGVAR(core,sMed),        EGVAR(core,sMed)]];
+    missionNamespace setVariable [QEGVAR(core,sFuel)       + _letter, _logic getVariable [QEGVAR(core,sFuel),       EGVAR(core,sFuel)]];
+    missionNamespace setVariable [QEGVAR(core,sAmmo)       + _letter, _logic getVariable [QEGVAR(core,sAmmo),       EGVAR(core,sAmmo)]];
+    missionNamespace setVariable [QEGVAR(core,sRep)        + _letter, _logic getVariable [QEGVAR(core,sRep),        EGVAR(core,sRep)]];
+    missionNamespace setVariable [QEGVAR(core,supportWP)   + _letter, _logic getVariable [QEGVAR(core,supportWP),   EGVAR(core,supportWP)]];
+    missionNamespace setVariable [QEGVAR(core,artyShells)  + _letter, _logic getVariable [QEGVAR(core,artyShells),  EGVAR(core,artyShells)]];
+    missionNamespace setVariable [QEGVAR(core,airEvac)     + _letter, _logic getVariable [QEGVAR(core,airEvac),     EGVAR(core,airEvac)]];
+    missionNamespace setVariable [QEGVAR(core,supportRTB)  + _letter, _logic getVariable [QEGVAR(core,supportRTB),  EGVAR(core,supportRTB)]];
 
 } forEach _commanders;

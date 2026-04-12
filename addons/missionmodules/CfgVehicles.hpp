@@ -13,7 +13,7 @@ class CfgVehicles
 	class GVAR(Core_Module): Module_F
 	{
 		scope=2;
-		displayName="HAL Core";
+		displayName = CSTRING(Core_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category= QGVAR(core);
@@ -36,7 +36,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Activates HAL. Can be synchronized to a trigger for late activation.";
+			description = CSTRING(Core_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -57,7 +57,7 @@ class CfgVehicles
 	class GVAR(GenSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="HAL General Settings";
+		displayName = CSTRING(GenSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(core);
@@ -279,7 +279,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="General settings shared by all commanders.";
+			description = CSTRING(GenSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -302,7 +302,7 @@ class CfgVehicles
 	class GVAR(Leader_Module): Module_F
 	{
 		scope = 2;
-		displayName = "HAL Commander";
+		displayName = CSTRING(Leader_Module);
 		author = "NinjaRider600";
 		vehicleClass = "Modules";
 		category = QGVAR(leader);
@@ -405,7 +405,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds an AI commander. Synchronize to a unit to set it to be the AI commander or do not for a virtual HQ";
+			description = CSTRING(Leader_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -426,7 +426,7 @@ class CfgVehicles
 	class GVAR(Leader_Settings_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Settings";
+		displayName = CSTRING(Leader_Settings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -547,7 +547,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets settings for the synchronized commander module.";
+			description = CSTRING(Leader_Settings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -568,7 +568,7 @@ class CfgVehicles
 	class GVAR(Leader_BehSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Behaviour Settings";
+		displayName = CSTRING(Leader_BehSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -746,7 +746,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets behaviour settings for the synchronized commander module";
+			description = CSTRING(Leader_BehSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -767,7 +767,7 @@ class CfgVehicles
 	class GVAR(Leader_PersSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Personality Settings";
+		displayName = CSTRING(Leader_PersSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -845,7 +845,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets behaviour settings for the synchronized commander module";
+			description = CSTRING(Leader_PersSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -866,7 +866,7 @@ class CfgVehicles
 	class GVAR(Leader_SupSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Support Settings";
+		displayName = CSTRING(Leader_SupSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -959,7 +959,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets support settings for the synchronized commander module";
+			description = CSTRING(Leader_SupSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -980,7 +980,7 @@ class CfgVehicles
 	class GVAR(Leader_ObjSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Objectives Settings";
+		displayName = CSTRING(Leader_ObjSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -1141,7 +1141,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets objective settings for the synchronized commander module";
+			description = CSTRING(Leader_ObjSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1162,7 +1162,7 @@ class CfgVehicles
 	class GVAR(Leader_IdleDecoy_Module): Module_F
 	{
 		scope=2;
-		displayName="Idle Rally Point";
+		displayName = CSTRING(Leader_IdleDecoy_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(utilities);
@@ -1185,7 +1185,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets rally point for the synchronized commander module";
+			description = CSTRING(Leader_IdleDecoy_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1205,7 +1205,7 @@ class CfgVehicles
 	class GVAR(Leader_WithdrawDecoy_Module): Module_F
 	{
 		scope=2;
-		displayName="Withdrawal Rally Point";
+		displayName = CSTRING(Leader_WithdrawDecoy_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(utilities);
@@ -1228,7 +1228,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets rally point for the synchronized commander module";
+			description = CSTRING(Leader_WithdrawDecoy_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1248,7 +1248,7 @@ class CfgVehicles
 	class GVAR(Leader_SuppDecoy_Module): Module_F
 	{
 		scope=2;
-		displayName="Supports Rally Point";
+		displayName = CSTRING(Leader_SuppDecoy_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(utilities);
@@ -1271,7 +1271,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets rally point for the synchronized commander module";
+			description = CSTRING(Leader_SuppDecoy_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1292,7 +1292,7 @@ class CfgVehicles
 	class GVAR(Leader_Front_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Front";
+		displayName = CSTRING(Leader_Front_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(utilities);
@@ -1321,7 +1321,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets objective settings for the synchronized commander module";
+			description = CSTRING(Leader_Front_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1343,7 +1343,7 @@ class CfgVehicles
 	class GVAR(Leader_Objective_Module): Module_F
 	{
 		scope=2;
-		displayName="Objective (Legacy Mode)";
+		displayName = CSTRING(Leader_Objective_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(objectives);
@@ -1389,7 +1389,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds an objective for the synchronized commander module";
+			description = CSTRING(Leader_Objective_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1410,7 +1410,7 @@ class CfgVehicles
 	class GVAR(Leader_SimpleObjective_Module): Module_F
 	{
 		scope=2;
-		displayName="Objective (Simple Mode)";
+		displayName = CSTRING(Leader_SimpleObjective_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(objectives);
@@ -1501,7 +1501,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds an objective for the synchronized commander module";
+			description = CSTRING(Leader_SimpleObjective_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1522,7 +1522,7 @@ class CfgVehicles
 	class GVAR(Leader_NavalObjective_Module): Module_F
 	{
 		scope=2;
-		displayName="Naval Objective (Simple Mode)";
+		displayName = CSTRING(Leader_NavalObjective_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(objectives);
@@ -1613,7 +1613,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds an objective for the synchronized commander module";
+			description = CSTRING(Leader_NavalObjective_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1634,7 +1634,7 @@ class CfgVehicles
 	class GVAR(Leader_AmmoDepot_Module): Module_F
 	{
 		scope=2;
-		displayName="Ammo Drop Ammo Depot";
+		displayName = CSTRING(Leader_AmmoDepot_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -1663,7 +1663,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds a zone in which all ammo boxes will be used for ammo drops for the synchronized commander module. Module may also be directly synced to the ammo boxes in which case the zone will be ignored and only the synced boxes will be considered.";
+			description = CSTRING(Leader_AmmoDepot_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1684,7 +1684,7 @@ class CfgVehicles
 	class GVAR(Leader_Include_Module): Module_F
 	{
 		scope=2;
-		displayName="Include Squads";
+		displayName = CSTRING(Leader_Include_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -1700,7 +1700,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of controlled squads for the synchronized commander module";
+			description = CSTRING(Leader_Include_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1721,7 +1721,7 @@ class CfgVehicles
 	class GVAR(Leader_Exclude_Module): Module_F
 	{
 		scope=2;
-		displayName="Exclude Squads";
+		displayName = CSTRING(Leader_Exclude_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -1737,7 +1737,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of non-controlled squads for the synchronized commander module";
+			description = CSTRING(Leader_Exclude_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1760,7 +1760,7 @@ class CfgVehicles
 	class GVAR(Squad_AmmoDrop_Module): Module_F
 	{
 		scope=2;
-		displayName="Ammo Drop";
+		displayName = CSTRING(Squad_AmmoDrop_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1776,7 +1776,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_AmmoDrop_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1797,7 +1797,7 @@ class CfgVehicles
 	class GVAR(Squad_AOnly_Module): Module_F
 	{
 		scope=2;
-		displayName="Attack Only";
+		displayName = CSTRING(Squad_AOnly_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1813,7 +1813,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_AOnly_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1834,7 +1834,7 @@ class CfgVehicles
 	class GVAR(Squad_CargoOnly_Module): Module_F
 	{
 		scope=2;
-		displayName="Transport Only";
+		displayName = CSTRING(Squad_CargoOnly_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1850,7 +1850,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_CargoOnly_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1871,7 +1871,7 @@ class CfgVehicles
 	class GVAR(Squad_ROnly_Module): Module_F
 	{
 		scope=2;
-		displayName="Recon Only";
+		displayName = CSTRING(Squad_ROnly_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1887,7 +1887,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_ROnly_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1908,7 +1908,7 @@ class CfgVehicles
 	class GVAR(Squad_ExReammo_Module): Module_F
 	{
 		scope=2;
-		displayName="Never Request Ammo";
+		displayName = CSTRING(Squad_ExReammo_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1924,7 +1924,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_ExReammo_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1945,7 +1945,7 @@ class CfgVehicles
 	class GVAR(Squad_ExMedic_Module): Module_F
 	{
 		scope=2;
-		displayName="Never Request Medic";
+		displayName = CSTRING(Squad_ExMedic_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1961,7 +1961,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_ExMedic_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1982,7 +1982,7 @@ class CfgVehicles
 	class GVAR(Squad_ExRefuel_Module): Module_F
 	{
 		scope=2;
-		displayName="Never Request Fuel";
+		displayName = CSTRING(Squad_ExRefuel_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1998,7 +1998,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_ExRefuel_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2019,7 +2019,7 @@ class CfgVehicles
 	class GVAR(Squad_FirstToFight_Module): Module_F
 	{
 		scope=2;
-		displayName="First To Fight";
+		displayName = CSTRING(Squad_FirstToFight_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2035,7 +2035,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_FirstToFight_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2056,7 +2056,7 @@ class CfgVehicles
 	class GVAR(Squad_RTBRRR_Module): Module_F
 	{
 		scope=2;
-		displayName="Vehicles RTB Refuel/Rearm/Repair";
+		displayName = CSTRING(Squad_RTBRRR_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(attributes);
@@ -2072,7 +2072,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad's vehicles get rearmed/refueled/repaired when they RTB. (Only applies to missions that have an RTB stage). Works on Air Reinforcements modules.";
+			description = CSTRING(Squad_RTBRRR_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2093,7 +2093,7 @@ class CfgVehicles
 	class GVAR(Squad_ExRepair_Module): Module_F
 	{
 		scope=2;
-		displayName="Never Request Repairs";
+		displayName = CSTRING(Squad_ExRepair_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2109,7 +2109,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_ExRepair_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2130,7 +2130,7 @@ class CfgVehicles
 	class GVAR(Squad_Garrison_Module): Module_F
 	{
 		scope=2;
-		displayName="Set Garrison";
+		displayName = CSTRING(Squad_Garrison_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2146,7 +2146,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_Garrison_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2167,7 +2167,7 @@ class CfgVehicles
 	class GVAR(Squad_NoAttack_Module): Module_F
 	{
 		scope=2;
-		displayName="No Attack Orders";
+		displayName = CSTRING(Squad_NoAttack_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2183,7 +2183,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoAttack_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2204,7 +2204,7 @@ class CfgVehicles
 	class GVAR(Squad_NoCargo_Module): Module_F
 	{
 		scope=2;
-		displayName="No Transport Requests";
+		displayName = CSTRING(Squad_NoCargo_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2220,7 +2220,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoCargo_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2241,7 +2241,7 @@ class CfgVehicles
 	class GVAR(Squad_NoDef_Module): Module_F
 	{
 		scope=2;
-		displayName="No Defense Orders";
+		displayName = CSTRING(Squad_NoDef_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2257,7 +2257,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoDef_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2278,7 +2278,7 @@ class CfgVehicles
 	class GVAR(Squad_NoReports_Module): Module_F
 	{
 		scope=2;
-		displayName="No Enemy Contact Reports";
+		displayName = CSTRING(Squad_NoReports_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2294,7 +2294,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoReports_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2315,7 +2315,7 @@ class CfgVehicles
 	class GVAR(Squad_Unable_Module): Module_F
 	{
 		scope=2;
-		displayName="Disable Tasking";
+		displayName = CSTRING(Squad_Unable_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2331,7 +2331,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_Unable_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2352,7 +2352,7 @@ class CfgVehicles
 	class GVAR(Squad_NoRecon_Module): Module_F
 	{
 		scope=2;
-		displayName="No Recon Orders";
+		displayName = CSTRING(Squad_NoRecon_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2368,7 +2368,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoRecon_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2389,7 +2389,7 @@ class CfgVehicles
 	class GVAR(Squad_NoFlank_Module): Module_F
 	{
 		scope=2;
-		displayName="No Flanking Orders";
+		displayName = CSTRING(Squad_NoFlank_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2405,7 +2405,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoFlank_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2426,7 +2426,7 @@ class CfgVehicles
 	class GVAR(Squad_SFBodyGuard_Module): Module_F
 	{
 		scope=2;
-		displayName="Set As HQ Bodyguard";
+		displayName = CSTRING(Squad_SFBodyGuard_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2442,7 +2442,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_SFBodyGuard_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2463,7 +2463,7 @@ class CfgVehicles
 	class GVAR(Squad_AlwaysKnownU_Module): Module_F
 	{
 		scope=2;
-		displayName="Always Known Enemy";
+		displayName = CSTRING(Squad_AlwaysKnownU_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2479,7 +2479,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized unit will always be known to the commander of the synchronized commander module";
+			description = CSTRING(Squad_AlwaysKnownU_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2500,7 +2500,7 @@ class CfgVehicles
 	class GVAR(Squad_AlwaysUnKnownU_Module): Module_F
 	{
 		scope=2;
-		displayName="Always Unknown Enemy";
+		displayName = CSTRING(Squad_AlwaysUnKnownU_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2516,7 +2516,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized unit will always be unknown to the commander of the synchronized commander module";
+			description = CSTRING(Squad_AlwaysUnKnownU_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2537,7 +2537,7 @@ class CfgVehicles
 	class GVAR(Squad_RCAS_Module): Module_F
 	{
 		scope=2;
-		displayName="Assign Close Air Support";
+		displayName = CSTRING(Squad_RCAS_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2553,7 +2553,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad will be used for CAS";
+			description = CSTRING(Squad_RCAS_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2574,7 +2574,7 @@ class CfgVehicles
 	class GVAR(Squad_RCAP_Module): Module_F
 	{
 		scope=2;
-		displayName="Assign Combat Air Patrol";
+		displayName = CSTRING(Squad_RCAP_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2590,7 +2590,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad will be used for CAP";
+			description = CSTRING(Squad_RCAP_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2613,7 +2613,7 @@ class CfgVehicles
 	class GVAR(BBLeader_Module): Module_F
 	{
 		scope=2;
-		displayName="High Commander";
+		displayName = CSTRING(BBLeader_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(BB);
@@ -2649,7 +2649,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Creates a new high commander.";
+			description = CSTRING(BBLeader_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2670,7 +2670,7 @@ class CfgVehicles
 	class GVAR(BBSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="High Commander Settings";
+		displayName = CSTRING(BBSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(BB);
@@ -2716,7 +2716,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets settings for the synchronized high commander module";
+			description = CSTRING(BBSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2737,7 +2737,7 @@ class CfgVehicles
 	class GVAR(BBZone_Module): Module_F
 	{
 		scope=2;
-		displayName="High Commander Zone";
+		displayName = CSTRING(BBZone_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(BB);
@@ -2760,7 +2760,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="If custom objectives are not enforced, High-Command/Big-Boss mode will only scan the map within this zone for additional objectives.";
+			description = CSTRING(BBZone_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2781,7 +2781,7 @@ class CfgVehicles
 	class GVAR(BBLeader_Objective_Module): Module_F
 	{
 		scope=2;
-		displayName="High Commander Objective";
+		displayName = CSTRING(BBLeader_Objective_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(BB);
@@ -2829,7 +2829,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds an objective for the synchronized high commander module";
+			description = CSTRING(BBLeader_Objective_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"

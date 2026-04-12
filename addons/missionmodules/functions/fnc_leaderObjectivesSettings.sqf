@@ -27,28 +27,30 @@ private _commanders = [];
 
     // NOTE: Pre-existing quirk preserved verbatim — legacy code wrote the
     // literal string "DEFEND" via str(). New form writes the string directly.
-    if (_logic getVariable [QGVAR(order), false]) then {
-        missionNamespace setVariable [QGVAR(order) + _letter, "DEFEND"];
+    if (_logic getVariable [QEGVAR(core,order), false]) then {
+        missionNamespace setVariable [QEGVAR(core,order) + _letter, "DEFEND"];
     };
 
-    missionNamespace setVariable [QGVAR(berserk) + _letter,          _logic getVariable [QGVAR(berserk), false]];
-    missionNamespace setVariable [QGVAR(simpleMode) + _letter,       _logic getVariable [QGVAR(simpleMode), false]];
-    missionNamespace setVariable [QGVAR(unlimitedCapt) + _letter,    _logic getVariable [QGVAR(unlimitedCapt), false]];
-    missionNamespace setVariable [QGVAR(captLimit) + _letter,        _logic getVariable [QGVAR(captLimit), 0]];
-    missionNamespace setVariable [QGVAR(garrR) + _letter,            _logic getVariable [QGVAR(garrR), false]];
-    missionNamespace setVariable [QGVAR(objHoldTime) + _letter,      _logic getVariable [QGVAR(objHoldTime), 0]];
-    missionNamespace setVariable [QGVAR(objRadius1) + _letter,       _logic getVariable [QGVAR(objRadius1), 0]];
-    missionNamespace setVariable [QGVAR(objRadius2) + _letter,       _logic getVariable [QGVAR(objRadius2), 0]];
-    missionNamespace setVariable [QGVAR(lRelocating) + _letter,      _logic getVariable [QGVAR(lRelocating), false]];
-    missionNamespace setVariable [QGVAR(noRec) + _letter,            _logic getVariable [QGVAR(noRec), false]];
-    missionNamespace setVariable [QGVAR(rapidCapt) + _letter,        _logic getVariable [QGVAR(rapidCapt), false]];
-    missionNamespace setVariable [QGVAR(defendObjectives) + _letter, _logic getVariable [QGVAR(defendObjectives), false]];
-    missionNamespace setVariable [QGVAR(reconReserve) + _letter,     _logic getVariable [QGVAR(reconReserve), 0]];
-    missionNamespace setVariable [QGVAR(attackReserve) + _letter,    _logic getVariable [QGVAR(attackReserve), 0]];
-    missionNamespace setVariable [QGVAR(aAO) + _letter,              _logic getVariable [QGVAR(aAO), false]];
-    missionNamespace setVariable [QGVAR(forceAAO) + _letter,         _logic getVariable [QGVAR(forceAAO), false]];
-    missionNamespace setVariable [QGVAR(bBAOObj) + _letter,          _logic getVariable [QGVAR(bBAOObj), false]];
-    missionNamespace setVariable [QGVAR(maxSimpleObjs) + _letter,    _logic getVariable [QGVAR(maxSimpleObjs), 0]];
-    missionNamespace setVariable [QGVAR(cRDefRes) + _letter,         _logic getVariable [QGVAR(cRDefRes), 0]];
+    // Editor module overrides CBA setting; CBA setting is the fallback default.
+    missionNamespace setVariable [QEGVAR(core,berserk)           + _letter, _logic getVariable [QEGVAR(core,berserk),           EGVAR(core,berserk)]];
+    missionNamespace setVariable [QEGVAR(core,simpleMode)        + _letter, _logic getVariable [QEGVAR(core,simpleMode),        EGVAR(core,simpleMode)]];
+    missionNamespace setVariable [QEGVAR(core,unlimitedCapt)     + _letter, _logic getVariable [QEGVAR(core,unlimitedCapt),     EGVAR(core,unlimitedCapt)]];
+    missionNamespace setVariable [QEGVAR(core,captLimit)         + _letter, _logic getVariable [QEGVAR(core,captLimit),         EGVAR(core,captLimit)]];
+    missionNamespace setVariable [QEGVAR(core,garrR)             + _letter, _logic getVariable [QEGVAR(core,garrR),             EGVAR(core,garrR)]];
+    missionNamespace setVariable [QEGVAR(core,objHoldTime)       + _letter, _logic getVariable [QEGVAR(core,objHoldTime),       EGVAR(core,objHoldTime)]];
+    missionNamespace setVariable [QEGVAR(core,objRadius1)        + _letter, _logic getVariable [QEGVAR(core,objRadius1),        EGVAR(core,objRadius1)]];
+    missionNamespace setVariable [QEGVAR(core,objRadius2)        + _letter, _logic getVariable [QEGVAR(core,objRadius2),        EGVAR(core,objRadius2)]];
+    missionNamespace setVariable [QEGVAR(core,lRelocating)       + _letter, _logic getVariable [QEGVAR(core,lRelocating),       EGVAR(core,lRelocating)]];
+    missionNamespace setVariable [QEGVAR(core,noRec)             + _letter, _logic getVariable [QEGVAR(core,noRec),             EGVAR(core,noRec)]];
+    missionNamespace setVariable [QEGVAR(core,rapidCapt)         + _letter, _logic getVariable [QEGVAR(core,rapidCapt),         EGVAR(core,rapidCapt)]];
+    missionNamespace setVariable [QEGVAR(core,defendObjectives)  + _letter, _logic getVariable [QEGVAR(core,defendObjectives),  EGVAR(core,defendObjectives)]];
+    missionNamespace setVariable [QEGVAR(core,reconReserve)      + _letter, _logic getVariable [QEGVAR(core,reconReserve),      EGVAR(core,reconReserve)]];
+    missionNamespace setVariable [QEGVAR(core,attackReserve)     + _letter, _logic getVariable [QEGVAR(core,attackReserve),     EGVAR(core,attackReserve)]];
+    missionNamespace setVariable [QEGVAR(core,aAO)               + _letter, _logic getVariable [QEGVAR(core,aAO),               EGVAR(core,aAO)]];
+    missionNamespace setVariable [QEGVAR(core,forceAAO)          + _letter, _logic getVariable [QEGVAR(core,forceAAO),          EGVAR(core,forceAAO)]];
+    missionNamespace setVariable [QEGVAR(core,bBAOObj)           + _letter, _logic getVariable [QEGVAR(core,bBAOObj),           EGVAR(core,bBAOObj)]];
+    missionNamespace setVariable [QEGVAR(core,maxSimpleObjs)     + _letter, _logic getVariable [QEGVAR(core,maxSimpleObjs),     EGVAR(core,maxSimpleObjs)]];
+    missionNamespace setVariable [QEGVAR(core,cRDefRes)          + _letter, _logic getVariable [QEGVAR(core,cRDefRes),          EGVAR(core,cRDefRes)]];
+    missionNamespace setVariable [QEGVAR(hal_hac,objectiveRespawn) + _letter, _logic getVariable [QEGVAR(hal_hac,objectiveRespawn), EGVAR(hal_hac,objectiveRespawn)]];
 
 } forEach _commanders;

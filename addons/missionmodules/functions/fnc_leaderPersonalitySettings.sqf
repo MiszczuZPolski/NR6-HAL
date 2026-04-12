@@ -25,7 +25,8 @@ private _commanders = [];
 
     private _leaderObj = call compile _leaderName;
 
-    missionNamespace setVariable [QGVAR(mAtt) + _letter,        _logic getVariable [QGVAR(mAtt), 0]];
-    missionNamespace setVariable [QGVAR(personality) + _letter, _logic getVariable [QGVAR(personality), []]];
+    // Editor module overrides CBA setting; CBA setting is the fallback default.
+    missionNamespace setVariable [QEGVAR(core,mAtt)        + _letter, _logic getVariable [QEGVAR(core,mAtt),        EGVAR(core,mAtt)]];
+    missionNamespace setVariable [QEGVAR(core,personality) + _letter, _logic getVariable [QEGVAR(core,personality), EGVAR(core,personality)]];
 
 } forEach _commanders;
