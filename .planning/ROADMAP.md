@@ -10,11 +10,11 @@
 
 ## Phases
 
-- [ ] **Phase 1: Addon Skeleton & Build Foundation** - Create 4 subsystem addon skeletons (hal_data/hal_hac/hal_boss/hal_tasking) + compat_nr6hal, fix mod.cpp, establish HEMTT clean build
-- [ ] **Phase 2: Dependency Mapping** - Map inter-function call graph, classify active/dead functions, establish PREP order
-- [ ] **Phase 3: Function Extraction** - Extract all active functions from all 7 in-scope legacy files into individual fnc_*.sqf files
-- [ ] **Phase 4: Variable Namespacing** - Rename all RYD*/RHQ*/RydBB* globals to GVAR() macros atomically
-- [ ] **Phase 5: Settings, Localization, Compat & Cleanup** - CBA settings, stringtable, compatibility addon, legacy removal, behavior verification
+- [x] **Phase 1: Addon Skeleton & Build Foundation** - Create 4 subsystem addon skeletons (hal_data/hal_hac/hal_boss/hal_tasking) + compat_nr6hal, fix mod.cpp, establish HEMTT clean build
+- [x] **Phase 2: Dependency Mapping** - Map inter-function call graph, classify active/dead functions, establish PREP order
+- [x] **Phase 3: Function Extraction** - Extract all active functions from all 7 in-scope legacy files into individual fnc_*.sqf files
+- [x] **Phase 4: Variable Namespacing** - Rename all RYD*/RHQ*/RydBB* globals to GVAR() macros atomically
+- [x] **Phase 5: Settings, Localization, Compat & Cleanup** - CBA settings, stringtable, compatibility addon, legacy removal, behavior verification
 
 ---
 
@@ -104,7 +104,7 @@
   - [x] 05-06-PLAN.md — CBA settings (initSettings.inc.sqf) + stringtable.xml + wire module defaults (SET-01, SET-02, SET-03, SET-04)
   - [x] 05-07-PLAN.md — Populate compat addon: classname inheritance + function aliases + global variable aliases (COMPAT-01, COMPAT-02, COMPAT-03)
   - [x] 05-08-PLAN.md — Create 5 SQF behavior verification smoke tests (BEHAV-01, BEHAV-02, BEHAV-03, BEHAV-04, BEHAV-05)
-  - [ ] 05-09-PLAN.md — Final build verification + ROADMAP/STATE/REQUIREMENTS completion (all Phase 5 reqs)
+  - [x] 05-09-PLAN.md — Final build verification + ROADMAP/STATE/REQUIREMENTS completion (all Phase 5 reqs)
 
 ---
 
@@ -112,11 +112,13 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Addon Skeleton & Build Foundation | 5/5 | Complete | - |
-| 2. Dependency Mapping | 5/5 | Complete | - |
-| 3. Function Extraction | 5/5 | Complete | - |
-| 4. Variable Namespacing | 6/6 | Complete |  |
-| 5. Settings, Localization, Compat & Cleanup | 0/9 | Planned | - |
+| 1. Addon Skeleton & Build Foundation | 5/5 | Complete | 2026-04-10 |
+| 2. Dependency Mapping | 5/5 | Complete | 2026-04-10 |
+| 3. Function Extraction | 5/5 | Complete | 2026-04-10 |
+| 4. Variable Namespacing | 6/6 | Complete | 2026-04-10 |
+| 5. Settings, Localization, Compat & Cleanup | 9/9 | Complete | 2026-04-11 |
+
+**v1.0 milestone: COMPLETE — all 5 phases, all 30 plans, all 37 requirements.**
 
 ---
 
@@ -165,4 +167,4 @@
 
 ---
 *Created: 2026-04-09*
-*Last updated: 2026-04-12 after Phase 5 planning — 9 plans across 9 waves*
+*Last updated: 2026-04-11 — v1.0 milestone complete after Plan 05-09 closure*
