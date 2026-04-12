@@ -62,11 +62,11 @@
   4. Every migrated function uses `params` syntax, `private` declarations, `FUNC()`/`EFUNC()` call macros, and includes `script_component.hpp`
   5. No commented-out or dead code remains in any migrated file
 **Plans**: 5 plans
-  - [x] 03-01-PLAN.md — Extract RHQLibrary.sqf (31 data arrays) → hal_data + D-06a REQUIREMENTS/ROADMAP scope update (FUNC-03, FUNC-09, FUNC-10, STD-01..04)
-  - [x] 03-02-PLAN.md — Extract HAC_fnc.sqf (RYD_Dispatcher only, delete 5645 lines of deadwood) → hal_hac (FUNC-04, FUNC-09, FUNC-10, STD-01..04)
-  - [x] 03-03-PLAN.md — Extract HAC_fnc2.sqf (RYD_StatusQuo decomposition + HAL_* + PresentRHQ) → hal_hac/hal_boss/hal_data; NON-AUTONOMOUS D-03a checkpoint (FUNC-05, FUNC-08, FUNC-09, FUNC-10, STD-01..04)
-  - [x] 03-04-PLAN.md — Extract Boss_fnc.sqf (20 fns) → hal_boss + retire RYD_TerraCognita + update Boss.sqf external edges (FUNC-06, FUNC-09, FUNC-10, STD-01..04)
-  - [x] 03-05-PLAN.md — Extract TaskInitNR6.sqf (72 Action* callbacks) → hal_tasking + SquadTaskingNR6 string updates + D-04 load restore (FUNC-07, FUNC-09, FUNC-10, STD-01..04)
+  - [x] 03-01-PLAN.md — Extract RHQLibrary.sqf (31 data arrays) -> hal_data + D-06a REQUIREMENTS/ROADMAP scope update (FUNC-03, FUNC-09, FUNC-10, STD-01..04)
+  - [x] 03-02-PLAN.md — Extract HAC_fnc.sqf (RYD_Dispatcher only, delete 5645 lines of deadwood) -> hal_hac (FUNC-04, FUNC-09, FUNC-10, STD-01..04)
+  - [x] 03-03-PLAN.md — Extract HAC_fnc2.sqf (RYD_StatusQuo decomposition + HAL_* + PresentRHQ) -> hal_hac/hal_boss/hal_data; NON-AUTONOMOUS D-03a checkpoint (FUNC-05, FUNC-08, FUNC-09, FUNC-10, STD-01..04)
+  - [x] 03-04-PLAN.md — Extract Boss_fnc.sqf (20 fns) -> hal_boss + retire RYD_TerraCognita + update Boss.sqf external edges (FUNC-06, FUNC-09, FUNC-10, STD-01..04)
+  - [x] 03-05-PLAN.md — Extract TaskInitNR6.sqf (72 Action* callbacks) -> hal_tasking + SquadTaskingNR6 string updates + D-04 load restore (FUNC-07, FUNC-09, FUNC-10, STD-01..04)
 
 ### Phase 4: Variable Namespacing
 **Goal**: All legacy global variable names (RYD*, RHQ*, RydBB*) are replaced with CBA GVAR() macros throughout the migrated codebase, each rename completed atomically to prevent partial-rename state corruption
@@ -95,7 +95,16 @@
   3. An existing mission that used old nr6_hal module classnames loads correctly with the compat addon enabled — no "module not found" errors
   4. `nr6_hal/` legacy directory has been deleted and the HEMTT build still produces zero errors and zero warnings
   5. HAL AI commander initializes, assigns groups, scans for threats, coordinates fire support, and runs chatter identically to pre-refactor behavior in a test session
-**Plans**: TBD
+**Plans**: 9 plans
+  - [ ] 05-01-PLAN.md — Extract VarInit.sqf unique content + TimeM/TaskMenu/LF utilities + Sound/CfgRadio migration (COMPAT-04)
+  - [ ] 05-02-PLAN.md — Extract Boss.sqf + Front.sqf + Desperation.sqf + HQSitRep[B-H] + 11 HQ command scripts (COMPAT-04, BEHAV-01, BEHAV-02)
+  - [ ] 05-03-PLAN.md — Extract 20 tactical behavior scripts (Go* attack/defense/recon + SCargo + Garrison) (COMPAT-04)
+  - [ ] 05-04-PLAN.md — Extract 8 supply scripts + SquadTaskingNR6.sqf + delete nr6_hal/ directory (COMPAT-04)
+  - [ ] 05-05-PLAN.md — Dead-variable audit: grep 506 rename-map entries, mark dead as stripped (COMPAT-02, COMPAT-03)
+  - [ ] 05-06-PLAN.md — CBA settings (initSettings.inc.sqf) + stringtable.xml + wire module defaults (SET-01, SET-02, SET-03, SET-04)
+  - [ ] 05-07-PLAN.md — Populate compat addon: classname inheritance + function aliases + global variable aliases (COMPAT-01, COMPAT-02, COMPAT-03)
+  - [ ] 05-08-PLAN.md — Create 5 SQF behavior verification smoke tests (BEHAV-01, BEHAV-02, BEHAV-03, BEHAV-04, BEHAV-05)
+  - [ ] 05-09-PLAN.md — Final build verification + ROADMAP/STATE/REQUIREMENTS completion (all Phase 5 reqs)
 
 ---
 
@@ -103,11 +112,11 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Addon Skeleton & Build Foundation | 0/3 | Planned | - |
-| 2. Dependency Mapping | 0/5 | Planned | - |
-| 3. Function Extraction | 0/5 | Planned | - |
-| 4. Variable Namespacing | 5/7 | In Progress|  |
-| 5. Settings, Localization, Compat & Cleanup | 0/? | Not started | - |
+| 1. Addon Skeleton & Build Foundation | 5/5 | Complete | - |
+| 2. Dependency Mapping | 5/5 | Complete | - |
+| 3. Function Extraction | 5/5 | Complete | - |
+| 4. Variable Namespacing | 6/6 | Complete |  |
+| 5. Settings, Localization, Compat & Cleanup | 0/9 | Planned | - |
 
 ---
 
@@ -152,8 +161,8 @@
 | BEHAV-04 | Phase 5 |
 | BEHAV-05 | Phase 5 |
 
-**v1 requirements mapped: 37/37** ✓
+**v1 requirements mapped: 37/37**
 
 ---
 *Created: 2026-04-09*
-*Last updated: 2026-04-10 after Phase 3 planning — scope reconciled to 7 files per D-06a*
+*Last updated: 2026-04-12 after Phase 5 planning — 9 plans across 9 waves*
