@@ -56,7 +56,7 @@ if (_HQ getVariable [QEGVAR(core,flee),true]) then
                 if (isNil "_inDanger") then {_inDanger = 0};
                 if (_inDanger > 0.05) then
                     {
-                    if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_InFear,"InFear"] call EFUNC(common,AIChatter)}
+                    if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_InFear),"InFear"] call EFUNC(common,AIChatter)}
                     }
                 }
             };
@@ -81,7 +81,7 @@ if (_HQ getVariable [QEGVAR(core,flee),true]) then
             private _UL = leader _x;
             if not (isPlayer _UL) then
                 {
-                if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_InPanic,"InPanic"] call EFUNC(common,AIChatter)}
+                if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_InPanic),"InPanic"] call EFUNC(common,AIChatter)}
                 };
 
             if (_HQ getVariable [QEGVAR(core,surr),false]) then

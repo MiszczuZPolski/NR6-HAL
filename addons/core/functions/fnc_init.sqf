@@ -8,85 +8,85 @@ if !(isServer) exitWith {};
 GVAR(wait) = _logic getVariable [QGVAR(wait), 15];
 
 
-RydxHQ_ReconCargo = missionNamespace getVariable ["RydxHQ_ReconCargo",true];
-publicVariable "RydxHQ_ReconCargo";
-RydxHQ_SynchroAttack = missionNamespace getVariable ["RydxHQ_SynchroAttack",false];
-publicVariable "RydxHQ_SynchroAttack";
-RydxHQ_InfoMarkersID = missionNamespace getVariable ["RydxHQ_InfoMarkersID",true];
-publicVariable "RydxHQ_InfoMarkersID";
+GVAR(reconCargo) = missionNamespace getVariable [QGVAR(reconCargo),true];
+publicVariable QGVAR(reconCargo);
+GVAR(synchroAttack) = missionNamespace getVariable [QGVAR(synchroAttack),false];
+publicVariable QGVAR(synchroAttack);
+GVAR(infoMarkersID) = missionNamespace getVariable [QGVAR(infoMarkersID),true];
+publicVariable QGVAR(infoMarkersID);
 
-RydxHQ_Actions = missionNamespace getVariable ["RydxHQ_Actions",true];
-publicVariable "RydxHQ_Actions";
-RydxHQ_ActionsMenu = missionNamespace getVariable ["RydxHQ_ActionsMenu",true];
-publicVariable "RydxHQ_ActionsMenu";
+GVAR(actions) = missionNamespace getVariable [QGVAR(actions),true];
+publicVariable QGVAR(actions);
+GVAR(actionsMenu) = missionNamespace getVariable [QGVAR(actionsMenu),true];
+publicVariable QGVAR(actionsMenu);
 
-RydxHQ_TaskActions = missionNamespace getVariable ["RydxHQ_TaskActions",false];
-publicVariable "RydxHQ_TaskActions";
-RydxHQ_SupportActions = missionNamespace getVariable ["RydxHQ_SupportActions",false];
-publicVariable "RydxHQ_SupportActions";
-RydxHQ_ActionsAceOnly = missionNamespace getVariable ["RydxHQ_ActionsAceOnly",false];
-publicVariable "RydxHQ_ActionsAceOnly";
+GVAR(taskActions) = missionNamespace getVariable [QGVAR(taskActions),false];
+publicVariable QGVAR(taskActions);
+GVAR(supportActions) = missionNamespace getVariable [QGVAR(supportActions),false];
+publicVariable QGVAR(supportActions);
+GVAR(actionsAceOnly) = missionNamespace getVariable [QGVAR(actionsAceOnly),false];
+publicVariable QGVAR(actionsAceOnly);
 
-RydxHQ_NoRestPlayers = missionNamespace getVariable ["RydxHQ_NoRestPlayers",true];
-publicVariable "RydxHQ_NoRestPlayers";
-RydxHQ_NoCargoPlayers = missionNamespace getVariable ["RydxHQ_NoCargoPlayers",true];
-publicVariable "RydxHQ_NoCargoPlayers";
+GVAR(noRestPlayers) = missionNamespace getVariable [QGVAR(noRestPlayers),true];
+publicVariable QGVAR(noRestPlayers);
+GVAR(noCargoPlayers) = missionNamespace getVariable [QGVAR(noCargoPlayers),true];
+publicVariable QGVAR(noCargoPlayers);
 
-RydxHQ_LZ = missionNamespace getVariable ["RydxHQ_LZ",true];
-publicVariable "RydxHQ_LZ";
+GVAR(lZ) = missionNamespace getVariable [QGVAR(lZ),true];
+publicVariable QGVAR(lZ);
 
 RydART_Safe = missionNamespace getVariable ["RydART_Safe",250];
 publicVariable "RydART_Safe";
 
-GVAR(lZ) = RydxHQ_LZ;
-GVAR(lZB) = RydxHQ_LZ;
-GVAR(lZC) = RydxHQ_LZ;
-GVAR(lZD) = RydxHQ_LZ;
-GVAR(lZE) = RydxHQ_LZ;
-GVAR(lZF) = RydxHQ_LZ;
-GVAR(lZG) = RydxHQ_LZ;
-GVAR(lZH) = RydxHQ_LZ;
+GVAR(lZ) = GVAR(lZ);
+GVAR(lZB) = GVAR(lZ);
+GVAR(lZC) = GVAR(lZ);
+GVAR(lZD) = GVAR(lZ);
+GVAR(lZE) = GVAR(lZ);
+GVAR(lZF) = GVAR(lZ);
+GVAR(lZG) = GVAR(lZ);
+GVAR(lZH) = GVAR(lZ);
 
 //LZ setting was coded in entire system as Leader specific despite making far more sense as a general setting. Will clean it up eventually.
 
-RydxHQ_HQChat = missionNamespace getVariable ["RydxHQ_HQChat",true];
-publicVariable "RydxHQ_HQChat";
-RydxHQ_AIChatDensity = missionNamespace getVariable ["RydxHQ_AIChatDensity",100];
-publicVariable "RydxHQ_AIChatDensity";
-RydxHQ_AIChat_Type = missionNamespace getVariable ["RydxHQ_AIChat_Type",100];
-publicVariable "RydxHQ_AIChat_Type";
-RydxHQ_GarrisonV2 = missionNamespace getVariable ["RydxHQ_GarrisonV2",true];
-publicVariable "RydxHQ_GarrisonV2";
-RydxHQ_NEAware = missionNamespace getVariable ["RydxHQ_NEAware",500];
-publicVariable "RydxHQ_NEAware";
-RydxHQ_SlingDrop = missionNamespace getVariable ["RydxHQ_SlingDrop",false];
-publicVariable "RydxHQ_SlingDrop";
-RydxHQ_RHQAutoFill = missionNamespace getVariable ["RydxHQ_RHQAutoFill",true];
-publicVariable "RydxHQ_RHQAutoFill";
+GVAR(hQChat) = missionNamespace getVariable [QGVAR(hQChat),true];
+publicVariable QGVAR(hQChat);
+GVAR(aIChatDensity) = missionNamespace getVariable [QGVAR(aIChatDensity),100];
+publicVariable QGVAR(aIChatDensity);
+GVAR(aIChat_Type) = missionNamespace getVariable [QGVAR(aIChat_Type),100];
+publicVariable QGVAR(aIChat_Type);
+GVAR(garrisonV2) = missionNamespace getVariable [QGVAR(garrisonV2),true];
+publicVariable QGVAR(garrisonV2);
+GVAR(nEAware) = missionNamespace getVariable [QGVAR(nEAware),500];
+publicVariable QGVAR(nEAware);
+GVAR(slingDrop) = missionNamespace getVariable [QGVAR(slingDrop),false];
+publicVariable QGVAR(slingDrop);
+GVAR(rHQAutoFill) = missionNamespace getVariable [QGVAR(rHQAutoFill),true];
+publicVariable QGVAR(rHQAutoFill);
 
-RydxHQ_PathFinding = missionNamespace getVariable ["RydxHQ_PathFinding",0];
-publicVariable "RydxHQ_PathFinding";
+GVAR(pathFinding) = missionNamespace getVariable [QGVAR(pathFinding),0];
+publicVariable QGVAR(pathFinding);
 
-RydxHQ_MagicHeal = missionNamespace getVariable ["RydxHQ_MagicHeal",false];
-publicVariable "RydxHQ_MagicHeal";
-RydxHQ_MagicRepair = missionNamespace getVariable ["RydxHQ_MagicRepair",false];
-publicVariable "RydxHQ_MagicRepair";
-RydxHQ_MagicRearm = missionNamespace getVariable ["RydxHQ_MagicRearm",false];
-publicVariable "RydxHQ_MagicRearm";
-RydxHQ_MagicRefuel = missionNamespace getVariable ["RydxHQ_MagicRefuel",false];
-publicVariable "RydxHQ_MagicRefuel";
+GVAR(magicHeal) = missionNamespace getVariable [QGVAR(magicHeal),false];
+publicVariable QGVAR(magicHeal);
+GVAR(magicRepair) = missionNamespace getVariable [QGVAR(magicRepair),false];
+publicVariable QGVAR(magicRepair);
+GVAR(magicRearm) = missionNamespace getVariable [QGVAR(magicRearm),false];
+publicVariable QGVAR(magicRearm);
+GVAR(magicRefuel) = missionNamespace getVariable [QGVAR(magicRefuel),false];
+publicVariable QGVAR(magicRefuel);
 
-RydxHQ_PlayerCargoCheckLoopTime = missionNamespace getVariable ["RydxHQ_PlayerCargoCheckLoopTime",2];
-publicVariable "RydxHQ_PlayerCargoCheckLoopTime";
+GVAR(playerCargoCheckLoopTime) = missionNamespace getVariable [QGVAR(playerCargoCheckLoopTime),2];
+publicVariable QGVAR(playerCargoCheckLoopTime);
 
-RydxHQ_DisembarkRange = missionNamespace getVariable ["RydxHQ_DisembarkRange",200];
-publicVariable "RydxHQ_DisembarkRange";
+GVAR(disembarkRange) = missionNamespace getVariable [QGVAR(disembarkRange),200];
+publicVariable QGVAR(disembarkRange);
 
-RydxHQ_CargoObjRange = missionNamespace getVariable ["RydxHQ_CargoObjRange",1500];
-publicVariable "RydxHQ_CargoObjRange";
+GVAR(cargoObjRange) = missionNamespace getVariable [QGVAR(cargoObjRange),1500];
+publicVariable QGVAR(cargoObjRange);
 
-RydxHQ_ReconCargo = missionNamespace getVariable ["RydxHQ_ReconCargo",false];
-publicVariable "RydxHQ_ReconCargo";
+GVAR(reconCargo) = missionNamespace getVariable [QGVAR(reconCargo),false];
+publicVariable QGVAR(reconCargo);
 
 GVAR(wS_ArtyMarks) = missionNamespace getVariable [QGVAR(wS_ArtyMarks),false];
 publicVariable QGVAR(wS_ArtyMarks);
@@ -103,8 +103,8 @@ HAL_fnc_getSize = compile preprocessFileLineNumbers "A3\modules_f\marta\data\scr
 //used to "compile" list of units types usable by AI
 if (GVAR(rHQCheck)) then {[] call EFUNC(common,rhqCheck)};
 
-RydxHQ_AllLeaders = [];
-RydxHQ_AllHQ = [];
+GVAR(allLeaders) = [];
+GVAR(allHQ) = [];
 
 private _clB = [Map_BLUFOR_R,Map_BLUFOR_G,Map_BLUFOR_B,Map_BLUFOR_A];
 private _clO = [Map_OPFOR_R,Map_OPFOR_G,Map_OPFOR_B,Map_OPFOR_A];
@@ -117,8 +117,8 @@ private _clU = [Map_Unknown_R,Map_Unknown_G,Map_Unknown_B,Map_Unknown_A];
 	private _leader = missionNamespace getVariable [_leaderName, objNull];
 	if !(isNull _leader) then {
 		private _gp = group _leader;
-		RydxHQ_AllLeaders pushBack _leader;
-		RydxHQ_AllHQ pushBack _gp;
+		GVAR(allLeaders) pushBack _leader;
+		GVAR(allHQ) pushBack _gp;
 		_gp setVariable [QGVAR(codeSign), _codeSign];
 		if !(isNil _frontVar) then {
 			_gp setVariable [QEGVAR(common,front), missionNamespace getVariable _frontVar]
@@ -201,6 +201,6 @@ if ((count GVAR(groupMarks)) > 0) then
 	[GVAR(groupMarks),EFUNC(common,groupMarkerLoop)] call EFUNC(common,spawn)
 	};
 
-if (RydxHQ_Actions) then {
+if (GVAR(actions)) then {
 nul = [] execVM  (GVAR(path) + "SquadTaskingNR6.sqf");
 };

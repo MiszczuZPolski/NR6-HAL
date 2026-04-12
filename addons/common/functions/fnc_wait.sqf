@@ -128,7 +128,7 @@ waitUntil {
         } else {
             if !(_driverGroup in _airGroups) then {
                 _enemyPresent = [_assignedVehicle, _enemyGroups,
-                    missionNamespace getVariable ["RydxHQ_DisembarkRange", 500]] call FUNC(closeEnemy);
+                    missionNamespace getVariable [QEGVAR(core,disembarkRange), 500]] call FUNC(closeEnemy);
             };
         };
 
@@ -147,7 +147,7 @@ waitUntil {
 
                 if (!isNull _closestEnemy) then {
                     if (((vehicle (leader _group)) distance _closestEnemy) <
-                        missionNamespace getVariable ["RydxHQ_DisembarkRange", 500]) then {
+                        missionNamespace getVariable [QEGVAR(core,disembarkRange), 500]) then {
                         _enemyPresent = true;
                         if (_checkEnemy > 0) then {_enemy = true;};
                     };
@@ -203,7 +203,7 @@ waitUntil {
 
         // Check speed factor if enabled
         if (_checkSpeed) then {
-            if (!(missionNamespace getVariable ["RydxHQ_SynchroAttack", false])) then {
+            if (!(missionNamespace getVariable [QEGVAR(core,synchroAttack), false])) then {
                 if (abs (speed (vehicle (leader _driverGroup))) < 0.05) then {
                     _timer = _timer + 1;
                 };
@@ -345,8 +345,8 @@ if (_group getVariable ["InfGetinCheck" + (str _group), false]) then {
 
 // Send AI chatter message about order denial if timed out
 if (_timer > _tolerance) then {
-    if ((random 100) < (missionNamespace getVariable ["RydxHQ_AIChatDensity", 30])) then {
-        [(leader _group), (missionNamespace getVariable ["RydxHQ_AIC_OrdDen", ["Radio_Report_OrderRejected"]]), "OrdDen"] call FUNC(AIChatter);
+    if ((random 100) < (missionNamespace getVariable [QEGVAR(core,aIChatDensity), 30])) then {
+        [(leader _group), (missionNamespace getVariable [QGVAR(aIC_OrdDen), ["Radio_Report_OrderRejected"]]), "OrdDen"] call FUNC(AIChatter);
     };
 };
 

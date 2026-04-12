@@ -1,0 +1,2093 @@
+{
+  "$schema": "phase-4-rename-map-v1",
+  "generated_at": "2026-04-12T07:20:28.029496Z",
+  "prefix_batch": "RydxHQ_",
+  "entries": [
+    {
+      "legacy_name": "RydxHQ_AIC_40KImp_",
+      "new_macro_owner_form": "GVAR(aIC_40KImp_)",
+      "new_macro_extern_form": "EGVAR(common,aIC_40KImp_)",
+      "new_literal_expansion": "hal_common_aIC_40KImp_",
+      "addon_owner": "common",
+      "scopes": [
+        "getVariable_key"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_AIChatter.sqf",
+          "line": 36,
+          "scope": "getVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_ArtAss",
+      "new_macro_owner_form": "GVAR(aIC_ArtAss)",
+      "new_macro_extern_form": "EGVAR(common,aIC_ArtAss)",
+      "new_literal_expansion": "hal_common_aIC_ArtAss",
+      "addon_owner": "common",
+      "scopes": [
+        "getVariable_key",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_cff.sqf",
+          "line": 36,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_cff.sqf",
+          "line": 55,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_flares.sqf",
+          "line": 56,
+          "scope": "getVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_ArtDen",
+      "new_macro_owner_form": "GVAR(aIC_ArtDen)",
+      "new_macro_extern_form": "EGVAR(common,aIC_ArtDen)",
+      "new_literal_expansion": "hal_common_aIC_ArtDen",
+      "addon_owner": "common",
+      "scopes": [
+        "getVariable_key",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_cff.sqf",
+          "line": 60,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_flares.sqf",
+          "line": 60,
+          "scope": "getVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_ArtFire",
+      "new_macro_owner_form": "GVAR(aIC_ArtFire)",
+      "new_macro_extern_form": "EGVAR(common,aIC_ArtFire)",
+      "new_literal_expansion": "hal_common_aIC_ArtFire",
+      "addon_owner": "common",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_cff_ffe.sqf",
+          "line": 634,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_ArtyReq",
+      "new_macro_owner_form": "GVAR(aIC_ArtyReq)",
+      "new_macro_extern_form": "EGVAR(common,aIC_ArtyReq)",
+      "new_literal_expansion": "hal_common_aIC_ArtyReq",
+      "addon_owner": "common",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_cff.sqf",
+          "line": 28,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_DefStance",
+      "new_macro_owner_form": "GVAR(aIC_DefStance)",
+      "new_macro_extern_form": "EGVAR(hal_hac,aIC_DefStance)",
+      "new_literal_expansion": "hal_hal_hac_aIC_DefStance",
+      "addon_owner": "hal_hac",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_attackDispatch.sqf",
+          "line": 51,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_EnemySpot",
+      "new_macro_owner_form": "GVAR(aIC_EnemySpot)",
+      "new_macro_extern_form": "EGVAR(hal_hac,aIC_EnemySpot)",
+      "new_literal_expansion": "hal_hal_hac_aIC_EnemySpot",
+      "addon_owner": "hal_hac",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_scanFriends.sqf",
+          "line": 257,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_IllumReq",
+      "new_macro_owner_form": "GVAR(aIC_IllumReq)",
+      "new_macro_extern_form": "EGVAR(common,aIC_IllumReq)",
+      "new_literal_expansion": "hal_common_aIC_IllumReq",
+      "addon_owner": "common",
+      "scopes": [
+        "getVariable_key"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_flares.sqf",
+          "line": 46,
+          "scope": "getVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_InDanger",
+      "new_macro_owner_form": "GVAR(aIC_InDanger)",
+      "new_macro_extern_form": "EGVAR(core,aIC_InDanger)",
+      "new_literal_expansion": "hal_core_aIC_InDanger",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_EnemyScan.sqf",
+          "line": 147,
+          "scope": "getVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_InFear",
+      "new_macro_owner_form": "GVAR(aIC_InFear)",
+      "new_macro_extern_form": "EGVAR(hal_hac,aIC_InFear)",
+      "new_literal_expansion": "hal_hal_hac_aIC_InFear",
+      "addon_owner": "hal_hac",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_doctrine.sqf",
+          "line": 59,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_InPanic",
+      "new_macro_owner_form": "GVAR(aIC_InPanic)",
+      "new_macro_extern_form": "EGVAR(hal_hac,aIC_InPanic)",
+      "new_literal_expansion": "hal_hal_hac_aIC_InPanic",
+      "addon_owner": "hal_hac",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_doctrine.sqf",
+          "line": 84,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_OffStance",
+      "new_macro_owner_form": "GVAR(aIC_OffStance)",
+      "new_macro_extern_form": "EGVAR(hal_hac,aIC_OffStance)",
+      "new_literal_expansion": "hal_hal_hac_aIC_OffStance",
+      "addon_owner": "hal_hac",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_attackDispatch.sqf",
+          "line": 39,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_OrdConf",
+      "new_macro_owner_form": "GVAR(aIC_OrdConf)",
+      "new_macro_extern_form": "EGVAR(hal_boss,aIC_OrdConf)",
+      "new_literal_expansion": "hal_hal_boss_aIC_OrdConf",
+      "addon_owner": "hal_boss",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/hal_boss/functions/fnc_reserveExecuting.sqf",
+          "line": 112,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_OrdDen",
+      "new_macro_owner_form": "GVAR(aIC_OrdDen)",
+      "new_macro_extern_form": "EGVAR(common,aIC_OrdDen)",
+      "new_literal_expansion": "hal_common_aIC_OrdDen",
+      "addon_owner": "common",
+      "scopes": [
+        "getVariable_key",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_wait.sqf",
+          "line": 349,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action1ct.sqf",
+          "line": 17,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIC_SILENTM_",
+      "new_macro_owner_form": "GVAR(aIC_SILENTM_)",
+      "new_macro_extern_form": "EGVAR(common,aIC_SILENTM_)",
+      "new_literal_expansion": "hal_common_aIC_SILENTM_",
+      "addon_owner": "common",
+      "scopes": [
+        "getVariable_key"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_AIChatter.sqf",
+          "line": 31,
+          "scope": "getVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIChatDensity",
+      "new_macro_owner_form": "GVAR(aIChatDensity)",
+      "new_macro_extern_form": "EGVAR(core,aIChatDensity)",
+      "new_literal_expansion": "hal_core_aIChatDensity",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_cff.sqf",
+          "line": 28,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_cff.sqf",
+          "line": 36,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_cff.sqf",
+          "line": 55,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_cff.sqf",
+          "line": 60,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_cff_ffe.sqf",
+          "line": 634,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_flares.sqf",
+          "line": 45,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/common/functions/fnc_flares.sqf",
+          "line": 55,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/common/functions/fnc_flares.sqf",
+          "line": 59,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/common/functions/fnc_wait.sqf",
+          "line": 348,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_EnemyScan.sqf",
+          "line": 15,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 54,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 54,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 55,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/hal_boss/functions/fnc_reserveExecuting.sqf",
+          "line": 112,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_attackDispatch.sqf",
+          "line": 39,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_attackDispatch.sqf",
+          "line": 51,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_doctrine.sqf",
+          "line": 59,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_doctrine.sqf",
+          "line": 84,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_scanFriends.sqf",
+          "line": 25,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_scanFriends.sqf",
+          "line": 257,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 94,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 19,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 19,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AIChat_Type",
+      "new_macro_owner_form": "GVAR(aIChat_Type)",
+      "new_macro_extern_form": "EGVAR(core,aIChat_Type)",
+      "new_literal_expansion": "hal_core_aIChat_Type",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_AIChatter.sqf",
+          "line": 27,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/common/functions/fnc_HQChatter.sqf",
+          "line": 19,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 56,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 56,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 57,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 101,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_Actions",
+      "new_macro_owner_form": "GVAR(actions)",
+      "new_macro_extern_form": "EGVAR(core,actions)",
+      "new_literal_expansion": "hal_core_actions",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 18,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 18,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 19,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 204,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 132,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_ActionsAceOnly",
+      "new_macro_owner_form": "GVAR(actionsAceOnly)",
+      "new_macro_extern_form": "EGVAR(core,actionsAceOnly)",
+      "new_literal_expansion": "hal_core_actionsAceOnly",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 27,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 27,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 28,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 160,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_ActionsMenu",
+      "new_macro_owner_form": "GVAR(actionsMenu)",
+      "new_macro_extern_form": "EGVAR(core,actionsMenu)",
+      "new_literal_expansion": "hal_core_actionsMenu",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 20,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 20,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 21,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 139,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AllHQ",
+      "new_macro_owner_form": "GVAR(allHQ)",
+      "new_macro_extern_form": "EGVAR(core,allHQ)",
+      "new_literal_expansion": "hal_core_allHQ",
+      "addon_owner": "core",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_DbgMon.sqf",
+          "line": 15,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_DbgMon.sqf",
+          "line": 15,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_DbgMon.sqf",
+          "line": 30,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 173,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 173,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 174,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 174,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 175,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 175,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 182,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 186,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 186,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 195,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 195,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 107,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 121,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQLoop.sqf",
+          "line": 14,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo.sqf",
+          "line": 56,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo.sqf",
+          "line": 56,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo.sqf",
+          "line": 208,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo.sqf",
+          "line": 208,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_AllLeaders",
+      "new_macro_owner_form": "GVAR(allLeaders)",
+      "new_macro_extern_form": "EGVAR(core,allLeaders)",
+      "new_literal_expansion": "hal_core_allLeaders",
+      "addon_owner": "core",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_cff_tgt.sqf",
+          "line": 80,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 106,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 120,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_attackDispatch.sqf",
+          "line": 77,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_CargoObjRange",
+      "new_macro_owner_form": "GVAR(cargoObjRange)",
+      "new_macro_extern_form": "EGVAR(core,cargoObjRange)",
+      "new_literal_expansion": "hal_core_cargoObjRange",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 85,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 85,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 86,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 195,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_DisembarkRange",
+      "new_macro_owner_form": "GVAR(disembarkRange)",
+      "new_macro_extern_form": "EGVAR(core,disembarkRange)",
+      "new_literal_expansion": "hal_core_disembarkRange",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_wait.sqf",
+          "line": 131,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/common/functions/fnc_wait.sqf",
+          "line": 150,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 82,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 82,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 83,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 188,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_FlareMuzzles",
+      "new_macro_owner_form": "GVAR(flareMuzzles)",
+      "new_macro_extern_form": "EGVAR(common,flareMuzzles)",
+      "new_literal_expansion": "hal_common_flareMuzzles",
+      "addon_owner": "common",
+      "scopes": [
+        "getVariable_key"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_flares.sqf",
+          "line": 150,
+          "scope": "getVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_GarrisonV2",
+      "new_macro_owner_form": "GVAR(garrisonV2)",
+      "new_macro_extern_form": "EGVAR(core,garrisonV2)",
+      "new_literal_expansion": "hal_core_garrisonV2",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 58,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 58,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 59,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 209,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 20,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 20,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_HQChat",
+      "new_macro_owner_form": "GVAR(hQChat)",
+      "new_macro_extern_form": "EGVAR(core,hQChat)",
+      "new_literal_expansion": "hal_core_hQChat",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_orderPause.sqf",
+          "line": 38,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 52,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 52,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 53,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 87,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_Handles",
+      "new_macro_owner_form": "GVAR(handles)",
+      "new_macro_extern_form": "EGVAR(common,handles)",
+      "new_literal_expansion": "hal_common_handles",
+      "addon_owner": "common",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_spawn.sqf",
+          "line": 11,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_spawn.sqf",
+          "line": 16,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_spawn.sqf",
+          "line": 24,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_spawn.sqf",
+          "line": 29,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_spawn.sqf",
+          "line": 31,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/common/functions/fnc_spawn.sqf",
+          "line": 31,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_InfoMarkersID",
+      "new_macro_owner_form": "GVAR(infoMarkersID)",
+      "new_macro_extern_form": "EGVAR(core,infoMarkersID)",
+      "new_literal_expansion": "hal_core_infoMarkersID",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 15,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 15,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 16,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/hal_boss/functions/fnc_EBFT.sqf",
+          "line": 54,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_boss/functions/fnc_FBFTLOOP.sqf",
+          "line": 89,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 125,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 8,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 8,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_LFActive",
+      "new_macro_owner_form": "GVAR(lFActive)",
+      "new_macro_extern_form": "EGVAR(common,lFActive)",
+      "new_literal_expansion": "hal_common_lFActive",
+      "addon_owner": "common",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_liveFeed.sqf",
+          "line": 6,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_liveFeed.sqf",
+          "line": 7,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_LF_Loop.sqf",
+          "line": 18,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_LF_Loop.sqf",
+          "line": 20,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_LF_Loop.sqf",
+          "line": 147,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_LF_Loop.sqf",
+          "line": 149,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_LFTerminating",
+      "new_macro_owner_form": "GVAR(lFTerminating)",
+      "new_macro_extern_form": "EGVAR(common,lFTerminating)",
+      "new_literal_expansion": "hal_common_lFTerminating",
+      "addon_owner": "common",
+      "scopes": [
+        "global_assignment",
+        "isNil_guard"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_LF.sqf",
+          "line": 73,
+          "scope": "isNil_guard"
+        },
+        {
+          "path": "addons/common/functions/fnc_LF.sqf",
+          "line": 74,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/common/functions/fnc_LF.sqf",
+          "line": 77,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/common/functions/fnc_LF.sqf",
+          "line": 97,
+          "scope": "isNil_guard"
+        },
+        {
+          "path": "addons/common/functions/fnc_LF.sqf",
+          "line": 98,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/common/functions/fnc_LF.sqf",
+          "line": 101,
+          "scope": "global_assignment"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_LZ",
+      "new_macro_owner_form": "GVAR(lZ)",
+      "new_macro_extern_form": "EGVAR(core,lZ)",
+      "new_literal_expansion": "hal_core_lZ",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 35,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 35,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 36,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 41,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 42,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 43,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 44,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 45,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 46,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 47,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 48,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 202,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_MARatio",
+      "new_macro_owner_form": "GVAR(mARatio)",
+      "new_macro_extern_form": "EGVAR(hal_hac,mARatio)",
+      "new_literal_expansion": "hal_hal_hac_mARatio",
+      "addon_owner": "hal_hac",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/hal_hac/functions/fnc_dispatcher.sqf",
+          "line": 175,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_dispatcher.sqf",
+          "line": 207,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_MagicHeal",
+      "new_macro_owner_form": "GVAR(magicHeal)",
+      "new_macro_extern_form": "EGVAR(core,magicHeal)",
+      "new_literal_expansion": "hal_core_magicHeal",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 70,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 70,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 71,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 244,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 27,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 27,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_MagicRearm",
+      "new_macro_owner_form": "GVAR(magicRearm)",
+      "new_macro_extern_form": "EGVAR(core,magicRearm)",
+      "new_literal_expansion": "hal_core_magicRearm",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 74,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 74,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 75,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 258,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 29,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 29,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_MagicRefuel",
+      "new_macro_owner_form": "GVAR(magicRefuel)",
+      "new_macro_extern_form": "EGVAR(core,magicRefuel)",
+      "new_literal_expansion": "hal_core_magicRefuel",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 76,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 76,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 77,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 265,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 30,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 30,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_MagicRepair",
+      "new_macro_owner_form": "GVAR(magicRepair)",
+      "new_macro_extern_form": "EGVAR(core,magicRepair)",
+      "new_literal_expansion": "hal_core_magicRepair",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 72,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 72,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 73,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 251,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 28,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 28,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_Markers",
+      "new_macro_owner_form": "GVAR(markers)",
+      "new_macro_extern_form": "EGVAR(common,markers)",
+      "new_literal_expansion": "hal_common_markers",
+      "addon_owner": "common",
+      "scopes": [
+        "global_read",
+        "isNil_guard"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_mark.sqf",
+          "line": 71,
+          "scope": "isNil_guard"
+        },
+        {
+          "path": "addons/common/functions/fnc_mark.sqf",
+          "line": 72,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_boss/functions/fnc_marker.sqf",
+          "line": 41,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_boss/functions/fnc_marker.sqf",
+          "line": 41,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_NEAware",
+      "new_macro_owner_form": "GVAR(nEAware)",
+      "new_macro_extern_form": "EGVAR(core,nEAware)",
+      "new_literal_expansion": "hal_core_nEAware",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 60,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 60,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 61,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 216,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 21,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 21,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_NoCargoPlayers",
+      "new_macro_owner_form": "GVAR(noCargoPlayers)",
+      "new_macro_extern_form": "EGVAR(core,noCargoPlayers)",
+      "new_literal_expansion": "hal_core_noCargoPlayers",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 32,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 32,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 33,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 174,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 17,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 17,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_NoRestPlayers",
+      "new_macro_owner_form": "GVAR(noRestPlayers)",
+      "new_macro_extern_form": "EGVAR(core,noRestPlayers)",
+      "new_literal_expansion": "hal_core_noRestPlayers",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 30,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 30,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 31,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 167,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 16,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 16,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_PathFinding",
+      "new_macro_owner_form": "GVAR(pathFinding)",
+      "new_macro_extern_form": "EGVAR(core,pathFinding)",
+      "new_literal_expansion": "hal_core_pathFinding",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 67,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 67,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 68,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 237,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_PlayerCargoCheckLoopTime",
+      "new_macro_owner_form": "GVAR(playerCargoCheckLoopTime)",
+      "new_macro_extern_form": "EGVAR(core,playerCargoCheckLoopTime)",
+      "new_literal_expansion": "hal_core_playerCargoCheckLoopTime",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 79,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 79,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 80,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action7ct.sqf",
+          "line": 54,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action7ct.sqf",
+          "line": 82,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_actionGTct.sqf",
+          "line": 53,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_actionGTct.sqf",
+          "line": 80,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_RHQAutoFill",
+      "new_macro_owner_form": "GVAR(rHQAutoFill)",
+      "new_macro_extern_form": "EGVAR(core,rHQAutoFill)",
+      "new_literal_expansion": "hal_core_rHQAutoFill",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 111,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 64,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 64,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 65,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQLoop.sqf",
+          "line": 13,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 230,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_ReconCargo",
+      "new_macro_owner_form": "GVAR(reconCargo)",
+      "new_macro_extern_form": "EGVAR(core,reconCargo)",
+      "new_literal_expansion": "hal_core_reconCargo",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 11,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 11,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 12,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 88,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 88,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 89,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 73,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 6,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 6,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_SlingDrop",
+      "new_macro_owner_form": "GVAR(slingDrop)",
+      "new_macro_extern_form": "EGVAR(core,slingDrop)",
+      "new_literal_expansion": "hal_core_slingDrop",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 62,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 62,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 63,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 223,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_SmokeMuzzles",
+      "new_macro_owner_form": "GVAR(smokeMuzzles)",
+      "new_macro_extern_form": "EGVAR(common,smokeMuzzles)",
+      "new_literal_expansion": "hal_common_smokeMuzzles",
+      "addon_owner": "common",
+      "scopes": [
+        "getVariable_key"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_smoke.sqf",
+          "line": 140,
+          "scope": "getVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_SupportActions",
+      "new_macro_owner_form": "GVAR(supportActions)",
+      "new_macro_extern_form": "EGVAR(core,supportActions)",
+      "new_literal_expansion": "hal_core_supportActions",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 25,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 25,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 26,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 153,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_SynchroAttack",
+      "new_macro_owner_form": "GVAR(synchroAttack)",
+      "new_macro_extern_form": "EGVAR(core,synchroAttack)",
+      "new_literal_expansion": "hal_core_synchroAttack",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_wait.sqf",
+          "line": 206,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 13,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 13,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 14,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 80,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 7,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/missionmodules/functions/fnc_generalSettings.sqf",
+          "line": 7,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RydxHQ_TaskActions",
+      "new_macro_owner_form": "GVAR(taskActions)",
+      "new_macro_extern_form": "EGVAR(core,taskActions)",
+      "new_literal_expansion": "hal_core_taskActions",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 23,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 23,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 24,
+          "scope": "publicVariable_string"
+        },
+        {
+          "path": "addons/missionmodules/CfgVehicles.hpp",
+          "line": 146,
+          "scope": "global_read"
+        }
+      ]
+    }
+  ]
+}

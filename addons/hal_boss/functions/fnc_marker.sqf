@@ -38,6 +38,6 @@ if !(_shape == "ICON") then {_i setMarkerBrushLocal _brush} else {_i setMarkerTy
 _i setMarkerAlphaLocal _alpha;
 _i setMarkerText _text;
 
-RydxHQ_Markers set [(count RydxHQ_Markers),_i];
+EGVAR(common,markers) set [(count EGVAR(common,markers)),_i];
 
 _i

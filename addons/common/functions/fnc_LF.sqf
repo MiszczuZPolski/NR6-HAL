@@ -70,11 +70,11 @@ if  !(GVAR(lF)) then
 
         while { !(isNil "BIS_liveFeed")} do {
             if ((_isFoot) && !(isNull objectParent _tgt)) exitWith {
-                if (isNil "RydxHQ_LFTerminating") then {
-                    RydxHQ_LFTerminating = true;
+                if (isNil QGVAR(lFTerminating)) then {
+                    GVAR(lFTerminating) = true;
                     [] call BIS_fnc_liveFeedTerminate;
                     waitUntil {isNil "BIS_liveFeed"};
-                    RydxHQ_LFTerminating = nil;
+                    GVAR(lFTerminating) = nil;
                     _dc = _tgt getVariable [QGVAR(camPoint),objNull];
 
                     deleteVehicle _dc;
@@ -94,11 +94,11 @@ if  !(GVAR(lF)) then
 
     [[_src,_vPos], _fnc_code] call FUNC(spawn)
 } else {
-    if (isNil "RydxHQ_LFTerminating") then {
-        RydxHQ_LFTerminating = true;
+    if (isNil QGVAR(lFTerminating)) then {
+        GVAR(lFTerminating) = true;
         [] call BIS_fnc_liveFeedTerminate;
         waitUntil {isNil "BIS_liveFeed"};
-        RydxHQ_LFTerminating = nil;
+        GVAR(lFTerminating) = nil;
         _dc = _src getVariable [QGVAR(camPoint),objNull];
 
         deleteVehicle _dc;

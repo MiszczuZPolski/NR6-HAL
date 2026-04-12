@@ -25,7 +25,7 @@ for "_i" from 1 to _CFFMissions do {
 		//_UL = leader (_friends select (floor (random (count _friends))));
 		private _UL = _tgt getVariable [QGVAR(myFO), leader (_friends select (floor (random (count _friends))))];
 
-		if !(isPlayer _UL) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_ArtyReq,"ArtyReq"] call FUNC(AIChatter)}};
+		if !(isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_ArtyReq),"ArtyReq"] call FUNC(AIChatter)}};
 
 		if (_possible) then {
 				{
@@ -33,7 +33,7 @@ for "_i" from 1 to _CFFMissions do {
 						_x setVariable [QGVAR(batteryBusy), true]
 					};
 				} forEach (_bArr select 1);
-			if ((random 100) < RydxHQ_AIChatDensity) then {[_ldr,RydxHQ_AIC_ArtAss,"ArtAss"] call FUNC(AIChatter)};
+			if ((random 100) < EGVAR(core,aIChatDensity)) then {[_ldr,GVAR(aIC_ArtAss),"ArtAss"] call FUNC(AIChatter)};
 			//[_bArr select 1,_tgt,_bArr select 2,_bArr select 3,_friends,_Debug,_ammo,_amnt] spawn RYD_CFF_FFE
 
 			[[_bArr select 1, _tgt, _bArr select 2, _bArr select 3, _friends, _Debug, _ammo, _amnt min (_bArr select 4)], FUNC(cff_ffe)] call FUNC(spawn);
@@ -52,12 +52,12 @@ for "_i" from 1 to _CFFMissions do {
 							_x setVariable [QGVAR(batteryBusy), true]
 						};
 					} forEach (_bArr select 1);
-				if ((random 100) < RydxHQ_AIChatDensity) then {[_ldr,RydxHQ_AIC_ArtAss,"ArtAss"] call FUNC(AIChatter)};
+				if ((random 100) < EGVAR(core,aIChatDensity)) then {[_ldr,GVAR(aIC_ArtAss),"ArtAss"] call FUNC(AIChatter)};
 				//[_bArr select 1,_tgt,_bArr select 2,_bArr select 3,_friends,_Debug,_ammo,_amnt] spawn RYD_CFF_FFE
 
 				[[_bArr select 1, _tgt, _bArr select 2, _bArr select 3, _friends, _Debug, _ammo, _amnt min (_bArr select 4)], FUNC(cff_ffe)] call FUNC(spawn);
 			} else {
-				if ((random 100) < RydxHQ_AIChatDensity) then {[_ldr, RydxHQ_AIC_ArtDen, "ArtDen"] call FUNC(AIChatter)}
+				if ((random 100) < EGVAR(core,aIChatDensity)) then {[_ldr, GVAR(aIC_ArtDen), "ArtDen"] call FUNC(AIChatter)}
 			};
 		};
 	};

@@ -36,7 +36,7 @@ if (((_moraleInfl > _enemyInfl) and not ((count _objs) < 1) and {not ((_HQ getVa
     private _lastS = _HQ getVariable ["LastStance","At"];
     if ((_lastS == "De") or (_cycleC == 1)) then
         {
-        if ((random 100) < RydxHQ_AIChatDensity) then {[(_HQ getVariable ["leaderHQ",(leader _HQ)]),RydxHQ_AIC_OffStance,"OffStance"] call EFUNC(common,AIChatter)};
+        if ((random 100) < EGVAR(core,aIChatDensity)) then {[(_HQ getVariable ["leaderHQ",(leader _HQ)]),GVAR(aIC_OffStance),"OffStance"] call EFUNC(common,AIChatter)};
         };
 
     _HQ setVariable ["LastStance","At"];
@@ -48,7 +48,7 @@ else
     private _lastS = _HQ getVariable ["LastStance","De"];
     if ((_lastS == "At") or (_cycleC == 1)) then
         {
-        if ((random 100) < RydxHQ_AIChatDensity) then {[(_HQ getVariable ["leaderHQ",(leader _HQ)]),RydxHQ_AIC_DefStance,"DefStance"] call EFUNC(common,AIChatter)};
+        if ((random 100) < EGVAR(core,aIChatDensity)) then {[(_HQ getVariable ["leaderHQ",(leader _HQ)]),GVAR(aIC_DefStance),"DefStance"] call EFUNC(common,AIChatter)};
         };
 
     _HQ setVariable ["LastStance","De"];
@@ -74,7 +74,7 @@ if (((((_HQ getVariable [QEGVAR(core,circumspection),0.5]) + (_HQ getVariable [Q
                 _SFTgts pushBack _HQtmp
                 }
             }
-        forEach (RydxHQ_AllLeaders - [(_HQ getVariable ["leaderHQ",(leader _HQ)])]);
+        forEach (EGVAR(core,allLeaders) - [(_HQ getVariable ["leaderHQ",(leader _HQ)])]);
 
         if (_SFTgts isEqualTo []) then
             {

@@ -108,7 +108,7 @@ _cInitial = 0;
 while {true} do
 	{
 
-	if (RydxHQ_RHQAutoFill) then
+	if (GVAR(rHQAutoFill)) then
 	{
 	[] call EFUNC(hal_data,presentRHQ)
 	};
@@ -170,20 +170,20 @@ while {true} do
 
 	_HQ setVariable [QGVAR(nCVeh),_NCCargo_class + (_Support_class - ["MH60S"])];
 
-	if (isNull _HQ) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
-	if (({alive _x} count (units _HQ)) == 0) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
-	if (_HQ getVariable [QGVAR(surrender),false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
+	if (isNull _HQ) exitWith {GVAR(allHQ) = GVAR(allHQ) - [_HQ]};
+	if (({alive _x} count (units _HQ)) == 0) exitWith {GVAR(allHQ) = GVAR(allHQ) - [_HQ]};
+	if (_HQ getVariable [QGVAR(surrender),false]) exitWith {GVAR(allHQ) = GVAR(allHQ) - [_HQ]};
 
 	if !(_HQ getVariable [QGVAR(fast),false]) then
 		{
 		waitUntil
 			{
 			sleep 0.1;
-			((({(_x getVariable [QGVAR(pending),false])} count RydxHQ_AllHQ) == 0) or (_HQ getVariable [QEGVAR(common,kIA),false]))
+			((({(_x getVariable [QGVAR(pending),false])} count GVAR(allHQ)) == 0) or (_HQ getVariable [QEGVAR(common,kIA),false]))
 			}
 		};
 
-	if (_HQ getVariable [QEGVAR(common,kIA),false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
+	if (_HQ getVariable [QEGVAR(common,kIA),false]) exitWith {GVAR(allHQ) = GVAR(allHQ) - [_HQ]};
 
 	_HQ setVariable [QGVAR(pending),true];
 
@@ -192,7 +192,7 @@ while {true} do
 		if (_lastHQ != (_HQ getVariable ["leaderHQ",objNull])) then {sleep (60 + (random 60))};
 		};
 
-	if (_HQ getVariable [QEGVAR(common,kIA),false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
+	if (_HQ getVariable [QEGVAR(common,kIA),false]) exitWith {GVAR(allHQ) = GVAR(allHQ) - [_HQ]};
 
 	_lastHQ = (leader _HQ);
 

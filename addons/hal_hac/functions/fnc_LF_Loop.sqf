@@ -15,9 +15,9 @@ private _HQ = _hqArr select 0;
 private _maxD = -1;
 private _friends = [];
 
-while {RydxHQ_LFActive} do
+while {EGVAR(common,lFActive)} do
     {
-    if (not (isNil "BIS_liveFeed") and not (EGVAR(common,lF))) exitWith {RydxHQ_LFActive = false};
+    if (not (isNil "BIS_liveFeed") and not (EGVAR(common,lF))) exitWith {EGVAR(common,lFActive) = false};
 
     switch (isNil QGVAR(camVOnly)) do
         {
@@ -144,9 +144,9 @@ while {RydxHQ_LFActive} do
             _mpl = _mpl + 0.1
             };
 
-        if not (_alive) then {RydxHQ_LFActive = false};
+        if not (_alive) then {EGVAR(common,lFActive) = false};
 
-        (not (RydxHQ_LFActive) or ((time - _stoper) > 30))
+        (not (EGVAR(common,lFActive)) or ((time - _stoper) > 30))
         };
     };
 

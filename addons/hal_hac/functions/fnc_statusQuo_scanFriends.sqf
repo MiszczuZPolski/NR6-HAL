@@ -22,7 +22,7 @@ private _checkFriends = [];
 private _enemies = _HQ getVariable [QGVAR(enemies),[]];
 private _friends = _HQ getVariable [QEGVAR(core,friends),[]];
 
-if (RydxHQ_AIChatDensity > 0) then
+if (EGVAR(core,aIChatDensity) > 0) then
     {
     private _varName1 = "HAC_AIChatRep";
     private _varName2 = "_West";
@@ -254,7 +254,7 @@ private _knownEG = [];
                     _knownEG pushBack (group _enemyU);
                     if not ((group _enemyU) in _already) then
                         {
-                        private _UL = (leader _x);if not (isPlayer _UL) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_EnemySpot,"EnemySpot"] call EFUNC(common,AIChatter)}};
+                        private _UL = (leader _x);if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_EnemySpot),"EnemySpot"] call EFUNC(common,AIChatter)}};
                         }
                     }
                 }

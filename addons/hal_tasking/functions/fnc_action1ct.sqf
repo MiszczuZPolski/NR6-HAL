@@ -14,7 +14,7 @@ _grp setVariable [('Garrisoned' + (str _grp)),false];
 _grp setVariable [('NOGarrisoned' + (str _grp)),true];
 
 
-[_unit,RydxHQ_AIC_OrdDen,'OrdDen'] call EFUNC(common,AIChatter);
+[_unit,EGVAR(common,aIC_OrdDen),'OrdDen'] call EFUNC(common,AIChatter);
 deleteWaypoint [_grp,(currentWaypoint _grp)];
 
 {

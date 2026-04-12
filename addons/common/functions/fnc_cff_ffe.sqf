@@ -631,7 +631,7 @@ _amount2 = _amount - _amount1;
 
 	_UL = _batlead1;
 
-	if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_ArtFire,"ArtFire"] call FUNC(AIChatter)};
+	if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_ArtFire),"ArtFire"] call FUNC(AIChatter)};
 
 	_alive = (_eta > 0);
 

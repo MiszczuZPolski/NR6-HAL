@@ -10,8 +10,8 @@
 params [];
 
 sleep 60;
-while {RydxHQ_RHQAutoFill} do {
-    waitUntil {sleep 5; (({(_x getVariable [QEGVAR(core,pending),false])} count RydxHQ_AllHQ) == 0)};
+while {EGVAR(core,rHQAutoFill)} do {
+    waitUntil {sleep 5; (({(_x getVariable [QEGVAR(core,pending),false])} count EGVAR(core,allHQ)) == 0)};
     [] spawn FUNC(presentRHQ);
     sleep 60;
 };

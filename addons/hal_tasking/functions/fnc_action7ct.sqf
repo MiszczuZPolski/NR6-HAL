@@ -51,7 +51,7 @@ if (_unitG getVariable ["CargoChosen", false]) exitWith {
 
 if (not (_unitG getVariable ["CargoChosen", false])) then {
 
-	[leader _HQ, (groupId _unitG) + ', copy. No air transport is available at this time. if transport becomes available in the next ' + (str (RydxHQ_PlayerCargoCheckLoopTime)) + ' minutes, it will be assigned to you - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
+	[leader _HQ, (groupId _unitG) + ', copy. No air transport is available at this time. if transport becomes available in the next ' + (str (EGVAR(core,playerCargoCheckLoopTime))) + ' minutes, it will be assigned to you - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 
 	private _AbortAction = _unit addAction ["Cancel " + "Air" + " Transport Request",
 	{
@@ -79,7 +79,7 @@ if (not (_unitG getVariable ["CargoChosen", false])) then {
 
 		_timer = _timer + 5;
 
-		(_unitG getVariable ["CargoChosen", false]) or (_timer > (RydxHQ_PlayerCargoCheckLoopTime*60)) or (_unitG getVariable ["CargoCheckLoopAbort",false]);
+		(_unitG getVariable ["CargoChosen", false]) or (_timer > (EGVAR(core,playerCargoCheckLoopTime)*60)) or (_unitG getVariable ["CargoCheckLoopAbort",false]);
 	};
 
 	_unit removeAction _AbortAction;

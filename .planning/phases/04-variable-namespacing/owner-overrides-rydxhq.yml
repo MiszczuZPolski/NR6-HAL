@@ -1,0 +1,21 @@
+# CBA XEH preInit ordering analysis:
+#   addons/core/config.cpp requiredAddons = ["cba_main", "hal_main"]
+#   addons/missionmodules/config.cpp requiredAddons = ["cba_main", "hal_main", "A3_Modules_F"]
+#
+# Neither depends on the other, but core is the canonical HQ initialization
+# site (fnc_init.sqf). missionmodules/fnc_generalSettings.sqf is a settings
+# writer that overrides core's defaults from editor-placed module parameters.
+# core is therefore the canonical owner for all RydxHQ_* globals that are
+# initialized in both places.
+RydxHQ_ReconCargo: core
+RydxHQ_AIChatDensity: core
+RydxHQ_SynchroAttack: core
+RydxHQ_InfoMarkersID: core
+RydxHQ_NoRestPlayers: core
+RydxHQ_NoCargoPlayers: core
+RydxHQ_GarrisonV2: core
+RydxHQ_NEAware: core
+RydxHQ_MagicHeal: core
+RydxHQ_MagicRepair: core
+RydxHQ_MagicRearm: core
+RydxHQ_MagicRefuel: core

@@ -53,7 +53,7 @@ while {true} do {
     private _morale = [_HQ, _cInitial, _CCurrent, _CLast, _knownE] call FUNC(statusQuo_morale);
 
     // KIA exit
-    if (_HQ getVariable [QEGVAR(common,kIA),false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
+    if (_HQ getVariable [QEGVAR(common,kIA),false]) exitWith {EGVAR(core,allHQ) = EGVAR(core,allHQ) - [_HQ]};
 
     // Arty fire for effect
     private _Artdebug = _HQ getVariable [QEGVAR(common,debug),false];
@@ -205,7 +205,7 @@ while {true} do {
         (((time - _ct) > _delay) or not (_alive))
         };
 
-    if not (_alive) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
+    if not (_alive) exitWith {EGVAR(core,allHQ) = EGVAR(core,allHQ) - [_HQ]};
 
     // Post-cycle reveal
         {

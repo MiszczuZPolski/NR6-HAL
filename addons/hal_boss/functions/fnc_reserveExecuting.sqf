@@ -109,7 +109,7 @@ _fG = _fG - [_HQ];
                     if (isPlayer (leader _unitG)) then {_form = formation _unitG};
                     _unitG setVariable ["Busy" + (str _unitG),true];
 
-                    if !(isPlayer (leader _unitG)) then {if ((random 100) < RydxHQ_AIChatDensity) then {[(leader _unitG),RydxHQ_AIC_OrdConf,"OrdConf"] call EFUNC(common,AIChatter)}};
+                    if !(isPlayer (leader _unitG)) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[(leader _unitG),GVAR(aIC_OrdConf),"OrdConf"] call EFUNC(common,AIChatter)}};
 
                     private _task = [(leader _unitG),["Reach the designated position.", "Move", ""],_Wpos] call EFUNC(common,addTask);
 

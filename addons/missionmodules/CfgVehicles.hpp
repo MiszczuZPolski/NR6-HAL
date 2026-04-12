@@ -70,35 +70,35 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydxHQ_ReconCargo
+			class EGVAR(core,reconCargo)
 			{
 				displayName="Enable Cargo Recon";
 				description="Recon orders will use provided lifts.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_SynchroAttack
+			class EGVAR(core,synchroAttack)
 			{
 				displayName="Synchronized/Planned Attacks";
 				description="Attacks will be timed and synchronized among squads attacking the same target.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_HQChat
+			class EGVAR(core,hQChat)
 			{
 				displayName="Commander Chat Orders";
 				description="Commander orders visivle in side chat.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_AIChatDensity
+			class EGVAR(core,aIChatDensity)
 			{
 				displayName="Radio Comms Presence";
 				description="Chance for a communication between AI and commander to be visible and audible.";
 				typeName="NUMBER";
 				defaultValue = "100";
 			};
-			class RydxHQ_AIChat_Type
+			class EGVAR(core,aIChat_Type)
 			{
 				displayName="Radio Comms Profile";
 				description="Changes the lines used in radio communications to better fit certain contexts for modded content.";
@@ -122,56 +122,56 @@ class CfgVehicles
 					};
 				};
 			};
-			class RydxHQ_InfoMarkersID
+			class EGVAR(core,infoMarkersID)
 			{
 				displayName="Add Group ID for BFT";
 				description="Friendly forces will have their Squad ID show up on info markers.";
 				typeName="BOOL";
 				defaultValue = "true";
 			};
-			class RydxHQ_Actions
+			class EGVAR(core,actions)
 			{
 				displayName="Squad Leader Actions";
 				description="Player squad leaders will have HAL actions enabled.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_ActionsMenu
+			class EGVAR(core,actionsMenu)
 			{
 				displayName="Actions Menu";
 				description="Player squad leaders will have HAL actions enabled as a menu.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_TaskActions
+			class EGVAR(core,taskActions)
 			{
 				displayName="Tasking Actions (Deprecated)";
 				description="Player squad leaders will have tasking related actions. Deprecated by menu.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_SupportActions
+			class EGVAR(core,supportActions)
 			{
 				displayName="Support Actions (Deprecated)";
 				description="Player squad leaders will have support related actions. Deprecated by menu.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_ActionsAceOnly
+			class EGVAR(core,actionsAceOnly)
 			{
 				displayName="Only Use ACE Actions";
 				description="Player squad leaders will only use ACE self-interactions for their HAL actions.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_NoRestPlayers
+			class EGVAR(core,noRestPlayers)
 			{
 				displayName="Disable Withdraw For Players Squad Leader";
 				description="Players will not receive forced retreat orders (Recommended).";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_NoCargoPlayers
+			class EGVAR(core,noCargoPlayers)
 			{
 				displayName="Disable Cargo Players Squad Leaders";
 				description="Players will not be provided with forced lifts (Recommended).";
@@ -185,84 +185,84 @@ class CfgVehicles
 				typeName="NUMBER";
 				defaultValue = "2";
 			};
-			class RydxHQ_DisembarkRange
+			class EGVAR(core,disembarkRange)
 			{
 				displayName="Infantry Disembark Upon Enemy Contact";
 				description="Infantry will dismount their transport upon making contact with enemy within this radius from them. Note that certain orders will always have their infantry disembark when meeting nearby enemy to counterattack and re-evaluate.";
 				typeName="NUMBER";
 				defaultValue = "200";
 			};
-			class RydxHQ_CargoObjRange
+			class EGVAR(core,cargoObjRange)
 			{
 				displayName="Distance To Use Transport";
 				description="Distance beyond which infantry will make use of dispatched transports to get a lift. Too low values will result in problematic behaviour.";
 				typeName="NUMBER";
 				defaultValue = "1500";
 			};
-			class RydxHQ_LZ
+			class EGVAR(core,lZ)
 			{
 				displayName="Enable LZ System";
 				description="System that will place invisible helipads when helicopter transport is issued to improve the selection of landing sites by AI pilots.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_GarrisonV2
+			class EGVAR(core,garrisonV2)
 			{
 				displayName="NR6 Sites Garrisons";
 				description="Uses the NR6 Sites CBA based defensive script for garrison orders instead of stock HAL.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_NEAware
+			class EGVAR(core,nEAware)
 			{
 				displayName="Squad Info Share Range";
 				description="How far do squads communicate enemy positions to other nearby squads. Set to 0 to disable.";
 				typeName="NUMBER";
 				defaultValue = "500";
 			};
-			class RydxHQ_SlingDrop
+			class EGVAR(core,slingDrop)
 			{
 				displayName="Sling Load Ammo Drop";
 				description="(Feature inconsistent at this time)";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_RHQAutoFill
+			class EGVAR(core,rHQAutoFill)
 			{
 				displayName="RHQ Auto Mode";
 				description="Classifies units to be used by HAL automatically";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_PathFinding
+			class EGVAR(core,pathFinding)
 			{
 				displayName="Pathfinding Increments";
 				description="Set to 0 to disable. Adds several waypoints to squads instead of a single straight line waypoint to account for terrain. May cause more issues with mobility. (Recommended disabled)";
 				typeName="NUMBER";
 				defaultValue = "0";
 			};
-			class RydxHQ_MagicHeal
+			class EGVAR(core,magicHeal)
 			{
 				displayName="Supports Magic Heal (ACE only)";
 				description="Enables magic healing around ambulances upon support request as a workaround for ACE medical.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_MagicRepair
+			class EGVAR(core,magicRepair)
 			{
 				displayName="Supports Magic Repair";
 				description="Enables magic repairs around repair vehicles upon support request as a workaround for ACE repair limitations.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_MagicRearm
+			class EGVAR(core,magicRearm)
 			{
 				displayName="Supports Magic Rearm";
 				description="Enables magic vehicle rearming around ammo vehicles upon support request as a workaround for ACE rearming limitations.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_MagicRefuel
+			class EGVAR(core,magicRefuel)
 			{
 				displayName="Supports Magic Refuel";
 				description="Enables magic refueling around refuel vehicles upon support request as a workaround for ACE refuel limitations.";

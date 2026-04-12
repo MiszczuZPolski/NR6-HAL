@@ -68,8 +68,8 @@ _marker setMarkerDirLocal _dir;
 _marker setMarkerText _text;
 
 // Add to marker tracking array if it exists
-if (!isNil "RydxHQ_Markers") then {
-    RydxHQ_Markers pushBack _marker;
+if (!isNil QGVAR(markers)) then {
+    GVAR(markers) pushBack _marker;
 };
 
 // Return marker name

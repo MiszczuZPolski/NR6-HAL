@@ -86,7 +86,7 @@ while {not (isNull _HQ)} do {
 
                 if (isNil "_mrktext") then {
 
-                    if ((RydxHQ_InfoMarkersID) and ((side _x) == (side _HQ))) then {_mrk setMarkerText (groupId _x)};
+                    if ((EGVAR(core,infoMarkersID)) and ((side _x) == (side _HQ))) then {_mrk setMarkerText (groupId _x)};
 
                 } else {
 

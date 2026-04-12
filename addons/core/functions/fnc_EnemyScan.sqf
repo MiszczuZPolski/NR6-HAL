@@ -12,7 +12,7 @@ private _friendlyGroups = _HQ getVariable [QGVAR(friends), []];
 private _enemyGroups = _HQ getVariable [QEGVAR(common,knEnemiesG), []];
 private _isDebugEnabled = _HQ getVariable [QGVAR(debugII), false];
 private _airGroups = _HQ getVariable [QGVAR(airG), []];
-private _chatDensity = missionNamespace getVariable ["RydxHQ_AIChatDensity", 0];
+private _chatDensity = missionNamespace getVariable [QGVAR(aIChatDensity), 0];
 private _isDynFormEnabled = _HQ getVariable [QGVAR(dynForm), false];
 
 // Exclude support, naval, artillery groups for performance
@@ -144,7 +144,7 @@ private _groupStrengthMap = createHashMap;
 
     // Send danger message to AI if appropriate
     if (_dangerValue > 0.15 && {!isPlayer _groupLeader} && {random 100 < _chatDensity}) then {
-        [_groupLeader, (missionNamespace getVariable ["RydxHQ_AIC_InDanger", ["SentCombatDanger"]]), "InDanger"] call EFUNC(common,AIChatter);
+        [_groupLeader, (missionNamespace getVariable [QGVAR(aIC_InDanger), ["SentCombatDanger"]]), "InDanger"] call EFUNC(common,AIChatter);
     };
 
     // Skip formation changes for air units

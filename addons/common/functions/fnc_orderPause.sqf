@@ -35,7 +35,7 @@ waitUntil {
 _HQ setVariable [QGVAR(myLastOrder), time];
 
 // Send HQ chat message if enabled
-if (missionNamespace getVariable ["RydxHQ_HQChat", false]) then {
+if (missionNamespace getVariable [QEGVAR(core,hQChat), false]) then {
     [_group, _messageType, _position, _HQ] call FUNC(HQChatter);
 };
 

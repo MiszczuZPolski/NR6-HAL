@@ -172,7 +172,7 @@ _cntSnp = {((_x in (_SnipersG)) and ((count (units _x)) <= 2))} count _attackAv;
             }
         }
     }
-forEach RydxHQ_MARatio;
+forEach GVAR(mARatio);
 
 _sVal = 0;
 _mpl = 1 + _reck;
@@ -204,7 +204,7 @@ _mpl = 1 + _reck;
                     }
                 }
             }
-        forEach RydxHQ_MARatio;
+        forEach GVAR(mARatio);
         }
     else
         {

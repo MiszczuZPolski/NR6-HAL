@@ -12,7 +12,7 @@ if (EGVAR(missionmodules,active)) then {
 _txtArr = [];
 
 while {((GVAR(debug)) or (GVAR(debugB)) or (GVAR(debugC)) or (GVAR(debugD)) or (GVAR(debugE)) or (GVAR(debugF)) or (GVAR(debugG)) or (GVAR(debugH)))} do {
-    if (({(_x getVariable [QGVAR(kIA),false])} count RydxHQ_AllHQ) == (count RydxHQ_AllHQ)) exitWith {};
+    if (({(_x getVariable [QGVAR(kIA),false])} count EGVAR(core,allHQ)) == (count EGVAR(core,allHQ))) exitWith {};
     _txtArr = [];
 
     {
@@ -27,7 +27,7 @@ while {((GVAR(debug)) or (GVAR(debugB)) or (GVAR(debugC)) or (GVAR(debugD)) or (
                 };
             };
         };
-    } forEach RydxHQ_AllHQ;
+    } forEach EGVAR(core,allHQ);
 
     if (_txtArr isNotEqualTo []) then {
         _txt = composeText _txtArr;

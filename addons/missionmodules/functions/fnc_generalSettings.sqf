@@ -3,9 +3,9 @@ params ["_logic"];
 
 
 //to be replace with GVAR
-RydxHQ_ReconCargo = (_logic getVariable "RydxHQ_ReconCargo");
-RydxHQ_SynchroAttack = (_logic getVariable "RydxHQ_SynchroAttack");
-RydxHQ_InfoMarkersID = (_logic getVariable "RydxHQ_InfoMarkersID");
+EGVAR(core,reconCargo) = (_logic getVariable QEGVAR(core,reconCargo));
+EGVAR(core,synchroAttack) = (_logic getVariable QEGVAR(core,synchroAttack));
+EGVAR(core,infoMarkersID) = (_logic getVariable QEGVAR(core,infoMarkersID));
 
 GVAR(actions) = (_logic getVariable QGVAR(actions));
 GVAR(actionsMenu) = (_logic getVariable QGVAR(actions));
@@ -13,18 +13,18 @@ GVAR(taskActions) = (_logic getVariable QGVAR(taskActions));
 GVAR(supportActions) = (_logic getVariable QGVAR(supportActions));
 GVAR(actionsAceOnly) = (_logic getVariable QGVAR(actionsAceOnly));
 
-RydxHQ_NoRestPlayers = (_logic getVariable "RydxHQ_NoRestPlayers");
-RydxHQ_NoCargoPlayers = (_logic getVariable "RydxHQ_NoCargoPlayers");
+EGVAR(core,noRestPlayers) = (_logic getVariable QEGVAR(core,noRestPlayers));
+EGVAR(core,noCargoPlayers) = (_logic getVariable QEGVAR(core,noCargoPlayers));
 
-RydxHQ_AIChatDensity = (_logic getVariable "RydxHQ_AIChatDensity");
-RydxHQ_GarrisonV2 = (_logic getVariable "RydxHQ_GarrisonV2");
-RydxHQ_NEAware = (_logic getVariable "RydxHQ_NEAware");
+EGVAR(core,aIChatDensity) = (_logic getVariable QEGVAR(core,aIChatDensity));
+EGVAR(core,garrisonV2) = (_logic getVariable QEGVAR(core,garrisonV2));
+EGVAR(core,nEAware) = (_logic getVariable QEGVAR(core,nEAware));
 GVAR(slingDrop) = (_logic getVariable QGVAR(slingDrop));
 GVAR(rHQAutoFill) = (_logic getVariable QGVAR(rHQAutoFill));
 
 GVAR(pathFinding) = (_logic getVariable QGVAR(pathFinding));
 
-RydxHQ_MagicHeal = (_logic getVariable "RydxHQ_MagicHeal");
-RydxHQ_MagicRepair = (_logic getVariable "RydxHQ_MagicRepair");
-RydxHQ_MagicRearm = (_logic getVariable "RydxHQ_MagicRearm");
-RydxHQ_MagicRefuel = (_logic getVariable "RydxHQ_MagicRefuel");
+EGVAR(core,magicHeal) = (_logic getVariable QEGVAR(core,magicHeal));
+EGVAR(core,magicRepair) = (_logic getVariable QEGVAR(core,magicRepair));
+EGVAR(core,magicRearm) = (_logic getVariable QEGVAR(core,magicRearm));
+EGVAR(core,magicRefuel) = (_logic getVariable QEGVAR(core,magicRefuel));
