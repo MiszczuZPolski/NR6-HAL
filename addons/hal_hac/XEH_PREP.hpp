@@ -25,5 +25,16 @@ PREP(statusQuo_objective);
 PREP(statusQuo_attackDispatch);
 PREP(statusQuo_hqReloc);
 PREP(LF_Loop);
+// Tactical behavior scripts (Plan 05-03 Wave 3)
+PREP(goAttAir);
+PREP(goAttAirCAP);
+PREP(goAttArmor);
+PREP(goAttInf);
+PREP(goAttNaval);
+PREP(goAttSniper);
+PREP(goCapture);
+PREP(goCaptureNaval);
+PREP(goFlank);
+PREP(goSFAttack);
 // StatusQuo trunk (must be last — depends on all sub-functions above)
 PREP(statusQuo);
