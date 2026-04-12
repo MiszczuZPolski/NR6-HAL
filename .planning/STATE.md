@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 05-03-PLAN.md — Extraction Wave 3 (20 tactical scripts)
-last_updated: "2026-04-12T20:57:01.983Z"
+stopped_at: Completed 05-04-PLAN.md — Wave 4 supply scripts + nr6_hal/ deleted
+last_updated: "2026-04-12T21:10:11.466Z"
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 33
-  completed_plans: 26
-  percent: 79
+  completed_plans: 27
+  percent: 82
 ---
 
 # Project State: NR6-HAL ACE3 Refactor
@@ -33,12 +33,12 @@ progress:
 
 Phase: 05 (settings-localization-compat-cleanup) — EXECUTING
 **Phase:** 5 — Settings, Localization, Compat & Cleanup
-**Plan:** 05-03 complete (Extraction Wave 3 — 20 tactical behavior scripts Go*/Garrison/SCargo)
-**Status:** Executing — plans 05-04..05-09 remain (supply + cleanup, dead-var audit, CBA settings, stringtable, compat, behavior tests, cleanup)
+**Plan:** 05-04 complete (Extraction Wave 4 — 8 supply scripts + SquadTaskingNR6 + nr6_hal/ DELETED, COMPAT-04 closed)
+**Status:** Executing — plans 05-05..05-09 remain (dead-var audit, CBA settings, stringtable, compat, behavior tests, cleanup)
 
 **Progress:**
 
-[████████░░] 79%
+[████████░░] 82%
 [Phase 1] Addon Skeleton & Build Foundation   [x] Complete
 [Phase 2] Dependency Mapping                  [x] Complete
 [Phase 3] Function Extraction                 [x] Complete
@@ -85,6 +85,7 @@ Overall: 4/5 phases complete (Phase 5 in progress — 3/9 plans complete)
 | Phase 05 P01 | 5m | 2 tasks | 321 files |
 | Phase 05-settings-localization-compat-cleanup P02 | 12m | 3 tasks | 29 files |
 | Phase 05-settings-localization-compat-cleanup P03 | 18m | 2 tasks | 23 files |
+| Phase 05 P04 | 24 | 2 tasks | 9 files |
 
 ### Performance Metrics
 
@@ -121,7 +122,7 @@ Overall: 4/5 phases complete (Phase 5 in progress — 3/9 plans complete)
 
 ## Session Continuity
 
-**Stopped at:** Completed 05-03-PLAN.md — Extraction Wave 3 (20 tactical scripts)
+**Stopped at:** Completed 05-04-PLAN.md — Wave 4 supply scripts + nr6_hal/ deleted
 
 **Context for next session:**
 

@@ -99,7 +99,7 @@
   - [x] 05-01-PLAN.md — Extract VarInit.sqf unique content + TimeM/TaskMenu/LF utilities + Sound/CfgRadio migration (COMPAT-04)
   - [x] 05-02-PLAN.md — Extract Boss.sqf + Front.sqf + Desperation.sqf + HQSitRep[B-H] + 11 HQ command scripts (COMPAT-04, BEHAV-01, BEHAV-02)
   - [x] 05-03-PLAN.md — Extract 20 tactical behavior scripts (Go* attack/defense/recon + SCargo + Garrison) (COMPAT-04)
-  - [ ] 05-04-PLAN.md — Extract 8 supply scripts + SquadTaskingNR6.sqf + delete nr6_hal/ directory (COMPAT-04)
+  - [x] 05-04-PLAN.md — Extract 8 supply scripts + SquadTaskingNR6.sqf + delete nr6_hal/ directory (COMPAT-04)
   - [ ] 05-05-PLAN.md — Dead-variable audit: grep 506 rename-map entries, mark dead as stripped (COMPAT-02, COMPAT-03)
   - [ ] 05-06-PLAN.md — CBA settings (initSettings.inc.sqf) + stringtable.xml + wire module defaults (SET-01, SET-02, SET-03, SET-04)
   - [ ] 05-07-PLAN.md — Populate compat addon: classname inheritance + function aliases + global variable aliases (COMPAT-01, COMPAT-02, COMPAT-03)
