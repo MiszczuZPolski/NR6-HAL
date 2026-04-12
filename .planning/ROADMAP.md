@@ -102,7 +102,7 @@
   - [x] 05-04-PLAN.md — Extract 8 supply scripts + SquadTaskingNR6.sqf + delete nr6_hal/ directory (COMPAT-04)
   - [x] 05-05-PLAN.md — Dead-variable audit: grep 506 rename-map entries, mark dead as stripped (COMPAT-02, COMPAT-03)
   - [x] 05-06-PLAN.md — CBA settings (initSettings.inc.sqf) + stringtable.xml + wire module defaults (SET-01, SET-02, SET-03, SET-04)
-  - [ ] 05-07-PLAN.md — Populate compat addon: classname inheritance + function aliases + global variable aliases (COMPAT-01, COMPAT-02, COMPAT-03)
+  - [x] 05-07-PLAN.md — Populate compat addon: classname inheritance + function aliases + global variable aliases (COMPAT-01, COMPAT-02, COMPAT-03)
   - [ ] 05-08-PLAN.md — Create 5 SQF behavior verification smoke tests (BEHAV-01, BEHAV-02, BEHAV-03, BEHAV-04, BEHAV-05)
   - [ ] 05-09-PLAN.md — Final build verification + ROADMAP/STATE/REQUIREMENTS completion (all Phase 5 reqs)
 

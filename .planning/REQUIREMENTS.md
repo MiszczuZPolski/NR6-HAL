@@ -51,9 +51,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Compatibility
 
-- [ ] **COMPAT-01**: Compatibility addon maps all old module classnames to new classnames via CfgVehicles inheritance
-- [ ] **COMPAT-02**: `compat_vars.sqf` assigns all legacy function variable names to new `hal_*_fnc_*` references
-- [ ] **COMPAT-03**: Existing missions using old classnames load and function correctly with compat addon enabled
+- [x] **COMPAT-01**: Compatibility addon maps all old module classnames to new classnames via CfgVehicles inheritance
+- [x] **COMPAT-02**: `compat_vars.sqf` assigns all legacy function variable names to new `hal_*_fnc_*` references
+- [x] **COMPAT-03**: Existing missions using old classnames load and function correctly with compat addon enabled
 - [x] **COMPAT-04**: Legacy `nr6_hal/` directory removed after all functions migrated and verified (in progress — Plan 05-01 extracted VarInit/TimeM/TaskMenu/Sound/CfgRadio; remaining extraction waves in 05-02..05-08)
 
 ### Behavior Preservation
@@ -128,9 +128,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | SET-02 | Phase 5 | Pending |
 | SET-03 | Phase 5 | Pending |
 | SET-04 | Phase 5 | Pending |
-| COMPAT-01 | Phase 5 | Pending |
-| COMPAT-02 | Phase 5 | Pending |
-| COMPAT-03 | Phase 5 | Pending |
+| COMPAT-01 | Phase 5 | Complete |
+| COMPAT-02 | Phase 5 | Complete |
+| COMPAT-03 | Phase 5 | Complete |
 | COMPAT-04 | Phase 5 | In Progress (Plan 05-01 complete) |
 | BEHAV-01 | Phase 5 | Pending |
 | BEHAV-02 | Phase 5 | Pending |
