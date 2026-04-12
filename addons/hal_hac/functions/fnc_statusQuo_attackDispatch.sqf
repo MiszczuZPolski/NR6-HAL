@@ -137,7 +137,7 @@ if (((((_HQ getVariable [QEGVAR(core,circumspection),0.5]) + (_HQ getVariable [Q
                 private _trg = vehicle (leader _trgG);
                 if (not ((toLower (typeOf _trg)) in (_EnHArmor + _EnLArmor)) or ((random 100) > (90 - ((_HQ getVariable [QEGVAR(core,recklessness),0.5]) * 10)))) then
                     {
-                    [[_team,_trg,_trgG,_HQ],HAL_GoSFAttack] call EFUNC(common,spawn);
+                    [[_team,_trg,_trgG,_HQ],FUNC(goSFAttack)] call EFUNC(common,spawn);
                     }
                 }
             }

@@ -192,13 +192,13 @@ while {true} do {
             if (((time - _ctEScan) >= 60) or (((time - _ct) > _delay) and (_delay <= 60))) then
                 {
                 _ctEScan = time;
-                [_HQ] call HAL_EnemyScan
+                [_HQ] call EFUNC(core,enemyScan)
                 };
 
             if (((time - _ctGarr) >= 60) or (((time - _ct) > _delay) and (_delay <= 60))) then
                 {
                 _ctGarr = time;
-                [_HQ,(_snipers + _ATinf + _AAinf)] spawn HAL_Garrison
+                [_HQ,(_snipers + _ATinf + _AAinf)] spawn FUNC(garrison)
                 };
             };
 

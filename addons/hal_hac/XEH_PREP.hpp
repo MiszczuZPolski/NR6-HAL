@@ -36,5 +36,15 @@ PREP(goCapture);
 PREP(goCaptureNaval);
 PREP(goFlank);
 PREP(goSFAttack);
+PREP(goDef);
+PREP(goDefAir);
+PREP(goDefNav);
+PREP(goDefRecon);
+PREP(goDefRes);
+PREP(goIdle);
+PREP(goRecon);
+PREP(goRest);
+PREP(sCargo);
+PREP(garrison);
 // StatusQuo trunk (must be last — depends on all sub-functions above)
 PREP(statusQuo);
