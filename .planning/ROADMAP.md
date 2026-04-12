@@ -82,7 +82,7 @@
   - [x] 04-01-PLAN.md — Rename RYD_* -> GVAR/EGVAR (shakedown batch, smallest) (VAR-01..04)
   - [x] 04-02-PLAN.md — Rename RHQ_* -> GVAR(hal_data,*) family (weapon class arrays) (VAR-01..04)
   - [x] 04-03-PLAN.md — Rename RydBB_* -> GVAR(missionmodules,*) + bbZone dispatch rewrite (VAR-01..04)
-  - [ ] 04-04-PLAN.md — Rename RydHQ_* + multi-HQ siblings + reconstruct 11 runtime-format dispatch sites (largest, non-autonomous) (VAR-01..04)
+  - [x] 04-04-PLAN.md — Rename RydHQ_* + multi-HQ siblings + reconstruct 11 runtime-format dispatch sites (largest, non-autonomous) (VAR-01..04)
   - [ ] 04-05-PLAN.md — Rename RydxHQ_* + resolve ReconCargo owner collision + AIChatter writer survey + consolidate rename-map.json (VAR-01..04)
 
 ### Phase 5: Settings, Localization, Compat & Cleanup
@@ -106,7 +106,7 @@
 | 1. Addon Skeleton & Build Foundation | 0/3 | Planned | - |
 | 2. Dependency Mapping | 0/5 | Planned | - |
 | 3. Function Extraction | 0/5 | Planned | - |
-| 4. Variable Namespacing | 0/? | Not started | - |
+| 4. Variable Namespacing | 5/7 | In Progress|  |
 | 5. Settings, Localization, Compat & Cleanup | 0/? | Not started | - |
 
 ---

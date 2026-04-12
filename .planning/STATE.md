@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-02-PLAN.md
+stopped_at: Completed 04-04-PLAN.md
 last_updated: "2026-04-11T20:26:39.744Z"
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 24
-  completed_plans: 21
-  percent: 88
+  completed_plans: 23
+  percent: 96
 ---
 
 # Project State: NR6-HAL ACE3 Refactor
@@ -43,7 +43,7 @@ Plan: 0 of 5 (pre-plan tool build) complete
 [Phase 1] Addon Skeleton & Build Foundation   [x] Complete
 [Phase 2] Dependency Mapping                  [x] Complete
 [Phase 3] Function Extraction                 [x] Complete
-[Phase 4] Variable Namespacing                [~] In progress (pre-plan tool shipped; 0/5 batches)
+[Phase 4] Variable Namespacing                [~] In progress (4/5 batches complete)
 [Phase 5] Settings, Localization, Compat      [ ] Not started
 
 ```
@@ -77,6 +77,9 @@ Overall: 3/5 phases complete (phase 4 in progress — pre-plan tool shipped)
 | setMarker*Local for intermediate BFT updates | Fixes L-S24 warnings and reduces network traffic (genuine optimization) |
 | Phase 4 tool: Python single-file rename script | Invoked via `python` on Windows git-bash (`python3` shebang retained for POSIX); see 04-00-SUMMARY for CLI + self-test output |
 | Phase 4 owner-inference fallback | When a legacy name has no top-level `NAME =` assignment, tool falls back to first referencing file's addon and records `notes: inferred owner` — prevents None leakage into emitted JSON |
+| 04-04 dispatch scope 11->35 | User approved expanding dispatch-site reconstruction from 11 to 35 files at checkpoint |
+| 04-04 setRoleCAP/CAS bug fix | User authorized fixing copy-paste bug (_prefix+"NoAttack" -> _prefix+"RCAP"/"RCAS") — only behavior change in Phase 4 |
+| 04-04 RydxHQ_ baseline corrected | Actual count is 182, not 157 as reported in 04-03 (grep pattern difference) |
 | Phase 04-variable-namespacing P01 | ~900s | 2 tasks | 17 files |
 | Phase 04-variable-namespacing P02 | 600s | 2 tasks | 10 files |
 
@@ -85,6 +88,7 @@ Overall: 3/5 phases complete (phase 4 in progress — pre-plan tool shipped)
 | Plan | Duration | Tasks | Files |
 |------|----------|-------|-------|
 | 04-00 | 256s | 3 | 2 |
+| 04-04 | 529s | 3 | 96 |
 
 ### Critical Pitfalls (from research)
 
