@@ -3,11 +3,11 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 05-01-PLAN.md — Extraction Wave 1
-last_updated: "2026-04-12T20:15:16.269Z"
+stopped_at: Completed 05-02-PLAN.md — Extraction Wave 2 (Boss + HQ command)
+last_updated: "2026-04-12T20:43:33.917Z"
 progress:
   total_phases: 5
-  completed_phases: 4
+  completed_phases: 3
   total_plans: 33
   completed_plans: 25
   percent: 76
@@ -33,8 +33,8 @@ progress:
 
 Phase: 05 (settings-localization-compat-cleanup) — EXECUTING
 **Phase:** 5 — Settings, Localization, Compat & Cleanup
-**Plan:** 05-01 complete (Extraction Wave 1 — VarInit defaults + TimeM + TaskMenu + Sound/CfgRadio)
-**Status:** Executing — plans 05-02..05-09 remain (Extraction Waves 2-3, dead-var audit, CBA settings, stringtable, compat, behavior tests, cleanup)
+**Plan:** 05-02 complete (Extraction Wave 2 — Boss.sqf + Front + Desperation + 7 HQSitRep + 11 HQ command scripts)
+**Status:** Executing — plans 05-03..05-09 remain (Extraction Wave 3, supply + cleanup, dead-var audit, CBA settings, stringtable, compat, behavior tests, cleanup)
 
 **Progress:**
 
@@ -43,11 +43,11 @@ Phase: 05 (settings-localization-compat-cleanup) — EXECUTING
 [Phase 2] Dependency Mapping                  [x] Complete
 [Phase 3] Function Extraction                 [x] Complete
 [Phase 4] Variable Namespacing                [x] Complete
-[Phase 5] Settings, Localization, Compat      [~] In progress (1/9 plans complete)
+[Phase 5] Settings, Localization, Compat      [~] In progress (2/9 plans complete)
 
 ```
 
-Overall: 4/5 phases complete (Phase 5 in progress — 1/9 plans complete)
+Overall: 4/5 phases complete (Phase 5 in progress — 2/9 plans complete)
 
 ---
 
@@ -83,6 +83,7 @@ Overall: 4/5 phases complete (Phase 5 in progress — 1/9 plans complete)
 | Phase 04-variable-namespacing P02 | 600s | 2 tasks | 10 files |
 | Phase 04-variable-namespacing P05 | 293 | 3 tasks | 37 files |
 | Phase 05 P01 | 5m | 2 tasks | 321 files |
+| Phase 05-settings-localization-compat-cleanup P02 | 12m | 3 tasks | 29 files |
 
 ### Performance Metrics
 
@@ -119,7 +120,7 @@ Overall: 4/5 phases complete (Phase 5 in progress — 1/9 plans complete)
 
 ## Session Continuity
 
-**Stopped at:** Completed 05-01-PLAN.md — Extraction Wave 1
+**Stopped at:** Completed 05-02-PLAN.md — Extraction Wave 2 (Boss + HQ command)
 
 **Context for next session:**
 

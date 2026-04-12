@@ -97,7 +97,7 @@
   5. HAL AI commander initializes, assigns groups, scans for threats, coordinates fire support, and runs chatter identically to pre-refactor behavior in a test session
 **Plans**: 9 plans
   - [x] 05-01-PLAN.md — Extract VarInit.sqf unique content + TimeM/TaskMenu/LF utilities + Sound/CfgRadio migration (COMPAT-04)
-  - [ ] 05-02-PLAN.md — Extract Boss.sqf + Front.sqf + Desperation.sqf + HQSitRep[B-H] + 11 HQ command scripts (COMPAT-04, BEHAV-01, BEHAV-02)
+  - [x] 05-02-PLAN.md — Extract Boss.sqf + Front.sqf + Desperation.sqf + HQSitRep[B-H] + 11 HQ command scripts (COMPAT-04, BEHAV-01, BEHAV-02)
   - [ ] 05-03-PLAN.md — Extract 20 tactical behavior scripts (Go* attack/defense/recon + SCargo + Garrison) (COMPAT-04)
   - [ ] 05-04-PLAN.md — Extract 8 supply scripts + SquadTaskingNR6.sqf + delete nr6_hal/ directory (COMPAT-04)
   - [ ] 05-05-PLAN.md — Dead-variable audit: grep 506 rename-map entries, mark dead as stripped (COMPAT-02, COMPAT-03)
