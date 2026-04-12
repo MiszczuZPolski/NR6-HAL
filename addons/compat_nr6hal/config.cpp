@@ -9,6 +9,8 @@ class CfgPatches {
         requiredAddons[] = {
             "cba_main",
             "hal_main",
+            "hal_common",
+            "hal_core",
             "hal_data",
             "hal_hac",
             "hal_boss",
@@ -21,6 +23,35 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+
+// ============================================================================
+// COMPAT-01: CfgVehicles inheritance — old module classnames -> new classnames
+// Per D-03/D-15: existing missions using NR6_HAL_* module classnames continue
+// working by inheriting from their Phase-4 GVAR'd equivalents in hal_missionmodules.
+// ============================================================================
+class CfgVehicles {
+    // Forward-declare parent classes from hal_missionmodules
+    class hal_missionmodules_Core_Module;
+    class hal_missionmodules_Leader_Module;
+    class hal_missionmodules_Leader_Settings_Module;
+    class hal_missionmodules_GenSettings_Module;
+    class hal_missionmodules_Leader_BehSettings_Module;
+    class hal_missionmodules_Leader_Objective_Module;
+    class hal_missionmodules_BBLeader_Objective_Module;
+    class hal_missionmodules_BBLeader_Module;
+    class hal_missionmodules_Leader_Front_Module;
+
+    // Legacy classnames inherit from new Phase-4 classnames (read-only compat shims)
+    class NR6_HAL_Core_Module: hal_missionmodules_Core_Module {};
+    class NR6_HAL_Leader_Module: hal_missionmodules_Leader_Module {};
+    class NR6_HAL_Leader_Settings_Module: hal_missionmodules_Leader_Settings_Module {};
+    class NR6_HAL_GenSettings_Module: hal_missionmodules_GenSettings_Module {};
+    class NR6_HAL_Leader_BehSettings_Module: hal_missionmodules_Leader_BehSettings_Module {};
+    class NR6_HAL_Objective_Module: hal_missionmodules_Leader_Objective_Module {};
+    class NR6_HAL_BBObjective_Module: hal_missionmodules_BBLeader_Objective_Module {};
+    class NR6_HAL_BBLeader_Module: hal_missionmodules_BBLeader_Module {};
+    class NR6_HAL_Front_Module: hal_missionmodules_Leader_Front_Module {};
+};
 
 // ============================================================================
 // LEGACY CLASSNAME INVENTORY (audited from nr6_hal/config.cpp, 2026-04-10)
