@@ -22,8 +22,8 @@ private _guns = [];
 					};
 				} forEach (magazinesAmmo _vehicle);
 
-				_vehicle setVariable ["RydHQ_ShotsToFire", 0];
-				_vehicle setVariable ["RydHQ_MyShots", _shots];
+				_vehicle setVariable [QGVAR(shotsToFire), 0];
+				_vehicle setVariable [QGVAR(myShots), _shots];
 
 				if (_shots > 0) then {
 					_guns pushBack _vehicle;
@@ -42,15 +42,15 @@ private _perGun = floor (_amount/_aGuns);
 private _rest = _amount - (_perGun * _aGuns);
 
 {
-	_shots = _x getVariable ["RydHQ_MyShots", 0];
+	_shots = _x getVariable [QGVAR(myShots), 0];
 	if (_shots <= _perGun) then {
-		_x setVariable ["RydHQ_ShotsToFire", _shots];
+		_x setVariable [QGVAR(shotsToFire), _shots];
 		_amount = _amount - _shots;
 		_rest = _rest + (_perGun - _shots);
-		_x setVariable ["RydHQ_MyShots", 0];
+		_x setVariable [QGVAR(myShots), 0];
 	} else {
-		_x setVariable ["RydHQ_ShotsToFire", _perGun];
-		_x setVariable ["RydHQ_MyShots", _shots - _perGun];
+		_x setVariable [QGVAR(shotsToFire), _perGun];
+		_x setVariable [QGVAR(myShots), _shots - _perGun];
 	};
 } forEach _guns;
 
@@ -62,15 +62,15 @@ while {(_rest > 0)} do {
 
 	{
 		if (_rest < 1) exitWith {};
-		_shots = _x getVariable ["RydHQ_MyShots", 0];
+		_shots = _x getVariable [QGVAR(myShots), 0];
 
 		if (_shots > 0) then {
-			private _toFire = _x getVariable ["RydHQ_ShotsToFire", 0];
+			private _toFire = _x getVariable [QGVAR(shotsToFire), 0];
 
 			_rest = _rest - 1;
 
-			_x setVariable ["RydHQ_ShotsToFire", _toFire + 1];
-			_x setVariable ["RydHQ_MyShots", _shots - 1];
+			_x setVariable [QGVAR(shotsToFire), _toFire + 1];
+			_x setVariable [QGVAR(myShots), _shots - 1];
 		};
 	} forEach _guns;
 
@@ -84,7 +84,7 @@ private _fnc_code = {
 
 	if (_pos inRangeOfArtillery [[_vehicle],_ammo]) then {
 		if (_ammo in (getArtilleryAmmo [_vehicle])) then {
-			_vehicle setVariable ["RydHQ_GunFree", false];
+			_vehicle setVariable [QGVAR(gunFree), false];
 
 			if !((currentMagazine _vehicle) in [_ammo]) then {
 				_vehicle loadMagazine [[0],currentWeapon _vehicle,_ammo];
@@ -103,23 +103,23 @@ private _fnc_code = {
 
 			if (_pos inRangeOfArtillery [[_vehicle],_ammo]) then {
 				if (_ammo in (getArtilleryAmmo [_vehicle])) then {
-					[_vehicle, [_pos, _ammo, (_vehicle getVariable ["RydHQ_ShotsToFire", 1])]] remoteExecCall ["doArtilleryFire", _vehicle];
+					[_vehicle, [_pos, _ammo, (_vehicle getVariable [QGVAR(shotsToFire), 1])]] remoteExecCall ["doArtilleryFire", _vehicle];
 
 					_ct = time;
 
 					waitUntil {
 						sleep 0.1;
-						((_vehicle getVariable ["RydHQ_ShotFired2",0]) >= (_vehicle getVariable ["RydHQ_ShotsToFire",1]) || ((time - _ct) > 15))
+						((_vehicle getVariable [QGVAR(shotFired2),0]) >= (_vehicle getVariable [QGVAR(shotsToFire),1]) || ((time - _ct) > 15))
 					};
 
-					_vehicle setVariable ["RydHQ_ShotFired", true];
-					_vehicle setVariable ["RydHQ_ShotFired2", 0];
+					_vehicle setVariable [QGVAR(shotFired), true];
+					_vehicle setVariable [QGVAR(shotFired2), 0];
 				};
 			};
 
 			sleep ((getNumber (configFile >> "cfgWeapons" >> (currentWeapon _vehicle) >> "reloadTime")) + 0.5);
 
-			_vehicle setVariable ["RydHQ_GunFree",true]
+			_vehicle setVariable [QGVAR(gunFree),true]
 		};
 	};
 };
@@ -140,7 +140,7 @@ if ((count _guns) < 1) exitWith {-1};
 	if !(isNull _x) then {
 		_vehicle = vehicle _x;
 
-		if ((_vehicle getVariable ["RydHQ_ShotsToFire", 0]) > 0) then {
+		if ((_vehicle getVariable [QGVAR(shotsToFire), 0]) > 0) then {
 			_mags = getArtilleryAmmo [_vehicle];
 
 			_ammoC = (magazines _vehicle) select 0;

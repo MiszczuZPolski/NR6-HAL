@@ -26,12 +26,12 @@ params ["_HQ", "_objs", "_SpecForG", "_knownEG", "_EnHArmor", "_EnMArmor", "_EnL
         "_EnArtG", "_EnStaticG", "_FValue", "_EValue", "_morale", "_AAO", "_cycleC", "_delay"];
 
 private _gauss100 = (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10);
-private _obj = _HQ getVariable "RydHQ_Obj";
+private _obj = _HQ getVariable QEGVAR(core,obj);
 
-private _moraleInfl = (_gauss100 * (_HQ getVariable ["RydHQ_OffTend",1])) + (_HQ getVariable ["RydHQ_Inertia",0]) + _morale;
+private _moraleInfl = (_gauss100 * (_HQ getVariable [QEGVAR(core,offTend),1])) + (_HQ getVariable [QEGVAR(core,inertia),0]) + _morale;
 private _enemyInfl = (_EValue/(_FValue max 1)) * 40;
 
-if (((_moraleInfl > _enemyInfl) and not ((count _objs) < 1) and {not ((_HQ getVariable ["RydHQ_Order","ATTACK"]) in ["DEFEND"])}) or {(_HQ getVariable ["RydHQ_Berserk",false])} or {(_moraleInfl > _enemyInfl) and (_HQ getVariable ["LastStance","At"] == "De") and ((((75)*(_HQ getVariable ["RydHQ_Recklessness",0.5])*(count (_HQ getVariable ["RydHQ_KnEnemiesG",[]]))) >= (random 100)) or ((_HQ getVariable ["RydHQ_AttackAlways",false]) and (_HQ getVariable ["LastStance","At"] == "De") and ((count (_HQ getVariable ["RydHQ_KnEnemiesG",[]])) > 0)))}) then
+if (((_moraleInfl > _enemyInfl) and not ((count _objs) < 1) and {not ((_HQ getVariable [QEGVAR(core,order),"ATTACK"]) in ["DEFEND"])}) or {(_HQ getVariable [QEGVAR(core,berserk),false])} or {(_moraleInfl > _enemyInfl) and (_HQ getVariable ["LastStance","At"] == "De") and ((((75)*(_HQ getVariable [QEGVAR(core,recklessness),0.5])*(count (_HQ getVariable [QEGVAR(common,knEnemiesG),[]]))) >= (random 100)) or ((_HQ getVariable [QEGVAR(core,attackAlways),false]) and (_HQ getVariable ["LastStance","At"] == "De") and ((count (_HQ getVariable [QEGVAR(common,knEnemiesG),[]])) > 0)))}) then
     {
     private _lastS = _HQ getVariable ["LastStance","At"];
     if ((_lastS == "De") or (_cycleC == 1)) then
@@ -40,7 +40,7 @@ if (((_moraleInfl > _enemyInfl) and not ((count _objs) < 1) and {not ((_HQ getVa
         };
 
     _HQ setVariable ["LastStance","At"];
-    _HQ setVariable ["RydHQ_Inertia",30 * (0.5 + (_HQ getVariable ["RydHQ_Consistency",0.5]))*(0.5 + (_HQ getVariable ["RydHQ_Activity",0.5]))];
+    _HQ setVariable [QEGVAR(core,inertia),30 * (0.5 + (_HQ getVariable [QEGVAR(core,consistency),0.5]))*(0.5 + (_HQ getVariable [QEGVAR(core,activity),0.5]))];
     [_HQ] call HAL_HQOrders
     }
 else
@@ -52,20 +52,20 @@ else
         };
 
     _HQ setVariable ["LastStance","De"];
-    _HQ setVariable ["RydHQ_Inertia", - (30 * (0.5 + (_HQ getVariable ["RydHQ_Consistency",0.5])))/(0.5 + (_HQ getVariable ["RydHQ_Activity",0.5]))];
+    _HQ setVariable [QEGVAR(core,inertia), - (30 * (0.5 + (_HQ getVariable [QEGVAR(core,consistency),0.5])))/(0.5 + (_HQ getVariable [QEGVAR(core,activity),0.5]))];
     [_HQ] call HAL_HQOrdersDef
     };
 
 // SF attack dispatch
-if (((((_HQ getVariable ["RydHQ_Circumspection",0.5]) + (_HQ getVariable ["RydHQ_Fineness",0.5]))/2) + 0.1) > (random 1.2)) then
+if (((((_HQ getVariable [QEGVAR(core,circumspection),0.5]) + (_HQ getVariable [QEGVAR(core,fineness),0.5]))/2) + 0.1) > (random 1.2)) then
     {
-    private _SFcount = {not (_x getVariable ["Busy" + (str _x),false]) and not (_x getVariable ["Unable",false]) and not (_x getVariable ["Resting" + (str _x),false])} count (_SpecForG - (_HQ getVariable ["RydHQ_SFBodyGuard",[]]));
+    private _SFcount = {not (_x getVariable ["Busy" + (str _x),false]) and not (_x getVariable ["Unable",false]) and not (_x getVariable ["Resting" + (str _x),false])} count (_SpecForG - (_HQ getVariable [QEGVAR(core,sFBodyGuard),[]]));
 
     if (_SFcount > 0) then
         {
         private _isNight = [] call EFUNC(common,isNight);
         private _SFTgts = [];
-        private _chance = 40 + (60 * (_HQ getVariable ["RydHQ_Activity",0.5]));
+        private _chance = 40 + (60 * (_HQ getVariable [QEGVAR(core,activity),0.5]));
 
             {
             private _HQtmp = group _x;
@@ -95,9 +95,9 @@ if (((((_HQ getVariable ["RydHQ_Circumspection",0.5]) + (_HQ getVariable ["RydHQ
 
         if ((count _SFTgts) > 0) then
             {
-            _chance = _chance + (((2 * _SFcount) - (8/(0.75 + ((_HQ getVariable ["RydHQ_Recklessness",0.5])/2)))) * 20);
+            _chance = _chance + (((2 * _SFcount) - (8/(0.75 + ((_HQ getVariable [QEGVAR(core,recklessness),0.5])/2)))) * 20);
             private _trgG = _SFTgts select (floor (random (count _SFTgts)));
-            private _alreadyAttacked = {_x == _trgG} count (_HQ getVariable ["RydHQ_SFTargets",[]]);
+            private _alreadyAttacked = {_x == _trgG} count (_HQ getVariable [QEGVAR(core,sFTargets),[]]);
             _chance = _chance/(1 + _alreadyAttacked);
             if (_chance < _SFcount) then
                 {
@@ -124,7 +124,7 @@ if (((((_HQ getVariable ["RydHQ_Circumspection",0.5]) + (_HQ getVariable ["RydHQ
 
                         if not (_isResting) then
                             {
-                            if not (_x in (_HQ getVariable ["RydHQ_SFBodyGuard",[]])) then
+                            if not (_x in (_HQ getVariable [QEGVAR(core,sFBodyGuard),[]])) then
                                 {
                                 _SFAv pushBack _x
                                 }
@@ -135,7 +135,7 @@ if (((((_HQ getVariable ["RydHQ_Circumspection",0.5]) + (_HQ getVariable ["RydHQ
 
                 private _team = _SFAv select (floor (random (count _SFAv)));
                 private _trg = vehicle (leader _trgG);
-                if (not ((toLower (typeOf _trg)) in (_EnHArmor + _EnLArmor)) or ((random 100) > (90 - ((_HQ getVariable ["RydHQ_Recklessness",0.5]) * 10)))) then
+                if (not ((toLower (typeOf _trg)) in (_EnHArmor + _EnLArmor)) or ((random 100) > (90 - ((_HQ getVariable [QEGVAR(core,recklessness),0.5]) * 10)))) then
                     {
                     [[_team,_trg,_trgG,_HQ],HAL_GoSFAttack] call EFUNC(common,spawn);
                     }

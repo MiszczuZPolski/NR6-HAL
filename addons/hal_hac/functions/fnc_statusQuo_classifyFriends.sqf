@@ -207,57 +207,57 @@ private _NCrewInfG = [];
     }
 forEach _friends;
 
-_HQ setVariable ["RydHQ_FValue",_FValue];
+_HQ setVariable [QEGVAR(hal_boss,fValue),_FValue];
 
-_HQ setVariable ["RydHQ_SpecFor",_SpecFor];
-_HQ setVariable ["RydHQ_recon",_recon];
-_HQ setVariable ["RydHQ_FO",_FO];
-_HQ setVariable ["RydHQ_snipers",_snipers];
-_HQ setVariable ["RydHQ_ATinf",_ATinf];
-_HQ setVariable ["RydHQ_AAinf",_AAinf];
-_HQ setVariable ["RydHQ_Art",_Art];
-_HQ setVariable ["RydHQ_HArmor",_HArmor];
-_HQ setVariable ["RydHQ_MArmor",_MArmor];
-_HQ setVariable ["RydHQ_LArmor",_LArmor];
-_HQ setVariable ["RydHQ_LArmorAT",_LArmorAT];
-_HQ setVariable ["RydHQ_Cars",_Cars];
-_HQ setVariable ["RydHQ_Air",_Air];
-_HQ setVariable ["RydHQ_BAir",_BAir];
-_HQ setVariable ["RydHQ_RAir",_RAir];
-_HQ setVariable ["RydHQ_NCAir",_NCAir];
-_HQ setVariable ["RydHQ_Naval",_Naval];
-_HQ setVariable ["RydHQ_Static",_Static];
-_HQ setVariable ["RydHQ_StaticAA",_StaticAA];
-_HQ setVariable ["RydHQ_StaticAT",_StaticAT];
-_HQ setVariable ["RydHQ_Support",_Support];
-_HQ setVariable ["RydHQ_Cargo",_Cargo];
-_HQ setVariable ["RydHQ_NCCargo",_NCCargo];
-_HQ setVariable ["RydHQ_Other",_Other];
-_HQ setVariable ["RydHQ_Crew",_Crew];
+_HQ setVariable [QGVAR(specFor),_SpecFor];
+_HQ setVariable [QGVAR(recon),_recon];
+_HQ setVariable [QGVAR(fO),_FO];
+_HQ setVariable [QGVAR(snipers),_snipers];
+_HQ setVariable [QGVAR(aTinf),_ATinf];
+_HQ setVariable [QGVAR(aAinf),_AAinf];
+_HQ setVariable [QGVAR(art),_Art];
+_HQ setVariable [QGVAR(hArmor),_HArmor];
+_HQ setVariable [QGVAR(mArmor),_MArmor];
+_HQ setVariable [QGVAR(lArmor),_LArmor];
+_HQ setVariable [QGVAR(lArmorAT),_LArmorAT];
+_HQ setVariable [QGVAR(cars),_Cars];
+_HQ setVariable [QGVAR(air),_Air];
+_HQ setVariable [QGVAR(bAir),_BAir];
+_HQ setVariable [QGVAR(rAir),_RAir];
+_HQ setVariable [QGVAR(nCAir),_NCAir];
+_HQ setVariable [QGVAR(naval),_Naval];
+_HQ setVariable [QGVAR(static),_Static];
+_HQ setVariable [QGVAR(staticAA),_StaticAA];
+_HQ setVariable [QGVAR(staticAT),_StaticAT];
+_HQ setVariable [QGVAR(support),_Support];
+_HQ setVariable [QGVAR(cargo),_Cargo];
+_HQ setVariable [QGVAR(nCCargo),_NCCargo];
+_HQ setVariable [QGVAR(other),_Other];
+_HQ setVariable [QGVAR(crew),_Crew];
 
-_HQ setVariable ["RydHQ_SpecForG",_SpecForG];
-_HQ setVariable ["RydHQ_reconG",_reconG];
-_HQ setVariable ["RydHQ_FOG",_FOG];
-_HQ setVariable ["RydHQ_snipersG",_snipersG];
-_HQ setVariable ["RydHQ_ATinfG",_ATinfG];
-_HQ setVariable ["RydHQ_AAinfG",_AAinfG];
-_HQ setVariable ["RydHQ_ArtG",_ArtG];
-_HQ setVariable ["RydHQ_HArmorG",_HArmorG];
-_HQ setVariable ["RydHQ_MArmorG",_MArmorG];
-_HQ setVariable ["RydHQ_LArmorG",_LArmorG];
-_HQ setVariable ["RydHQ_LArmorATG",_LArmorATG];
-_HQ setVariable ["RydHQ_CarsG",_CarsG];
-_HQ setVariable ["RydHQ_AirG",_AirG];
-_HQ setVariable ["RydHQ_BAirG",_BAirG];
-_HQ setVariable ["RydHQ_RAirG",_RAirG];
-_HQ setVariable ["RydHQ_NCAirG",_NCAirG];
-_HQ setVariable ["RydHQ_NavalG",_NavalG];
-_HQ setVariable ["RydHQ_StaticG",_StaticG];
-_HQ setVariable ["RydHQ_StaticAAG",_StaticAAG];
-_HQ setVariable ["RydHQ_StaticATG",_StaticATG];
-_HQ setVariable ["RydHQ_NCCargoG",_NCCargoG];
-_HQ setVariable ["RydHQ_OtherG",_OtherG];
-_HQ setVariable ["RydHQ_CrewG",_CrewG];
+_HQ setVariable [QGVAR(specForG),_SpecForG];
+_HQ setVariable [QGVAR(reconG),_reconG];
+_HQ setVariable [QGVAR(fOG),_FOG];
+_HQ setVariable [QGVAR(snipersG),_snipersG];
+_HQ setVariable [QGVAR(aTinfG),_ATinfG];
+_HQ setVariable [QGVAR(aAinfG),_AAinfG];
+_HQ setVariable [QEGVAR(core,artG),_ArtG];
+_HQ setVariable [QEGVAR(hal_boss,hArmorG),_HArmorG];
+_HQ setVariable [QGVAR(mArmorG),_MArmorG];
+_HQ setVariable [QEGVAR(hal_boss,lArmorG),_LArmorG];
+_HQ setVariable [QGVAR(lArmorATG),_LArmorATG];
+_HQ setVariable [QEGVAR(hal_boss,carsG),_CarsG];
+_HQ setVariable [QEGVAR(core,airG),_AirG];
+_HQ setVariable [QGVAR(bAirG),_BAirG];
+_HQ setVariable [QGVAR(rAirG),_RAirG];
+_HQ setVariable [QEGVAR(hal_boss,nCAirG),_NCAirG];
+_HQ setVariable [QEGVAR(core,navalG),_NavalG];
+_HQ setVariable [QGVAR(staticG),_StaticG];
+_HQ setVariable [QGVAR(staticAAG),_StaticAAG];
+_HQ setVariable [QGVAR(staticATG),_StaticATG];
+_HQ setVariable [QEGVAR(core,nCCargoG),_NCCargoG];
+_HQ setVariable [QGVAR(otherG),_OtherG];
+_HQ setVariable [QGVAR(crewG),_CrewG];
 
 _NCrewInfG = _NCrewInfG - (_RAirG + _StaticG);
 _NCrewInf = _NCrewInf - (_RAir + _Static);
@@ -266,11 +266,11 @@ _Inf = _Inf - (_RAir + _Static);
 
 private _CargoAirEx = [];
 private _CargoLandEx = [];
-if (_HQ getVariable ["RydHQ_NoAirCargo",false]) then {_CargoAirEx = _AirG};
-if (_HQ getVariable ["RydHQ_NoLandCargo",false]) then {_CargoLandEx = (_CargoG - _AirG)};
-_CargoG = _CargoG - (_CargoAirEx + _CargoLandEx + (_HQ getVariable ["RydHQ_AmmoDrop",[]]));
-_HQ setVariable ["RydHQ_CargoAirEx",_CargoAirEx];
-_HQ setVariable ["RydHQ_CargoLandEx",_CargoLandEx];
+if (_HQ getVariable [QEGVAR(core,noAirCargo),false]) then {_CargoAirEx = _AirG};
+if (_HQ getVariable [QEGVAR(core,noLandCargo),false]) then {_CargoLandEx = (_CargoG - _AirG)};
+_CargoG = _CargoG - (_CargoAirEx + _CargoLandEx + (_HQ getVariable [QEGVAR(core,ammoDrop),[]]));
+_HQ setVariable [QGVAR(cargoAirEx),_CargoAirEx];
+_HQ setVariable [QGVAR(cargoLandEx),_CargoLandEx];
 
     {
     if not (_x in _SupportG) then
@@ -278,14 +278,14 @@ _HQ setVariable ["RydHQ_CargoLandEx",_CargoLandEx];
         _SupportG pushBack _x
         }
     }
-forEach (_HQ getVariable ["RydHQ_AmmoDrop",[]]);
+forEach (_HQ getVariable [QEGVAR(core,ammoDrop),[]]);
 
-_HQ setVariable ["RydHQ_NCrewInf",_NCrewInf];
-_HQ setVariable ["RydHQ_NCrewInfG",_NCrewInfG];
-_HQ setVariable ["RydHQ_Inf",_Inf];
-_HQ setVariable ["RydHQ_InfG",_InfG];
-_HQ setVariable ["RydHQ_CargoG",_CargoG];
-_HQ setVariable ["RydHQ_SupportG",_SupportG];
+_HQ setVariable [QGVAR(nCrewInf),_NCrewInf];
+_HQ setVariable [QEGVAR(core,nCrewInfG),_NCrewInfG];
+_HQ setVariable [QGVAR(inf),_Inf];
+_HQ setVariable [QGVAR(infG),_InfG];
+_HQ setVariable [QGVAR(cargoG),_CargoG];
+_HQ setVariable [QEGVAR(core,supportG),_SupportG];
 
 [_FValue, _SpecFor, _recon, _FO, _snipers, _ATinf, _AAinf, _Inf, _Art,
  _HArmor, _MArmor, _LArmor, _LArmorAT, _Cars, _Air, _BAir, _RAir, _NCAir,

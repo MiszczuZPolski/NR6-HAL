@@ -17,12 +17,12 @@ private _friends = [];
 
 while {RydxHQ_LFActive} do
     {
-    if (not (isNil "BIS_liveFeed") and not (RydHQ_LF)) exitWith {RydxHQ_LFActive = false};
+    if (not (isNil "BIS_liveFeed") and not (EGVAR(common,lF))) exitWith {RydxHQ_LFActive = false};
 
-    switch (isNil "RydHQ_CamVOnly") do
+    switch (isNil QGVAR(camVOnly)) do
         {
-        case (true) : {_friends = (_HQ getVariable ["RydHQ_Friends",[]]) + (RydHQ_CamVIncluded - (_HQ getVariable ["RydHQ_Friends",[]]))};
-        case (false) : {_friends = RydHQ_CamVOnly};
+        case (true) : {_friends = (_HQ getVariable [QEGVAR(core,friends),[]]) + (GVAR(camVIncluded) - (_HQ getVariable [QEGVAR(core,friends),[]]))};
+        case (false) : {_friends = GVAR(camVOnly)};
         };
 
     private _newS = objNull;
@@ -52,7 +52,7 @@ while {RydxHQ_LFActive} do
                 if (_dngr > _maxD) then
                     {
                     _maxD = _dngr;
-                    private _units = (units _x) - RydHQ_CamVExcluded;
+                    private _units = (units _x) - GVAR(camVExcluded);
                     if ((count _units) > 0) then
                         {
                         _newG = _x;
@@ -65,7 +65,7 @@ while {RydxHQ_LFActive} do
         forEach _friends
         };
 
-    private _currentS = _HQ getVariable ["RydHQ_LFSource",objNull];
+    private _currentS = _HQ getVariable [QGVAR(lFSource),objNull];
 
     if not (isNull _newS) then
         {
@@ -74,15 +74,15 @@ while {RydxHQ_LFActive} do
             {
             if ((_maxD > 0) or ((random 100) > 75)) then
                 {
-                _HQ setVariable ["RydHQ_LFSource",_newS];
-                _currentS = _HQ getVariable ["RydHQ_LFSource",objNull];
+                _HQ setVariable [QGVAR(lFSource),_newS];
+                _currentS = _HQ getVariable [QGVAR(lFSource),objNull];
 
                 private _dName = getText (configFile >> "CfgVehicles" >> (typeOf (vehicle _newS)) >> "displayName");
 
-                if (RydHQ_LF) then
+                if (EGVAR(common,lF)) then
                     {
                     _leader groupChat "Terminating current video link...";
-                    private _cSFin = _HQ getVariable ["RydHQ_LFSourceFin",_newS];
+                    private _cSFin = _HQ getVariable [QEGVAR(common,lFSourceFin),_newS];
                     [_cSFin,_leader] call EFUNC(common,LF);
                     waitUntil {(isNil "BIS_liveFeed")};
                     };
@@ -109,10 +109,10 @@ while {RydxHQ_LFActive} do
             case (isNull _HQ) : {_alive = false};
             case (({alive _x} count (units _HQ)) < 1) : {_alive = false};
             case (not (alive _leader)) : {_alive = false};
-            case ((isNull (_HQ getVariable ["RydHQ_LFSourceFin",(vehicle _newS)])) and not (_wasNull)) : {_alive = false};
-            case ((not (alive (_HQ getVariable ["RydHQ_LFSourceFin",(vehicle _newS)]))) and not (_wasNull)) : {_alive = false};
-            case ((_newG getVariable ["RydHQ_MIA",false]) and not (_wasNull)) : {_alive = false};
-            case (_HQ getVariable ["RydHQ_KIA",false]) : {_alive = false};
+            case ((isNull (_HQ getVariable [QEGVAR(common,lFSourceFin),(vehicle _newS)])) and not (_wasNull)) : {_alive = false};
+            case ((not (alive (_HQ getVariable [QEGVAR(common,lFSourceFin),(vehicle _newS)]))) and not (_wasNull)) : {_alive = false};
+            case ((_newG getVariable [QEGVAR(common,mIA),false]) and not (_wasNull)) : {_alive = false};
+            case (_HQ getVariable [QEGVAR(common,kIA),false]) : {_alive = false};
             };
 
         if (_alive) then
@@ -123,7 +123,7 @@ while {RydxHQ_LFActive} do
                     {
                     if ((_was0) or (_wasNull) or not (_maxd > 0)) then
                         {
-                        if ((count (_HQ getVariable ["RydHQ_Friends",[]])) > 0) then
+                        if ((count (_HQ getVariable [QEGVAR(core,friends),[]])) > 0) then
                             {
                             _stoper = time - 31
                             }
@@ -153,7 +153,7 @@ while {RydxHQ_LFActive} do
 if not (isNil "BIS_liveFeed") then
     {
     _leader groupChat "Terminating current video link...";
-    private _currentS = _HQ getVariable ["RydHQ_LFSourceFin",objNull];
+    private _currentS = _HQ getVariable [QEGVAR(common,lFSourceFin),objNull];
     [_currentS,_leader] call EFUNC(common,LF);
     waitUntil {(isNil "BIS_liveFeed")};
     _leader groupChat "Video link terminated.";

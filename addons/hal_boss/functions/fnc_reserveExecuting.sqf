@@ -55,10 +55,10 @@ private _stancePos = [_frontPos,_angle,_dstF] call EFUNC(common,positionTowards2
 _stancePos = [(_stancePos select 0),(_stancePos select 1),0];
 if (surfaceIsWater [(_stancePos select 0),(_stancePos select 1)]) then {_stancePos = _HQpos};
 
-private _AAO = _HQ getVariable ["RydHQ_ChosenAAO",false];
+private _AAO = _HQ getVariable [QGVAR(chosenAAO),false];
 
-private _garrison = _HQ getVariable ["RydHQ_Garrison",[]];
-private _fG = (_HQ getVariable ["RydHQ_NCrewInfG",[]]) - ((_HQ getVariable ["RydHQ_Exhausted",[]]) + (_garrison));
+private _garrison = _HQ getVariable [QEGVAR(core,garrison),[]];
+private _fG = (_HQ getVariable [QEGVAR(core,nCrewInfG),[]]) - ((_HQ getVariable [QEGVAR(core,exhausted),[]]) + (_garrison));
 
 _fG = _fG - [_HQ];
 
@@ -207,8 +207,8 @@ if ((count _hostileG) > 0) then
         }
 } forEach [_o1,_o2,_o3,_o4];
 
-_HQ setVariable ["RydHQ_NObj",1];
-_HQ setVariable ["RydHQ_Taken",[]];
+_HQ setVariable [QEGVAR(core,nObj),1];
+_HQ setVariable [QEGVAR(common,taken),[]];
 _HQ setVariable ["ObjInit",true];
 
 [_HQ] call CBA_fnc_clearWaypoints;

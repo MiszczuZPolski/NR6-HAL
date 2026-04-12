@@ -23,23 +23,23 @@ private _HQs = [];
             {
             private _arr =
                 [
-                (_HQ getVariable ["RydHQ_Friends",[]]),
-                (_HQ getVariable ["RydHQ_NCrewInfG",[]]),
-                (_HQ getVariable ["RydHQ_CarsG",[]]),
-                (_HQ getVariable ["RydHQ_HArmorG",[]]) + (_HQ getVariable ["RydHQ_LArmorG",[]]),
-                (_HQ getVariable ["RydHQ_AirG",[]]),
-                (_HQ getVariable ["RydHQ_NCAirG",[]]) + ((_HQ getVariable ["RydHQ_NCCargoG",[]]) - (_HQ getVariable ["RydHQ_NCAirG",[]])) + ((_HQ getVariable ["RydHQ_SupportG",[]]) - ((_HQ getVariable ["RydHQ_NCAirG",[]]) + ((_HQ getVariable ["RydHQ_NCCargoG",[]]) - (_HQ getVariable ["RydHQ_NCAirG",[]])))),
-                (_HQ getVariable ["RydHQ_CCurrent",0]),
-                (_HQ getVariable ["RydHQ_CInitial",0]),
-                (_HQ getVariable ["RydHQ_FValue",0]),
-                (_HQ getVariable ["RydHQ_Morale",0]),
-                (_HQ getVariable ["RydHQ_KnEnemiesG",[]]),
-                (_HQ getVariable ["RydHQ_EnInfG",[]]),
-                (_HQ getVariable ["RydHQ_EnCarsG",[]]),
-                (_HQ getVariable ["RydHQ_EnHArmorG",[]]) + (_HQ getVariable ["RydHQ_EnLArmorG",[]]),
-                (_HQ getVariable ["RydHQ_EnAirG",[]]),
-                (_HQ getVariable ["RydHQ_EnNCAirG",[]]) + ((_HQ getVariable ["RydHQ_EnNCCargoG",[]]) - (_HQ getVariable ["RydHQ_EnNCAirG",[]])) + ((_HQ getVariable ["RydHQ_EnSupportG",[]]) - ((_HQ getVariable ["RydHQ_EnNCAirG",[]]) + ((_HQ getVariable ["RydHQ_EnNCCargoG",[]]) - (_HQ getVariable ["RydHQ_EnNCAirG",[]])))),
-                (_HQ getVariable ["RydHQ_EValue",0])
+                (_HQ getVariable [QEGVAR(core,friends),[]]),
+                (_HQ getVariable [QEGVAR(core,nCrewInfG),[]]),
+                (_HQ getVariable [QGVAR(carsG),[]]),
+                (_HQ getVariable [QGVAR(hArmorG),[]]) + (_HQ getVariable [QGVAR(lArmorG),[]]),
+                (_HQ getVariable [QEGVAR(core,airG),[]]),
+                (_HQ getVariable [QGVAR(nCAirG),[]]) + ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) - (_HQ getVariable [QGVAR(nCAirG),[]])) + ((_HQ getVariable [QEGVAR(core,supportG),[]]) - ((_HQ getVariable [QGVAR(nCAirG),[]]) + ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) - (_HQ getVariable [QGVAR(nCAirG),[]])))),
+                (_HQ getVariable [QEGVAR(core,cCurrent),0]),
+                (_HQ getVariable [QEGVAR(core,cInitial),0]),
+                (_HQ getVariable [QGVAR(fValue),0]),
+                (_HQ getVariable [QEGVAR(core,morale),0]),
+                (_HQ getVariable [QEGVAR(common,knEnemiesG),[]]),
+                (_HQ getVariable [QGVAR(enInfG),[]]),
+                (_HQ getVariable [QGVAR(enCarsG),[]]),
+                (_HQ getVariable [QGVAR(enHArmorG),[]]) + (_HQ getVariable [QGVAR(enLArmorG),[]]),
+                (_HQ getVariable [QGVAR(enAirG),[]]),
+                (_HQ getVariable [QGVAR(enNCAirG),[]]) + ((_HQ getVariable [QGVAR(enNCCargoG),[]]) - (_HQ getVariable [QGVAR(enNCAirG),[]])) + ((_HQ getVariable [QGVAR(enSupportG),[]]) - ((_HQ getVariable [QGVAR(enNCAirG),[]]) + ((_HQ getVariable [QGVAR(enNCCargoG),[]]) - (_HQ getVariable [QGVAR(enNCAirG),[]])))),
+                (_HQ getVariable [QGVAR(eValue),0])
                 ];
 
             _arr = (_arr + [_frArr,_enArr,_enG,_HQ]) call FUNC(forceCount);
@@ -47,11 +47,11 @@ private _HQs = [];
             _enArr = _arr select 1;
 
             _HQs pushBack _x;
-            _frG = _frG + (_HQ getVariable ["RydHQ_Friends",[]]) - (_HQ getVariable ["RydHQ_Exhausted",[]]);
+            _frG = _frG + (_HQ getVariable [QEGVAR(core,friends),[]]) - (_HQ getVariable [QEGVAR(core,exhausted),[]]);
 
             {
                 if !(_x in _enG) then {_enG pushBack _x};
-            } forEach (_HQ getVariable ["RydHQ_KnEnemiesG",[]])
+            } forEach (_HQ getVariable [QEGVAR(common,knEnemiesG),[]])
             }
         }
 } forEach _HQarr;

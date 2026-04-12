@@ -447,7 +447,7 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
             private _arr = [_prim,_rare,_sec,_smoke,_illum];
             if (({_x isEqualTo ""} count _arr) < 5) then
                 {
-                RydHQ_Add_OtherArty pushBackUnique [[_veh],_arr]
+                GVAR(add_OtherArty) pushBackUnique [[_veh],_arr]
                 }
             };
 
@@ -630,19 +630,19 @@ private _flareMags = ["Laserbatteries","60Rnd_CMFlareMagazine","120Rnd_CMFlareMa
     }
 forEach _allVehs;
 
-if (isNil "RydHQ_Add_OtherArty") then {RydHQ_Add_OtherArty = []};
+if (isNil QGVAR(add_OtherArty)) then {GVAR(add_OtherArty) = []};
 
-RydHQ_OtherArty = [] + RydHQ_Add_OtherArty;
+GVAR(otherArty) = [] + GVAR(add_OtherArty);
 
     {
         {
-        RydHQ_AllArty pushBackUnique (toLower _x)
+        EGVAR(common,allArty) pushBackUnique (toLower _x)
         }
     forEach (_x select 0)
     }
-forEach RydHQ_OtherArty;
+forEach GVAR(otherArty);
 
-publicVariable "RydHQ_OtherArty";
+publicVariable QGVAR(otherArty);
 
 GVAR(inf) = GVAR(inf) - ["b_uav_ai","i_uav_ai","o_uav_ai"];
 GVAR(crew) = GVAR(crew) - ["b_uav_ai","i_uav_ai","o_uav_ai"];

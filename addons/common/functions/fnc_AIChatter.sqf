@@ -85,7 +85,7 @@ private _sentence = selectRandom _sentences;
 [_unit, _sentence] remoteExecCall ["sideRadio"];
 
 // Create debug markers if enabled
-if (missionNamespace getVariable ["RydHQ_ChatDebug", false]) then {
+if (missionNamespace getVariable [QGVAR(chatDebug), false]) then {
     // Select marker color and type based on message category
     private _color = "ColorGrey";
     private _type = "mil_warning";

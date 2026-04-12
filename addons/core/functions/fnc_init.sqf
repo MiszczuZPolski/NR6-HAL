@@ -5,7 +5,7 @@ params ["_logic", "_units", "_activated"];
 
 if !(isServer) exitWith {};
 
-RydHQ_Wait = _logic getVariable ["RydHQ_Wait", 15];
+GVAR(wait) = _logic getVariable [QGVAR(wait), 15];
 
 
 RydxHQ_ReconCargo = missionNamespace getVariable ["RydxHQ_ReconCargo",true];
@@ -38,14 +38,14 @@ publicVariable "RydxHQ_LZ";
 RydART_Safe = missionNamespace getVariable ["RydART_Safe",250];
 publicVariable "RydART_Safe";
 
-RydHQ_LZ = RydxHQ_LZ;
-RydHQB_LZ = RydxHQ_LZ;
-RydHQC_LZ = RydxHQ_LZ;
-RydHQD_LZ = RydxHQ_LZ;
-RydHQE_LZ = RydxHQ_LZ;
-RydHQF_LZ = RydxHQ_LZ;
-RydHQG_LZ = RydxHQ_LZ;
-RydHQH_LZ = RydxHQ_LZ;
+GVAR(lZ) = RydxHQ_LZ;
+GVAR(lZB) = RydxHQ_LZ;
+GVAR(lZC) = RydxHQ_LZ;
+GVAR(lZD) = RydxHQ_LZ;
+GVAR(lZE) = RydxHQ_LZ;
+GVAR(lZF) = RydxHQ_LZ;
+GVAR(lZG) = RydxHQ_LZ;
+GVAR(lZH) = RydxHQ_LZ;
 
 //LZ setting was coded in entire system as Leader specific despite making far more sense as a general setting. Will clean it up eventually.
 
@@ -101,7 +101,7 @@ HAL_fnc_getType = compile preprocessFileLineNumbers "A3\modules_f\marta\data\scr
 HAL_fnc_getSize = compile preprocessFileLineNumbers "A3\modules_f\marta\data\scripts\fnc_getSize.sqf";
 
 //used to "compile" list of units types usable by AI
-if (RydHQ_RHQCheck) then {[] call EFUNC(common,rhqCheck)};
+if (GVAR(rHQCheck)) then {[] call EFUNC(common,rhqCheck)};
 
 RydxHQ_AllLeaders = [];
 RydxHQ_AllHQ = [];
@@ -119,9 +119,9 @@ private _clU = [Map_Unknown_R,Map_Unknown_G,Map_Unknown_B,Map_Unknown_A];
 		private _gp = group _leader;
 		RydxHQ_AllLeaders pushBack _leader;
 		RydxHQ_AllHQ pushBack _gp;
-		_gp setVariable ["RydHQ_CodeSign", _codeSign];
+		_gp setVariable [QGVAR(codeSign), _codeSign];
 		if !(isNil _frontVar) then {
-			_gp setVariable ["RydHQ_Front", missionNamespace getVariable _frontVar]
+			_gp setVariable [QEGVAR(common,front), missionNamespace getVariable _frontVar]
 		};
 	};
 } forEach [
@@ -137,7 +137,7 @@ private _clU = [Map_Unknown_R,Map_Unknown_G,Map_Unknown_B,Map_Unknown_A];
 
 [] call compile preprocessFile (GVAR(path) + "Front.sqf");
 
-if (RydHQ_TimeM) then
+if (GVAR(timeM)) then
 	{
 	[([player] + (switchableUnits - [player]))] call EFUNC(common,TimeMachine)
 	};
@@ -172,7 +172,7 @@ if (EGVAR(missionmodules,active)) then
 	forEach [[RydBBa_HQs,"A"],[RydBBb_HQs,"B"]];
 	};
 
-if (((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (RydHQE_Debug) or (RydHQF_Debug) or (RydHQG_Debug) or (RydHQH_Debug)) and (RydHQ_DbgMon)) then {[[],EFUNC(common,DbgMon)] call EFUNC(common,spawn)};
+if (((EGVAR(common,debug)) or (EGVAR(common,debugB)) or (EGVAR(common,debugC)) or (EGVAR(common,debugD)) or (EGVAR(common,debugE)) or (EGVAR(common,debugF)) or (EGVAR(common,debugG)) or (EGVAR(common,debugH))) and (GVAR(dbgMon))) then {[[],EFUNC(common,DbgMon)] call EFUNC(common,spawn)};
 
 {
 	params ["_leaderName", "_codeSign"];
@@ -196,9 +196,9 @@ if (((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (Ryd
 	["leaderHQH", "H"]
 ];
 
-if ((count RydHQ_GroupMarks) > 0) then
+if ((count GVAR(groupMarks)) > 0) then
 	{
-	[RydHQ_GroupMarks,EFUNC(common,groupMarkerLoop)] call EFUNC(common,spawn)
+	[GVAR(groupMarks),EFUNC(common,groupMarkerLoop)] call EFUNC(common,spawn)
 	};
 
 if (RydxHQ_Actions) then {

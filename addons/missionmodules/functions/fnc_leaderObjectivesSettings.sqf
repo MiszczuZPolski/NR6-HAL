@@ -1,48 +1,54 @@
 #include "..\script_component.hpp"
-private ["_logic","_Commanders","_Leader","_prefix"];
 
-_logic = (_this select 0);
-_Commanders = [];
+params ["_logic"];
+
+private _commanders = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};
+    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
-    _Leader = (_x getVariable "LeaderType");
+    private _leaderName = (_x getVariable "LeaderType");
 
-    if (_Leader == "LeaderHQ") then {_prefix = "RydHQ_"};
-    if (_Leader == "LeaderHQB") then {_prefix = "RydHQB_"};
-    if (_Leader == "LeaderHQC") then {_prefix = "RydHQC_"};
-    if (_Leader == "LeaderHQD") then {_prefix = "RydHQD_"};
-    if (_Leader == "LeaderHQE") then {_prefix = "RydHQE_"};
-    if (_Leader == "LeaderHQF") then {_prefix = "RydHQF_"};
-    if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
-    if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
+    private _letter = switch (_leaderName) do {
+        case "LeaderHQ":  {""};
+        case "LeaderHQB": {"B"};
+        case "LeaderHQC": {"C"};
+        case "LeaderHQD": {"D"};
+        case "LeaderHQE": {"E"};
+        case "LeaderHQF": {"F"};
+        case "LeaderHQG": {"G"};
+        case "LeaderHQH": {"H"};
+        default {""};
+    };
 
-    _Leader = call compile _Leader;
+    private _leaderObj = call compile _leaderName;
 
+    // NOTE: Pre-existing quirk preserved verbatim — legacy code wrote the
+    // literal string "DEFEND" via str(). New form writes the string directly.
+    if (_logic getVariable [QGVAR(order), false]) then {
+        missionNamespace setVariable [QGVAR(order) + _letter, "DEFEND"];
+    };
 
-    if (_logic getVariable "RydHQ_Order") then {_logic call compile (_prefix + "Order" + " = " + str "DEFEND")};
+    missionNamespace setVariable [QGVAR(berserk) + _letter,          _logic getVariable [QGVAR(berserk), false]];
+    missionNamespace setVariable [QGVAR(simpleMode) + _letter,       _logic getVariable [QGVAR(simpleMode), false]];
+    missionNamespace setVariable [QGVAR(unlimitedCapt) + _letter,    _logic getVariable [QGVAR(unlimitedCapt), false]];
+    missionNamespace setVariable [QGVAR(captLimit) + _letter,        _logic getVariable [QGVAR(captLimit), 0]];
+    missionNamespace setVariable [QGVAR(garrR) + _letter,            _logic getVariable [QGVAR(garrR), false]];
+    missionNamespace setVariable [QGVAR(objHoldTime) + _letter,      _logic getVariable [QGVAR(objHoldTime), 0]];
+    missionNamespace setVariable [QGVAR(objRadius1) + _letter,       _logic getVariable [QGVAR(objRadius1), 0]];
+    missionNamespace setVariable [QGVAR(objRadius2) + _letter,       _logic getVariable [QGVAR(objRadius2), 0]];
+    missionNamespace setVariable [QGVAR(lRelocating) + _letter,      _logic getVariable [QGVAR(lRelocating), false]];
+    missionNamespace setVariable [QGVAR(noRec) + _letter,            _logic getVariable [QGVAR(noRec), false]];
+    missionNamespace setVariable [QGVAR(rapidCapt) + _letter,        _logic getVariable [QGVAR(rapidCapt), false]];
+    missionNamespace setVariable [QGVAR(defendObjectives) + _letter, _logic getVariable [QGVAR(defendObjectives), false]];
+    missionNamespace setVariable [QGVAR(reconReserve) + _letter,     _logic getVariable [QGVAR(reconReserve), 0]];
+    missionNamespace setVariable [QGVAR(attackReserve) + _letter,    _logic getVariable [QGVAR(attackReserve), 0]];
+    missionNamespace setVariable [QGVAR(aAO) + _letter,              _logic getVariable [QGVAR(aAO), false]];
+    missionNamespace setVariable [QGVAR(forceAAO) + _letter,         _logic getVariable [QGVAR(forceAAO), false]];
+    missionNamespace setVariable [QGVAR(bBAOObj) + _letter,          _logic getVariable [QGVAR(bBAOObj), false]];
+    missionNamespace setVariable [QGVAR(maxSimpleObjs) + _letter,    _logic getVariable [QGVAR(maxSimpleObjs), 0]];
+    missionNamespace setVariable [QGVAR(cRDefRes) + _letter,         _logic getVariable [QGVAR(cRDefRes), 0]];
 
-    _logic call compile (_prefix + "Berserk" + " = " + str (_logic getVariable "RydHQ_Berserk"));
-    _logic call compile (_prefix + "SimpleMode" + " = " + str (_logic getVariable "RydHQ_SimpleMode"));
-    _logic call compile (_prefix + "UnlimitedCapt" + " = " + str (_logic getVariable "RydHQ_UnlimitedCapt"));
-    _logic call compile (_prefix + "CaptLimit" + " = " + str (_logic getVariable "RydHQ_CaptLimit"));
-    _logic call compile (_prefix + "GarrR" + " = " + str (_logic getVariable "RydHQ_GarrR"));
-    _logic call compile (_prefix + "ObjHoldTime" + " = " + str (_logic getVariable "RydHQ_ObjHoldTime"));
-    _logic call compile (_prefix + "ObjRadius1" + " = " + str (_logic getVariable "RydHQ_ObjRadius1"));
-    _logic call compile (_prefix + "ObjRadius2" + " = " + str (_logic getVariable "RydHQ_ObjRadius2"));
-    _logic call compile (_prefix + "LRelocating" + " = " + str (_logic getVariable "RydHQ_LRelocating"));
-    _logic call compile (_prefix + "NoRec" + " = " + str (_logic getVariable "RydHQ_NoRec"));
-    _logic call compile (_prefix + "RapidCapt" + " = " + str (_logic getVariable "RydHQ_RapidCapt"));
-    _logic call compile (_prefix + "DefendObjectives" + " = " + str(_logic getVariable "RydHQ_DefendObjectives"));
-    _logic call compile (_prefix + "ReconReserve" + " = " + str (_logic getVariable "RydHQ_ReconReserve"));
-    _logic call compile (_prefix + "AttackReserve" + " = " + str (_logic getVariable "RydHQ_AttackReserve"));
-    _logic call compile (_prefix + "AAO" + " = " + str (_logic getVariable "RydHQ_AAO"));
-    _logic call compile (_prefix + "ForceAAO" + " = " + str (_logic getVariable "RydHQ_ForceAAO"));
-    _logic call compile (_prefix + "BBAOObj" + " = " + str (_logic getVariable "RydHQ_BBAOObj"));
-    _logic call compile (_prefix + "MaxSimpleObjs" + " = " + str (_logic getVariable "RydHQ_MaxSimpleObjs"));
-    _logic call compile (_prefix + "CRDefRes" + " = " + str (_logic getVariable "RydHQ_CRDefRes"));
-
-} forEach _Commanders;
+} forEach _commanders;

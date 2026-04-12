@@ -68,8 +68,8 @@ while {(EGVAR(missionmodules,active))} do
                 private _mChange = 10/(count _HQs);
 
                 {
-                    private _morale = _x getVariable ["RydHQ_Morale",0];
-                    _x setVariable ["RydHQ_Morale",_morale - _mChange]
+                    private _morale = _x getVariable [QEGVAR(core,morale),0];
+                    _x setVariable [QEGVAR(core,morale),_morale - _mChange]
                 } forEach _HQs
                 }
             }
@@ -105,7 +105,7 @@ while {(EGVAR(missionmodules,active))} do
             //_NearEnemies = (leader _HQ) countenemy _AllV2;
             private _NearEnemies = ({(side _x) in _SideEnemies} count _AllV2);
 
-            if ((_NearAllies >= (_HQ getVariable ["RydHQ_CaptLimit",10])) and (_NearEnemies <= (0 + (((_HQ getVariable ["RydHQ_Recklessness",0.5])/(0.5 + (_HQ getVariable ["RydHQ_Consistency",0.5])))*10)))) then
+            if ((_NearAllies >= (_HQ getVariable [QEGVAR(core,captLimit),10])) and (_NearEnemies <= (0 + (((_HQ getVariable [QEGVAR(core,recklessness),0.5])/(0.5 + (_HQ getVariable [QEGVAR(core,consistency),0.5])))*10)))) then
                 {
                 _x set [2,true];
 
@@ -126,8 +126,8 @@ while {(EGVAR(missionmodules,active))} do
                 private _mChange = 20/(count _HQs);
 
                 {
-                    private _morale = _x getVariable ["RydHQ_Morale",0];
-                    _x setVariable ["RydHQ_Morale",_morale + _mChange]
+                    private _morale = _x getVariable [QEGVAR(core,morale),0];
+                    _x setVariable [QEGVAR(core,morale),_morale + _mChange]
                 } forEach _HQs
                 }
             }

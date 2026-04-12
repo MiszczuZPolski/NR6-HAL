@@ -1,43 +1,61 @@
 #include "..\script_component.hpp"
-private ["_logic","_Commanders","_Leader","_prefix","_objName","_prefixT"];
 
-_logic = (_this select 0);
-_Commanders = [];
+params ["_logic"];
 
-_objName = _logic getVariable "_ObjName";
+private _commanders = [];
+
+private _objName = _logic getVariable "_ObjName";
 if (_objName isNotEqualTo "") then {_logic setVariable ["ObjName",_objName]};
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};
+    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
-    _Leader = (_x getVariable "LeaderType");
+    private _leaderName = (_x getVariable "LeaderType");
 
-    if (_Leader == "LeaderHQ") then {_prefix = "RydHQ_"; _prefixT = "SetTakenA"};
-    if (_Leader == "LeaderHQB") then {_prefix = "RydHQB_"; _prefixT = "SetTakenB"};
-    if (_Leader == "LeaderHQC") then {_prefix = "RydHQC_"; _prefixT = "SetTakenC"};
-    if (_Leader == "LeaderHQD") then {_prefix = "RydHQD_"; _prefixT = "SetTakenD"};
-    if (_Leader == "LeaderHQE") then {_prefix = "RydHQE_"; _prefixT = "SetTakenE"};
-    if (_Leader == "LeaderHQF") then {_prefix = "RydHQF_"; _prefixT = "SetTakenF"};
-    if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"; _prefixT = "SetTakenG"};
-    if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"; _prefixT = "SetTakenH"};
-
-    waitUntil {sleep 0.5; (!(isNil _Leader))};
-
-    _Leader = call compile _Leader;
-
-    if (call compile ("isNil " + "'" + _prefix + "SimpleObjs" + "'")) then {
-
-        call compile (_prefix + "SimpleObjs" + " = " + "[]");
-
+    private _letter = switch (_leaderName) do {
+        case "LeaderHQ":  {""};
+        case "LeaderHQB": {"B"};
+        case "LeaderHQC": {"C"};
+        case "LeaderHQD": {"D"};
+        case "LeaderHQE": {"E"};
+        case "LeaderHQF": {"F"};
+        case "LeaderHQG": {"G"};
+        case "LeaderHQH": {"H"};
+        default {""};
     };
 
-    _logic call compile (_prefix + "SimpleObjs" + " pushback " + "_this");
+    // _prefixT dispatch is OUT OF PHASE 4 SCOPE — SetTaken* keys are on _logic, not Ryd*-prefixed globals.
+    private _prefixT = switch (_leaderName) do {
+        case "LeaderHQ":  {"SetTakenA"};
+        case "LeaderHQB": {"SetTakenB"};
+        case "LeaderHQC": {"SetTakenC"};
+        case "LeaderHQD": {"SetTakenD"};
+        case "LeaderHQE": {"SetTakenE"};
+        case "LeaderHQF": {"SetTakenF"};
+        case "LeaderHQG": {"SetTakenG"};
+        case "LeaderHQH": {"SetTakenH"};
+        default {"SetTakenA"};
+    };
 
-    if ((_logic getVariable "RydHQ_TakenLeader") isEqualTo (_x getVariable "LeaderType")) then  {
-        (group _Leader) setVariable ["RydHQ_Taken",((group _Leader) getVariable ["RydHQ_Taken",[]]) + [_logic]];
+    waitUntil {sleep 0.5; (!(isNil _leaderName))};
+
+    private _leaderObj = call compile _leaderName;
+
+    private _varName = QGVAR(simpleObjs) + _letter;
+
+    if (isNil {missionNamespace getVariable _varName}) then {
+        missionNamespace setVariable [_varName, []];
+    };
+
+    private _existing = missionNamespace getVariable [_varName, []];
+    _existing pushBack _logic;
+    missionNamespace setVariable [_varName, _existing];
+
+    if ((_logic getVariable QGVAR(takenLeader)) isEqualTo (_x getVariable "LeaderType")) then  {
+        (group _leaderObj) setVariable [QEGVAR(common,taken),((group _leaderObj) getVariable [QEGVAR(common,taken),[]]) + [_logic]];
         _logic setVariable [_prefixT,true];
     };
 
-} forEach _Commanders;
+} forEach _commanders;

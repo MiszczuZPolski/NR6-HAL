@@ -9,45 +9,46 @@ private _commanders = [];
 } forEach (synchronizedObjects _logic);
 
 {
-    private _leader = (_x getVariable "LeaderType");
-    private _prefix = "";
+    private _leaderName = (_x getVariable "LeaderType");
 
-    switch (_leader) do {
-        case "LeaderHQ": {_prefix = "RydHQ_";};
-        case "LeaderHQB": {_prefix = "RydHQB_";};
-        case "LeaderHQC": {_prefix = "RydHQC_";};
-        case "LeaderHQD": {_prefix = "RydHQD_";};
-        case "LeaderHQE": {_prefix = "RydHQE_";};
-        case "LeaderHQF": {_prefix = "RydHQF_";};
-        case "LeaderHQG": {_prefix = "RydHQG_";};
-        case "LeaderHQH": {_prefix = "RydHQH_";};
+    private _letter = switch (_leaderName) do {
+        case "LeaderHQ":  {""};
+        case "LeaderHQB": {"B"};
+        case "LeaderHQC": {"C"};
+        case "LeaderHQD": {"D"};
+        case "LeaderHQE": {"E"};
+        case "LeaderHQF": {"F"};
+        case "LeaderHQG": {"G"};
+        case "LeaderHQH": {"H"};
+        default {""};
     };
 
-
     [{
-        params ["_leader"];
-        !isNil _leader;
+        params ["_leaderName"];
+        !isNil _leaderName;
     },
     {
-        params ["_leader", "_prefix"];
+        params ["_leaderName", "_letter", "_logic"];
 
-        _leader = call compile _leader;
+        private _leaderObj = call compile _leaderName;
 
-        if (call compile ("isNil " + "'" + _prefix + "Garrison" + "'")) then {
+        private _varName = QGVAR(garrison) + _letter;
 
-            call compile (_prefix + "Garrison" + " = " + "[]");
-
+        if (isNil {missionNamespace getVariable _varName}) then {
+            missionNamespace setVariable [_varName, []];
         };
 
         {
             if !(_x isKindOf "Logic") then {
-                _x call compile (_prefix + "Garrison" + " pushback " + "(group _this)");
+                private _existing = missionNamespace getVariable [_varName, []];
+                _existing pushBack (group _x);
+                missionNamespace setVariable [_varName, _existing];
             } else {
-                _x setVariable ["_ExtraArgs", (_logic getVariable ["_ExtraArgs", ""]) + "; " + _prefix + "Garrison" + " pushback " + "(group _this)"];
+                _x setVariable ["_ExtraArgs", (_logic getVariable ["_ExtraArgs", ""]) + "; " + _varName + " pushback " + "(group _this)"];
             };
 
         } forEach (synchronizedObjects _logic);
     },
-    [_leader, _prefix]] call CBA_fnc_waitUntilAndExecute;
+    [_leaderName, _letter, _logic]] call CBA_fnc_waitUntilAndExecute;
 
 } forEach _commanders;

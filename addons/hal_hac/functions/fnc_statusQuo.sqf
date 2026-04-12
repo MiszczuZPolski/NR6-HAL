@@ -53,20 +53,20 @@ while {true} do {
     private _morale = [_HQ, _cInitial, _CCurrent, _CLast, _knownE] call FUNC(statusQuo_morale);
 
     // KIA exit
-    if (_HQ getVariable ["RydHQ_KIA",false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
+    if (_HQ getVariable [QEGVAR(common,kIA),false]) exitWith {RydxHQ_AllHQ = RydxHQ_AllHQ - [_HQ]};
 
     // Arty fire for effect
-    private _Artdebug = _HQ getVariable ["RydHQ_Debug",false];
-    if (_HQ getVariable ["RydHQ_ArtyMarks",false]) then {_Artdebug = true};
-    if (((count _knownE) > 0) and {((count _ArtG) > 0) and {((_HQ getVariable ["RydHQ_ArtyShells",1]) > 0)}}) then {[_ArtG,_knownE,(_EnHArmor + _EnMArmor + _EnLArmor),_friends,_Artdebug,(_HQ getVariable ["leaderHQ",(leader _HQ)])] call EFUNC(common,cff)};
+    private _Artdebug = _HQ getVariable [QEGVAR(common,debug),false];
+    if (_HQ getVariable [QEGVAR(core,artyMarks),false]) then {_Artdebug = true};
+    if (((count _knownE) > 0) and {((count _ArtG) > 0) and {((_HQ getVariable [QEGVAR(core,artyShells),1]) > 0)}}) then {[_ArtG,_knownE,(_EnHArmor + _EnMArmor + _EnLArmor),_friends,_Artdebug,(_HQ getVariable ["leaderHQ",(leader _HQ)])] call EFUNC(common,cff)};
 
     // S6: Panic/flee, doctrine roll, arty prep
     private _doctrineResult = [_HQ, _friends, _knownE, _knownEG, _SpecForG, _ArtG, _morale, _cycleC, _CCurrent] call FUNC(statusQuo_doctrine);
     _doctrineResult params ["_AAO", "_EBT"];
 
     // Compute delay
-    private _delay = ((count _friends) * 5) + (round (((10 + (count _friends))/(0.5 + (_HQ getVariable ["RydHQ_Reflex",0.5]))) * (_HQ getVariable ["RydHQ_CommDelay",1])));
-    _HQ setVariable ["RydHQ_myDelay",_delay];
+    private _delay = ((count _friends) * 5) + (round (((10 + (count _friends))/(0.5 + (_HQ getVariable [QEGVAR(core,reflex),0.5]))) * (_HQ getVariable [QEGVAR(core,commDelay),1])));
+    _HQ setVariable [QGVAR(myDelay),_delay];
 
     // S7: SimpleMode objective tracking + respawn points
     private _objResult = [_HQ] call FUNC(statusQuo_objective);
@@ -94,7 +94,7 @@ while {true} do {
     private _ctEScan = time;
     private _ctGarr = time;
 
-    _HQ setVariable ["RydHQ_Pending",false];
+    _HQ setVariable [QEGVAR(core,pending),false];
 
     waitUntil
         {
@@ -104,8 +104,8 @@ while {true} do {
             {
             case (isNull _HQ) : {_alive = false};
             case (({alive _x} count (units _HQ)) == 0) : {_alive = false};
-            case (_HQ getVariable ["RydHQ_Surrender",false]) : {_alive = false};
-            case (_HQ getVariable ["RydHQ_KIA",false]) : {_alive = false};
+            case (_HQ getVariable [QEGVAR(core,surrender),false]) : {_alive = false};
+            case (_HQ getVariable [QEGVAR(common,kIA),false]) : {_alive = false};
             };
 
         if (_alive) then
@@ -116,11 +116,11 @@ while {true} do {
                 [_HQ] call HAL_Rev;
                 };
 
-            if (((count (_HQ getVariable ["RydHQ_Support",[]])) > 0) and (_cycleC > 2)) then
+            if (((count (_HQ getVariable [QGVAR(support),[]])) > 0) and (_cycleC > 2)) then
                 {
                 if (((time - _ctMedS) >= 25) or (((time - _ct) > _delay) and (_delay <= 25))) then
                     {
-                    if (_HQ getVariable ["RydHQ_SMed",true]) then
+                    if (_HQ getVariable [QEGVAR(core,sMed),true]) then
                         {
                         _ctMedS = time;
                         [_HQ] call HAL_SuppMed;
@@ -129,7 +129,7 @@ while {true} do {
 
                 if (((time - _ctFuel) >= 25) or (((time - _ct) > _delay) and (_delay <= 25))) then
                     {
-                    if (_HQ getVariable ["RydHQ_SFuel",true]) then
+                    if (_HQ getVariable [QEGVAR(core,sFuel),true]) then
                         {
                         _ctFuel = time;
                         [_HQ] call HAL_SuppFuel;
@@ -138,7 +138,7 @@ while {true} do {
 
                 if (((time - _ctRep) >= 25) or (((time - _ct) > _delay) and (_delay <= 25))) then
                     {
-                    if (_HQ getVariable ["RydHQ_SRep",true]) then
+                    if (_HQ getVariable [QEGVAR(core,sRep),true]) then
                         {
                         _ctRep = time;
                         [_HQ] call HAL_SuppRep;
@@ -146,11 +146,11 @@ while {true} do {
                     };
                 };
 
-            if (((count ((_HQ getVariable ["RydHQ_Support",[]]) + (_HQ getVariable ["RydHQ_AmmoDrop",[]]))) > 0) and (_cycleC > 2)) then
+            if (((count ((_HQ getVariable [QGVAR(support),[]]) + (_HQ getVariable [QEGVAR(core,ammoDrop),[]]))) > 0) and (_cycleC > 2)) then
                 {
                 if (((time - _ctAmmo) >= 25) or (((time - _ct) > _delay) and (_delay <= 25))) then
                     {
-                    if (_HQ getVariable ["RydHQ_SAmmo",true]) then
+                    if (_HQ getVariable [QEGVAR(core,sAmmo),true]) then
                         {
                         _ctAmmo = time;
                         [_HQ] call HAL_SuppAmmo;

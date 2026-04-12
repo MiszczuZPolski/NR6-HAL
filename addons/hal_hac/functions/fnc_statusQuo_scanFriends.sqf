@@ -19,8 +19,8 @@ private _RydMarks = [];
 private _MarkGrps = [];
 private _checkFriends = [];
 
-private _enemies = _HQ getVariable ["RydHQ_Enemies",[]];
-private _friends = _HQ getVariable ["RydHQ_Friends",[]];
+private _enemies = _HQ getVariable [QGVAR(enemies),[]];
+private _friends = _HQ getVariable [QEGVAR(core,friends),[]];
 
 if (RydxHQ_AIChatDensity > 0) then
     {
@@ -40,11 +40,11 @@ if (RydxHQ_AIChatDensity > 0) then
     missionNamespace setVariable [_varName1 + _varName2,[0,""]]
     };
 
-_HQ setVariable ["RydHQ_LastSub",_HQ getVariable ["RydHQ_Subordinated",[]]];
-_HQ setVariable ["RydHQ_Subordinated",[]];
+_HQ setVariable [QGVAR(lastSub),_HQ getVariable [QEGVAR(core,subordinated),[]]];
+_HQ setVariable [QEGVAR(core,subordinated),[]];
 
-_enemies = _HQ getVariable ["RydHQ_Enemies",[]];
-_friends = _HQ getVariable ["RydHQ_Friends",[]];
+_enemies = _HQ getVariable [QGVAR(enemies),[]];
+_friends = _HQ getVariable [QEGVAR(core,friends),[]];
 
     {
     private _isCaptive = _x getVariable ("isCaptive" + (str _x));
@@ -70,7 +70,7 @@ _friends = _HQ getVariable ["RydHQ_Friends",[]];
 
     if not ((isNull ((_HQ getVariable ["leaderHQ",(leader _HQ)]))) and {not (isNull _x) and {(alive ((_HQ getVariable ["leaderHQ",(leader _HQ)]))) and {(alive (leader _x)) and {not (_isCaptive)}}}}) then
         {
-        if (not ((_HQ getVariable ["RydHQ_FrontA",false])) and {((side _x) getFriend (side _HQ) < 0.6) and {not (_isCiv)}}) then
+        if (not ((_HQ getVariable [QEGVAR(core,frontA),false])) and {((side _x) getFriend (side _HQ) < 0.6) and {not (_isCiv)}}) then
             {
             if not (_x in _enemies) then
                 {
@@ -79,13 +79,13 @@ _friends = _HQ getVariable ["RydHQ_Friends",[]];
             };
 
         private _front = true;
-        private _fr = _HQ getVariable ["RydHQ_Front",locationNull];
+        private _fr = _HQ getVariable [QEGVAR(common,front),locationNull];
         if not (isNull _fr) then
             {
             _front = ((getPosATL (vehicle (leader _x))) in _fr)
             };
 
-        if ((_HQ getVariable ["RydHQ_FrontA",false]) and {((side _x) getFriend (side _HQ) < 0.6) and {(_front) and {not (_isCiv)}}}) then
+        if ((_HQ getVariable [QEGVAR(core,frontA),false]) and {((side _x) getFriend (side _HQ) < 0.6) and {(_front) and {not (_isCiv)}}}) then
             {
             if not (_x in _enemies) then
                 {
@@ -93,11 +93,11 @@ _friends = _HQ getVariable ["RydHQ_Friends",[]];
                 }
             };
 
-        if ((_HQ getVariable ["RydHQ_SubAll",true])) then
+        if ((_HQ getVariable [QEGVAR(core,subAll),true])) then
             {
             if not ((side _x) getFriend (side _HQ) < 0.6) then
                 {
-                if (not (_x in _friends) and {not (((leader _x) in (_HQ getVariable ["RydHQ_Excluded",[]])) or {(_isCiv)})}) then
+                if (not (_x in _friends) and {not (((leader _x) in (_HQ getVariable [QEGVAR(common,excluded),[]])) or {(_isCiv)})}) then
                     {
                     _friends pushBack _x
                     }
@@ -107,22 +107,22 @@ _friends = _HQ getVariable ["RydHQ_Friends",[]];
     }
 forEach allGroups;
 
-_HQ setVariable ["RydHQ_Enemies",_enemies];
+_HQ setVariable [QGVAR(enemies),_enemies];
 
 _excl = [];
     {
     _excl pushBack _x
     }
-    forEach (_HQ getVariable ["RydHQ_Excluded",[]]);
+    forEach (_HQ getVariable [QEGVAR(common,excluded),[]]);
 
-_HQ setVariable ["RydHQ_Excl",_excl];
+_HQ setVariable [QGVAR(excl),_excl];
 
 private _subOrd = [];
 
-if (_HQ getVariable ["RydHQ_SubSynchro",false]) then
+if (_HQ getVariable [QEGVAR(core,subSynchro),false]) then
     {
         {
-        if ((_x in (_HQ getVariable ["RydHQ_LastSub",[]])) and {not ((leader _x) in (synchronizedObjects (_HQ getVariable ["leaderHQ",(leader _HQ)]))) and {(_HQ getVariable ["RydHQ_SubSynchro",false])}}) then
+        if ((_x in (_HQ getVariable [QGVAR(lastSub),[]])) and {not ((leader _x) in (synchronizedObjects (_HQ getVariable ["leaderHQ",(leader _HQ)]))) and {(_HQ getVariable [QEGVAR(core,subSynchro),false])}}) then
             {
             _subOrd pushBack _x
             };
@@ -135,13 +135,13 @@ if (_HQ getVariable ["RydHQ_SubSynchro",false]) then
     forEach allGroups;
     };
 
-if (_HQ getVariable ["RydHQ_SubNamed",false]) then
+if (_HQ getVariable [QEGVAR(core,subNamed),false]) then
     {
-    private _signum = _HQ getVariable ["RydHQ_CodeSign","X"];
+    private _signum = _HQ getVariable [QEGVAR(core,codeSign),"X"];
     if (_signum in ["A","X"]) then {_signum = ""};
 
         {
-        for [{_i = 1},{_i <= (_HQ getVariable ["RydHQ_NameLimit",100])},{_i = _i + 1}] do
+        for [{_i = 1},{_i <= (_HQ getVariable [QEGVAR(core,nameLimit),100])},{_i = _i + 1}] do
             {
             if (not (_x in _subOrd) and {((str (leader _x)) == ("Ryd" + _signum + str (_i)))}) then
                 {
@@ -152,12 +152,12 @@ if (_HQ getVariable ["RydHQ_SubNamed",false]) then
     forEach allGroups;
     };
 
-_HQ setVariable ["RydHQ_Subordinated",_subOrd];
+_HQ setVariable [QEGVAR(core,subordinated),_subOrd];
 
-_friends = _friends + _subOrd + (_HQ getVariable ["RydHQ_Included",[]]) - ((_HQ getVariable ["RydHQ_Excluded",[]]) + _excl + [_HQ]);
-_HQ setVariable ["RydHQ_NoWayD",allGroups - (_HQ getVariable ["RydHQ_LastFriends",[]])];
+_friends = _friends + _subOrd + (_HQ getVariable [QEGVAR(core,included),[]]) - ((_HQ getVariable [QEGVAR(common,excluded),[]]) + _excl + [_HQ]);
+_HQ setVariable [QGVAR(noWayD),allGroups - (_HQ getVariable [QEGVAR(core,lastFriends),[]])];
 
-private _channel = _HQ getVariable ["RydHQ_myChannel",-1];
+private _channel = _HQ getVariable [QGVAR(myChannel),-1];
 
 if not (_channel < 0) then
     {
@@ -186,20 +186,20 @@ _checkFriends = _friends;
 
 _friends = [_friends] call EFUNC(common,randomOrd);
 
-_HQ setVariable ["RydHQ_Friends",_friends];
+_HQ setVariable [QEGVAR(core,friends),_friends];
 
     {
     [_x] call CBA_fnc_clearWaypoints;
     }
-forEach (((_HQ getVariable ["RydHQ_Excluded",[]]) + _excl) - (_HQ getVariable ["RydHQ_NoWayD",[]]));
+forEach (((_HQ getVariable [QEGVAR(common,excluded),[]]) + _excl) - (_HQ getVariable [QGVAR(noWayD),[]]));
 
 private _cInitial = 0;
 
-if (_HQ getVariable ["RydHQ_Init",true]) then
+if (_HQ getVariable [QEGVAR(core,init),true]) then
     {
         {
         _cInitial = _cInitial + (count (units _x));
-        if (RydHQ_CamV) then
+        if (GVAR(camV)) then
             {
 
                 {
@@ -211,10 +211,10 @@ if (_HQ getVariable ["RydHQ_Init",true]) then
     forEach (_friends + [_HQ])
     };
 
-_HQ setVariable ["RydHQ_CInitial",_cInitial];
+_HQ setVariable [QEGVAR(core,cInitial),_cInitial];
 
-_HQ setVariable ["RydHQ_CLast",(_HQ getVariable ["RydHQ_CCurrent",0])];
-private _CLast = (_HQ getVariable ["RydHQ_CCurrent",0]);
+_HQ setVariable [QEGVAR(core,cLast),(_HQ getVariable [QEGVAR(core,cCurrent),0])];
+private _CLast = (_HQ getVariable [QEGVAR(core,cCurrent),0]);
 private _CCurrent = 0;
 
     {
@@ -222,13 +222,13 @@ private _CCurrent = 0;
     }
 forEach (_friends + [_HQ]);
 
-_HQ setVariable ["RydHQ_CCurrent",_CCurrent];
+_HQ setVariable [QEGVAR(core,cCurrent),_CCurrent];
 
 private _Ex = [];
 
-if (_HQ getVariable ["RydHQ_ExInfo",false]) then
+if (_HQ getVariable [QEGVAR(core,exInfo),false]) then
     {
-    _Ex = _excl + (_HQ getVariable ["RydHQ_Excluded",[]])
+    _Ex = _excl + (_HQ getVariable [QEGVAR(common,excluded),[]])
     };
 
 private _knownE = [];
@@ -245,7 +245,7 @@ private _knownEG = [];
                 if not (_enemyU in _knownE) then
                     {
                     _knownE pushBack _enemyU;
-                    (vehicle _enemyU) setVariable ["RydHQ_MyFO",(leader _x)];
+                    (vehicle _enemyU) setVariable [QEGVAR(common,myFO),(leader _x)];
                     };
 
                 if not ((group _enemyU) in _knownEG) then
@@ -264,9 +264,9 @@ private _knownEG = [];
     }
 forEach _enemies;
 
-private _alwaysKn = ((_HQ getVariable ["RydHQ_AlwaysKnownU",[]]) - (_HQ getVariable ["RydHQ_AlwaysUnKnownU",[]])) - _knownE;
+private _alwaysKn = ((_HQ getVariable [QEGVAR(core,alwaysKnownU),[]]) - (_HQ getVariable [QEGVAR(core,alwaysUnKnownU),[]])) - _knownE;
 
-_knownE = (_knownE + _alwaysKn) - (_HQ getVariable ["RydHQ_AlwaysUnKnownU",[]]);
+_knownE = (_knownE + _alwaysKn) - (_HQ getVariable [QEGVAR(core,alwaysUnKnownU),[]]);
 
     {
     private _gp = group _x;
@@ -274,9 +274,9 @@ _knownE = (_knownE + _alwaysKn) - (_HQ getVariable ["RydHQ_AlwaysUnKnownU",[]]);
     }
 forEach _alwaysKn;
 
-_HQ setVariable ["RydHQ_KnEnemies",_knownE];
-_HQ setVariable ["RydHQ_KnEnemiesG",_knownEG];
-_HQ setVariable ["RydHQ_Ex",_Ex];
+_HQ setVariable [QEGVAR(core,knEnemies),_knownE];
+_HQ setVariable [QEGVAR(common,knEnemiesG),_knownEG];
+_HQ setVariable [QGVAR(ex),_Ex];
 
 [_HQ] spawn EFUNC(hal_boss,EBFT);
 
@@ -292,7 +292,7 @@ forEach _knownEG;
 
 missionNamespace setVariable ["AlreadySpotted",_already];
 
-private _KnEnPos = _HQ getVariable ["RydHQ_KnEnPos",[]];
+private _KnEnPos = _HQ getVariable [QEGVAR(hal_boss,knEnPos),[]];
 
     {
     _KnEnPos pushBack (getPosATL (vehicle (leader _x)));
@@ -300,6 +300,6 @@ private _KnEnPos = _HQ getVariable ["RydHQ_KnEnPos",[]];
     }
 forEach _knownEG;
 
-_HQ setVariable ["RydHQ_KnEnPos",_KnEnPos];
+_HQ setVariable [QEGVAR(hal_boss,knEnPos),_KnEnPos];
 
 [_enemies, _friends, _excl, _knownE, _knownEG, _KnEnPos, _cInitial, _CCurrent, _CLast, _checkFriends]

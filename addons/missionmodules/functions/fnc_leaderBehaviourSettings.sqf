@@ -1,48 +1,51 @@
 #include "..\script_component.hpp"
-private ["_logic","_Commanders","_Leader","_prefix"];
 
-_logic = (_this select 0);
-_Commanders = [];
+params ["_logic"];
+
+private _commanders = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};
+    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
-    _Leader = (_x getVariable "LeaderType");
+    private _leaderName = (_x getVariable "LeaderType");
 
-    if (_Leader == "LeaderHQ") then {_prefix = "RydHQ_"};
-    if (_Leader == "LeaderHQB") then {_prefix = "RydHQB_"};
-    if (_Leader == "LeaderHQC") then {_prefix = "RydHQC_"};
-    if (_Leader == "LeaderHQD") then {_prefix = "RydHQD_"};
-    if (_Leader == "LeaderHQE") then {_prefix = "RydHQE_"};
-    if (_Leader == "LeaderHQF") then {_prefix = "RydHQF_"};
-    if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
-    if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
+    private _letter = switch (_leaderName) do {
+        case "LeaderHQ":  {""};
+        case "LeaderHQB": {"B"};
+        case "LeaderHQC": {"C"};
+        case "LeaderHQD": {"D"};
+        case "LeaderHQE": {"E"};
+        case "LeaderHQF": {"F"};
+        case "LeaderHQG": {"G"};
+        case "LeaderHQH": {"H"};
+        default {""};
+    };
 
-    _Leader = call compile _Leader;
+    private _leaderObj = call compile _leaderName;
 
-    _logic call compile (_prefix + "Smoke" + " = " + str (_logic getVariable "RydHQ_Smoke"));
-    _logic call compile (_prefix + "Flare" + " = " + str (_logic getVariable "RydHQ_Flare"));
-    _logic call compile (_prefix + "GarrVehAb" + " = " + str (_logic getVariable "RydHQ_GarrVehAb"));
-    _logic call compile (_prefix + "IdleOrd" + " = " + str (_logic getVariable "RydHQ_IdleOrd"));
-    _logic call compile (_prefix + "Flee" + " = " + str (_logic getVariable "RydHQ_Flee"));
-    _logic call compile (_prefix + "Surr" + " = " + str (_logic getVariable "RydHQ_Surr"));
-    _logic call compile (_prefix + "Muu" + " = " + str (_logic getVariable "RydHQ_Muu"));
-    _logic call compile (_prefix + "Rush" + " = " + str (_logic getVariable "RydHQ_Rush"));
-    _logic call compile (_prefix + "Withdraw" + " = " + str (_logic getVariable "RydHQ_Withdraw"));
-    _logic call compile (_prefix + "AirDist" + " = " + str (_logic getVariable "RydHQ_AirDist"));
-    _logic call compile (_prefix + "DynForm" + " = " + str (_logic getVariable "RydHQ_DynForm"));
-    _logic call compile (_prefix + "DefRange" + " = " + str (_logic getVariable "RydHQ_DefRange"));
-    _logic call compile (_prefix + "GarrRange" + " = " + str (_logic getVariable "RydHQ_GarrRange"));
-    _logic call compile (_prefix + "AttInfDistance" + " = " + str (_logic getVariable "RydHQ_AttInfDistance"));
-    _logic call compile (_prefix + "AttArmDistance" + " = " + str (_logic getVariable "RydHQ_AttArmDistance"));
-    _logic call compile (_prefix + "AttSnpDistance" + " = " + str (_logic getVariable "RydHQ_AttSnpDistance"));
-    _logic call compile (_prefix + "CaptureDistance" + " = " + str (_logic getVariable "RydHQ_CaptureDistance"));
-    _logic call compile (_prefix + "FlankDistance" + " = " + str (_logic getVariable "RydHQ_FlankDistance"));
-    _logic call compile (_prefix + "AttSFDistance" + " = " + str (_logic getVariable "RydHQ_AttSFDistance"));
-    _logic call compile (_prefix + "ReconDistance" + " = " + str (_logic getVariable "RydHQ_ReconDistance"));
-    _logic call compile (_prefix + "UAVAlt" + " = " + str (_logic getVariable "RydHQ_UAVAlt"));
-    _logic call compile (_prefix + "Combining" + " = " + str (_logic getVariable "RydHQ_Combining"));
+    missionNamespace setVariable [QGVAR(smoke) + _letter,           _logic getVariable [QGVAR(smoke), false]];
+    missionNamespace setVariable [QGVAR(flare) + _letter,           _logic getVariable [QGVAR(flare), false]];
+    missionNamespace setVariable [QGVAR(garrVehAb) + _letter,       _logic getVariable [QGVAR(garrVehAb), false]];
+    missionNamespace setVariable [QGVAR(idleOrd) + _letter,         _logic getVariable [QGVAR(idleOrd), false]];
+    missionNamespace setVariable [QGVAR(flee) + _letter,            _logic getVariable [QGVAR(flee), false]];
+    missionNamespace setVariable [QGVAR(surr) + _letter,            _logic getVariable [QGVAR(surr), false]];
+    missionNamespace setVariable [QGVAR(muu) + _letter,             _logic getVariable [QGVAR(muu), false]];
+    missionNamespace setVariable [QGVAR(rush) + _letter,            _logic getVariable [QGVAR(rush), false]];
+    missionNamespace setVariable [QGVAR(withdraw) + _letter,        _logic getVariable [QGVAR(withdraw), false]];
+    missionNamespace setVariable [QGVAR(airDist) + _letter,         _logic getVariable [QGVAR(airDist), 0]];
+    missionNamespace setVariable [QGVAR(dynForm) + _letter,         _logic getVariable [QGVAR(dynForm), false]];
+    missionNamespace setVariable [QGVAR(defRange) + _letter,        _logic getVariable [QGVAR(defRange), 0]];
+    missionNamespace setVariable [QGVAR(garrRange) + _letter,       _logic getVariable [QGVAR(garrRange), 0]];
+    missionNamespace setVariable [QGVAR(attInfDistance) + _letter,  _logic getVariable [QGVAR(attInfDistance), 0]];
+    missionNamespace setVariable [QGVAR(attArmDistance) + _letter,  _logic getVariable [QGVAR(attArmDistance), 0]];
+    missionNamespace setVariable [QGVAR(attSnpDistance) + _letter,  _logic getVariable [QGVAR(attSnpDistance), 0]];
+    missionNamespace setVariable [QGVAR(captureDistance) + _letter, _logic getVariable [QGVAR(captureDistance), 0]];
+    missionNamespace setVariable [QGVAR(flankDistance) + _letter,   _logic getVariable [QGVAR(flankDistance), 0]];
+    missionNamespace setVariable [QGVAR(attSFDistance) + _letter,   _logic getVariable [QGVAR(attSFDistance), 0]];
+    missionNamespace setVariable [QGVAR(reconDistance) + _letter,   _logic getVariable [QGVAR(reconDistance), 0]];
+    missionNamespace setVariable [QGVAR(uAVAlt) + _letter,          _logic getVariable [QGVAR(uAVAlt), 0]];
+    missionNamespace setVariable [QGVAR(combining) + _letter,       _logic getVariable [QGVAR(combining), false]];
 
-} forEach _Commanders;
+} forEach _commanders;

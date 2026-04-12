@@ -10,30 +10,33 @@ private _commanders = [];
 
 {
     private _leader = (_x getVariable "LeaderType");
-    private _prefix = "";
 
-    switch (_leader) do {
-        case "LeaderHQ": {_prefix = "RydHQ_";};
-        case "LeaderHQB": {_prefix = "RydHQB_";};
-        case "LeaderHQC": {_prefix = "RydHQC_";};
-        case "LeaderHQD": {_prefix = "RydHQD_";};
-        case "LeaderHQE": {_prefix = "RydHQE_";};
-        case "LeaderHQF": {_prefix = "RydHQF_";};
-        case "LeaderHQG": {_prefix = "RydHQG_";};
-        case "LeaderHQH": {_prefix = "RydHQH_";};
+    private _letter = switch (_leader) do {
+        case "LeaderHQ":  {""};
+        case "LeaderHQB": {"B"};
+        case "LeaderHQC": {"C"};
+        case "LeaderHQD": {"D"};
+        case "LeaderHQE": {"E"};
+        case "LeaderHQF": {"F"};
+        case "LeaderHQG": {"G"};
+        case "LeaderHQH": {"H"};
+        default {""};
     };
 
-    _logic call compile (_prefix + "Front" + " = " + str (_logic getVariable "RydHQ_Front"));
+    missionNamespace setVariable [QGVAR(front) + _letter, _logic getVariable [QGVAR(front), false]];
 
-    switch (_leader) do {
-        case "LeaderHQ": {_prefix = "A";};
-        case "LeaderHQB": {_prefix = "B";};
-        case "LeaderHQC": {_prefix = "C";};
-        case "LeaderHQD": {_prefix = "D";};
-        case "LeaderHQE": {_prefix = "E";};
-        case "LeaderHQF": {_prefix = "F";};
-        case "LeaderHQG": {_prefix = "G";};
-        case "LeaderHQH": {_prefix = "H";};
+    // HET_F<letter> dispatch is OUT OF PHASE 4 SCOPE — HET_F* globals are not Ryd*-prefixed.
+    // Preserved verbatim below (uses "A".."H" suffix, NOT ""/"B".."H").
+    private _hetLetter = switch (_leader) do {
+        case "LeaderHQ":  {"A"};
+        case "LeaderHQB": {"B"};
+        case "LeaderHQC": {"C"};
+        case "LeaderHQD": {"D"};
+        case "LeaderHQE": {"E"};
+        case "LeaderHQF": {"F"};
+        case "LeaderHQG": {"G"};
+        case "LeaderHQH": {"H"};
+        default {"A"};
     };
 
     private _area = _logic getVariable ["objectArea", [0, 0, 0, true, 0]];
@@ -41,7 +44,7 @@ private _commanders = [];
     private _trigger = createTrigger ["EmptyDetector", getPos _logic];
     _trigger setTriggerArea [_area select 0, _area select 1, _area select 2, _area select 3];
 
-    _trigger call compile ("HET_F" + _prefix + " = _this");
+    _trigger call compile ("HET_F" + _hetLetter + " = _this");
 
 
 } forEach _commanders;

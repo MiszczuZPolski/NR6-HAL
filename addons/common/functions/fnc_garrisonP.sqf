@@ -48,8 +48,8 @@ private _fnc_code = {
         switch (true) do {
             case (isNull _group) : {_alive = false};
             case (({alive _x} count (units _group)) < 1) : {_alive = false};
-            case (_HQ getVariable ["RydHQ_KIA", false]) : {_alive = false};
-            case (_group getVariable ["RydHQ_MIA", false]) : {_alive = false; _group setVariable ["RydHQ_MIA", nil]}
+            case (_HQ getVariable [QGVAR(kIA), false]) : {_alive = false};
+            case (_group getVariable [QGVAR(mIA), false]) : {_alive = false; _group setVariable [QGVAR(mIA), nil]}
         };
 
         if (_alive) then {

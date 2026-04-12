@@ -10,14 +10,14 @@
 
 	private _HQ = grpNull;
 
-	if not (isNil "LeaderHQ") then {if ((group _unit) in ((group LeaderHQ) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQ)}};
-	if not (isNil "LeaderHQB") then {if ((group _unit) in ((group LeaderHQB) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQB)}};
-	if not (isNil "LeaderHQC") then {if ((group _unit) in ((group LeaderHQC) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQC)}};
-	if not (isNil "LeaderHQD") then {if ((group _unit) in ((group LeaderHQD) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQD)}};
-	if not (isNil "LeaderHQE") then {if ((group _unit) in ((group LeaderHQE) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQE)}};
-	if not (isNil "LeaderHQF") then {if ((group _unit) in ((group LeaderHQF) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQF)}};
-	if not (isNil "LeaderHQG") then {if ((group _unit) in ((group LeaderHQG) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQG)}};
-	if not (isNil "LeaderHQH") then {if ((group _unit) in ((group LeaderHQH) getVariable ["RydHQ_Friends",[]])) then {_HQ = (group LeaderHQH)}};
+	if not (isNil "LeaderHQ") then {if ((group _unit) in ((group LeaderHQ) getVariable [QEGVAR(core,friends),[]])) then {_HQ = (group LeaderHQ)}};
+	if not (isNil "LeaderHQB") then {if ((group _unit) in ((group LeaderHQB) getVariable [QEGVAR(core,friends),[]])) then {_HQ = (group LeaderHQB)}};
+	if not (isNil "LeaderHQC") then {if ((group _unit) in ((group LeaderHQC) getVariable [QEGVAR(core,friends),[]])) then {_HQ = (group LeaderHQC)}};
+	if not (isNil "LeaderHQD") then {if ((group _unit) in ((group LeaderHQD) getVariable [QEGVAR(core,friends),[]])) then {_HQ = (group LeaderHQD)}};
+	if not (isNil "LeaderHQE") then {if ((group _unit) in ((group LeaderHQE) getVariable [QEGVAR(core,friends),[]])) then {_HQ = (group LeaderHQE)}};
+	if not (isNil "LeaderHQF") then {if ((group _unit) in ((group LeaderHQF) getVariable [QEGVAR(core,friends),[]])) then {_HQ = (group LeaderHQF)}};
+	if not (isNil "LeaderHQG") then {if ((group _unit) in ((group LeaderHQG) getVariable [QEGVAR(core,friends),[]])) then {_HQ = (group LeaderHQG)}};
+	if not (isNil "LeaderHQH") then {if ((group _unit) in ((group LeaderHQH) getVariable [QEGVAR(core,friends),[]])) then {_HQ = (group LeaderHQH)}};
 
 	[_unit, 'Command, requesting ground transport - Over'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 
@@ -31,9 +31,9 @@
 
 	_unitG setVariable [("CC" + _unitvar), false, true];
 
-	private _TransportPriority = (leader _HQ) getVariable ["RydHQ_TransportPriorityGnd",[]];
+	private _TransportPriority = (leader _HQ) getVariable [QGVAR(transportPriorityGnd),[]];
 	_TransportPriority pushBackUnique _unitG;
-	(leader _HQ) setVariable ["RydHQ_TransportPriorityGnd",_TransportPriority,true];
+	(leader _HQ) setVariable [QGVAR(transportPriorityGnd),_TransportPriority,true];
 
 	[[_unitG,_HQ,getPos _unit,false,true,true],HAL_SCargo] call EFUNC(common,spawn);
 
@@ -41,9 +41,9 @@
 
 	if (_unitG getVariable ["CargoChosen", false]) exitWith {
 		[leader _HQ, (groupId _unitG) + ', affirmative. ' + (groupId (group (_unitG getVariable ["AssignedCargo" + (str _unitG),objNull]))) + ' has been assigned - Out'] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
-		_TransportPriority = (leader _HQ) getVariable ["RydHQ_TransportPriorityGnd",[]];
+		_TransportPriority = (leader _HQ) getVariable [QGVAR(transportPriorityGnd),[]];
 		_TransportPriority = _TransportPriority - [_unitG];
-		(leader _HQ) setVariable ["RydHQ_TransportPriorityGnd",_TransportPriority,true];
+		(leader _HQ) setVariable [QGVAR(transportPriorityGnd),_TransportPriority,true];
 
 		_unitG setVariable ["CargoCheckLoopActive", false,true];
 		};
@@ -84,9 +84,9 @@
 
 	};
 
-	_TransportPriority = (leader _HQ) getVariable ["RydHQ_TransportPriorityGnd",[]];
+	_TransportPriority = (leader _HQ) getVariable [QGVAR(transportPriorityGnd),[]];
 	_TransportPriority = _TransportPriority - [_unitG];
-	(leader _HQ) setVariable ["RydHQ_TransportPriorityGnd",_TransportPriority,true];
+	(leader _HQ) setVariable [QGVAR(transportPriorityGnd),_TransportPriority,true];
 
 	_unitG setVariable ["CargoCheckLoopActive", false,true];
 

@@ -1,42 +1,45 @@
 #include "..\script_component.hpp"
-private ["_logic","_Commanders","_Leader","_prefix"];
 
-_logic = (_this select 0);
-_Commanders = [];
+params ["_logic"];
+
+private _commanders = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};
+    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
-    _Leader = (_x getVariable "LeaderType");
+    private _leaderName = (_x getVariable "LeaderType");
 
-    if (_Leader == "LeaderHQ") then {_prefix = "RydHQ_"};
-    if (_Leader == "LeaderHQB") then {_prefix = "RydHQB_"};
-    if (_Leader == "LeaderHQC") then {_prefix = "RydHQC_"};
-    if (_Leader == "LeaderHQD") then {_prefix = "RydHQD_"};
-    if (_Leader == "LeaderHQE") then {_prefix = "RydHQE_"};
-    if (_Leader == "LeaderHQF") then {_prefix = "RydHQF_"};
-    if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
-    if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
+    private _letter = switch (_leaderName) do {
+        case "LeaderHQ":  {""};
+        case "LeaderHQB": {"B"};
+        case "LeaderHQC": {"C"};
+        case "LeaderHQD": {"D"};
+        case "LeaderHQE": {"E"};
+        case "LeaderHQF": {"F"};
+        case "LeaderHQG": {"G"};
+        case "LeaderHQH": {"H"};
+        default {""};
+    };
 
-    _Leader = call compile _Leader;
+    private _leaderObj = call compile _leaderName;
 
-    _logic call compile (_prefix + "Fast" + " = " + str (_logic getVariable "RydHQ_Fast"));
-    _logic call compile (_prefix + "CommDelay" + " = " + str (_logic getVariable "RydHQ_CommDelay"));
-    _logic call compile (_prefix + "HQChat" + " = " + str (_logic getVariable "RydHQ_HQChat"));
-    _logic call compile (_prefix + "ChatDebug" + " = " + str (_logic getVariable "RydHQ_ChatDebug"));
-    _logic call compile (_prefix + "ExInfo" + " = " + str (_logic getVariable "RydHQ_ExInfo"));
-    _logic call compile (_prefix + "ResetTime" + " = " + str (_logic getVariable "RydHQ_ResetTime"));
-    _logic call compile (_prefix + "ResetOnDemand" + " = " + str (_logic getVariable "RydHQ_ResetOnDemand"));
-    _logic call compile (_prefix + "SubAll" + " = " + str (_logic getVariable "RydHQ_SubAll"));
-    _logic call compile (_prefix + "SubSynchro" + " = " + str (_logic getVariable "RydHQ_SubSynchro"));
-    _logic call compile (_prefix + "KnowTL" + " = " + str (_logic getVariable "RydHQ_KnowTL"));
-    _logic call compile (_prefix + "GetHQInside" + " = " + str (_logic getVariable "RydHQ_GetHQInside"));
-    _logic call compile (_prefix + "CamV" + " = " + str (_logic getVariable "RydHQ_CamV"));
-    _logic call compile (_prefix + "InfoMarkers" + " = " + str (_logic getVariable "RydHQ_InfoMarkers"));
-    _logic call compile (_prefix + "ArtyMarks" + " = " + str (_logic getVariable "RydHQ_ArtyMarks"));
-    _logic call compile (_prefix + "SecTasks" + " = " + str (_logic getVariable "RydHQ_SecTasks"));
-    _logic call compile (_prefix + "Debug" + " = " + str (_logic getVariable "RydHQ_Debug"));
+    missionNamespace setVariable [QGVAR(fast) + _letter,          _logic getVariable [QGVAR(fast), false]];
+    missionNamespace setVariable [QGVAR(commDelay) + _letter,     _logic getVariable [QGVAR(commDelay), 0]];
+    missionNamespace setVariable [QGVAR(hQChat) + _letter,        _logic getVariable [QGVAR(hQChat), false]];
+    missionNamespace setVariable [QGVAR(chatDebug) + _letter,     _logic getVariable [QGVAR(chatDebug), false]];
+    missionNamespace setVariable [QGVAR(exInfo) + _letter,        _logic getVariable [QGVAR(exInfo), false]];
+    missionNamespace setVariable [QGVAR(resetTime) + _letter,     _logic getVariable [QGVAR(resetTime), 0]];
+    missionNamespace setVariable [QGVAR(resetOnDemand) + _letter, _logic getVariable [QGVAR(resetOnDemand), false]];
+    missionNamespace setVariable [QGVAR(subAll) + _letter,        _logic getVariable [QGVAR(subAll), false]];
+    missionNamespace setVariable [QGVAR(subSynchro) + _letter,    _logic getVariable [QGVAR(subSynchro), false]];
+    missionNamespace setVariable [QGVAR(knowTL) + _letter,        _logic getVariable [QGVAR(knowTL), false]];
+    missionNamespace setVariable [QGVAR(getHQInside) + _letter,   _logic getVariable [QGVAR(getHQInside), false]];
+    missionNamespace setVariable [QGVAR(camV) + _letter,          _logic getVariable [QGVAR(camV), false]];
+    missionNamespace setVariable [QGVAR(infoMarkers) + _letter,   _logic getVariable [QGVAR(infoMarkers), false]];
+    missionNamespace setVariable [QGVAR(artyMarks) + _letter,     _logic getVariable [QGVAR(artyMarks), false]];
+    missionNamespace setVariable [QGVAR(secTasks) + _letter,      _logic getVariable [QGVAR(secTasks), false]];
+    missionNamespace setVariable [QGVAR(debug) + _letter,         _logic getVariable [QGVAR(debug), false]];
 
-} forEach _Commanders;
+} forEach _commanders;

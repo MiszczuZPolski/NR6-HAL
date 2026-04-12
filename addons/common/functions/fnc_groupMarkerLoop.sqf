@@ -39,7 +39,7 @@
 
 						if (0 in _this) then
 							{
-							_myMark setMarkerText (_x getVariable ["RydHQ_MyCrypto",toUpper (getText (configFile >> "CfgVehicles" >> (typeOf (vehicle _ldr)) >> "displayName"))])
+							_myMark setMarkerText (_x getVariable [QGVAR(myCrypto),toUpper (getText (configFile >> "CfgVehicles" >> (typeOf (vehicle _ldr)) >> "displayName"))])
 							};
 
 						_nE = _ldr findNearestEnemy _ldr;

@@ -1,29 +1,31 @@
 #include "..\script_component.hpp"
-private ["_logic","_Commanders","_Leader","_prefix"];
 
-_logic = (_this select 0);
-_Commanders = [];
+params ["_logic"];
+
+private _commanders = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};
+    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
-    _Leader = (_x getVariable "LeaderType");
+    private _leaderName = (_x getVariable "LeaderType");
 
-    if (_Leader == "LeaderHQ") then {_prefix = "RydHQ_"};
-    if (_Leader == "LeaderHQB") then {_prefix = "RydHQB_"};
-    if (_Leader == "LeaderHQC") then {_prefix = "RydHQC_"};
-    if (_Leader == "LeaderHQD") then {_prefix = "RydHQD_"};
-    if (_Leader == "LeaderHQE") then {_prefix = "RydHQE_"};
-    if (_Leader == "LeaderHQF") then {_prefix = "RydHQF_"};
-    if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
-    if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
+    private _letter = switch (_leaderName) do {
+        case "LeaderHQ":  {""};
+        case "LeaderHQB": {"B"};
+        case "LeaderHQC": {"C"};
+        case "LeaderHQD": {"D"};
+        case "LeaderHQE": {"E"};
+        case "LeaderHQF": {"F"};
+        case "LeaderHQG": {"G"};
+        case "LeaderHQH": {"H"};
+        default {""};
+    };
 
-    _Leader = call compile _Leader;
+    private _leaderObj = call compile _leaderName;
 
+    missionNamespace setVariable [QGVAR(restDecoy) + _letter, _logic];
+    missionNamespace setVariable [QGVAR(rDChance) + _letter, _logic getVariable [QGVAR(rDChance), 0]];
 
-    _logic call compile (_prefix + "RestDecoy" + " = " + "_this");
-    _logic call compile (_prefix + "RDChance" + " = " + str (_logic getVariable "RydHQ_RDChance"));
-
-} forEach _Commanders;
+} forEach _commanders;

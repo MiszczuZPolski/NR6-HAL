@@ -30,7 +30,7 @@ while {not (isNull _HQ)} do {
 
     {
         if ((side _x) == (side _HQ)) then {_SidePLY pushBack _x};
-        if ((group _x) in (_HQ getVariable ["RydHQ_Friends",[]])) then  {_IgnoredPLY pushBack (group _x)};
+        if ((group _x) in (_HQ getVariable [QEGVAR(core,friends),[]])) then  {_IgnoredPLY pushBack (group _x)};
 
     } forEach allPlayers;
 
@@ -46,10 +46,10 @@ while {not (isNull _HQ)} do {
     _RydOrd = [];
     _RydMarksOrd = [];
 
-    if (_HQ getVariable ["RydHQ_InfoMarkers",false]) then {
+    if (_HQ getVariable [QEGVAR(core,infoMarkers),false]) then {
 
-        _MarkGrps = ((_HQ getVariable ["RydHQ_Friends",[]]) - _IgnoredPLY);
-        _RydOrd = _HQ getVariable ["RydHQ_OrdnanceDrops",[]];
+        _MarkGrps = ((_HQ getVariable [QEGVAR(core,friends),[]]) - _IgnoredPLY);
+        _RydOrd = _HQ getVariable [QGVAR(ordnanceDrops),[]];
 
             {
                 private "_mrk";

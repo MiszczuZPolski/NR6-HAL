@@ -8,22 +8,22 @@
 params ["_HQ"];
 
 // Cache frequently used variables to avoid repeated lookups
-private _friendlyGroups = _HQ getVariable ["RydHQ_Friends", []];
-private _enemyGroups = _HQ getVariable ["RydHQ_KnEnemiesG", []];
-private _isDebugEnabled = _HQ getVariable ["RydHQ_DebugII", false];
-private _airGroups = _HQ getVariable ["RydHQ_AirG", []];
+private _friendlyGroups = _HQ getVariable [QGVAR(friends), []];
+private _enemyGroups = _HQ getVariable [QEGVAR(common,knEnemiesG), []];
+private _isDebugEnabled = _HQ getVariable [QGVAR(debugII), false];
+private _airGroups = _HQ getVariable [QGVAR(airG), []];
 private _chatDensity = missionNamespace getVariable ["RydxHQ_AIChatDensity", 0];
-private _isDynFormEnabled = _HQ getVariable ["RydHQ_DynForm", false];
+private _isDynFormEnabled = _HQ getVariable [QGVAR(dynForm), false];
 
 // Exclude support, naval, artillery groups for performance
-private _excludedGroups = (_HQ getVariable ["RydHQ_NavalG", []]) +
-                          (_HQ getVariable ["RydHQ_SupportG", []]) +
-                          (_HQ getVariable ["RydHQ_ArtG", []]);
+private _excludedGroups = (_HQ getVariable [QGVAR(navalG), []]) +
+                          (_HQ getVariable [QGVAR(supportG), []]) +
+                          (_HQ getVariable [QGVAR(artG), []]);
 
 // Calculate NCCargo groups minus crew infantry minus support
-private _NCCargoMinusCrewInf = (_HQ getVariable ["RydHQ_NCCargoG", []]) -
-                             ((_HQ getVariable ["RydHQ_NCrewInfG", []]) -
-                             (_HQ getVariable ["RydHQ_SupportG", []]));
+private _NCCargoMinusCrewInf = (_HQ getVariable [QGVAR(nCCargoG), []]) -
+                             ((_HQ getVariable [QGVAR(nCrewInfG), []]) -
+                             (_HQ getVariable [QGVAR(supportG), []]));
 
 // Final list of combat units to process
 private _combatUnitGroups = _friendlyGroups - (_excludedGroups + _NCCargoMinusCrewInf);
@@ -34,16 +34,16 @@ if (_isDebugEnabled) then {
         private _dangerValue = _x getVariable ["NearE", 0];
         private _marker = [(position (vehicle (leader _x))), _x, "markDanger", "ColorGreen",
                         "ICON", "mil_dot", (str _dangerValue), ""] call EFUNC(common,mark);
-        _x setVariable ["RydHQ_MarkerES", true];
+        _x setVariable [QGVAR(markerES), true];
     } forEach _friendlyGroups;
 
     // Set up continuous debug marker updating only on first cycle
-    if ((_HQ getVariable ["RydHQ_Cyclecount", 1]) == 1) then {
+    if ((_HQ getVariable [QGVAR(cyclecount), 1]) == 1) then {
         [_HQ] spawn {
             params ["_HQ"];
 
-            while {!isNull _HQ && {!(_HQ getVariable ["RydHQ_KIA", false])}} do {
-                private _friendlyGroups = _HQ getVariable ["RydHQ_Friends", []];
+            while {!isNull _HQ && {!(_HQ getVariable [QEGVAR(common,kIA), false])}} do {
+                private _friendlyGroups = _HQ getVariable [QGVAR(friends), []];
 
                 {
                     // Skip invalid groups
@@ -56,10 +56,10 @@ if (_isDebugEnabled) then {
                     private _markerName = "MarkDanger" + (str _x);
                     private _dangerValue = _x getVariable ["NearE", 0];
 
-                    if !(_x getVariable ["RydHQ_MarkerES", false]) then {
+                    if !(_x getVariable [QGVAR(markerES), false]) then {
                         private _marker = [(position (vehicle (leader _x))), _x, "markDanger",
                                          "ColorGreen", "ICON", "mil_dot", (str _dangerValue), ""] call FUNC(mark);
-                        _x setVariable ["RydHQ_MarkerES", true];
+                        _x setVariable [QGVAR(markerES), true];
                     };
 
                     // Update marker position and color based on danger level
@@ -195,4 +195,4 @@ private _groupStrengthMap = createHashMap;
 } forEach (_combatUnitGroups - _airGroups);
 
 // Mark scan as complete
-_HQ setVariable ["RydHQ_ES", true];
+_HQ setVariable [QGVAR(eS), true];

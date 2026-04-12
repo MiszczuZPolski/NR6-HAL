@@ -10,10 +10,10 @@
  */
 params ["_HQ"];
 
-if (_HQ getVariable ["RydHQ_SimpleMode",false]) then {
+if (_HQ getVariable [QEGVAR(core,simpleMode),false]) then {
 
-    private _taken = (_HQ getVariable ["RydHQ_Taken",[]]);
-    private _Navaltaken = (_HQ getVariable ["RydHQ_TakenNaval",[]]);
+    private _taken = (_HQ getVariable [QEGVAR(common,taken),[]]);
+    private _Navaltaken = (_HQ getVariable [QGVAR(takenNaval),[]]);
 
     {
 
@@ -26,7 +26,7 @@ if (_HQ getVariable ["RydHQ_SimpleMode",false]) then {
             if ((_x getVariable ["SetTakenG",false]) and ((str (leader _HQ)) == "LeaderHQG") and not (_x in _taken)) then {_taken pushBack _x;};
             if ((_x getVariable ["SetTakenH",false]) and ((str (leader _HQ)) == "LeaderHQH") and not (_x in _taken)) then {_taken pushBack _x;};
 
-    } forEach (_HQ getVariable ["RydHQ_Objectives",[]]);
+    } forEach (_HQ getVariable [QEGVAR(core,objectives),[]]);
 
     {
 
@@ -39,12 +39,12 @@ if (_HQ getVariable ["RydHQ_SimpleMode",false]) then {
             if ((_x getVariable ["SetTakenG",false]) and ((str (leader _HQ)) == "LeaderHQG") and not (_x in _Navaltaken)) then {_Navaltaken pushBack _x;};
             if ((_x getVariable ["SetTakenH",false]) and ((str (leader _HQ)) == "LeaderHQH") and not (_x in _Navaltaken)) then {_Navaltaken pushBack _x;};
 
-    } forEach (_HQ getVariable ["RydHQ_NavalObjectives",[]]);
+    } forEach (_HQ getVariable [QEGVAR(core,navalObjectives),[]]);
 
-    _HQ setVariable ["RydHQ_Taken",_taken];
-    _HQ setVariable ["RydHQ_TakenNaval",_Navaltaken];
+    _HQ setVariable [QEGVAR(common,taken),_taken];
+    _HQ setVariable [QGVAR(takenNaval),_Navaltaken];
 
-    if (_HQ getVariable ["RydHQ_ObjectiveRespawn",false]) then {
+    if (_HQ getVariable [QGVAR(objectiveRespawn),false]) then {
 
         private _prefix = "";
 
@@ -75,12 +75,12 @@ if (_HQ getVariable ["RydHQ_SimpleMode",false]) then {
                 };
             }
 
-        } forEach (_HQ getVariable ["RydHQ_Objectives",[]]);
+        } forEach (_HQ getVariable [QEGVAR(core,objectives),[]]);
 
     };
 
 };
 
-private _objs = (((_HQ getVariable ["RydHQ_Objectives",[]]) + (_HQ getVariable ["RydHQ_NavalObjectives",[]])) - ((_HQ getVariable ["RydHQ_Taken",[]]) + (_HQ getVariable ["RydHQ_TakenNaval",[]])));
+private _objs = (((_HQ getVariable [QEGVAR(core,objectives),[]]) + (_HQ getVariable [QEGVAR(core,navalObjectives),[]])) - ((_HQ getVariable [QEGVAR(common,taken),[]]) + (_HQ getVariable [QGVAR(takenNaval),[]])));
 
 [_objs]

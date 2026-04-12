@@ -21,8 +21,8 @@ params ["_HQ", "_areas", "_o1", "_o2", "_o3", "_o4", "_allied", "_HQpos", "_fron
 
 _allied = _allied - [_HQ];//leader groups
 
-private _AAO = _HQ getVariable ["RydHQ_ChosenAAO",false];
-private _BBAOObj = _HQ getVariable ["RydHQ_BBAOObj",1];
+private _AAO = _HQ getVariable [QGVAR(chosenAAO),false];
+private _BBAOObj = _HQ getVariable [QEGVAR(core,bBAOObj),1];
 
 private _varName = "HandledAreas" + _side;
 
@@ -92,7 +92,7 @@ if (_BBAOObj == 4) then {_AssObj = 4; [[_sortedA,_HQ,_side,_AssObj,_AAO,_allied,
 sleep 1;
 
 _HQ setVariable ["ObjInit",true];
-_HQ setVariable ["RydHQ_Taken",[]];
+_HQ setVariable [QEGVAR(common,taken),[]];
 
 waitUntil {
 
@@ -110,4 +110,4 @@ if (EGVAR(missionmodules,debug)) then
     } forEach (_marksT + [_m])
     };
 
-if !(isNull _HQ) then {_HQ setVariable ["PathDone",true]; _HQ setVariable ["RydHQ_NObj",5]};
+if !(isNull _HQ) then {_HQ setVariable ["PathDone",true]; _HQ setVariable [QEGVAR(core,nObj),5]};

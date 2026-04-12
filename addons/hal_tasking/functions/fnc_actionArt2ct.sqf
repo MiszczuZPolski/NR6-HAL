@@ -11,9 +11,9 @@
 
 	private _bArr = [_pos,[_selectedPiece],_selectedOrd,_amnt,_FO] call EFUNC(common,artyMission);
 
-	if ((_bArr select 0) and not (_selectedPiece getVariable ["RydHQ_BatteryBusy",false])) then {
-		_selectedPiece setVariable ["RydHQ_BatteryBusy",true];
-		[_bArr select 1,_pos,_bArr select 2,_bArr select 3,_HQ getVariable ["RydHQ_Friends",[]],_HQ getVariable ["RydHQ_ArtyMarks",false],_selectedOrd,(_amnt) min (_bArr select 4),true] spawn EFUNC(common,CFF_FFE);
+	if ((_bArr select 0) and not (_selectedPiece getVariable [QEGVAR(common,batteryBusy),false])) then {
+		_selectedPiece setVariable [QEGVAR(common,batteryBusy),true];
+		[_bArr select 1,_pos,_bArr select 2,_bArr select 3,_HQ getVariable [QEGVAR(core,friends),[]],_HQ getVariable [QEGVAR(core,artyMarks),false],_selectedOrd,(_amnt) min (_bArr select 4),true] spawn EFUNC(common,CFF_FFE);
 		sleep 5;
 		[leader _HQ, "Affirmative. " + (groupId _selectedPiece) + " executing requested fire support - Out"] remoteExecCall ["hal_common_fnc_MP_Sidechat"];
 		_FO setVariable ["HALArtPos",nil,true];

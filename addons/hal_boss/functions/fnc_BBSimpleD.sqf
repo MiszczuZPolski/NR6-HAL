@@ -31,8 +31,8 @@ while {(({!(isNull _x)} count _HQs) > 0)} do
 
         if (_alive) then
             {
-            private _ens = _x getVariable ["RydHQ_KnEnPos",[]];
-            private _frs = _x getVariable ["RydHQ_Friends",[]];
+            private _ens = _x getVariable [QGVAR(knEnPos),[]];
+            private _frs = _x getVariable [QEGVAR(core,friends),[]];
 
             _enPos = _enPos + _ens;
 

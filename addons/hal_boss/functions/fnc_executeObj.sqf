@@ -51,7 +51,7 @@ if ((EGVAR(missionmodules,debug)) or ((RydBBa_SimpleDebug) and (_Side == "A")) o
     if (_i == 0) then {_m = [(_actO select 0),_HQ,"markBBCurrent",_lColor,"ICON","mil_triangle","Current target for " + (str (leader _HQ)),"",[0.5,0.5]] call EFUNC(common,mark)} else {_m setMarkerPos (_actO select 0)};
     };
 
-if (_BBAOObj == 1) then {_HQ setVariable ["RydHQ_EyeOfBattle",_actOPos]};
+if (_BBAOObj == 1) then {_HQ setVariable [QEGVAR(core,eyeOfBattle),_actOPos]};
 
 if (_BBAOObj == 1) then
     {
@@ -163,11 +163,11 @@ waitUntil
 
         if !(_inFlank) then
             {
-            _ownKnEn = _HQ getVariable ["RydHQ_KnEnemiesG",[]];
+            _ownKnEn = _HQ getVariable [QEGVAR(common,knEnemiesG),[]];
 
-            _ownForce = _HQ getVariable ["RydHQ_Friends",[]];
-            _Garrisons = _HQ getVariable ["RydHQ_Garrison",[]];
-            _exhausted = _HQ getVariable ["RydHQ_Exhausted",[]];
+            _ownForce = _HQ getVariable [QEGVAR(core,friends),[]];
+            _Garrisons = _HQ getVariable [QEGVAR(core,garrison),[]];
+            _exhausted = _HQ getVariable [QEGVAR(core,exhausted),[]];
 
             _ownForce = _ownForce - (_Garrisons + _exhausted);
             _alliedForce = 0;
@@ -186,12 +186,12 @@ waitUntil
                 {
                 {
 
-                    _KnEnAct = _x getVariable ["RydHQ_KnEnemiesG",[]];
-                    _afront = _x getVariable ["RydHQ_Front",locationNull];
+                    _KnEnAct = _x getVariable [QEGVAR(common,knEnemiesG),[]];
+                    _afront = _x getVariable [QEGVAR(common,front),locationNull];
 
-                    _alliedForce = _x getVariable ["RydHQ_Friends",[]];
-                    _alliedGarrisons = _x getVariable ["RydHQ_Garrison",[]];
-                    _alliedExhausted = _x getVariable ["RydHQ_Exhausted",[]];
+                    _alliedForce = _x getVariable [QEGVAR(core,friends),[]];
+                    _alliedGarrisons = _x getVariable [QEGVAR(core,garrison),[]];
+                    _alliedExhausted = _x getVariable [QEGVAR(core,exhausted),[]];
 
                     _alliedForce =  _alliedForce - (_alliedGarrisons + _alliedExhausted);
 
@@ -298,11 +298,11 @@ waitUntil
 
                             if (_alive) then
                                 {
-                                _nObj = _HQ getVariable ["RydHQ_NObj",1];
-                                _reck = _HQ getVariable ["RydHQ_Recklessness",0.5];
-                                _cons = _HQ getVariable ["RydHQ_Consistency",0.5];
+                                _nObj = _HQ getVariable [QEGVAR(core,nObj),1];
+                                _reck = _HQ getVariable [QEGVAR(core,recklessness),0.5];
+                                _cons = _HQ getVariable [QEGVAR(core,consistency),0.5];
 
-                                _limit = _HQ getVariable ["RydHQ_CaptLimit",10];
+                                _limit = _HQ getVariable [QEGVAR(core,captLimit),10];
 
                                 _SideAllies = [];
                                 _SideEnemies = [];
@@ -413,9 +413,9 @@ private _actDst = 0;
 {
     {
         if (((_actO select 0) distance (leader _x)) < 200) exitWith {_noGarrAround = false};
-    } forEach (_x getVariable ["RydHQ_Garrison",[]]);
+    } forEach (_x getVariable [QEGVAR(core,garrison),[]]);
 
-    _fG = (_x getVariable ["RydHQ_NCrewInfG",[]]) - ((_x getVariable ["RydHQ_Exhausted",[]]) + (_x getVariable ["RydHQ_Garrison",[]]));
+    _fG = (_x getVariable [QEGVAR(core,nCrewInfG),[]]) - ((_x getVariable [QEGVAR(core,exhausted),[]]) + (_x getVariable [QEGVAR(core,garrison),[]]));
 
     {
         if (((_x getVariable ["Unable",false]) or (isPlayer (leader _x))) or (_x getVariable ["Busy" + (str _x),false])) then {_UnableArr pushBack _x};
@@ -428,14 +428,14 @@ private _actDst = 0;
 
 {
     if (((_actO select 0) distance (leader _x)) < 200) exitWith {_noGarrAround = false};
-} forEach (_HQ getVariable ["RydHQ_Garrison",[]]);
+} forEach (_HQ getVariable [QEGVAR(core,garrison),[]]);
 
 if (_garrPool == 0) then
     {
     _UnableArr = [];
 
-    _garrison = _HQ getVariable ["RydHQ_Garrison",[]];
-    _fG = (_HQ getVariable ["RydHQ_NCrewInfG",[]]) - ((_HQ getVariable ["RydHQ_Exhausted",[]]) + (_garrison));
+    _garrison = _HQ getVariable [QEGVAR(core,garrison),[]];
+    _fG = (_HQ getVariable [QEGVAR(core,nCrewInfG),[]]) - ((_HQ getVariable [QEGVAR(core,exhausted),[]]) + (_garrison));
 
     {
         if (_x getVariable ["Unable",false]) then {_UnableArr pushBack _x};
@@ -473,7 +473,7 @@ if (_garrPool == 0) then
 
             if (_busy) then
                 {
-                _unitG setVariable ["RydHQ_MIA",true];
+                _unitG setVariable [QEGVAR(common,mIA),true];
                 _ct = time;
 
                 waitUntil
@@ -491,7 +491,7 @@ if (_garrPool == 0) then
                     _MIApass = false;
                     if (_alive) then
                         {
-                        _MIAPass = !(_unitG getVariable ["RydHQ_MIA",false]);
+                        _MIAPass = !(_unitG getVariable [QEGVAR(common,mIA),false]);
                         };
 
                     (!(_alive) or (_MIApass))
@@ -499,9 +499,9 @@ if (_garrPool == 0) then
                 };
 
             _unitG setVariable ["Busy" + (str _unitG),true];
-            private _garrison = _HQ getVariable ["RydHQ_Garrison",[]];
+            private _garrison = _HQ getVariable [QEGVAR(core,garrison),[]];
             _garrison pushBack _unitG;
-            _HQ setVariable ["RydHQ_Garrison",_garrison];
+            _HQ setVariable [QEGVAR(core,garrison),_garrison];
             };
 
         [[_chosen,_HQ],_code] call EFUNC(common,spawn)

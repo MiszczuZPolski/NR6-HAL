@@ -219,7 +219,7 @@ _mpl = 1 + _reck;
     if not (alive (leader _x)) then {_sum = 0};
     if (isNull (leader _x)) then {_sum = 0};
 
-    _fr = _HQ getVariable ["RydHQ_Front",locationNull];
+    _fr = _HQ getVariable [QEGVAR(common,front),locationNull];
     if not (isNull _fr) then
         {
         if not ((getPosATL (vehicle (leader _x))) in _fr) then {_sum = 0}
@@ -257,11 +257,11 @@ _mpl = 1 + _reck;
 
                 _FTFinPool = [];
 
-                if ((count (_HQ getVariable ["RydHQ_FirstToFight",[]])) > 0) then
+                if ((count (_HQ getVariable [QEGVAR(core,firstToFight),[]])) > 0) then
                     {
 
                         {
-                        if (_x in (_HQ getVariable ["RydHQ_FirstToFight",[]])) then
+                        if (_x in (_HQ getVariable [QEGVAR(core,firstToFight),[]])) then
                             {
                             _FTFinPool pushBack _x
                             }
@@ -485,7 +485,7 @@ _mpl = 1 + _reck;
                     if (_positive) then
                         {
                         _chosen setVariable ["Busy" + (str _chosen),true];
-                        _HQ setVariable ["RydHQ_AttackAv",(_HQ getVariable ["RydHQ_AttackAv",[]]) - [_chosen]];
+                        _HQ setVariable [QGVAR(attackAv),(_HQ getVariable [QGVAR(attackAv),[]]) - [_chosen]];
                         //[_chosen,_trg,_HQ] spawn ([_pattern] call RYD_GoLaunch);
 
                         [[_chosen,_trg,_HQ],([_pattern] call EFUNC(common,goLaunch))] call EFUNC(common,spawn);

@@ -16,11 +16,11 @@ private _taskedGroups = [];
 
 while {not (isNull _HQ)} do {
 
-    if ((_HQ getVariable ["RydHQ_SecTasks",true]) and (_HQ getVariable ["RydHQ_SimpleMode",true])) then {
+    if ((_HQ getVariable [QEGVAR(core,secTasks),true]) and (_HQ getVariable [QEGVAR(core,simpleMode),true])) then {
 
         _taskedGroups = [];
 
-        private _friends = _HQ getVariable ["RydHQ_Friends",[]];
+        private _friends = _HQ getVariable [QEGVAR(core,friends),[]];
 
         {
             if ((group _x) in _friends) then {
@@ -43,7 +43,7 @@ while {not (isNull _HQ)} do {
 
             {
                 private _setTaken = false;
-                if (_x in (_HQ getVariable ["RydHQ_Taken",[]])) then {_setTaken = true} else {_setTaken = false};
+                if (_x in (_HQ getVariable [QEGVAR(common,taken),[]])) then {_setTaken = true} else {_setTaken = false};
 
                 private _taskID = (str _Group) + (str _x) + "HALStsk";
 
@@ -75,7 +75,7 @@ while {not (isNull _HQ)} do {
 
                     };
 
-            } forEach ((_HQ getVariable ["RydHQ_Objectives",[]]) - _TaskedObjectives);
+            } forEach ((_HQ getVariable [QEGVAR(core,objectives),[]]) - _TaskedObjectives);
 
             {
                 private _taskID = (str _Group) + (str _x) + "HALStsk";
@@ -84,13 +84,13 @@ while {not (isNull _HQ)} do {
                 _TaskedObjectives = _TaskedObjectives - [_x];
                 _DefendObjectives = _DefendObjectives - [_x];
 
-            } forEach (_TaskedObjectives - (_HQ getVariable ["RydHQ_Objectives",[]]));
+            } forEach (_TaskedObjectives - (_HQ getVariable [QEGVAR(core,objectives),[]]));
 
             {
 
                 private _taskID = (str _Group) + (str _x) + "HALStsk";
 
-                if (_x in (_HQ getVariable ["RydHQ_Taken",[]])) then {
+                if (_x in (_HQ getVariable [QEGVAR(common,taken),[]])) then {
                     [_taskID,"SUCCEEDED"] call BIS_fnc_taskSetState;
                     _TaskedObjectives = _TaskedObjectives - [_x];
                     };
@@ -101,7 +101,7 @@ while {not (isNull _HQ)} do {
 
                 private _taskID = (str _Group) + (str _x) + "HALStsk";
 
-                if not (_x in (_HQ getVariable ["RydHQ_Taken",[]])) then {
+                if not (_x in (_HQ getVariable [QEGVAR(common,taken),[]])) then {
                     [_taskID,"FAILED"] call BIS_fnc_taskSetState;
                     _DefendObjectives = _DefendObjectives - [_x];
                     _TaskedObjectives = _TaskedObjectives - [_x];

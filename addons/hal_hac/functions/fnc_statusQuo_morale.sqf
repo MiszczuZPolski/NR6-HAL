@@ -20,22 +20,22 @@ if (_lossFinal < 0) then
     {
     _lossFinal = 0;
     _cInitial = _CCurrent;
-    _HQ setVariable ["RydHQ_CInitial",_CCurrent];
+    _HQ setVariable [QEGVAR(core,cInitial),_CCurrent];
     };
 
-private _morale = _HQ getVariable ["RydHQ_Morale",0];
+private _morale = _HQ getVariable [QEGVAR(core,morale),0];
 
-if not (_HQ getVariable ["RydHQ_Init",true]) then
+if not (_HQ getVariable [QEGVAR(core,init),true]) then
     {
     private _lossP = _lossFinal/_cInitial;
 
-    _HQ setVariable ["RydHQ_LTotal",_lossP];
+    _HQ setVariable [QGVAR(lTotal),_lossP];
 
     private _lostU = _CLast - _CCurrent;
 
     if not (_lostU == 0) then
         {
-        private _lossArr = _HQ getVariable ["RydHQ_LossArr",[]];
+        private _lossArr = _HQ getVariable [QGVAR(lossArr),[]];
         _lossArr pushBack [_lostU,time];
 
         if ((count _lossArr) > 200) then
@@ -44,7 +44,7 @@ if not (_HQ getVariable ["RydHQ_Init",true]) then
             _lossArr = _lossArr - [0];
             };
 
-        _HQ setVariable ["RydHQ_LossArr",_lossArr]
+        _HQ setVariable [QGVAR(lossArr),_lossArr]
         };
 
     private _lossWeight = 0;
@@ -56,18 +56,18 @@ if not (_HQ getVariable ["RydHQ_Init",true]) then
 
         _lossWeight = _lossWeight + ((_loss/(_age^1.15)) * (0.75 + (random 0.125) + (random 0.125) + (random 0.125) + (random 0.125)))
         }
-    forEach (_HQ getVariable ["RydHQ_LossArr",[]]);
+    forEach (_HQ getVariable [QGVAR(lossArr),[]]);
 
     private _balanceF = (((random 5) + (random 5))/((1 + _lossP)^2)) - ((random 1) + (random 1)) - (((random 1.5) + (random 1.5)) * ((count _knownE)/_CCurrent));
 
-    _morale = _morale + ((_balanceF - _lossWeight)/(_HQ getVariable ["RydHQ_MoraleConst",1]));
+    _morale = _morale + ((_balanceF - _lossWeight)/(_HQ getVariable [QEGVAR(core,moraleConst),1]));
 
     if (_lossP > (0.4 + (random 0.2))) then
         {
         private _diff = ((-_morale)/50) - _lossP;
         if (_diff > 0) then
             {
-            _morale = _morale - ((random (_diff * 10))/(_HQ getVariable ["RydHQ_MoraleConst",1]))
+            _morale = _morale - ((random (_diff * 10))/(_HQ getVariable [QEGVAR(core,moraleConst),1]))
             }
         };
     };
@@ -75,14 +75,14 @@ if not (_HQ getVariable ["RydHQ_Init",true]) then
 if (_morale < -50) then {_morale = -50};
 if (_morale > 0) then {_morale = 0};
 
-_HQ setVariable ["RydHQ_Morale",_morale];
+_HQ setVariable [QEGVAR(core,morale),_morale];
 
-_HQ setVariable ["RydHQ_TotalLossP",(round (((_lossFinal/_cInitial) * 100) * 10)/10)];
+_HQ setVariable [QGVAR(totalLossP),(round (((_lossFinal/_cInitial) * 100) * 10)/10)];
 
-if (_HQ getVariable ["RydHQ_Debug",false]) then
+if (_HQ getVariable [QEGVAR(common,debug),false]) then
     {
-    private _signum = _HQ getVariable ["RydHQ_CodeSign","X"];
-    private _mdbg = format ["Morale %5 (%2): %1 - losses: %3 percent (%4)",_morale,(_HQ getVariable ["RydHQ_Personality","OTHER"]),(round (((_lossFinal/_cInitial) * 100) * 10)/10),_lossFinal,_signum];
+    private _signum = _HQ getVariable [QEGVAR(core,codeSign),"X"];
+    private _mdbg = format ["Morale %5 (%2): %1 - losses: %3 percent (%4)",_morale,(_HQ getVariable [QEGVAR(core,personality),"OTHER"]),(round (((_lossFinal/_cInitial) * 100) * 10)/10),_lossFinal,_signum];
     diag_log _mdbg;
     (_HQ getVariable ["leaderHQ",(leader _HQ)]) globalChat _mdbg;
 
@@ -99,6 +99,6 @@ if (_HQ getVariable ["RydHQ_Debug",false]) then
     _HQ setVariable ["DbgMon",_dbgMon];
     };
 
-_HQ setVariable ["RydHQ_Init",false];
+_HQ setVariable [QEGVAR(core,init),false];
 
 _morale

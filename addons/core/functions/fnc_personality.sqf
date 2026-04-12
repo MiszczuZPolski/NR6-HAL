@@ -3,17 +3,17 @@
 
 params ["_HQ"];
 
-private _signum = _HQ getVariable ["RydHQ_CodeSign", "X"];
+private _signum = _HQ getVariable [QGVAR(codeSign), "X"];
 
 //get personality type
-private _personality = _HQ getVariable ["RydHQ_Personality", "OTHER"];
+private _personality = _HQ getVariable [QGVAR(personality), "OTHER"];
 
-private _recklessness = _HQ getVariable ["RydHQ_Recklessness", 0.5];
-private _consistency = _HQ getVariable ["RydHQ_Consistency", 0.5];
-private _activity = _HQ getVariable ["RydHQ_Activity", 0.5];
-private _reflex = _HQ getVariable ["RydHQ_Reflex", 0.5];
-private _circumspection = _HQ getVariable ["RydHQ_Circumspection", 0.5];
-private _fineness = _HQ getVariable ["RydHQ_Fineness", 0.5];
+private _recklessness = _HQ getVariable [QGVAR(recklessness), 0.5];
+private _consistency = _HQ getVariable [QGVAR(consistency), 0.5];
+private _activity = _HQ getVariable [QGVAR(activity), 0.5];
+private _reflex = _HQ getVariable [QGVAR(reflex), 0.5];
+private _circumspection = _HQ getVariable [QGVAR(circumspection), 0.5];
+private _fineness = _HQ getVariable [QGVAR(fineness), 0.5];
 
 switch (_personality) do {
 	case ("GENIUS") : {
@@ -99,13 +99,13 @@ switch (_personality) do {
 	};
 };
 
-_HQ setVariable ["RydHQ_Recklessness", _recklessness];
-_HQ setVariable ["RydHQ_Consistency", _consistency];
-_HQ setVariable ["RydHQ_Activity", _activity];
-_HQ setVariable ["RydHQ_Reflex", _reflex];
-_HQ setVariable ["RydHQ_Circumspection", _circumspection];
-_HQ setVariable ["RydHQ_Fineness", _fineness];
+_HQ setVariable [QGVAR(recklessness), _recklessness];
+_HQ setVariable [QGVAR(consistency), _consistency];
+_HQ setVariable [QGVAR(activity), _activity];
+_HQ setVariable [QGVAR(reflex), _reflex];
+_HQ setVariable [QGVAR(circumspection), _circumspection];
+_HQ setVariable [QGVAR(fineness), _fineness];
 
-_HQ setVariable ["RydHQ_Personality", _personality];
+_HQ setVariable [QGVAR(personality), _personality];
 
 LOG_8("Commander %8 (%7) - Recklessness: %1 Consistency: %2 Activity: %3 Reflex: %4 Circumspection: %5 Fineness: %6",_recklessness,_consistency,_activity,_reflex,_circumspection,_fineness,_personality,_signum);

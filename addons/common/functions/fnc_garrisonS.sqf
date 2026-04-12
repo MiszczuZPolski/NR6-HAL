@@ -33,10 +33,10 @@ waitUntil {
     switch (true) do {
         case (isNull _unit): {_alive = false};
         case (!alive _unit): {_alive = false};
-        case (_HQ getVariable ["RydHQ_KIA", false]): {_alive = false};
-        case ((group _unit) getVariable ["RydHQ_MIA", false]): {
+        case (_HQ getVariable [QGVAR(kIA), false]): {_alive = false};
+        case ((group _unit) getVariable [QGVAR(mIA), false]): {
             _alive = false;
-            (group _unit) setVariable ["RydHQ_MIA", nil];
+            (group _unit) setVariable [QGVAR(mIA), nil];
         };
     };
 
@@ -146,10 +146,10 @@ waitUntil {
     switch (true) do {
         case (isNull _unit): {_alive = false};
         case (!alive _unit): {_alive = false};
-        case (_HQ getVariable ["RydHQ_KIA", false]): {_alive = false};
-        case ((group _unit) getVariable ["RydHQ_MIA", false]): {
+        case (_HQ getVariable [QGVAR(kIA), false]): {_alive = false};
+        case ((group _unit) getVariable [QGVAR(mIA), false]): {
             _alive = false;
-            (group _unit) setVariable ["RydHQ_MIA", nil];
+            (group _unit) setVariable [QGVAR(mIA), nil];
         };
     };
 

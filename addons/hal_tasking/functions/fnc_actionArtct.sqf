@@ -139,7 +139,7 @@ private _selectedOrd = "";
 
 	};
 
-} forEach RydHQ_OtherArty;
+} forEach EGVAR(hal_data,otherArty);
 
 if ((count _ArtyMenuOrd) == 1) then {_OrdOptions = [[1,"HE"]];_ArtyMenuOrd pushBack ["High Explosive", [((count _ArtyMenuOrd) + 1)] , "", -5, [["expression", "player setvariable ['HALArtord',1,true]"]], "1", "1"];};
 

@@ -72,7 +72,7 @@ if (count _additionalData > 0) then {
 
     if (count _additionalData > 2) then {
         _HQ = _additionalData select 2;
-        _enemyGroups = _HQ getVariable ["RydHQ_KnEnemiesG", []];
+        _enemyGroups = _HQ getVariable [QGVAR(knEnemiesG), []];
     };
 };
 
@@ -90,9 +90,9 @@ waitUntil {
         case ({alive _x} count (units _group) < 1): {_alive = false};
         case (isNull _assignedVehicle): {_alive = false};
         case (!alive _assignedVehicle): {_alive = false};
-        case (_group getVariable ["RydHQ_MIA", false]): {
+        case (_group getVariable [QGVAR(mIA), false]): {
             _alive = false;
-            _group setVariable ["RydHQ_MIA", nil];
+            _group setVariable [QGVAR(mIA), nil];
         };
         case (_group getVariable ["Break", false]): {
             _breakFlag = true;
@@ -286,31 +286,31 @@ waitUntil {
         };
 
         // Check for waiting targets and objectives
-        if (!isNil {_group getVariable "RydHQ_WaitingTarget"}) then {
-            private _waitingTarget = _group getVariable "RydHQ_WaitingTarget";
+        if (!isNil {_group getVariable QGVAR(waitingTarget)}) then {
+            private _waitingTarget = _group getVariable QGVAR(waitingTarget);
             if ((isNull _waitingTarget) || !alive _waitingTarget) then {
                 [_group] call FUNC(deleteWaypoint);
-                _group setVariable ["RydHQ_WaitingTarget", nil];
+                _group setVariable [QGVAR(waitingTarget), nil];
                 _timer = _tolerance + 10;
             } else {
-                private _frontArea = _HQ getVariable ["RydHQ_Front", locationNull];
+                private _frontArea = _HQ getVariable [QGVAR(front), locationNull];
                 if (!isNull _frontArea) then {
                     if !((getPosATL _waitingTarget) in _frontArea) then {
                         [_group] call FUNC(deleteWaypoint);
-                        _group setVariable ["RydHQ_WaitingTarget", nil];
+                        _group setVariable [QGVAR(waitingTarget), nil];
                         _timer = _tolerance + 10;
                     };
                 };
             };
         };
 
-        if (!isNil {_group getVariable "RydHQ_WaitingObjective"}) then {
-            private _objective = (_group getVariable "RydHQ_WaitingObjective") select 1;
-            private _objectiveHQ = (_group getVariable "RydHQ_WaitingObjective") select 0;
+        if (!isNil {_group getVariable QGVAR(waitingObjective)}) then {
+            private _objective = (_group getVariable QGVAR(waitingObjective)) select 1;
+            private _objectiveHQ = (_group getVariable QGVAR(waitingObjective)) select 0;
 
-            if ((isNull _objective) || (_objective in (_objectiveHQ getVariable ["RydHQ_Taken", []]))) then {
+            if ((isNull _objective) || (_objective in (_objectiveHQ getVariable [QGVAR(taken), []]))) then {
                 [_group] call FUNC(deleteWaypoint);
-                _group setVariable ["RydHQ_WaitingObjective", nil];
+                _group setVariable [QGVAR(waitingObjective), nil];
             };
         };
     };
@@ -332,8 +332,8 @@ if (!isNull _assignedVehicle) then {
 };
 
 // Clear waiting target/objective variables
-_group setVariable ["RydHQ_WaitingTarget", nil];
-_group setVariable ["RydHQ_WaitingObjective", nil];
+_group setVariable [QGVAR(waitingTarget), nil];
+_group setVariable [QGVAR(waitingObjective), nil];
 
 // Clear infantry get-in checking
 if (_group getVariable ["InfGetinCheck" + (str _group), false]) then {

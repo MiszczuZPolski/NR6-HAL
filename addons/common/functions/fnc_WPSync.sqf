@@ -37,7 +37,7 @@ waitUntil {
         case (isNull _group): {_endThis = true};
         case ((({alive _x} count (units _group)) < 1)): {_endThis = true};
         case (_unitG getVariable ["Break",false]) : {_endThis = true; _unitG setVariable ["Break",false];};
-        case ((_group getVariable [("Resting" + (str _group)),false]) or {(_group getVariable ["RydHQ_MIA",false])}): {_endThis = true};
+        case ((_group getVariable [("Resting" + (str _group)),false]) or {(_group getVariable [QGVAR(mIA),false])}): {_endThis = true};
         case ((fleeing (leader _group)) or {(captive (leader _group))}): {_endThis = true};
     };
 
@@ -55,14 +55,14 @@ waitUntil {
         } forEach _gps;
     };
 
-    if (_HQ getVariable ["RydHQ_Debug",false]) then {
+    if (_HQ getVariable [QGVAR(debug),false]) then {
         _i setMarkerText (_markT + "sync: " + (str (round (time - _timer))))
     };
 
     ((_endThis) || {(time - _timer) > 1800})
 };
 
-if (_HQ getVariable ["RydHQ_Debug",false]) then {
+if (_HQ getVariable [QGVAR(debug),false]) then {
     _i setMarkerText _markT;
 };
 

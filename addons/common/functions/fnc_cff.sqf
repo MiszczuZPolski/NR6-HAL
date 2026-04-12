@@ -2,7 +2,7 @@
 
 params ["_artG","_knownEnemies","_enemyArmor","_friends","_Debug","_ldr"];
 
-private _fr = (group _ldr) getVariable ["RydHQ_Front", locationNull];
+private _fr = (group _ldr) getVariable [QGVAR(front), locationNull];
 if !(isNull _fr) then {
 	_knownEnemies = [_knownEnemies, [], {_ldr distance (vehicle _x) }, "ASCEND",{((getPosATL (vehicle _x)) in _fr)}] call BIS_fnc_sortBy;
 };
@@ -23,14 +23,14 @@ for "_i" from 1 to _CFFMissions do {
 		private _possible = _bArr select 0;
 
 		//_UL = leader (_friends select (floor (random (count _friends))));
-		private _UL = _tgt getVariable ["RydHQ_MyFO", leader (_friends select (floor (random (count _friends))))];
+		private _UL = _tgt getVariable [QGVAR(myFO), leader (_friends select (floor (random (count _friends))))];
 
 		if !(isPlayer _UL) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_ArtyReq,"ArtyReq"] call FUNC(AIChatter)}};
 
 		if (_possible) then {
 				{
 					if !(isNull _x) then {
-						_x setVariable ["RydHQ_BatteryBusy", true]
+						_x setVariable [QGVAR(batteryBusy), true]
 					};
 				} forEach (_bArr select 1);
 			if ((random 100) < RydxHQ_AIChatDensity) then {[_ldr,RydxHQ_AIC_ArtAss,"ArtAss"] call FUNC(AIChatter)};
@@ -49,7 +49,7 @@ for "_i" from 1 to _CFFMissions do {
 			if (_possible) then {
 					{
 						if !(isNull _x) then {
-							_x setVariable ["RydHQ_BatteryBusy", true]
+							_x setVariable [QGVAR(batteryBusy), true]
 						};
 					} forEach (_bArr select 1);
 				if ((random 100) < RydxHQ_AIChatDensity) then {[_ldr,RydxHQ_AIC_ArtAss,"ArtAss"] call FUNC(AIChatter)};

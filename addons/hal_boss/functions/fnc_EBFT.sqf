@@ -15,9 +15,9 @@ private _OldRydMarks = _HQ getVariable ["RydMarksE",[]];
 private _MarkGrps = [];
 private _RydMarks = [];
 
-if (_HQ getVariable ["RydHQ_InfoMarkers",false]) then {
+if (_HQ getVariable [QEGVAR(core,infoMarkers),false]) then {
 
-    _MarkGrps = (_HQ getVariable ["RydHQ_KnEnemiesG",[]]);
+    _MarkGrps = (_HQ getVariable [QEGVAR(common,knEnemiesG),[]]);
 
         {
             private _mrk = _x getVariable "FirstMarkE";

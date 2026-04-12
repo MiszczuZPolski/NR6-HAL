@@ -26,13 +26,13 @@ private _pauseDuration = 3 + (random 1.5);
 waitUntil {
     sleep 0.1;
 
-    private _lastOrderTime = _HQ getVariable ["RydHQ_MyLastOrder", 0];
+    private _lastOrderTime = _HQ getVariable [QGVAR(myLastOrder), 0];
 
     ((time - _lastOrderTime) > _pauseDuration)
 };
 
 // Update the last order time
-_HQ setVariable ["RydHQ_MyLastOrder", time];
+_HQ setVariable [QGVAR(myLastOrder), time];
 
 // Send HQ chat message if enabled
 if (missionNamespace getVariable ["RydxHQ_HQChat", false]) then {

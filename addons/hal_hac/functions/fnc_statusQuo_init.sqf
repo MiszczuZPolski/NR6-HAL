@@ -13,19 +13,19 @@
 params ["_HQ", "_cycleC", "_lastReset"];
 
 private _SCRname = "SQ";
-private _orderFirst = _HQ getVariable "RydHQ_Orderfirst";
+private _orderFirst = _HQ getVariable QGVAR(orderfirst);
 
 if (isNil ("_orderFirst")) then
     {
-    _HQ setVariable ["RydHQ_Orderfirst",true];
-    _HQ setVariable ["RydHQ_FlankReady",false];
+    _HQ setVariable [QGVAR(orderfirst),true];
+    _HQ setVariable [QGVAR(flankReady),false];
     };
 
 if (_cycleC > 1) then
     {
-    if not (_HQ getVariable ["RydHQ_ResetOnDemand",false]) then
+    if not (_HQ getVariable [QEGVAR(core,resetOnDemand),false]) then
         {
-        if ((time - _lastReset) > (_HQ getVariable ["RydHQ_ResetTime",600])) then
+        if ((time - _lastReset) > (_HQ getVariable [QEGVAR(core,resetTime),600])) then
             {
             _lastReset = time;
             [_HQ] call HAL_HQReset
@@ -40,10 +40,10 @@ if (_cycleC > 1) then
             waitUntil
                 {
                 sleep 1;
-                ((_HQ getVariable ["RydHQ_ResetNow",false]) or (_HQ getVariable ["RydHQ_KIA",false]))
+                ((_HQ getVariable [QEGVAR(core,resetNow),false]) or (_HQ getVariable [QEGVAR(common,kIA),false]))
                 };
 
-            _HQ setVariable ["RydHQ_ResetNow",false];
+            _HQ setVariable [QEGVAR(core,resetNow),false];
             [_HQ] call HAL_HQReset
             };
 
@@ -52,11 +52,11 @@ if (_cycleC > 1) then
 
     };
 
-_HQ setVariable ["RydHQ_Friends",[]];
-_HQ setVariable ["RydHQ_Enemies",[]];
-_HQ setVariable ["RydHQ_KnEnemies",[]];
-_HQ setVariable ["RydHQ_KnEnemiesG",[]];
-_HQ setVariable ["RydHQ_FValue",0];
-_HQ setVariable ["RydHQ_EValue",0];
+_HQ setVariable [QEGVAR(core,friends),[]];
+_HQ setVariable [QGVAR(enemies),[]];
+_HQ setVariable [QEGVAR(core,knEnemies),[]];
+_HQ setVariable [QEGVAR(common,knEnemiesG),[]];
+_HQ setVariable [QEGVAR(hal_boss,fValue),0];
+_HQ setVariable [QEGVAR(hal_boss,eValue),0];
 
 _lastReset

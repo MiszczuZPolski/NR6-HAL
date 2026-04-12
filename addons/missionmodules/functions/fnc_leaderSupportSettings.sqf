@@ -1,37 +1,40 @@
 #include "..\script_component.hpp"
-private ["_logic","_Commanders","_Leader","_prefix"];
 
-_logic = (_this select 0);
-_Commanders = [];
+params ["_logic"];
+
+private _commanders = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};
+    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
-    _Leader = (_x getVariable "LeaderType");
+    private _leaderName = (_x getVariable "LeaderType");
 
-    if (_Leader == "LeaderHQ") then {_prefix = "RydHQ_"};
-    if (_Leader == "LeaderHQB") then {_prefix = "RydHQB_"};
-    if (_Leader == "LeaderHQC") then {_prefix = "RydHQC_"};
-    if (_Leader == "LeaderHQD") then {_prefix = "RydHQD_"};
-    if (_Leader == "LeaderHQE") then {_prefix = "RydHQE_"};
-    if (_Leader == "LeaderHQF") then {_prefix = "RydHQF_"};
-    if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
-    if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
+    private _letter = switch (_leaderName) do {
+        case "LeaderHQ":  {""};
+        case "LeaderHQB": {"B"};
+        case "LeaderHQC": {"C"};
+        case "LeaderHQD": {"D"};
+        case "LeaderHQE": {"E"};
+        case "LeaderHQF": {"F"};
+        case "LeaderHQG": {"G"};
+        case "LeaderHQH": {"H"};
+        default {""};
+    };
 
-    _Leader = call compile _Leader;
+    private _leaderObj = call compile _leaderName;
 
-    _logic call compile (_prefix + "CargoFind" + " = " + str (_logic getVariable "RydHQ_CargoFind"));
-    _logic call compile (_prefix + "NoAirCargo" + " = " + str (_logic getVariable "RydHQ_NoAirCargo"));
-    _logic call compile (_prefix + "NoLandCargo" + " = " + str (_logic getVariable "RydHQ_NoLandCargo"));
-    _logic call compile (_prefix + "SMed" + " = " + str (_logic getVariable "RydHQ_SMed"));
-    _logic call compile (_prefix + "SFuel" + " = " + str (_logic getVariable "RydHQ_SFuel"));
-    _logic call compile (_prefix + "SAmmo" + " = " + str (_logic getVariable "RydHQ_SAmmo"));
-    _logic call compile (_prefix + "SRep" + " = " + str (_logic getVariable "RydHQ_SRep"));
-    _logic call compile (_prefix + "SupportWP" + " = " + str (_logic getVariable "RydHQ_SupportWP"));
-    _logic call compile (_prefix + "ArtyShells" + " = " + str (_logic getVariable "RydHQ_ArtyShells"));
-    _logic call compile (_prefix + "AirEvac" + " = " + str (_logic getVariable "RydHQ_AirEvac"));
-    _logic call compile (_prefix + "SupportRTB" + " = " + str (_logic getVariable "RydHQ_SupportRTB"));
+    missionNamespace setVariable [QGVAR(cargoFind) + _letter,   _logic getVariable [QGVAR(cargoFind), false]];
+    missionNamespace setVariable [QGVAR(noAirCargo) + _letter,  _logic getVariable [QGVAR(noAirCargo), false]];
+    missionNamespace setVariable [QGVAR(noLandCargo) + _letter, _logic getVariable [QGVAR(noLandCargo), false]];
+    missionNamespace setVariable [QGVAR(sMed) + _letter,        _logic getVariable [QGVAR(sMed), false]];
+    missionNamespace setVariable [QGVAR(sFuel) + _letter,       _logic getVariable [QGVAR(sFuel), false]];
+    missionNamespace setVariable [QGVAR(sAmmo) + _letter,       _logic getVariable [QGVAR(sAmmo), false]];
+    missionNamespace setVariable [QGVAR(sRep) + _letter,        _logic getVariable [QGVAR(sRep), false]];
+    missionNamespace setVariable [QGVAR(supportWP) + _letter,   _logic getVariable [QGVAR(supportWP), false]];
+    missionNamespace setVariable [QGVAR(artyShells) + _letter,  _logic getVariable [QGVAR(artyShells), 0]];
+    missionNamespace setVariable [QGVAR(airEvac) + _letter,     _logic getVariable [QGVAR(airEvac), false]];
+    missionNamespace setVariable [QGVAR(supportRTB) + _letter,  _logic getVariable [QGVAR(supportRTB), false]];
 
-} forEach _Commanders;
+} forEach _commanders;
