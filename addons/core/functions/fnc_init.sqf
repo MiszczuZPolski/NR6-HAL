@@ -5,6 +5,11 @@ params ["_logic", "_units", "_activated"];
 
 if !(isServer) exitWith {};
 
+// Restore VarInit.sqf Section A variable defaults (artillery, smoke/flare muzzles,
+// debug flags, faction-lib toggles). Replaces the legacy `preprocessFile VarInit.sqf`
+// loader that was removed in Phase 3. Phase 5 plan 01 COMPAT-04.
+call FUNC(varInit);
+
 GVAR(wait) = _logic getVariable [QGVAR(wait), 15];
 
 

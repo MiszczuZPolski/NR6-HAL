@@ -17,6 +17,9 @@ texHeaders.bin
 Thumbs.db
 #CHANGELOG.md
 
+# REAPER DAW peak cache (generated when audio files are opened in Reaper)
+*.reapeaks
+
 ## Added by HEMTT
 releases/*
 keys/*

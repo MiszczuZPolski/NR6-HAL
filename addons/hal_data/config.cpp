@@ -16,3 +16,5 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+
+#include "CfgRadio.hpp"
