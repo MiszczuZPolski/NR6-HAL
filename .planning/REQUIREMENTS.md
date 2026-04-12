@@ -58,11 +58,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Behavior Preservation
 
-- [ ] **BEHAV-01**: AI HQ commander initializes with identical personality traits and state variables
-- [ ] **BEHAV-02**: Group management (spawn, waypoints, objectives) produces identical behavior
-- [ ] **BEHAV-03**: Enemy scanning and threat detection loops function identically
-- [ ] **BEHAV-04**: Artillery/fire support coordination produces identical results
-- [ ] **BEHAV-05**: AI chatter/radio communication system works identically
+- [x] **BEHAV-01**: AI HQ commander initializes with identical personality traits and state variables
+- [x] **BEHAV-02**: Group management (spawn, waypoints, objectives) produces identical behavior
+- [x] **BEHAV-03**: Enemy scanning and threat detection loops function identically
+- [x] **BEHAV-04**: Artillery/fire support coordination produces identical results
+- [x] **BEHAV-05**: AI chatter/radio communication system works identically
 
 ## v2 Requirements
 
@@ -132,11 +132,11 @@ Deferred to future release. Tracked but not in current roadmap.
 | COMPAT-02 | Phase 5 | Complete |
 | COMPAT-03 | Phase 5 | Complete |
 | COMPAT-04 | Phase 5 | In Progress (Plan 05-01 complete) |
-| BEHAV-01 | Phase 5 | Pending |
-| BEHAV-02 | Phase 5 | Pending |
-| BEHAV-03 | Phase 5 | Pending |
-| BEHAV-04 | Phase 5 | Pending |
-| BEHAV-05 | Phase 5 | Pending |
+| BEHAV-01 | Phase 5 | Complete |
+| BEHAV-02 | Phase 5 | Complete |
+| BEHAV-03 | Phase 5 | Complete |
+| BEHAV-04 | Phase 5 | Complete |
+| BEHAV-05 | Phase 5 | Complete |
 
 **Coverage:**
 - v1 requirements: 37 total
