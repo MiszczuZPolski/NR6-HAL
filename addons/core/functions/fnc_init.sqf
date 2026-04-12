@@ -96,10 +96,11 @@ publicVariable QGVAR(reconCargo);
 GVAR(wS_ArtyMarks) = missionNamespace getVariable [QGVAR(wS_ArtyMarks),false];
 publicVariable QGVAR(wS_ArtyMarks);
 
-GVAR(path) = "\NR6_HAL\";
+// GVAR(path) = "\NR6_HAL\"; removed in Plan 05-04 — nr6_hal/ deleted, path no longer referenced anywhere.
 
 // TaskInitNR6.sqf 72 Action* callbacks are now loaded via hal_tasking addon's CBA preInit path (Phase 3, Plan 05).
 // Legacy preprocessFile loaders (HAC_fnc, HAC_fnc2, VarInit, TaskMenu, TaskInitNR6) removed during Phase 3.
+// SquadTaskingNR6.sqf loader replaced below with EFUNC(hal_tasking,squadTasking) spawn.
 
 //can be replaced with getMarkerType and getMarkerSize
 HAL_fnc_getType = compile preprocessFileLineNumbers "A3\modules_f\marta\data\scripts\fnc_getType.sqf";
@@ -221,5 +222,5 @@ if ((count GVAR(groupMarks)) > 0) then
 	};
 
 if (GVAR(actions)) then {
-nul = [] execVM  (GVAR(path) + "SquadTaskingNR6.sqf");
+    [[], EFUNC(hal_tasking,squadTasking)] call EFUNC(common,spawn);
 };

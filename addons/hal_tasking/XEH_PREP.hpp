@@ -74,3 +74,5 @@ PREP(actionGTct);
 PREP(actionArtct);
 PREP(actionArt2ct);
 PREP(taskMenu);
+// Squad tasking main loop (Plan 05-04)
+PREP(squadTasking);
