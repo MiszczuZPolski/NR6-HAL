@@ -4,7 +4,7 @@
 /**
  * @description Cycle-count gate, on-demand reset spawn, and HQ state variable reset.
  *              Resets Enemies/Friends/FValue/EValue each cycle. Handles timed and on-demand
- *              HQ reset via HAL_HQReset.
+ *              HQ reset via EFUNC(hal_hac,hqReset).
  * @param {Group} _HQ The HQ group
  * @param {Number} _cycleC Current cycle counter
  * @param {Number} _lastReset Time of last HQ reset
@@ -28,7 +28,7 @@ if (_cycleC > 1) then
         if ((time - _lastReset) > (_HQ getVariable [QEGVAR(core,resetTime),600])) then
             {
             _lastReset = time;
-            [_HQ] call HAL_HQReset
+            [_HQ] call EFUNC(hal_hac,hqReset)
             }
         }
     else
@@ -44,7 +44,7 @@ if (_cycleC > 1) then
                 };
 
             _HQ setVariable [QEGVAR(core,resetNow),false];
-            [_HQ] call HAL_HQReset
+            [_HQ] call EFUNC(hal_hac,hqReset)
             };
 
         [[_HQ],_code] call EFUNC(common,spawn);

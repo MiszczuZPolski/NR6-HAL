@@ -1,6 +1,18 @@
 // Functions registered here in Phase 3 when extraction begins.
 PREP(desperation);
 PREP(dispatcher);
+// HQ command scripts (Phase 5-02 Task 3)
+PREP(flanking);
+PREP(hqOrders);
+PREP(hqOrdersDef);
+PREP(hqOrdersEast);
+PREP(hqReset);
+PREP(lhq);
+PREP(lPos);
+PREP(reloc);
+PREP(rev);
+PREP(sfIdleOrd);
+PREP(spotScan);
 // StatusQuo sub-functions (leaf-first order)
 PREP(statusQuo_init);
 PREP(statusQuo_scanFriends);

@@ -3,7 +3,7 @@
 
 /**
  * @description Morale vs enemy-value decision gate. Chooses attack or defend stance
- *              and calls HAL_HQOrders or HAL_HQOrdersDef accordingly. Also handles
+ *              and calls EFUNC(hal_hac,hqOrders) or EFUNC(hal_hac,hqOrdersDef) accordingly. Also handles
  *              SF attack dispatch against high-value targets.
  * @param {Group} _HQ The HQ group
  * @param {Array} _objs Remaining untaken objectives array
@@ -41,7 +41,7 @@ if (((_moraleInfl > _enemyInfl) and not ((count _objs) < 1) and {not ((_HQ getVa
 
     _HQ setVariable ["LastStance","At"];
     _HQ setVariable [QEGVAR(core,inertia),30 * (0.5 + (_HQ getVariable [QEGVAR(core,consistency),0.5]))*(0.5 + (_HQ getVariable [QEGVAR(core,activity),0.5]))];
-    [_HQ] call HAL_HQOrders
+    [_HQ] call EFUNC(hal_hac,hqOrders)
     }
 else
     {
@@ -53,7 +53,7 @@ else
 
     _HQ setVariable ["LastStance","De"];
     _HQ setVariable [QEGVAR(core,inertia), - (30 * (0.5 + (_HQ getVariable [QEGVAR(core,consistency),0.5])))/(0.5 + (_HQ getVariable [QEGVAR(core,activity),0.5]))];
-    [_HQ] call HAL_HQOrdersDef
+    [_HQ] call EFUNC(hal_hac,hqOrdersDef)
     };
 
 // SF attack dispatch

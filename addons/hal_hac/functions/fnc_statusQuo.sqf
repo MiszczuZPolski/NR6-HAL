@@ -113,7 +113,7 @@ while {true} do {
             if (((time - _ctRev) >= 20) or (((time - _ct) > _delay) and (_delay <= 20))) then
                 {
                 _ctRev = time;
-                [_HQ] call HAL_Rev;
+                [_HQ] call EFUNC(hal_hac,rev);
                 };
 
             if (((count (_HQ getVariable [QGVAR(support),[]])) > 0) and (_cycleC > 2)) then
@@ -167,26 +167,26 @@ while {true} do {
                     {
                     _HQlPos = _nPos;
 
-                    [_HQ] call HAL_SFIdleOrd
+                    [_HQ] call EFUNC(hal_hac,sfIdleOrd)
                     }
                 };
 
             if (((time - _ctReloc) >= 60) or (((time - _ct) > _delay) and (_delay <= 60))) then
                 {
                 _ctReloc = time;
-                [_HQ] call HAL_Reloc
+                [_HQ] call EFUNC(hal_hac,reloc)
                 };
 
             if (((time - _ctLPos) >= 30) or (((time - _ct) > _delay) and (_delay <= 60))) then
                 {
                 _ctLPos = time;
-                [_HQ] call HAL_LPos
+                [_HQ] call EFUNC(hal_hac,lPos)
                 };
 
             if (((time - _ctDesp) >= 60) or (((time - _ct) > _delay) and (_delay <= 60))) then
                 {
                 _ctDesp = time;
-                [_HQ] call Desperado
+                [_HQ] call EFUNC(hal_hac,desperation)
                 };
 
             if (((time - _ctEScan) >= 60) or (((time - _ct) > _delay) and (_delay <= 60))) then

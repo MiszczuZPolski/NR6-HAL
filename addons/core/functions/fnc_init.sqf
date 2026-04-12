@@ -140,7 +140,7 @@ private _clU = [Map_Unknown_R,Map_Unknown_G,Map_Unknown_B,Map_Unknown_A];
 	["leaderHQH", "H", "HET_FH"]
 ];
 
-[] call compile preprocessFile (GVAR(path) + "Front.sqf");
+[] call FUNC(front);
 
 if (GVAR(timeM)) then
 	{
@@ -149,7 +149,8 @@ if (GVAR(timeM)) then
 
 if (EGVAR(missionmodules,active)) then
 	{
-	call compile preprocessFile (GVAR(path) + "Boss_fnc.sqf");
+	// Phase 3 extracted nr6_hal/Boss_fnc.sqf handles into hal_boss PREP'd functions;
+	// the legacy preprocessFile loader is removed (file no longer exists).
 	RydBBa_InitDone = false;
 	RydBBb_InitDone = false;
 
@@ -169,7 +170,7 @@ if (EGVAR(missionmodules,active)) then
 				_x setVariable ["BBProgress",0]
 				}
 			forEach _BBHQGrps;
-			[[_x,_BBHQGrps],Boss] call EFUNC(common,spawn)
+			[[_x,_BBHQGrps],EFUNC(hal_boss,boss)] call EFUNC(common,spawn)
 			};
 
 		sleep 1;
@@ -178,6 +179,19 @@ if (EGVAR(missionmodules,active)) then
 	};
 
 if (((EGVAR(common,debug)) or (EGVAR(common,debugB)) or (EGVAR(common,debugC)) or (EGVAR(common,debugD)) or (EGVAR(common,debugE)) or (EGVAR(common,debugF)) or (EGVAR(common,debugG)) or (EGVAR(common,debugH))) and (GVAR(dbgMon))) then {[[],EFUNC(common,DbgMon)] call EFUNC(common,spawn)};
+
+// HQSitRep dynamic dispatch variables (replaces VarInit.sqf Section C conditional
+// `compile preprocessFile HAL\HQSitRep*.sqf` assignments). Populated with PREP'd
+// function references so the per-HQ foreach loop below can resolve `{letter}_HQSitRep`
+// via missionNamespace getVariable exactly as the legacy code did.
+A_HQSitRep = EFUNC(core,HQSitRep);
+B_HQSitRep = EFUNC(core,HQSitRepB);
+C_HQSitRep = EFUNC(core,HQSitRepC);
+D_HQSitRep = EFUNC(core,HQSitRepD);
+E_HQSitRep = EFUNC(core,HQSitRepE);
+F_HQSitRep = EFUNC(core,HQSitRepF);
+G_HQSitRep = EFUNC(core,HQSitRepG);
+H_HQSitRep = EFUNC(core,HQSitRepH);
 
 {
 	params ["_leaderName", "_codeSign"];
