@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 05-02-PLAN.md — Extraction Wave 2 (Boss + HQ command)
-last_updated: "2026-04-12T20:43:33.917Z"
+stopped_at: Completed 05-03-PLAN.md — Extraction Wave 3 (20 tactical scripts)
+last_updated: "2026-04-12T20:57:01.983Z"
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 33
-  completed_plans: 25
-  percent: 76
+  completed_plans: 26
+  percent: 79
 ---
 
 # Project State: NR6-HAL ACE3 Refactor
@@ -33,21 +33,21 @@ progress:
 
 Phase: 05 (settings-localization-compat-cleanup) — EXECUTING
 **Phase:** 5 — Settings, Localization, Compat & Cleanup
-**Plan:** 05-02 complete (Extraction Wave 2 — Boss.sqf + Front + Desperation + 7 HQSitRep + 11 HQ command scripts)
-**Status:** Executing — plans 05-03..05-09 remain (Extraction Wave 3, supply + cleanup, dead-var audit, CBA settings, stringtable, compat, behavior tests, cleanup)
+**Plan:** 05-03 complete (Extraction Wave 3 — 20 tactical behavior scripts Go*/Garrison/SCargo)
+**Status:** Executing — plans 05-04..05-09 remain (supply + cleanup, dead-var audit, CBA settings, stringtable, compat, behavior tests, cleanup)
 
 **Progress:**
 
-[████████░░] 76%
+[████████░░] 79%
 [Phase 1] Addon Skeleton & Build Foundation   [x] Complete
 [Phase 2] Dependency Mapping                  [x] Complete
 [Phase 3] Function Extraction                 [x] Complete
 [Phase 4] Variable Namespacing                [x] Complete
-[Phase 5] Settings, Localization, Compat      [~] In progress (2/9 plans complete)
+[Phase 5] Settings, Localization, Compat      [~] In progress (3/9 plans complete)
 
 ```
 
-Overall: 4/5 phases complete (Phase 5 in progress — 2/9 plans complete)
+Overall: 4/5 phases complete (Phase 5 in progress — 3/9 plans complete)
 
 ---
 
@@ -84,6 +84,7 @@ Overall: 4/5 phases complete (Phase 5 in progress — 2/9 plans complete)
 | Phase 04-variable-namespacing P05 | 293 | 3 tasks | 37 files |
 | Phase 05 P01 | 5m | 2 tasks | 321 files |
 | Phase 05-settings-localization-compat-cleanup P02 | 12m | 3 tasks | 29 files |
+| Phase 05-settings-localization-compat-cleanup P03 | 18m | 2 tasks | 23 files |
 
 ### Performance Metrics
 
@@ -120,7 +121,7 @@ Overall: 4/5 phases complete (Phase 5 in progress — 2/9 plans complete)
 
 ## Session Continuity
 
-**Stopped at:** Completed 05-02-PLAN.md — Extraction Wave 2 (Boss + HQ command)
+**Stopped at:** Completed 05-03-PLAN.md — Extraction Wave 3 (20 tactical scripts)
 
 **Context for next session:**
 
