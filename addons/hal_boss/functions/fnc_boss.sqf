@@ -473,8 +473,8 @@ while {(RydBB_Active)} do
 
 	_ForcesRep = [_BBHQGrps] call EFUNC(hal_boss,forceAnalyze);
 
-	_ownGroups = (_ForcesRep select 0) select ((count (_ForcesRep select 0)) - 1);
-	_hostileGroups = (_ForcesRep select 1) select ((count (_ForcesRep select 1)) - 1);
+	_ownGroups = (_ForcesRep select 0) select -1;
+	_hostileGroups = (_ForcesRep select 1) select -1;
 
 	if (_BBCycle == 1) then
 		{
@@ -1537,7 +1537,7 @@ while {(RydBB_Active)} do
 					_perX = _perPos select 0;
 					_perY = _perPos select 1;
 
-					_x setPosATL [_perX,_perY,0];
+					if (!isNull _x) then {_x setPosATL [_perX,_perY,0]};
 
 					//_mark = [(str (random 1000)),[_perX,_perY,0],"ColorPink","ICON",[0.5,0.5],0,1,"DOT",(str _HQ)] call RYD_Marker;
 					}

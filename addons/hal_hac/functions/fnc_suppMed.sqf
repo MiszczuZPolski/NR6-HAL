@@ -52,7 +52,7 @@ _landMedAv = [];
 	_unable = _x getVariable "Unable";
 	if (isNil ("_unable")) then {_unable = false};
 
-	if not (_busy) and not (_unable) then {_airMedAv pushBack _x}
+	if ((not _busy) and (not _unable)) then {_airMedAv pushBack _x}
 	}
 forEach _medASG;
 

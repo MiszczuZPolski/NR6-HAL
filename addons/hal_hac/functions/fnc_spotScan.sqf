@@ -156,8 +156,8 @@ for [{_steepnessInitial = 1},{(_steepnessInitial >= 1) and not (_isdone)},{_stee
 				if (_HQ getVariable [QEGVAR(common,debug),false]) then 
 					{
 					_goodmark = createMarker[(str _X)+(str _Y),_scannedSpot];
-					_goodmark setMarkerColor "ColorBlack";
-					_goodmark setMarkerShape "ICON";
+					_goodmark setMarkerColorLocal "ColorBlack";
+					_goodmark setMarkerShapeLocal "ICON";
 					_goodmark setMarkerSize [0.2,0.2];
 					((str _X)+(str _Y)) setMarkerType "mil_dot"
 					}

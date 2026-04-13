@@ -33,7 +33,17 @@ while {not (isNull _HQ)} do
 							EGVAR(core,allLeaders) = EGVAR(core,allLeaders) - [_last];
 							EGVAR(core,allLeaders) pushBack (leader _HQ);
 							_cycle = (_HQ getVariable [QEGVAR(core,cyclecount),0]);
-							
+
+							// Read current traits from HQ (fixes pre-existing scope bug:
+							// function is invoked via spawn which does not inherit caller locals).
+							_Personality    = _HQ getVariable [QEGVAR(core,personality),     ""];
+							_Recklessness   = _HQ getVariable [QEGVAR(core,recklessness),    0.5];
+							_Consistency    = _HQ getVariable [QEGVAR(core,consistency),     0.5];
+							_Activity       = _HQ getVariable [QEGVAR(core,activity),        0.5];
+							_Reflex         = _HQ getVariable [QEGVAR(core,reflex),          0.5];
+							_Circumspection = _HQ getVariable [QEGVAR(core,circumspection),  0.5];
+							_Fineness       = _HQ getVariable [QEGVAR(core,fineness),        0.5];
+
 							_Personality = _Personality + "-";
 							_Recklessness = _Recklessness + (random 0.2);
 							_Consistency = _Consistency - (random 0.2);
@@ -67,8 +77,9 @@ while {not (isNull _HQ)} do
 							_HQ setVariable [QEGVAR(core,circumspection),_Circumspection];
 							_HQ setVariable [QEGVAR(core,fineness),_Fineness];
 
-							[] spawn
+							[_HQ] spawn
 								{
+								params ["_HQ"];
 								sleep (60 + (random 120));
 								_HQ setVariable [QEGVAR(core,morale),(_HQ getVariable [QEGVAR(core,morale),0]) - (10 + round (random 10))]
 								}

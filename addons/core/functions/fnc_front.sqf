@@ -15,8 +15,8 @@ _code =
 		{
 		sleep 5;
 
-		_ia setMarkerPos (position _front);
-		_ia setMarkerDir (direction _front);
+		_ia setMarkerPosLocal (position _front);
+		_ia setMarkerDirLocal (direction _front);
 		_ia setMarkerSize (size _front);
 
 		if (_HQ getVariable [QEGVAR(common,kIA),false]) exitWith {}
@@ -65,11 +65,11 @@ _code2 =
 
 		_ia = "markFront" + (str _HQ);
 		_ia = createMarker [_ia,_pos];
-		_ia setMarkerColor "ColorRed";
-		_ia setMarkerShape _shape;
-		_ia setMarkerSize [_XAxis, _YAxis];
-		_ia setMarkerDir _dir;
-		_ia setMarkerBrush "Border";
+		_ia setMarkerColorLocal "ColorRed";
+		_ia setMarkerShapeLocal _shape;
+		_ia setMarkerSizeLocal [_XAxis, _YAxis];
+		_ia setMarkerDirLocal _dir;
+		_ia setMarkerBrushLocal "Border";
 		_ia setMarkerColor "ColorKhaki";
 		_SCRname = "Front2";
 		[[_HQ,_front,_ia],_code] call EFUNC(common,spawn)

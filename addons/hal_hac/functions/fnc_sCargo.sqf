@@ -292,7 +292,7 @@ if not (_emptyV) then
 			if (_dst > 100) exitWith {};
 			_dst =_dst + 10;
 			_Lpos = [_Lpos,_dst/2,_dst] call GVAR(randomAroundMM);
-			_fe = (count (_Lpos isFlatEmpty [20 - (_dst/20),0,1 + (_dst/80),10,0,false,objNull])) > 0;
+			_fe = (_Lpos isFlatEmpty [20 - (_dst/20),0,1 + (_dst/80),10,0,false,objNull]) isNotEqualTo [];
 			}
 		};
 

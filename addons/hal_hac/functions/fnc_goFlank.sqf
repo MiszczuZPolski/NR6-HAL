@@ -411,13 +411,13 @@ if ((_ammo > 0) and not (_busy)) then
 			{
 			if not (isNull (_GDV getVariable ["tempLZ",objNull])) then {deleteVehicle (_GDV getVariable ["tempLZ",objNull])};
 
-			_lz = [[_posX,_posY]] call EFUNC(common,LZ);
+			_lz = [[_posXWP3,_posYWP3]] call EFUNC(common,LZ);
 			_GDV setVariable ["TempLZ",_lz];
 			if not (isNull _lz) then
 				{
 				_pos = getPosATL _lz;
-				_posX = _pos select 0;
-				_posY = _pos select 1
+				_posXWP3 = _pos select 0;
+				_posYWP3 = _pos select 1
 				}
 			}
 		};

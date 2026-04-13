@@ -28,7 +28,7 @@ if (isNil ("Unable")) then {_Unable = false};
 if (_busy) exitWith {};
 if (_Unable) exitWith {};
 
-_obj = _HQ getVariable [QEGVAR(core,obj),_ldr];
+_obj = _HQ getVariable [QEGVAR(core,obj),objNull];
 
 if (_AAO) then
 	{
@@ -430,7 +430,7 @@ if ((_ammo > 0) and not (_busy)) then
 			_alive = _cause select 1;
 			_enemy = _cause select 2;
 			};
-	}:
+	};
 
 	if (((_timer > 30) or (_enemy)) and (_OtherGroup)) then {if not (isNull _GDV) then {[_GDV, (currentWaypoint _GDV)] setWaypointPosition [getPosATL (vehicle _UL), 1]}};
 	if (((_timer > 30) or (_enemy)) and not (_OtherGroup)) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [getPosATL (vehicle _UL), 1]};
@@ -494,7 +494,7 @@ if ((_ammo > 0) and not (_busy)) then
 			_alive = _cause select 1;
 			_enemy = _cause select 2;
 			};
-	}:
+	};
 
 	if (((_timer > 30) or (_enemy)) and (_OtherGroup)) then {if not (isNull _GDV) then {[_GDV, (currentWaypoint _GDV)] setWaypointPosition [getPosATL (vehicle _UL), 1]}};
 	if (((_timer > 30) or (_enemy)) and not (_OtherGroup)) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [getPosATL (vehicle _UL), 1]};
@@ -536,13 +536,13 @@ if ((_ammo > 0) and not (_busy)) then
 			{
 			if not (isNull (_GDV getVariable ["tempLZ",objNull])) then {deleteVehicle (_GDV getVariable ["tempLZ",objNull])};
 
-			_lz = [[_posX,_posY]] call EFUNC(common,LZ);
+			_lz = [[_posXWP3,_posYWP3]] call EFUNC(common,LZ);
 			_GDV setVariable ["TempLZ",_lz];
 			if not (isNull _lz) then
 				{
 				_pos = getPosATL _lz;
-				_posX = _pos select 0;
-				_posY = _pos select 1
+				_posXWP3 = _pos select 0;
+				_posYWP3 = _pos select 1
 				}
 			}
 		};
@@ -590,7 +590,7 @@ if ((_ammo > 0) and not (_busy)) then
 			_alive = _cause select 1;
 			_enemy = _cause select 2;
 			};
-	}:
+	};
 
 	if (((_timer > 30) or (_enemy)) and (_OtherGroup)) then {if not (isNull _GDV) then {[_GDV, (currentWaypoint _GDV)] setWaypointPosition [getPosATL (vehicle (leader _GDV)), 1]}};
 	if (((_timer > 30) or (_enemy)) and not (_OtherGroup)) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [getPosATL (vehicle _UL), 1]};
