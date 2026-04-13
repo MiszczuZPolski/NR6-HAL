@@ -74,7 +74,7 @@ _Lwounded = [];
 	{
 	if not (isPlayer (leader _x)) then {
 		{
-		if ((vehicle _x) == _x) then
+		if ((isNull objectParent _x)) then
 			{
 			if ((damage _x) > 0.5) then
 				{
@@ -184,8 +184,8 @@ for [{_a = 500},{_a <= 44000},{_a = _a + 500}] do
 
 			if (not ((group _SWunit) in (_HQ getVariable [QEGVAR(core,supportedG),[]])) and ((_SWunit distance _ambulance) <= _a) and (_noenemy) and (_x in _ambulances)) then 
 				{
-				if ((_a > 1500) and ((count _airMedAv) > 0) and not (_x in _airMedAv)) exitWith {};
-				if ((_a <= 1500) and ((count _landMedAv) > 0) and not (_x in _landMedAv)) exitWith {};
+				if ((_a > 1500) and ((_airMedAv isNotEqualTo [])) and not (_x in _airMedAv)) exitWith {};
+				if ((_a <= 1500) and ((_landMedAv isNotEqualTo [])) and not (_x in _landMedAv)) exitWith {};
 				if ((random 100) < EGVAR(core,aIChatDensity)) then {[(leader _HQ),GVAR(aIC_SuppAss),"SuppAss"] call EFUNC(common,AIChatter)};
 				if (_x in _airMedAv) then {_airMedAv = _airMedAv - [_x]} else {_landMedAv = _landMedAv - [_x]};
 				_ambulances = _ambulances - [_x];
@@ -208,10 +208,10 @@ for [{_a = 500},{_a <= 44000},{_a = _a + 500}] do
 					};
 				};
 			
-			if (((count _ambulances) == 0) or ((count _SWunits) == 0)) exitWith {};
+			if (((_ambulances isEqualTo [])) or ((_SWunits isEqualTo []))) exitWith {};
 			};
 			
-		if (((count _ambulances) == 0) or ((count _SWunits) == 0)) exitWith {};
+		if (((_ambulances isEqualTo [])) or ((_SWunits isEqualTo []))) exitWith {};
 		}
 	forEach _ambulances2;
 	};
@@ -269,8 +269,8 @@ for [{_a = 500},{_a < 10000},{_a = _a + 500}] do
 			
 			if (not ((group _Wunit) in (_HQ getVariable [QEGVAR(core,supportedG),[]])) and ((_Wunit distance _ambulance) <= _a) and (_noenemy) and (_x in _ambulances)) then 
 				{
-				if ((_a > 2500) and ((count _airMedAv) > 0) and not (_x in _airMedAv)) exitWith {};
-				if ((_a <= 2500) and ((count _landMedAv) > 0) and not (_x in _landMedAv)) exitWith {};
+				if ((_a > 2500) and ((_airMedAv isNotEqualTo [])) and not (_x in _airMedAv)) exitWith {};
+				if ((_a <= 2500) and ((_landMedAv isNotEqualTo [])) and not (_x in _landMedAv)) exitWith {};
 				if ((random 100) < EGVAR(core,aIChatDensity)) then {[(leader _HQ),GVAR(aIC_SuppAss),"SuppAss"] call EFUNC(common,AIChatter)};
 				if (_x in _airMedAv) then {_airMedAv = _airMedAv - [_x]} else {_landMedAv = _landMedAv - [_x]};
 				_ambulances = _ambulances - [_x];
@@ -293,10 +293,10 @@ for [{_a = 500},{_a < 10000},{_a = _a + 500}] do
 					};
 				};
 			
-			if (((count _ambulances) == 0) or ((count _Wunits) == 0)) exitWith {};
+			if (((_ambulances isEqualTo [])) or ((_Wunits isEqualTo []))) exitWith {};
 			};
 			
-		if (((count _ambulances) == 0) or ((count _Wunits) == 0)) exitWith {};
+		if (((_ambulances isEqualTo [])) or ((_Wunits isEqualTo []))) exitWith {};
 		}
 	forEach _ambulances2;
 	};

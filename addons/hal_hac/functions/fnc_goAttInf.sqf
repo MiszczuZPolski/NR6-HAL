@@ -507,7 +507,7 @@ if not (isNil "_EDPos") then
 			{
 			_nR = _pos nearRoads _i;
 
-			if ((count _nR) > 0) exitWith
+			if ((_nR isNotEqualTo [])) exitWith
 				{
 				_cR = [_pos,_nR] call EFUNC(common,findClosest);
 

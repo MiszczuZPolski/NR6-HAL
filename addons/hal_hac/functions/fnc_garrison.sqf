@@ -84,9 +84,9 @@ for [{_a = 0},{_a < (count _Garrison)},{_a = _a + 1}] do
 			forEach _list;
 
 				{
-				if ((count _units) > 0) then
+				if ((_units isNotEqualTo [])) then
 					{
-					_unit = (_units select ((count _units) - 1));
+					_unit = (_units select -1);
 
 					if (((random 1) > 0.1) and not ((toLower (typeOf _unit)) in _recArr)) then
 						{
@@ -117,7 +117,7 @@ for [{_a = 0},{_a < (count _Garrison)},{_a = _a + 1}] do
 						_tkn = false;
 
 							{
-							if ((typeName _x) == (typeName [])) then
+							if ((typeName _x) == ("ARRAY")) then
 								{
 								if (((_x select 0) + (_x select 1)) == ((_posAct select 0) + (_posAct select 1))) exitWith {_tkn = true}
 								}
@@ -130,7 +130,7 @@ for [{_a = 0},{_a < (count _Garrison)},{_a = _a + 1}] do
 							_sum = (_posAct select 0) + (_posAct select 1);
 
 								{
-								if ((typeName _x) == (typeName [])) then
+								if ((typeName _x) == ("ARRAY")) then
 									{
 									if (((_x select 0) + (_x select 1)) == _sum) exitWith {_tkn = true}
 									}
@@ -154,7 +154,7 @@ for [{_a = 0},{_a < (count _Garrison)},{_a = _a + 1}] do
 
 				{
 				_ix = 0;
-				if not ((count _posAll) == 0) then
+				if not ((_posAll isEqualTo [])) then
 					{
 					_ix = floor (random (count _posAll));
 					_posS = _posAll select _ix;
@@ -179,7 +179,7 @@ for [{_a = 0},{_a < (count _Garrison)},{_a = _a + 1}] do
 							_sum = (_posS select 0) + (_posS select 1);
 
 								{
-								if ((typeName _x) == (typeName [])) then
+								if ((typeName _x) == ("ARRAY")) then
 									{
 									if (((_x select 0) + (_x select 1)) == _sum) exitWith {_tkn = true}
 									}
@@ -208,7 +208,7 @@ for [{_a = 0},{_a < (count _Garrison)},{_a = _a + 1}] do
 
 				{
 				_pA = _x select 0;
-				if ((typeName _pA) == (typeName [])) then
+				if ((typeName _pA) == ("ARRAY")) then
 					{
 					_isGood = true;
 					if ((_pA select 2) > 16) then

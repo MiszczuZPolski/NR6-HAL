@@ -162,7 +162,7 @@ if not (_isDecoy) then
 
 	_NR = _pos nearRoads 400;
 	_cnt = 0;
-	if (not (_patrol) and not (_sec) and not ((random 100) < (20/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])))) and not ((count _NR) == 0) and not (_unitG in ((_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,nCCargoG),[]])))) then
+	if (not (_patrol) and not (_sec) and not ((random 100) < (20/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])))) and not ((_NR isEqualTo [])) and not (_unitG in ((_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,nCCargoG),[]])))) then
 		{
 		while {(true)} do
 			 {

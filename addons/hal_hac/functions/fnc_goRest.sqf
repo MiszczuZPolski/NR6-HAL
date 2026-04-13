@@ -55,7 +55,7 @@ if not (isNull _AV) then
 		forEach (crew _AV);
 
 		_ac = assignedCargo _AV;
-		if ((count _ac) > 0) then
+		if ((_ac isNotEqualTo [])) then
 			{
 				{
 				if not ((group _x) == _unitG) then
@@ -225,7 +225,7 @@ if not (isNull _nE) then
 			//[_unitG,_nE] spawn RYD_Smoke;
 			[[_unitG,_nE],GVAR(smoke)] call EFUNC(common,spawn);
 			sleep 10;
-			if ((vehicle _UL) == _UL) then {sleep 15}
+			if ((isNull objectParent _UL)) then {sleep 15}
 			}
 		};
 	};
@@ -625,7 +625,7 @@ waitUntil
 				{
 					{
 					_Gdamage = _Gdamage + (damage _x);
-					if (((count (magazines _x)) == 0) and (((vehicle _x) == _x) or ((vehicle _x) in (_HQ getVariable [QEGVAR(core,nCVeh),[]])))) exitWith {_ammo = false};
+					if ((((magazines _x) isEqualTo [])) and (((isNull objectParent _x)) or ((vehicle _x) in (_HQ getVariable [QEGVAR(core,nCVeh),[]])))) exitWith {_ammo = false};
 					if (((damage _x) > 0.5) or not (canStand _x)) exitWith {_effective = false};
 					}
 				forEach (units _unitG)
@@ -638,7 +638,7 @@ waitUntil
 
 				{
 				_veh = assignedVehicle _x;
-				if (not (isNull _veh) and (not (canMove _veh) or ((fuel _veh) <= 0.1) or ((damage _veh) > 0.5) or (((group _x) in (((_HQ getVariable [QEGVAR(core,airG),[]]) - (_HQ getVariable [QEGVAR(hal_boss,nCAirG),[]])) + ((_HQ getVariable [QEGVAR(hal_boss,hArmorG),[]]) + (_HQ getVariable [QEGVAR(hal_boss,lArmorG),[]]) + ((_HQ getVariable [QEGVAR(hal_boss,carsG),[]]) - ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]])))))) and ((count (magazines _veh)) == 0)) and not ((group _x) in (_HQ getVariable [QGVAR(rAirG),[]])))) exitWith {_vehready = false};
+				if (not (isNull _veh) and (not (canMove _veh) or ((fuel _veh) <= 0.1) or ((damage _veh) > 0.5) or (((group _x) in (((_HQ getVariable [QEGVAR(core,airG),[]]) - (_HQ getVariable [QEGVAR(hal_boss,nCAirG),[]])) + ((_HQ getVariable [QEGVAR(hal_boss,hArmorG),[]]) + (_HQ getVariable [QEGVAR(hal_boss,lArmorG),[]]) + ((_HQ getVariable [QEGVAR(hal_boss,carsG),[]]) - ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]])))))) and (((magazines _veh) isEqualTo []))) and not ((group _x) in (_HQ getVariable [QGVAR(rAirG),[]])))) exitWith {_vehready = false};
 				}
 			forEach (units _unitG);
 			}

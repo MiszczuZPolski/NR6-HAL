@@ -46,7 +46,7 @@ if ( not (_withdraw) and not (_request)) then
 	{
 	_CP = nearestObjects [_GL, ["Car","Tank","Motorcycle","Air"], (_HQ getVariable [QEGVAR(core,cargoFind),0])];
 	private _NGi = _NG;
-	while {count _CP > 0}
+	while {_CP isNotEqualTo []}
 	do
 		{
 			private _hir = false;
@@ -64,7 +64,7 @@ if ( not (_withdraw) and not (_request)) then
 					{
 						_CP deleteAt (_CP find _x);
 					};
-				if ((_ESpace == _NGi) and (_hiredchk isEqualTo "free") and not ((group (vehicle _x)) in (_HQ getVariable [QEGVAR(core,friends),[]])) and ((count (assignedCargo (vehicle _x))) == 0) and ((count (crew _x)) == 0) and ((fuel _x) >= 0.2) and (damage _x <= 0.8) and (canMove _x)) exitWith
+				if ((_ESpace == _NGi) and (_hiredchk isEqualTo "free") and not ((group (vehicle _x)) in (_HQ getVariable [QEGVAR(core,friends),[]])) and ((assignedCargo (vehicle _x)) isEqualTo []) and ((crew _x) isEqualTo []) and ((fuel _x) >= 0.2) and (damage _x <= 0.8) and (canMove _x)) exitWith
 					{
 						_ChosenOne = _x;
 						_unitG setVariable ["CargoChosen", true,true];
@@ -177,7 +177,7 @@ if (isNull _ChosenOne) then
 
 				if (((((_vHQ findNearestEnemy _vGL) distance _vGL) <= (_mpl2*_mpl)) or (((_vHQ findNearestEnemy _halfway) distance _halfway) <= (_mpl2*_mpl))) and ((random 100) > (20*(0.5 + (2*(_HQ getVariable [QEGVAR(core,recklessness),0.5])))))) then {_noenemy = false};
 				if ((_ESpace >= _NG) and (_prefV == (assignedVehicle _x)) and
-					((count (assignedCargo (assignedVehicle _x))) == 0) and not
+					((assignedCargo (assignedVehicle _x)) isEqualTo []) and not
 						((_busy) or (_unable) or ((missionNamespace getVariable [("hal"+(str (assignedVehicle _x))), "free"]) isKindOf "hired")) and not
 							((_x in (_HQ getVariable [QEGVAR(core,nCrewInfG),[]])) and (count (units _x) > 1)) and
 								(((vehicle (leader _x)) distance (vehicle _GL)) < (2000*_mpl)) and
@@ -236,7 +236,7 @@ if not (_emptyV) then
 					{
 					_nR = _pos0 nearRoads _i;
 
-					if ((count _nR) > 0) exitWith
+					if (_nR isNotEqualTo []) exitWith
 						{
 						_cR = [_pos0,_nR] call EFUNC(common,findClosest);
 
@@ -283,7 +283,7 @@ if not (_emptyV) then
 
 	if ((_GD in _airCargo) and {not (isOnRoad _Lpos)})  then
 		{
-		_fe = (count (_Lpos isFlatEmpty [20,0,1,10,0,false,objNull])) > 0;
+		_fe = (_Lpos isFlatEmpty [20,0,1,10,0,false,objNull]) isNotEqualTo [];
 		_ct = 0;
 		_dst = 30;
 

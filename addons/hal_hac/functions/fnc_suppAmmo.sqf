@@ -77,7 +77,7 @@ _ZeroA = [];
 					}
 				};
 
-			if ((vehicle _x) == _x) then
+			if ((isNull objectParent _x)) then
 				{
 				if (((_x ammo ((weapons _x) select 0)) == 0) or ((count (magazines _x)) < 2) or ((_ammoN/(((count (units (group _x))) + 0.1)) < (6/(((_HQ getVariable [QEGVAR(core,recklessness),0.5])*2) + 1))))) then
 					{
@@ -225,10 +225,10 @@ for [{_a = 500},{_a <= 44000},{_a = _a + 500}] do
 					};
 				};
 			
-			if (((count _MTrucks2) == 0) or ((count _Zunits) == 0)) exitWith {};
+			if (((_MTrucks2 isEqualTo [])) or ((_Zunits isEqualTo []))) exitWith {};
 			};
 			
-		if (((count _MTrucks2) == 0) or ((count _Zunits) == 0)) exitWith {};
+		if (((_MTrucks2 isEqualTo [])) or ((_Zunits isEqualTo []))) exitWith {};
 		}
 	forEach _MTrucks2a;
 	};
@@ -311,10 +311,10 @@ if ((count (_HQ getVariable [QEGVAR(core,ammoBoxes),[]])) > 0) then
 						_Hunits = _Hunits - [_Hunit]
 						};
 					};				
-				if (((count _MTrucks3) == 0) or ((count _Hunits) == 0)) exitWith {};
+				if (((_MTrucks3 isEqualTo [])) or ((_Hunits isEqualTo []))) exitWith {};
 				};
 				
-			if (((count _MTrucks3) == 0) or ((count _Hunits) == 0)) exitWith {};
+			if (((_MTrucks3 isEqualTo [])) or ((_Hunits isEqualTo []))) exitWith {};
 			}
 		forEach _MTrucks3a
 		}

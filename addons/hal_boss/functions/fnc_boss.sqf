@@ -27,7 +27,7 @@ _BBHQs = (_this select 0) select 0;
 _BBSide = (_this select 0) select 1;
 _BBHQGrps = _this select 1;
 
-if ((_BBSide == "B") and ((count RydBBa_HQs) > 0)) then
+if ((_BBSide == "B") and ((RydBBa_HQs isNotEqualTo []))) then
 	{
 	waitUntil
 		{
@@ -427,7 +427,7 @@ while {(RydBB_Active)} do
 					}
 				forEach _HQg0;
 
-				if ((count _HQg) == 0) exitWith
+				if ((_HQg isEqualTo [])) exitWith
 					{
 					if (RydBB_Debug) then
 						{
@@ -456,7 +456,7 @@ while {(RydBB_Active)} do
 		}
 	forEach _BBHQGrps;
 
-	if ((count _BBHQs) == 0) exitWith
+	if ((_BBHQs isEqualTo [])) exitWith
 		{
 		if (RydBB_Debug) then
 			{
@@ -629,7 +629,7 @@ while {(RydBB_Active)} do
 			if (_ct > 10) then {_change = false}
 			};
 
-		if ((count _enAr) > 0) then
+		if ((_enAr isNotEqualTo [])) then
 			{
 				{
 				_eA = _x;
@@ -951,7 +951,7 @@ while {(RydBB_Active)} do
 		while {(_resCount > 0)} do
 			{
 
-			if (((count _resCand) > 0) and ((random 100) < 90)) then
+			if (((_resCand isNotEqualTo [])) and ((random 100) < 90)) then
 				{
 				_ldr = _resCand select (floor (random (count _resCand)));
 
@@ -978,7 +978,7 @@ while {(RydBB_Active)} do
 			{
 			if ((count _BBHQGrps) > 1) then
 				{
-				if (((count _moreVehHQ) > 0) and ((random 100) < 90)) then
+				if (((_moreVehHQ isNotEqualTo [])) and ((random 100) < 90)) then
 					{
 					_ldr = _moreVehHQ select (floor (random (count _moreVehHQ)));
 					switch (_flVMaxStr) do
@@ -1009,7 +1009,7 @@ while {(RydBB_Active)} do
 						};
 					};
 
-				if (((count _moreNumHQ) > 0) and ((random 100) < 90)) then
+				if (((_moreNumHQ isNotEqualTo [])) and ((random 100) < 90)) then
 					{
 					_ldr = _moreNumHQ select (floor (random (count _moreNumHQ)));
 					switch (_flSAMaxStr) do
@@ -1065,7 +1065,7 @@ while {(RydBB_Active)} do
 							{
 							switch (true) do
 								{
-								case ((((_flVMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
+								case ((((_flVMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((_goingOne isEqualTo [])) and ((_goingTwo isNotEqualTo [])) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingOne pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1073,7 +1073,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1;
 									};
 
-								case ((((_flVMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
+								case ((((_flVMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((_goingTwo isEqualTo [])) and ((_goingOne isNotEqualTo [])) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingTwo pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1081,7 +1081,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1
 									};
 
-								case ((_centerCount > 0) and ((count _moreNumHQ) == 0)) :
+								case ((_centerCount > 0) and ((_moreNumHQ isEqualTo []))) :
 									{
 									_goingAhead pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1089,7 +1089,7 @@ while {(RydBB_Active)} do
 									_centerCount = _centerCount - 1
 									};
 
-								case ((((_flSAMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
+								case ((((_flSAMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((_goingOne isEqualTo [])) and ((_goingTwo isNotEqualTo [])) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingOne pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1097,7 +1097,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1;
 									};
 
-								case ((((_flSAMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
+								case ((((_flSAMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((_goingTwo isEqualTo [])) and ((_goingOne isNotEqualTo [])) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingTwo pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1140,7 +1140,7 @@ while {(RydBB_Active)} do
 
 							switch (true) do
 								{
-								case ((((_flVMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
+								case ((((_flVMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((_goingOne isEqualTo [])) and ((_goingTwo isNotEqualTo [])) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingOne pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1148,7 +1148,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1;
 									};
 
-								case ((((_flVMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
+								case ((((_flVMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((_goingTwo isEqualTo [])) and ((_goingOne isNotEqualTo [])) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingTwo pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1191,7 +1191,7 @@ while {(RydBB_Active)} do
 
 							switch (true) do
 								{
-								case ((((_flSAMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((count _goingOne) == 0) and ((count _goingTwo) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
+								case ((((_flSAMaxStr == _flankOne) and (((count _goingOne) <= (count _goingTwo)) or ((random 100) < 10))) or (((_goingOne isEqualTo [])) and ((_goingTwo isNotEqualTo [])) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingOne pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1199,7 +1199,7 @@ while {(RydBB_Active)} do
 									_flankCount = _flankCount - 1;
 									};
 
-								case ((((_flSAMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((count _goingTwo) == 0) and ((count _goingOne) > 0) and ((random 100) > 75))) and (_flankCount > 0)) :
+								case ((((_flSAMaxStr == _flankTwo) and (((count _goingTwo) <= (count _goingOne)) or ((random 100) < 10))) or (((_goingTwo isEqualTo [])) and ((_goingOne isNotEqualTo [])) and ((random 100) > 75))) and (_flankCount > 0)) :
 									{
 									_goingTwo pushBack _ldr;
 									_moreVehHQ = _moreVehHQ - [_ldr];
@@ -1362,7 +1362,7 @@ while {(RydBB_Active)} do
 		}
 	forEach _goingReserve0;
 
-	if ((count _goingReserve) > 0) then
+	if ((_goingReserve isNotEqualTo [])) then
 		{
 		_lastGLeft = _goingLeft;
 		_lastGRight = _goingRight;
@@ -1385,7 +1385,7 @@ while {(RydBB_Active)} do
 
 		if ((count _goingAhead) < _lastGAheadN) then
 			{
-			if ((count _goingReserve) > 0) then
+			if ((_goingReserve isNotEqualTo [])) then
 				{
 				_newL = _goingReserve select 0;
 				_goingReserve = _goingReserve - [_newL];
@@ -1407,7 +1407,7 @@ while {(RydBB_Active)} do
 
 		if ((count _goingLeft) <  _lastGLeftN) then
 			{
-			if ((count _goingReserve) > 0) then
+			if ((_goingReserve isNotEqualTo [])) then
 				{
 				_newL = _goingReserve select 0;
 				_goingReserve = _goingReserve - [_newL];
@@ -1429,7 +1429,7 @@ while {(RydBB_Active)} do
 
 		if ((count _goingRight) < _lastGRightN) then
 			{
-			if ((count _goingReserve) > 0) then
+			if ((_goingReserve isNotEqualTo [])) then
 				{
 				_newL = _goingReserve select 0;
 				_goingReserve = _goingReserve - [_newL];
@@ -1505,7 +1505,7 @@ while {(RydBB_Active)} do
 				_perDirPos = _mainPos;
 				_actT = _x getVariable "ActualTarget";
 				if !(isNil "_actT") then {_perDirPos = _actT select 0};
-				if !((count _knEnemy) == 0) then
+				if !((_knEnemy isEqualTo [])) then
 					{
 					_dpX = 0;
 					_dpY = 0;
@@ -1577,12 +1577,12 @@ while {(RydBB_Active)} do
 
 			{
 			_notTaken = _leftNotTaken;
-			if ((count _notTaken) == 0) then {_notTaken = _frontNotTaken};
-			if ((count _notTaken) == 0) then {_notTaken = _rightNotTaken};
+			if ((_notTaken isEqualTo [])) then {_notTaken = _frontNotTaken};
+			if ((_notTaken isEqualTo [])) then {_notTaken = _rightNotTaken};
 
 			_fPos = getPosATL (vehicle (leader _x));
 
-			if ((count _notTaken) == 0) exitWith {_x setVariable ["ActualTarget",[_fPos,1,false,"Zero"]]};
+			if ((_notTaken isEqualTo [])) exitWith {_x setVariable ["ActualTarget",[_fPos,1,false,"Zero"]]};
 
 			_chosenT = _notTaken select 0;
 			_indx = 0;
@@ -1609,21 +1609,21 @@ while {(RydBB_Active)} do
 
 			_x setVariable ["ActualTarget",_chosenT];
 
-			if ((count _leftNotTaken) > 0) then
+			if ((_leftNotTaken isNotEqualTo [])) then
 				{
 				_leftNotTaken set [_indx,0];
 				_leftNotTaken = _leftNotTaken - [0]
 				}
 			else
 				{
-				if ((count _frontNotTaken) > 0) then
+				if ((_frontNotTaken isNotEqualTo [])) then
 					{
 					_frontNotTaken set [_indx,0];
 					_frontNotTaken = _frontNotTaken - [0]
 					}
 				else
 					{
-					if ((count _rightNotTaken) > 0) then
+					if ((_rightNotTaken isNotEqualTo [])) then
 						{
 						_rightNotTaken set [_indx,0];
 						_rightNotTaken = _rightNotTaken - [0]
@@ -1635,12 +1635,12 @@ while {(RydBB_Active)} do
 
 			{
 			_notTaken = _rightNotTaken;
-			if ((count _notTaken) == 0) then {_notTaken = _frontNotTaken};
-			if ((count _notTaken) == 0) then {_notTaken = _leftNotTaken};
+			if ((_notTaken isEqualTo [])) then {_notTaken = _frontNotTaken};
+			if ((_notTaken isEqualTo [])) then {_notTaken = _leftNotTaken};
 
 			_fPos = getPosATL (vehicle (leader _x));
 
-			if ((count _notTaken) == 0) exitWith {_x setVariable ["ActualTarget",[_fPos,1,false,"Zero"]]};
+			if ((_notTaken isEqualTo [])) exitWith {_x setVariable ["ActualTarget",[_fPos,1,false,"Zero"]]};
 
 			_chosenT = _notTaken select 0;
 			_indx = 0;
@@ -1667,21 +1667,21 @@ while {(RydBB_Active)} do
 
 			_x setVariable ["ActualTarget",_chosenT];
 
-			if ((count _rightNotTaken) > 0) then
+			if ((_rightNotTaken isNotEqualTo [])) then
 				{
 				_rightNotTaken set [_indx,0];
 				_rightNotTaken = _rightNotTaken - [0]
 				}
 			else
 				{
-				if ((count _frontNotTaken) > 0) then
+				if ((_frontNotTaken isNotEqualTo [])) then
 					{
 					_frontNotTaken set [_indx,0];
 					_frontNotTaken = _frontNotTaken - [0]
 					}
 				else
 					{
-					if ((count _leftNotTaken) > 0) then
+					if ((_leftNotTaken isNotEqualTo [])) then
 						{
 						_leftNotTaken set [_indx,0];
 						_leftNotTaken = _leftNotTaken - [0]
@@ -1693,11 +1693,11 @@ while {(RydBB_Active)} do
 
 			{
 			_notTaken = _frontNotTaken;
-			if ((count _notTaken) == 0) then {_notTaken = _leftNotTaken};
-			if ((count _notTaken) == 0) then {_notTaken = _rightNotTaken};
+			if ((_notTaken isEqualTo [])) then {_notTaken = _leftNotTaken};
+			if ((_notTaken isEqualTo [])) then {_notTaken = _rightNotTaken};
 			_fPos = getPosATL (vehicle (leader _x));
 
-			if ((count _notTaken) == 0) exitWith {_x setVariable ["ActualTarget",[_fPos,1,false,"Zero"]]};
+			if ((_notTaken isEqualTo [])) exitWith {_x setVariable ["ActualTarget",[_fPos,1,false,"Zero"]]};
 
 			_chosenT = _notTaken select 0;
 
@@ -1726,21 +1726,21 @@ while {(RydBB_Active)} do
 
 			_x setVariable ["ActualTarget",_chosenT];
 
-			if ((count _frontNotTaken) > 0) then
+			if ((_frontNotTaken isNotEqualTo [])) then
 				{
 				_frontNotTaken set [_indx,0];
 				_frontNotTaken = _frontNotTaken - [0]
 				}
 			else
 				{
-				if ((count _leftNotTaken) > 0) then
+				if ((_leftNotTaken isNotEqualTo [])) then
 					{
 					_leftNotTaken set [_indx,0];
 					_leftNotTaken = _leftNotTaken - [0]
 					}
 				else
 					{
-					if ((count _rightNotTaken) > 0) then
+					if ((_rightNotTaken isNotEqualTo [])) then
 						{
 						_rightNotTaken set [_indx,0];
 						_rightNotTaken = _rightNotTaken - [0]
@@ -1787,7 +1787,7 @@ while {(RydBB_Active)} do
 
 						//_goingOverall = (_goingLeft + _goingAhead + _goingRight);
 
-						if ((count _areas) == 0) then {_areas = (_leftNotTaken + _rightNotTaken + _frontNotTaken)};
+						if ((_areas isEqualTo [])) then {_areas = (_leftNotTaken + _rightNotTaken + _frontNotTaken)};
 
 						_acT = _x getVariable "ActualTarget";
 

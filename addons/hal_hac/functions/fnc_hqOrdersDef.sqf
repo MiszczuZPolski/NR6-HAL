@@ -34,7 +34,7 @@ forEach ((_LMCU + _airDef + _recDef) - ([_HQ] + (_HQ getVariable [QEGVAR(core,ga
 
 if (_allInDef) exitWith {};
 
-//if ((_HQ getVariable ["RydHQ_DefDone",false]) and ((_HQ getVariable ["RydHQ_Order","ATTACK"]) == "DEFEND") and not (((_HQ getVariable ["RydHQ_LastE",0]) == 0) and ((count (_HQ getVariable ["RydHQ_KnEnemies",[]])) > 0) and (_HQ getVariable ["RydHQ_FirstEMark",true]))) exitwith {};
+//if ((_HQ getVariable ["RydHQ_DefDone",false]) and ((_HQ getVariable ["RydHQ_Order","ATTACK"]) == "DEFEND") and not (((_HQ getVariable ["RydHQ_LastE",0]) == 0) and (((_HQ getVariable ["RydHQ_KnEnemies",[]]) isNotEqualTo [])) and (_HQ getVariable ["RydHQ_FirstEMark",true]))) exitwith {};
 if ((_HQ getVariable [QEGVAR(core,order),"ATTACK"]) == "DEFEND") then 
 	{
 	_HQ setVariable [QEGVAR(core,defDone),true];
@@ -261,7 +261,7 @@ _exhausted = _HQ getVariable [QEGVAR(core,exhausted),[]];
 				{
 					{
 					_Gdamage = _Gdamage + (damage _x);
-					if (((count (magazines _x)) == 0) and (((vehicle _x) == _x) or ((vehicle _x) in (_HQ getVariable [QEGVAR(core,nCVeh),[]])))) exitWith {_ammo = false};
+					if ((((magazines _x) isEqualTo [])) and (((isNull objectParent _x)) or ((vehicle _x) in (_HQ getVariable [QEGVAR(core,nCVeh),[]])))) exitWith {_ammo = false};
 					if (((damage _x) > 0.5) or not (canStand _x)) exitWith {_effective = false};
 					}
 				forEach (units _x)
@@ -275,7 +275,7 @@ _exhausted = _HQ getVariable [QEGVAR(core,exhausted),[]];
 
 				{
 				_veh = assignedVehicle _x;
-				if (not (isNull _veh) and (not (canMove _veh) or ((fuel _veh) <= 0.1) or ((damage _veh) > 0.5) or (((group _x) in (((_HQ getVariable [QEGVAR(core,airG),[]]) - (_HQ getVariable [QEGVAR(hal_boss,nCAirG),[]])) + ((_HQ getVariable [QEGVAR(hal_boss,hArmorG),[]]) + (_HQ getVariable [QEGVAR(hal_boss,lArmorG),[]]) + ((_HQ getVariable [QEGVAR(hal_boss,carsG),[]]) - ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]])))))) and ((count (magazines _veh)) == 0)))) exitWith {_vehready = false};
+				if (not (isNull _veh) and (not (canMove _veh) or ((fuel _veh) <= 0.1) or ((damage _veh) > 0.5) or (((group _x) in (((_HQ getVariable [QEGVAR(core,airG),[]]) - (_HQ getVariable [QEGVAR(hal_boss,nCAirG),[]])) + ((_HQ getVariable [QEGVAR(hal_boss,hArmorG),[]]) + (_HQ getVariable [QEGVAR(hal_boss,lArmorG),[]]) + ((_HQ getVariable [QEGVAR(hal_boss,carsG),[]]) - ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]])))))) and (((magazines _veh) isEqualTo []))))) exitWith {_vehready = false};
 				}
 			forEach (units _x);
 			
@@ -382,7 +382,7 @@ _Angle = 0;
 			};
 		};
 
-	if not ((count _defFront) == 0) then
+	if not ((_defFront isEqualTo [])) then
 		{
 		_PrimDir = _defFront select 0;
 		_SecDir = _defFront select 1;	
@@ -486,7 +486,7 @@ _Angle = 0;
 			};
 		};
 
-	if not ((count _defFront) == 0) then
+	if not ((_defFront isEqualTo [])) then
 		{
 		_PrimDir = _defFront select 0;
 		_SecDir = _defFront select 1;
@@ -582,7 +582,7 @@ _recDefSpot = _HQ getVariable [QEGVAR(core,recDefSpot),[]];
 							_goodSpots = _closestArr select 1;
 							_angleV = _closestArr select 5;	
 
-							if ((count _goodSpots) == 0) exitWith {};
+							if ((_goodSpots isEqualTo [])) exitWith {};
 							if not (_x in _recDefSpot) then 
 								{
 								_aa = 0;
@@ -608,9 +608,9 @@ _recDefSpot = _HQ getVariable [QEGVAR(core,recDefSpot),[]];
 				}
 			};
 			
-		if ((count _goodSpots) == 0) exitWith {};
+		if ((_goodSpots isEqualTo [])) exitWith {};
 		};
-	if ((count _goodSpots) == 0) exitWith {}
+	if ((_goodSpots isEqualTo [])) exitWith {}
 	}
 forEach (_recDef - (_HQ getVariable [QEGVAR(core,exhausted),[]]));
 
@@ -654,7 +654,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 									_goodSpots = _closestArr select 2;_angleV = _closestArr select 5;_dXb = (_closestArr select 4) select 0;_dYb = (_closestArr select 4) select 1;	
 									_DN = _closestArr select 3;
 
-									if ((count _goodSpots) == 0) exitWith {};
+									if ((_goodSpots isEqualTo [])) exitWith {};
 									if not (_x in _defSpot) then 
 										{
 										_bb = 0;
@@ -680,10 +680,10 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 						};
 					};
 
-				if ((count _goodSpots) == 0) exitWith {}
+				if ((_goodSpots isEqualTo [])) exitWith {}
 				};
 
-			if ((count _goodSpots) == 0) exitWith {}
+			if ((_goodSpots isEqualTo [])) exitWith {}
 			}
 		forEach ((_LMCU - ((_HQ getVariable [QEGVAR(core,recDefSpot),[]]) + (_HQ getVariable [QEGVAR(core,exhausted),[]]) + (_HQ getVariable [QGVAR(defRes),[]]))) - (_HQ getVariable [QEGVAR(core,noDef),[]]));
 
@@ -804,7 +804,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 											{
 											_NR = _Spot nearRoads (200 * _defRange);
 											_cnt = 0;
-											if not ((count _NR) == 0) then 
+											if not ((_NR isEqualTo [])) then 
 												{
 												while {(true)} do
 													{
@@ -893,7 +893,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 											{
 											_NR = _Spot nearRoads (200 * _defRange);
 											_cnt = 0;
-											if not ((count _NR) == 0) then 
+											if not ((_NR isEqualTo [])) then 
 												{
 												while {(true)} do
 													{

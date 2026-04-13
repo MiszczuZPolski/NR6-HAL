@@ -141,7 +141,7 @@ if not (isNull _nE) then
 			//[_unitG,_nE] spawn RYD_Smoke;
 			[[_unitG,_nE],GVAR(smoke)] call EFUNC(common,spawn);
 			sleep 10;
-			if ((vehicle _UL) == _UL) then {sleep 25}
+			if ((isNull objectParent _UL)) then {sleep 25}
 			}
 		}
 	};
@@ -210,7 +210,7 @@ waitUntil {
 		{
 			// Workaround for braindead BIS AI when using mech or mot infantry...
 			if (not ((_x == (assignedCommander _AV)) or (_x == (assignedDriver _AV)) or (_x == (assignedGunner _AV))) and not ((vehicle _x) == _AV)) then { if (_x == (leader _unitG)) then {_x assignAsCommander _AV};_x assignAsCargo _AV;};
-			if (((assignedVehicle _x) == _AV) and (_x == (vehicle _x))) then {[_x] orderGetIn true; doStop _AV; _dw = true;};
+			if (((assignedVehicle _x) == _AV) and ((isNull objectParent _x))) then {[_x] orderGetIn true; doStop _AV; _dw = true;};
 		} forEach (units _unitG);
 //		if (not (_dw)) then {_AV setVariable ["WaitForCargo" + (str _AV),false];};
 		if ((abs (speed (_AV)) < 0.05) and not (_dw) and not ((count (waypoints _unitG)) < 1) and ((time - (_AV getVariable ["LastMoveOR",0])) > 10) ) then {_AV doMove [((position _AV) select 0) +5,((position _AV) select 1) +5,(position _AV) select 2]; _AV setVariable ["LastMoveOR",time];}

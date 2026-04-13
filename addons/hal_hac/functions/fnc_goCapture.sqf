@@ -530,7 +530,7 @@ if not (isNil "_EDPos") then
 			{
 			_nR = _pos nearRoads _i;
 
-			if ((count _nR) > 0) exitWith
+			if ((_nR isNotEqualTo [])) exitWith
 				{
 				_cR = [_pos,_nR] call EFUNC(common,findClosest);
 
@@ -917,7 +917,7 @@ waitUntil
 			{
 			if not (_x isKindOf "Man") then
 				{
-				if ((count (crew _x)) == 0) then {_AllV = _AllV - [_x]}
+				if (((crew _x) isEqualTo [])) then {_AllV = _AllV - [_x]}
 				}
 			}
 		forEach _AllV0;
@@ -925,7 +925,7 @@ waitUntil
 			{
 			if not (_x isKindOf "Man") then
 				{
-				if ((count (crew _x)) == 0) then {_AllV2 = _AllV2 - [_x]}
+				if (((crew _x) isEqualTo [])) then {_AllV2 = _AllV2 - [_x]}
 				}
 			}
 		forEach _AllV20;

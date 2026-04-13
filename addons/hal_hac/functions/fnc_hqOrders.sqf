@@ -45,7 +45,7 @@ _Trg = _HQ getVariable [QEGVAR(core,obj), (leader _HQ)];
 _vHQ = vehicle (leader _HQ);
 
 _landE = (_HQ getVariable [QEGVAR(common,knEnemiesG),[]]) - ((_HQ getVariable [QGVAR(enNavalG),[]]) + (_HQ getVariable [QEGVAR(hal_boss,enAirG),[]]));
-if ((count _landE) > 0) then 
+if ((_landE isNotEqualTo [])) then 
 	{
 	_HQ setVariable [QGVAR(nearestE),_landE select 0];
 	_dstMin = (vehicle (leader (_landE select 0))) distance _vHQ;
@@ -97,7 +97,7 @@ if not ((_HQ getVariable [QEGVAR(core,reconReserve),0]) > 0) then {_HQ setVariab
 			{
 				{
 				_Gdamage = _Gdamage + (damage _x);
-				if (((count (magazines _x)) == 0) and (((vehicle _x) == _x) or ((vehicle _x) in (_HQ getVariable [QEGVAR(core,nCVeh),[]])))) exitWith {_ammo = false};
+				if ((((magazines _x) isEqualTo [])) and (((isNull objectParent _x)) or ((vehicle _x) in (_HQ getVariable [QEGVAR(core,nCVeh),[]])))) exitWith {_ammo = false};
 				if (((damage _x) > 0.5) or not (canStand _x)) exitWith {_effective = false};
 				}
 			forEach (units _x)
@@ -121,7 +121,7 @@ if not ((_HQ getVariable [QEGVAR(core,reconReserve),0]) > 0) then {_HQ setVariab
 
 			{
 			_veh = assignedVehicle _x;
-			if (not (isNull _veh) and (not (canMove _veh) or ((fuel _veh) <= 0.1) or ((damage _veh) > 0.5) or (((group _x) in (((_HQ getVariable [QEGVAR(core,airG),[]]) - ((_HQ getVariable [QEGVAR(hal_boss,nCAirG),[]]) + (_HQ getVariable [QGVAR(rAirG),[]]))) + ((_HQ getVariable [QEGVAR(hal_boss,hArmorG),[]]) + (_HQ getVariable [QEGVAR(hal_boss,lArmorG),[]]) + ((_HQ getVariable [QEGVAR(hal_boss,carsG),[]]) - ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]])))))) and ((count (magazines _veh)) == 0)))) exitWith {_vehready = false};
+			if (not (isNull _veh) and (not (canMove _veh) or ((fuel _veh) <= 0.1) or ((damage _veh) > 0.5) or (((group _x) in (((_HQ getVariable [QEGVAR(core,airG),[]]) - ((_HQ getVariable [QEGVAR(hal_boss,nCAirG),[]]) + (_HQ getVariable [QGVAR(rAirG),[]]))) + ((_HQ getVariable [QEGVAR(hal_boss,hArmorG),[]]) + (_HQ getVariable [QEGVAR(hal_boss,lArmorG),[]]) + ((_HQ getVariable [QEGVAR(hal_boss,carsG),[]]) - ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]])))))) and (((magazines _veh) isEqualTo []))))) exitWith {_vehready = false};
 			}
 		forEach (units _x);
 
@@ -190,7 +190,7 @@ _exhausted = _HQ getVariable [QEGVAR(core,exhausted),[]];
 				{
 					{
 					_Gdamage = _Gdamage + (damage _x);
-					if (((count (magazines _x)) == 0) and (((vehicle _x) == _x) or ((vehicle _x) in (_HQ getVariable [QEGVAR(core,nCVeh),[]])))) exitWith {_ammo = false};
+					if ((((magazines _x) isEqualTo [])) and (((isNull objectParent _x)) or ((vehicle _x) in (_HQ getVariable [QEGVAR(core,nCVeh),[]])))) exitWith {_ammo = false};
 					if (((damage _x) > 0.5) or not (canStand _x)) exitWith {_effective = false};
 					}
 				forEach (units _x)
@@ -204,7 +204,7 @@ _exhausted = _HQ getVariable [QEGVAR(core,exhausted),[]];
 
 				{
 				_veh = assignedVehicle _x;
-				if (not (isNull _veh) and (not (canMove _veh) or ((fuel _veh) <= 0.1) or ((damage _veh) > 0.5) or (((group _x) in (((_HQ getVariable [QEGVAR(core,airG),[]]) - (_HQ getVariable [QEGVAR(hal_boss,nCAirG),[]])) + ((_HQ getVariable [QEGVAR(hal_boss,hArmorG),[]]) + (_HQ getVariable [QEGVAR(hal_boss,lArmorG),[]]) + ((_HQ getVariable [QEGVAR(hal_boss,carsG),[]]) - ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]])))))) and ((count (magazines _veh)) == 0)))) exitWith {_vehready = false};
+				if (not (isNull _veh) and (not (canMove _veh) or ((fuel _veh) <= 0.1) or ((damage _veh) > 0.5) or (((group _x) in (((_HQ getVariable [QEGVAR(core,airG),[]]) - (_HQ getVariable [QEGVAR(hal_boss,nCAirG),[]])) + ((_HQ getVariable [QEGVAR(hal_boss,hArmorG),[]]) + (_HQ getVariable [QEGVAR(hal_boss,lArmorG),[]]) + ((_HQ getVariable [QEGVAR(hal_boss,carsG),[]]) - ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]])))))) and (((magazines _veh) isEqualTo []))))) exitWith {_vehready = false};
 				}
 			forEach (units _x);
 
@@ -432,7 +432,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 				};
 
 			_onlyL = (_HQ getVariable [QEGVAR(hal_boss,lArmorG),[]]) - (_HQ getVariable [QGVAR(mArmorG),[]]);
-			if (not ((count _onlyL) == 0) and ((count (_HQ getVariable [QGVAR(reconAv),[]])) > 0) and not (_HQ getVariable [QEGVAR(core,reconDone),false]) and not ((_HQ getVariable [QEGVAR(core,reconStage),1]) > (_stages * (count _toRecon)))) then
+			if (not ((_onlyL isEqualTo [])) and ((count (_HQ getVariable [QGVAR(reconAv),[]])) > 0) and not (_HQ getVariable [QEGVAR(core,reconDone),false]) and not ((_HQ getVariable [QEGVAR(core,reconStage),1]) > (_stages * (count _toRecon)))) then
 				{
 				_gps = (([_onlyL,"R",_rcheckArr,200000,false] call GVAR(recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
 
@@ -468,7 +468,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 				};
 
 			_LMCUA = (_HQ getVariable [QEGVAR(core,friends),[]]) - ((_HQ getVariable [QEGVAR(core,aOnly),[]]) + (_HQ getVariable [QEGVAR(core,navalG),[]]) + (_HQ getVariable [QGVAR(staticG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,artG),[]]) + (_HQ getVariable [QEGVAR(core,noRecon),[]]) + (_HQ getVariable [QGVAR(specForG),[]]) + (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) + (_HQ getVariable [QEGVAR(core,cargoOnly),[]]));
-			if (not ((count _LMCUA) == 0) and not (_HQ getVariable [QEGVAR(core,reconDone),false]) and not ((_HQ getVariable [QEGVAR(core,reconStage),1]) > (_stages * (count _toRecon)))) then
+			if (not ((_LMCUA isEqualTo [])) and not (_HQ getVariable [QEGVAR(core,reconDone),false]) and not ((_HQ getVariable [QEGVAR(core,reconStage),1]) > (_stages * (count _toRecon)))) then
 				{
 				_gps = (([_LMCUA,"NR",_rcheckArr,200000,false] call GVAR(recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
 
@@ -645,12 +645,12 @@ if (count (_reconthreat + _FOthreat + _snipersthreat) > 0) then
 	([_reconthreat + _FOthreat + _snipersthreat,"Recon",_HQ,0,0,0] + _constant) call GVAR(dispatcher);
 	};
 
-if (count _ATinfthreat > 0) then 
+if (_ATinfthreat isNotEqualTo []) then 
 	{
 	([_ATinfthreat,"ATInf",_HQ,0,0,85] + _constant) call GVAR(dispatcher);
 	};
 
-if (count _Infthreat > 0) then 
+if (_Infthreat isNotEqualTo []) then 
 	{
 	([_Infthreat,"Inf",_HQ,75,80,85] + _constant) call GVAR(dispatcher);
 	};
@@ -660,17 +660,17 @@ if (count (_LArmorthreat + _HArmorthreat) > 0) then
 	([_LArmorthreat + _HArmorthreat,"Armor",_HQ,50,0,85] + _constant) call GVAR(dispatcher);
 	};
 
-if (count _Carsthreat > 0) then 
+if (_Carsthreat isNotEqualTo []) then 
 	{
 	([_Carsthreat,"Cars",_HQ,75,80,85] + _constant) call GVAR(dispatcher);
 	};
 
-if (count _Artthreat > 0) then 
+if (_Artthreat isNotEqualTo []) then 
 	{
 	([_Artthreat,"Art",_HQ,70,75,75] + _constant) call GVAR(dispatcher);
 	};
 
-if (count _Airthreat > 0) then 
+if (_Airthreat isNotEqualTo []) then 
 	{
 	([_Airthreat,"Air",_HQ,0,0,75] + _constant) call GVAR(dispatcher);
 	};
@@ -680,7 +680,7 @@ if (count (_Staticthreat - _Artthreat) > 0) then
 	([_Staticthreat - _Artthreat,"Static",_HQ,75,80,85] + _constant) call GVAR(dispatcher);
 	};
 
-if (count _Navalthreat > 0) then 
+if (_Navalthreat isNotEqualTo []) then 
 	{
 	([_Navalthreat,"Naval",_HQ,0,0,0] + _constant) call GVAR(dispatcher);
 	};
@@ -782,7 +782,7 @@ _toTake = _toTake - [objNull];
 			_forCapt = _forCapt - ((_HQ getVariable [QEGVAR(core,aOnly),[]]) + (_HQ getVariable [QEGVAR(core,rOnly),[]]));
 			_forCapt = [_forCapt] call GVAR(sizeOrd);
 
-			if (not ((count _forCapt) == 0) and ((count (_HQ getVariable [QGVAR(attackAv),[]])) > 0) and not (_toTake isEqualTo [(leader _HQ)])) then
+			if (not ((_forCapt isEqualTo [])) and ((count (_HQ getVariable [QGVAR(attackAv),[]])) > 0) and not (_toTake isEqualTo [(leader _HQ)])) then
 				{
 				for [{_m = 500},{_m <= 50000},{_m = _m + 500}] do
 					{
@@ -849,7 +849,7 @@ _toTake = _toTake - [objNull];
 			_LMCU = (_HQ getVariable [QEGVAR(core,friends),[]]) - ((_HQ getVariable [QEGVAR(core,exhausted),[]]) + ((_HQ getVariable [QEGVAR(core,airG),[]]) - (_HQ getVariable [QEGVAR(core,nCrewInfG),[]])) + (_HQ getVariable [QGVAR(specForG),[]]) + (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) + (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) + (_HQ getVariable [QEGVAR(core,navalG),[]]) + (_HQ getVariable [QGVAR(staticG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,artG),[]]) + (_HQ getVariable [QEGVAR(core,garrison),[]]) + ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) - ((_HQ getVariable [QEGVAR(core,nCrewInfG),[]]) - (_HQ getVariable [QEGVAR(core,supportG),[]]))));
 			_LMCU = _LMCU - ((_HQ getVariable [QEGVAR(core,aOnly),[]]) + (_HQ getVariable [QEGVAR(core,rOnly),[]]));
 			_LMCU = [_LMCU] call GVAR(sizeOrd);
-			if (not ((count _LMCU) == 0) and ((count (_HQ getVariable [QGVAR(attackAv),[]])) > 0) and not (_toRecon isEqualTo [(leader _HQ)])) then
+			if (not ((_LMCU isEqualTo [])) and ((count (_HQ getVariable [QGVAR(attackAv),[]])) > 0) and not (_toRecon isEqualTo [(leader _HQ)])) then
 				{
 				for [{_m = 1000},{_m <= 200000},{_m = _m + 1000}] do
 					{
@@ -965,7 +965,7 @@ _toTakeNav = _toTakeNav - [objNull];
 			_forNavCapt = _forNavCapt - ((_HQ getVariable [QEGVAR(core,aOnly),[]]) + (_HQ getVariable [QEGVAR(core,rOnly),[]]));
 			_forNavCapt = [_forNavCapt] call GVAR(sizeOrd);
 
-			if (not ((count _forNavCapt) == 0)) then
+			if (not ((_forNavCapt isEqualTo []))) then
 				{
 				for [{_m = 500},{_m <= 50000},{_m = _m + 500}] do
 					{
@@ -1050,7 +1050,7 @@ forEach _toTakeNav;
 			}
 		foreach _LMCU;
 		
-		if ((count _WAAv) == 0) exitWith {};
+		if ((_WAAv isEqualTo [])) exitWith {};
 		
 		_WAAv = [_WAAv] call EFUNC(common,randomOrd);
 		
@@ -1068,13 +1068,13 @@ forEach _toTakeNav;
 			}
 		foreach [(_HQ getVariable ["RydHQ_Obj1",(leader _HQ)]),(_HQ getVariable ["RydHQ_Obj2",(leader _HQ)]),(_HQ getVariable ["RydHQ_Obj3",(leader _HQ)]),(_HQ getVariable ["RydHQ_Obj4",(leader _HQ)])];
 		
-		if ((count _where) == 0) then {_where = [(_HQ getVariable ["RydHQ_Obj",(leader _HQ)])]};
+		if ((_where isEqualTo [])) then {_where = [(_HQ getVariable ["RydHQ_Obj",(leader _HQ)])]};
 		
 		_howMuch = ((_HQ getVariable ["RydHQ_Recklessness",[]]) + (random 0.5))/1.5;
 		if (_howMuch > 1) then {_howMuch = 1};
 		_howMuch = floor (_howMuch * (count _WAAv));
 		
-		while {((_howMuch > 0) and ((count _WAAv) > 0))} do
+		while {((_howMuch > 0) and ((_WAAv isNotEqualTo [])))} do
 			{
 				{
 				_gp = _WAAv select 0;
