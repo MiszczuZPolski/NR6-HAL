@@ -509,7 +509,7 @@ class CfgVehicles
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class EGVAR(hal_hac,camV)
+			class EGVAR(hac,camV)
 			{
 				displayName="Remote Cam";
 				description="Setting broken with caching. Supposed to add a camera to see what other squad leaders can see";
@@ -1131,7 +1131,7 @@ class CfgVehicles
 				typeName="NUMBER";
 				defaultValue = "5";
 			};
-			class EGVAR(hal_hac,objectiveRespawn)
+			class EGVAR(hac,objectiveRespawn)
 			{
 				displayName="Create Objective Player Respawn Points";
 				description="Creates a player respawn position for every taken objective.";

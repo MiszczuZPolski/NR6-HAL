@@ -260,7 +260,7 @@
 ] call CBA_fnc_addSetting;
 
 [
-    QEGVAR(hal_hac,camV), "CHECKBOX",
+    QEGVAR(hac,camV), "CHECKBOX",
     [LLSTRING(camV), LLSTRING(camV_desc)],
     LLSTRING(category_commander),
     false, 1
@@ -703,7 +703,7 @@
 ] call CBA_fnc_addSetting;
 
 [
-    QEGVAR(hal_hac,objectiveRespawn), "CHECKBOX",
+    QEGVAR(hac,objectiveRespawn), "CHECKBOX",
     [LLSTRING(objectiveRespawn), LLSTRING(objectiveRespawn_desc)],
     LLSTRING(category_objectives),
     false, 1

@@ -100,7 +100,7 @@ publicVariable QGVAR(wS_ArtyMarks);
 
 // TaskInitNR6.sqf 72 Action* callbacks are now loaded via hal_tasking addon's CBA preInit path (Phase 3, Plan 05).
 // Legacy preprocessFile loaders (HAC_fnc, HAC_fnc2, VarInit, TaskMenu, TaskInitNR6) removed during Phase 3.
-// SquadTaskingNR6.sqf loader replaced below with EFUNC(hal_tasking,squadTasking) spawn.
+// SquadTaskingNR6.sqf loader replaced below with EFUNC(tasking,squadTasking) spawn.
 
 //can be replaced with getMarkerType and getMarkerSize
 HAL_fnc_getType = compile preprocessFileLineNumbers "A3\modules_f\marta\data\scripts\fnc_getType.sqf";
@@ -171,7 +171,7 @@ if (EGVAR(missionmodules,active)) then
 				_x setVariable ["BBProgress",0]
 				}
 			forEach _BBHQGrps;
-			[[_x,_BBHQGrps],EFUNC(hal_boss,boss)] call EFUNC(common,spawn)
+			[[_x,_BBHQGrps],EFUNC(boss,boss)] call EFUNC(common,spawn)
 			};
 
 		sleep 1;
@@ -201,8 +201,8 @@ H_HQSitRep = EFUNC(core,HQSitRepH);
 		publicVariable _leaderName;
 		private _gp = group _leader;
 		[[_gp], missionNamespace getVariable (_codeSign + "_HQSitRep")] call EFUNC(common,spawn);
-		[[_gp], EFUNC(hal_boss,FBFTLOOP)] call EFUNC(common,spawn);
-		[[_gp], EFUNC(hal_boss,SecTasks)] call EFUNC(common,spawn);
+		[[_gp], EFUNC(boss,FBFTLOOP)] call EFUNC(common,spawn);
+		[[_gp], EFUNC(boss,SecTasks)] call EFUNC(common,spawn);
 		sleep 5;
 	};
 } forEach [
@@ -222,5 +222,5 @@ if ((count GVAR(groupMarks)) > 0) then
 	};
 
 if (GVAR(actions)) then {
-    [[], EFUNC(hal_tasking,squadTasking)] call EFUNC(common,spawn);
+    [[], EFUNC(tasking,squadTasking)] call EFUNC(common,spawn);
 };

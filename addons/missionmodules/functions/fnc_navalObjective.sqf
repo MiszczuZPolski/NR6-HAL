@@ -54,7 +54,7 @@ if (_objName isNotEqualTo "") then {_logic setVariable ["ObjName",_objName]};
     missionNamespace setVariable [_varName, _existing];
 
     if ((_logic getVariable QGVAR(takenLeader)) isEqualTo (_x getVariable "LeaderType")) then  {
-        (group _leaderObj) setVariable [QEGVAR(hal_hac,takenNaval),((group _leaderObj) getVariable [QEGVAR(hal_hac,takenNaval),[]]) + [_logic]];
+        (group _leaderObj) setVariable [QEGVAR(hac,takenNaval),((group _leaderObj) getVariable [QEGVAR(hac,takenNaval),[]]) + [_logic]];
         _logic setVariable [_prefixT,true];
     };
 

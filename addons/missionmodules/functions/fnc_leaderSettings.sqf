@@ -39,7 +39,7 @@ private _commanders = [];
     missionNamespace setVariable [QEGVAR(core,subSynchro)    + _letter, _logic getVariable [QEGVAR(core,subSynchro),    EGVAR(core,subSynchro)]];
     missionNamespace setVariable [QEGVAR(core,knowTL)        + _letter, _logic getVariable [QEGVAR(core,knowTL),        EGVAR(core,knowTL)]];
     missionNamespace setVariable [QEGVAR(core,getHQInside)   + _letter, _logic getVariable [QEGVAR(core,getHQInside),   EGVAR(core,getHQInside)]];
-    missionNamespace setVariable [QEGVAR(hal_hac,camV)       + _letter, _logic getVariable [QEGVAR(hal_hac,camV),       EGVAR(hal_hac,camV)]];
+    missionNamespace setVariable [QEGVAR(hac,camV)       + _letter, _logic getVariable [QEGVAR(hac,camV),       EGVAR(hac,camV)]];
     missionNamespace setVariable [QEGVAR(core,infoMarkers)   + _letter, _logic getVariable [QEGVAR(core,infoMarkers),   EGVAR(core,infoMarkers)]];
     missionNamespace setVariable [QEGVAR(core,artyMarks)     + _letter, _logic getVariable [QEGVAR(core,artyMarks),     EGVAR(core,artyMarks)]];
     missionNamespace setVariable [QEGVAR(core,secTasks)      + _letter, _logic getVariable [QEGVAR(core,secTasks),      EGVAR(core,secTasks)]];

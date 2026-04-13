@@ -114,60 +114,60 @@ while {true} do
 
 	if (GVAR(rHQAutoFill)) then
 	{
-	[] call EFUNC(hal_data,presentRHQ)
+	[] call EFUNC(data,presentRHQ)
 	};
 	
-	_specFor_class = EGVAR(hal_data,specFor) + EGVAR(hal_data,wS_specFor_class) - RHQs_SpecFor;
+	_specFor_class = EGVAR(data,specFor) + EGVAR(data,wS_specFor_class) - RHQs_SpecFor;
 
-	_recon_class = EGVAR(hal_data,recon) + EGVAR(hal_data,wS_recon_class) - RHQs_Recon;
+	_recon_class = EGVAR(data,recon) + EGVAR(data,wS_recon_class) - RHQs_Recon;
 		
-	_FO_class = EGVAR(hal_data,fO) + EGVAR(hal_data,wS_FO_class) - RHQs_FO;
+	_FO_class = EGVAR(data,fO) + EGVAR(data,wS_FO_class) - RHQs_FO;
 		
-	_snipers_class = EGVAR(hal_data,snipers) + EGVAR(hal_data,wS_snipers_class) - RHQs_Snipers;
+	_snipers_class = EGVAR(data,snipers) + EGVAR(data,wS_snipers_class) - RHQs_Snipers;
 		
-	_ATinf_class = EGVAR(hal_data,aTInf) + EGVAR(hal_data,wS_ATinf_class) - RHQs_ATInf;
+	_ATinf_class = EGVAR(data,aTInf) + EGVAR(data,wS_ATinf_class) - RHQs_ATInf;
 		
-	_AAinf_class = EGVAR(hal_data,aAInf) + EGVAR(hal_data,wS_AAinf_class) - RHQs_AAInf;
+	_AAinf_class = EGVAR(data,aAInf) + EGVAR(data,wS_AAinf_class) - RHQs_AAInf;
 
-	_Inf_class = EGVAR(hal_data,inf) + EGVAR(hal_data,wS_Inf_class) - RHQs_Inf;
+	_Inf_class = EGVAR(data,inf) + EGVAR(data,wS_Inf_class) - RHQs_Inf;
 		
-	_Art_class = EGVAR(hal_data,art) + EGVAR(hal_data,wS_Art_class) - RHQs_Art;
+	_Art_class = EGVAR(data,art) + EGVAR(data,wS_Art_class) - RHQs_Art;
 		
-	_HArmor_class = EGVAR(hal_data,hArmor) + EGVAR(hal_data,wS_HArmor_class) - RHQs_HArmor;
+	_HArmor_class = EGVAR(data,hArmor) + EGVAR(data,wS_HArmor_class) - RHQs_HArmor;
 		
-	_MArmor_class = EGVAR(hal_data,mArmor) + EGVAR(hal_data,wS_MArmor_class) - RHQs_MArmor;
+	_MArmor_class = EGVAR(data,mArmor) + EGVAR(data,wS_MArmor_class) - RHQs_MArmor;
 
-	_LArmor_class = EGVAR(hal_data,lArmor) + EGVAR(hal_data,wS_LArmor_class) - RHQs_LArmor;
+	_LArmor_class = EGVAR(data,lArmor) + EGVAR(data,wS_LArmor_class) - RHQs_LArmor;
 		
-	_LArmorAT_class = EGVAR(hal_data,lArmorAT) + EGVAR(hal_data,wS_LArmorAT_class) - RHQs_LArmorAT;
+	_LArmorAT_class = EGVAR(data,lArmorAT) + EGVAR(data,wS_LArmorAT_class) - RHQs_LArmorAT;
 
-	_Cars_class = EGVAR(hal_data,cars) + EGVAR(hal_data,wS_Cars_class) - RHQs_Cars;
+	_Cars_class = EGVAR(data,cars) + EGVAR(data,wS_Cars_class) - RHQs_Cars;
 		
-	_Air_class = EGVAR(hal_data,air) + EGVAR(hal_data,wS_Air_class) - RHQs_Air;
+	_Air_class = EGVAR(data,air) + EGVAR(data,wS_Air_class) - RHQs_Air;
 		
-	_BAir_class = EGVAR(hal_data,bAir) + EGVAR(hal_data,wS_BAir_class) - RHQs_BAir;
+	_BAir_class = EGVAR(data,bAir) + EGVAR(data,wS_BAir_class) - RHQs_BAir;
 		
-	_RAir_class = EGVAR(hal_data,rAir) + EGVAR(hal_data,wS_RAir_class) - RHQs_RAir;
+	_RAir_class = EGVAR(data,rAir) + EGVAR(data,wS_RAir_class) - RHQs_RAir;
 		
-	_NCAir_class = EGVAR(hal_data,nCAir) + EGVAR(hal_data,wS_NCAir_class) - RHQs_NCAir;
+	_NCAir_class = EGVAR(data,nCAir) + EGVAR(data,wS_NCAir_class) - RHQs_NCAir;
 
-	_Naval_class = EGVAR(hal_data,naval) + EGVAR(hal_data,wS_Naval_class) - RHQs_Naval;
+	_Naval_class = EGVAR(data,naval) + EGVAR(data,wS_Naval_class) - RHQs_Naval;
 
-	_Static_class = EGVAR(hal_data,static) + EGVAR(hal_data,wS_Static_class) - RHQs_Static;
+	_Static_class = EGVAR(data,static) + EGVAR(data,wS_Static_class) - RHQs_Static;
 		
-	_StaticAA_class = EGVAR(hal_data,staticAA) + EGVAR(hal_data,wS_StaticAA_class) - RHQs_StaticAA;
+	_StaticAA_class = EGVAR(data,staticAA) + EGVAR(data,wS_StaticAA_class) - RHQs_StaticAA;
 		
-	_StaticAT_class = EGVAR(hal_data,staticAT) + EGVAR(hal_data,wS_StaticAT_class) - RHQs_StaticAT;
+	_StaticAT_class = EGVAR(data,staticAT) + EGVAR(data,wS_StaticAT_class) - RHQs_StaticAT;
 		
-	_Support_class = EGVAR(hal_data,support) + EGVAR(hal_data,wS_Support_class) - RHQs_Support;
+	_Support_class = EGVAR(data,support) + EGVAR(data,wS_Support_class) - RHQs_Support;
 		
-	_Cargo_class = EGVAR(hal_data,cargo) + EGVAR(hal_data,wS_Cargo_class) - RHQs_Cargo;
+	_Cargo_class = EGVAR(data,cargo) + EGVAR(data,wS_Cargo_class) - RHQs_Cargo;
 		
-	_NCCargo_class = EGVAR(hal_data,nCCargo) + EGVAR(hal_data,wS_NCCargo_class) - RHQs_NCCargo;
+	_NCCargo_class = EGVAR(data,nCCargo) + EGVAR(data,wS_NCCargo_class) - RHQs_NCCargo;
 		
-	_Crew_class = EGVAR(hal_data,crew) + EGVAR(hal_data,wS_Crew_class) - RHQs_Crew;
+	_Crew_class = EGVAR(data,crew) + EGVAR(data,wS_Crew_class) - RHQs_Crew;
 		
-	_Other_class = EGVAR(hal_data,other) + EGVAR(hal_data,wS_Other_class);
+	_Other_class = EGVAR(data,other) + EGVAR(data,wS_Other_class);
 
 	_NCrewInf_class = _Inf_class - _Crew_class;
 	_Cargo_class = _Cargo_class - (_Support_class - ["MH60S"]);

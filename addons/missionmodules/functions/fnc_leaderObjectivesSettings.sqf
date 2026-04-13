@@ -51,6 +51,6 @@ private _commanders = [];
     missionNamespace setVariable [QEGVAR(core,bBAOObj)           + _letter, _logic getVariable [QEGVAR(core,bBAOObj),           EGVAR(core,bBAOObj)]];
     missionNamespace setVariable [QEGVAR(core,maxSimpleObjs)     + _letter, _logic getVariable [QEGVAR(core,maxSimpleObjs),     EGVAR(core,maxSimpleObjs)]];
     missionNamespace setVariable [QEGVAR(core,cRDefRes)          + _letter, _logic getVariable [QEGVAR(core,cRDefRes),          EGVAR(core,cRDefRes)]];
-    missionNamespace setVariable [QEGVAR(hal_hac,objectiveRespawn) + _letter, _logic getVariable [QEGVAR(hal_hac,objectiveRespawn), EGVAR(hal_hac,objectiveRespawn)]];
+    missionNamespace setVariable [QEGVAR(hac,objectiveRespawn) + _letter, _logic getVariable [QEGVAR(hac,objectiveRespawn), EGVAR(hac,objectiveRespawn)]];
 
 } forEach _commanders;

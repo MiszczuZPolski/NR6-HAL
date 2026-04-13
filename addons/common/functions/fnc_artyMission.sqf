@@ -50,7 +50,7 @@ private _allAmmo = 0;
 							};
 						};
 
-						case (_type in EGVAR(hal_data,rocketArty)) : {
+						case (_type in EGVAR(data,rocketArty)) : {
 							switch (_ammoG) do {
 								case ("HE") : {_ammo = (((magazinesAllTurrets _vehicle) select 0) select 0)};
 								case ("SPECIAL") : {_ammo = (((magazinesAllTurrets _vehicle) select 0) select 0)};
@@ -71,12 +71,12 @@ private _allAmmo = 0;
 						};
 
 						default {
-							if ((count EGVAR(hal_data,art)) > 0) then {
+							if ((count EGVAR(data,art)) > 0) then {
 								_arr = [];
 
 								{
 									if (_type in (_x select 0)) exitWith {_arr = _x select 1}
-								} forEach EGVAR(hal_data,otherArty);
+								} forEach EGVAR(data,otherArty);
 
 								if ((count _arr) > 0) then {
 
