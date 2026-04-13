@@ -5,7 +5,7 @@ params ["_logic"];
 private _commanders = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_commanders pushBack _x};
+    if ((typeOf _x) == QGVAR(Leader_Module)) then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {

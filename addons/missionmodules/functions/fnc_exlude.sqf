@@ -5,7 +5,7 @@ params ["_logic"];
 private _commanders = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_commanders pushBack _x};
+    if ((typeOf _x) == QGVAR(Leader_Module)) then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
@@ -33,7 +33,7 @@ private _commanders = [];
     };
 
     {
-        if ((typeOf _x) != "NR6_HAL_Leader_Module") then {
+        if ((typeOf _x) != QGVAR(Leader_Module)) then {
             private _existing = missionNamespace getVariable [_varName, []];
             _existing pushBack (group _x);
             missionNamespace setVariable [_varName, _existing];

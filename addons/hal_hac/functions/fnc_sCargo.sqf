@@ -246,7 +246,7 @@ if not (_emptyV) then
 
 						while {(isOnRoad _pos)} do
 							{
-							_pos = [_pos0,30 + _ct] call EFUNC(common,randomAround);
+							_pos = [_pos0,30 + _ct] call EFUNC(common,positionAround);
 							_ct = _ct + 1;
 							if (_ct > 50) exitWith {}
 							};
@@ -278,7 +278,7 @@ if not (_emptyV) then
 		{
 		_Lpos = _EDpositions select 0;
 
-		_wp = [_unitG,([_Lpos,30] call EFUNC(common,randomAround))] call EFUNC(common,WPadd);
+		_wp = [_unitG,([_Lpos,30] call EFUNC(common,positionAround))] call EFUNC(common,WPadd);
 		};
 
 	if ((_GD in _airCargo) and {not (isOnRoad _Lpos)})  then
@@ -349,7 +349,7 @@ if not (_emptyV) then
 
 		_taskTxt = "Reach LZ, wait for evacuation.";
 
-		_wp = [_unitG,([_Lpos,30] call EFUNC(common,randomAround))] call EFUNC(common,WPadd);
+		_wp = [_unitG,([_Lpos,30] call EFUNC(common,positionAround))] call EFUNC(common,WPadd);
 		};*/
 
 	if (_ChosenOne isKindOf "Air") then

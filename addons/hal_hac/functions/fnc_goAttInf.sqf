@@ -516,7 +516,7 @@ if not (isNil "_EDPos") then
 
 				while {(isOnRoad _pos)} do
 					{
-					_pos = [_pos,30] call EFUNC(common,randomAround);
+					_pos = [_pos,30] call EFUNC(common,positionAround);
 					_ct = _ct + 1;
 					if (_ct > 50) exitWith {}
 					}

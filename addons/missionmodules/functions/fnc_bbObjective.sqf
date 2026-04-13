@@ -5,7 +5,7 @@ _logic = (_this select 0);
 _Commanders = [];
 
 {
-    if ((typeOf _x) == "NR6_HAL_BBLeader_Objective_Module") then {_Commanders pushBack _x};
+    if ((typeOf _x) == QGVAR(BBLeader_Objective_Module)) then {_Commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 _Leader = (_logic getVariable "Owned");

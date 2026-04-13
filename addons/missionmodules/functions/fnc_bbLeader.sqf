@@ -14,7 +14,7 @@ if (isNil "RydBBa_HQs") then {RydBBa_HQs = []};
 if (isNil "RydBBb_HQs") then {RydBBb_HQs = []};
 
 {
-    if ((typeOf _x) == "NR6_HAL_Leader_Module") then {_Commanders pushBack _x};
+    if ((typeOf _x) == QGVAR(Leader_Module)) then {_Commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
