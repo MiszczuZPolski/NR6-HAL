@@ -119,7 +119,7 @@ private _clU = [Map_Unknown_R,Map_Unknown_G,Map_Unknown_B,Map_Unknown_A];
 
 
 {
-	params ["_leaderName", "_codeSign", "_frontVar"];
+	_x params ["_leaderName", "_codeSign", "_frontVar"];
 	private _leader = missionNamespace getVariable [_leaderName, objNull];
 	if !(isNull _leader) then {
 		private _gp = group _leader;
@@ -195,7 +195,7 @@ G_HQSitRep = EFUNC(core,HQSitRepG);
 H_HQSitRep = EFUNC(core,HQSitRepH);
 
 {
-	params ["_leaderName", "_codeSign"];
+	_x params ["_leaderName", "_codeSign"];
 	private _leader = missionNamespace getVariable [_leaderName, objNull];
 	if !(isNull _leader) then {
 		publicVariable _leaderName;
