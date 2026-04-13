@@ -1,0 +1,110 @@
+site_name: NR6-HAL Documentation
+site_description: Documentation for the NR6-HAL Arma 3 AI commander mod (v1.0 refactor)
+site_url: https://miszczuzpolski.github.io/NR6-HAL/
+repo_url: https://github.com/MiszczuZPolski/NR6-HAL
+repo_name: MiszczuZPolski/NR6-HAL
+edit_uri: edit/hemtt/docs/
+
+docs_dir: docs
+site_dir: site
+
+exclude_docs: |
+  dependency-map.md
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep orange
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep orange
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/crosshairs-gps
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+  - search
+  - tags
+
+nav:
+  - Home: README.md
+  - Quickstart: quickstart.md
+  - Personality Guide: personality-guide.md
+  - CBA Settings vs Modules: cba-settings-vs-modules.md
+  - Module Reference:
+      - Overview: modules/README.md
+      - Core Modules: modules/core.md
+      - Leader Modules: modules/leader.md
+      - Squad Modifiers: modules/squad.md
+      - Big Boss (High Command): modules/bigboss.md
+  - Example Missions:
+      - Overview: examples/README.md
+      - Basic 2-Side Battle: examples/basic-battle.md
+      - Three-HQ Combined Arms: examples/three-hq-with-arty.md
+      - Player as Commander: examples/player-commander.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/MiszczuZPolski/NR6-HAL
+    - icon: fontawesome/brands/steam
+      link: https://steamcommunity.com/sharedfiles/filedetails/?id=3375984704
+  version:
+    provider: mike
+
+copyright: >
+  HAL originally by Rydygier, continued by NinjaRider6000. v1.0 refactor
+  documentation released under the same terms as the mod itself.
