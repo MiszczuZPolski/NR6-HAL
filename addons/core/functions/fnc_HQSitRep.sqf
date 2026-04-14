@@ -489,14 +489,11 @@ while {true} do
 	_HQ setVariable [QGVAR(commDelay),GVAR(commDelay)];
 
 
-	if ((isNil (QGVAR(order))) and (isNil {_HQ getVariable QGVAR(order)})) then {_HQ setVariable [QGVAR(order),"ATTACK"]};
-	if ( !(isNil (QGVAR(order)))) then {
-		if (GVAR(order) == "DEFEND") then {
-			_HQ setVariable [QGVAR(order),"DEFEND"]
-		} else {
-			_HQ setVariable [QGVAR(order),"ATTACK"]
-		};
-	};
+	// GVAR(order) is a CBA CHECKBOX (boolean) but fnc_leaderObjectivesSettings may
+	// overwrite it with the string "DEFEND" before this runs.  Handle both types.
+	private _orderSrc = if (isNil (QGVAR(order))) then {false} else {GVAR(order)};
+	private _orderDefault = ["ATTACK", "DEFEND"] select ((_orderSrc isEqualType "") || {_orderSrc});
+	_HQ setVariable [QGVAR(order), _orderDefault];
 
 	if (isNil (QGVAR(attackAlways))) then {GVAR(attackAlways) = false};
 	_HQ setVariable [QGVAR(attackAlways),GVAR(attackAlways)];

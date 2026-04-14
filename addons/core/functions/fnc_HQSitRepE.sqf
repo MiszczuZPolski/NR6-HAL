@@ -493,14 +493,10 @@ while {true} do
 	_HQ setVariable [QGVAR(commDelay),GVAR(commDelayE)];
 
 
-	if ((isNil (QGVAR(orderE))) and (isNil {_HQ getVariable QGVAR(order)})) then {_HQ setVariable [QGVAR(order),"ATTACK"]};
-	if ( not (isNil (QGVAR(orderE)))) then {
-		if (GVAR(orderE) == "DEFEND") then {
-			_HQ setVariable [QGVAR(order),"DEFEND"]
-		} else {
-			_HQ setVariable [QGVAR(order),"ATTACK"]
-		};
-	};
+	// Per-letter override (string "DEFEND") wins; fall back to shared CBA boolean.
+	private _orderSrc = if (isNil (QGVAR(orderE))) then {GVAR(order)} else {GVAR(orderE)};
+	private _orderDefault = ["ATTACK", "DEFEND"] select ((_orderSrc isEqualType "") || {_orderSrc});
+	_HQ setVariable [QGVAR(order), _orderDefault];
 
 	if (isNil (QGVAR(attackAlwaysE))) then {GVAR(attackAlwaysE) = false};
 	_HQ setVariable [QGVAR(attackAlways),GVAR(attackAlwaysE)];
