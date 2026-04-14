@@ -14,7 +14,7 @@ _objectives = _HQ getVariable [QEGVAR(core,objectives),[]];
 
 _objectives = +_objectives;
 	
-_clusters = [_objectives,300] call GVAR(clusterC);
+_clusters = [_objectives,300] call EFUNC(common,clusterC);
 
 _targets = [];
 
@@ -84,7 +84,7 @@ _center = getPosATL (vehicle (leader _HQ));
 _initialPositions = [];
 
 	{
-	_angle = [_center,getPosATL _x,0] call GVAR(angTowards);
+	_angle = [_center,getPosATL _x,0] call EFUNC(common,angleTowards);
 	
 	_recDiv = _reconDvs select _foreachIndex;
 	
@@ -99,7 +99,7 @@ _initialPositions = [];
 	
 	for "_i" from 1 to (ceil(_pointsAm)/3) do
 		{
-		_echelonP = [_center,_angle,_echDst] call GVAR(posTowards2D);
+		_echelonP = [_center,_angle,_echDst] call EFUNC(common,positionTowards2D);
 		_echDst = _echDst + 100;
 		_echelons pushBack _echelonP
 		};
@@ -107,8 +107,8 @@ _initialPositions = [];
 	_settingPoints = [];
 	
 		{
-		_lWing = [_x,_angle - 90,150] call GVAR(posTowards2D);
-		_rWing = [_x,_angle + 90,150] call GVAR(posTowards2D);
+		_lWing = [_x,_angle - 90,150] call EFUNC(common,positionTowards2D);
+		_rWing = [_x,_angle + 90,150] call EFUNC(common,positionTowards2D);
 		
 		_settingPoints pushBack [_lWing,_x,_rWing];
 		}

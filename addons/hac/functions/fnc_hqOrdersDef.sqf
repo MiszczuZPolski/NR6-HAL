@@ -253,7 +253,7 @@ _exhausted = _HQ getVariable [QEGVAR(core,exhausted),[]];
 			_IsAPlayer = false;
 			if (EGVAR(core,noRestPlayers) and (isPlayer (leader _x))) then {_IsAPlayer = true};
 			
-			if (([_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoFullCount)) < 0.15) then 
+			if (([_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoFullCount)) < 0.15) then 
 				{
 				_ammo = false
 				}
@@ -298,7 +298,7 @@ _exhausted = _HQ getVariable [QEGVAR(core,exhausted),[]];
 					
 					if (not (_resting) and not (_Unable) and not (_IsAPlayer)) then
 						{
-						[[_x,_HQ,true],HAL_GoRest] call GVAR(spawn);
+						[[_x,_HQ,true],HAL_GoRest] call EFUNC(common,spawn);
 						//_exhausted pushBack _x
 						}
 					}; 
@@ -517,7 +517,7 @@ _Angle = 0;
 
 	if (_HQ getVariable [QEGVAR(common,debug),false]) then 
 		{
-		_goodmark = [_Center,_defPoint,"Center","ColorGreen","ICON","mil_dot","Def Center","Def Center"] call GVAR(mark)
+		_goodmark = [_Center,_defPoint,"Center","ColorGreen","ICON","mil_dot","Def Center","Def Center"] call EFUNC(common,mark)
 		};
 
 	_spotsN = _clr * 2;
@@ -562,7 +562,7 @@ _recDefSpot = _HQ getVariable [QEGVAR(core,recDefSpot),[]];
 				{
 				if not (_x in (_HQ getVariable [QEGVAR(core,garrison),[]])) then
 					{
-					_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoCount);
+					_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoCount);
 					
 					if (_ammo > 0) then
 						{
@@ -598,7 +598,7 @@ _recDefSpot = _HQ getVariable [QEGVAR(core,recDefSpot),[]];
 								_goodSpots = _goodSpots - [0];
 								_closestArr set [1,_goodSpots];
 								//[_x,_Spot,_angleV,_HQ] spawn HAL_GoDefRecon;
-								[[_x,_Spot,_angleV,_HQ],HAL_GoDefRecon] call GVAR(spawn);
+								[[_x,_Spot,_angleV,_HQ],HAL_GoDefRecon] call EFUNC(common,spawn);
 								_recDefSpot pushBack _x;
 								_HQ setVariable [QEGVAR(core,recDefSpot),_recDefSpot];
 								}
@@ -634,7 +634,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 						{
 						if not (_x in (_HQ getVariable [QEGVAR(core,garrison),[]])) then
 							{
-							_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoCount);
+							_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoCount);
 							
 							if (_ammo > 0) then
 								{
@@ -669,7 +669,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 										_goodSpots = _goodSpots - [0];
 										_closestArr set [2,_goodSpots];
 										//[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ] spawn HAL_GoDef;
-										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],HAL_GoDef] call GVAR(spawn);
+										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],HAL_GoDef] call EFUNC(common,spawn);
 										_defSpot = _HQ getVariable [QEGVAR(core,defSpot),[]];
 										_defSpot pushBack _x;
 										_HQ setVariable [QEGVAR(core,defSpot),_defSpot];
@@ -703,7 +703,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 
 					if (not (_isDef) and not (_Unable)) then
 						{
-						_ammo = [_ad,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoCount);
+						_ammo = [_ad,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoCount);
 						
 						if (_ammo > 0) then
 							{
@@ -729,7 +729,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 
 								_ad setVariable [("Busy" + (str _ad)), false];
 								//[_ad,_Spot,_HQ] spawn HAL_GoDefAir;
-								[[_ad,_Spot,_HQ],HAL_GoDefAir] call GVAR(spawn);
+								[[_ad,_Spot,_HQ],HAL_GoDefAir] call EFUNC(common,spawn);
 								}
 							}
 						}
@@ -754,7 +754,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 							{
 							if not (_x in (_HQ getVariable [QEGVAR(core,garrison),[]])) then
 								{
-								_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoCount);
+								_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoCount);
 								
 								if (_ammo > 0) then
 									{
@@ -818,7 +818,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 											};
 
 										//[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ] spawn HAL_GoDef;
-										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],HAL_GoDef] call GVAR(spawn);
+										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],HAL_GoDef] call EFUNC(common,spawn);
 										};
 									};
 								};
@@ -848,7 +848,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 							{
 							if not (_x in (_HQ getVariable [QEGVAR(core,garrison),[]])) then
 								{
-								_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoCount);
+								_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoCount);
 								
 								if (_ammo > 0) then
 									{
@@ -907,7 +907,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 											};
 										
 										//[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ] spawn HAL_GoDef;
-										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],HAL_GoDef] call GVAR(spawn);
+										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],HAL_GoDef] call EFUNC(common,spawn);
 										}
 									}
 								}
@@ -934,7 +934,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 					//if (false) then
 
 						{
-						_ammo = [_ad,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoCount);
+						_ammo = [_ad,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoCount);
 						
 						if (_ammo > 0) then
 							{
@@ -961,7 +961,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 								
 								_ad setVariable [("Busy" + (str _ad)), false];
 								//[_ad,_Spot,_HQ] spawn HAL_GoDefAir
-								[[_ad,_Spot,_HQ],HAL_GoDefAir] call GVAR(spawn);
+								[[_ad,_Spot,_HQ],HAL_GoDefAir] call EFUNC(common,spawn);
 								}
 							}
 						}
@@ -988,7 +988,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 					{
 					if not (_x in (_HQ getVariable [QEGVAR(core,garrison),[]])) then
 						{
-						_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoCount);
+						_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoCount);
 						
 						if (_ammo > 0) then
 							{
@@ -1001,7 +1001,7 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 								_Spot = (selectRandom _defArray) select 0;
 
 								//[_x,_Spot,_HQ] spawn HAL_GoDefRes;
-								[[_x,_Spot,_HQ],HAL_GoDefRes] call GVAR(spawn);
+								[[_x,_Spot,_HQ],HAL_GoDefRes] call EFUNC(common,spawn);
 								
 								}
 							}
@@ -1033,7 +1033,7 @@ forEach ((_HQ getVariable [QGVAR(defRes),[]]) - (_HQ getVariable [QEGVAR(core,no
 		{
 		deleteWaypoint ((waypoints _x) select 0);
 		//[_x,_HQ] spawn HAL_GoIdle
-			[[_x,selectRandom (_HQ getVariable [QGVAR(takenNaval),[]]),_HQ],HAL_GoDefNav] call GVAR(spawn);
+			[[_x,selectRandom (_HQ getVariable [QGVAR(takenNaval),[]]),_HQ],HAL_GoDefNav] call EFUNC(common,spawn);
 		};
 	}
 forEach (_HQ getVariable [QEGVAR(core,navalG),[]]);

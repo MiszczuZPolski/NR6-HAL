@@ -101,7 +101,7 @@ if (isNull _ChosenOne) then
 	_cargos = ((_HQ getVariable [QGVAR(cargoG),[]]) - ((_HQ getVariable [QEGVAR(core,aOnly),[]]) + (_HQ getVariable [QEGVAR(core,rOnly),[]]) + (_HQ getVariable [QEGVAR(core,noCargo),[]]) + (_HQ getVariable [QGVAR(specForG),[]])));
 	_cargos = +_cargos;
 
-	_cargos = [_cargos,getPosATL (vehicle _GL),RydHQx_CargoDist] call GVAR(distOrd);
+	_cargos = [_cargos,getPosATL (vehicle _GL),RydHQx_CargoDist] call EFUNC(common,distOrd);
 
 	_allCargo = _cargos;
 
@@ -291,7 +291,7 @@ if not (_emptyV) then
 			{
 			if (_dst > 100) exitWith {};
 			_dst =_dst + 10;
-			_Lpos = [_Lpos,_dst/2,_dst] call GVAR(randomAroundMM);
+			_Lpos = [_Lpos,_dst/2,_dst] call EFUNC(common,randomAroundMM);
 			_fe = (_Lpos isFlatEmpty [20 - (_dst/20),0,1 + (_dst/80),10,0,false,objNull]) isNotEqualTo [];
 			}
 		};

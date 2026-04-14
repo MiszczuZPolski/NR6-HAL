@@ -89,7 +89,7 @@ if not ((_HQ getVariable [QEGVAR(core,reconReserve),0]) > 0) then {_HQ setVariab
 		_IsAPlayer = false;
 		if (EGVAR(core,noRestPlayers) and (isPlayer (leader _x))) then {_IsAPlayer = true};
 		
-		if (([_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoFullCount)) < 0.15) then 
+		if (([_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoFullCount)) < 0.15) then 
 			{
 			_ammo = false
 			}
@@ -182,7 +182,7 @@ _exhausted = _HQ getVariable [QEGVAR(core,exhausted),[]];
 			_IsAPlayer = false;
 			if (EGVAR(core,noRestPlayers) and (isPlayer (leader _x))) then {_IsAPlayer = true};
 			
-			if (([_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoFullCount)) < 0.15) then 
+			if (([_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoFullCount)) < 0.15) then 
 				{
 				_ammo = false
 				}
@@ -230,7 +230,7 @@ _exhausted = _HQ getVariable [QEGVAR(core,exhausted),[]];
 					
 					if (not (_resting) and not (_Unable) and not (_IsAPlayer)) then
 						{
-						[[_x,_HQ,true],HAL_GoRest] call GVAR(spawn);
+						[[_x,_HQ,true],HAL_GoRest] call EFUNC(common,spawn);
 						//_exhausted pushBack _x
 						}
 					}; 
@@ -321,14 +321,14 @@ if (_nObj == 5) then {_toRecon = []};
 _objectives = _HQ getVariable [QEGVAR(core,objectives),[]];
 
 _stages = 3;
-if ([] call GVAR(isNight)) then {_stages = 5};
+if ([] call EFUNC(common,isNight)) then {_stages = 5};
 
 if ((_AAO) or (_HQ getVariable [QEGVAR(core,simpleMode),false])) then
 	{
 	_taken = _HQ getVariable [QEGVAR(common,taken),[]];
 	_toRecon = _objectives - _taken;
 
-	_toRecon = [_toRecon,(leader _HQ),250000] call GVAR(distOrdD);
+	_toRecon = [_toRecon,(leader _HQ),250000] call EFUNC(common,distOrdD);
 	if ((_HQ getVariable [QEGVAR(core,maxSimpleObjs),5]) < (count _toRecon)) then {_toRecon resize (_HQ getVariable [QEGVAR(core,maxSimpleObjs),5])};
 
 	if not (_HQ getVariable [QEGVAR(core,unlimitedCapt),false]) then
@@ -365,7 +365,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 			_rcheckArr = [(_HQ getVariable [QEGVAR(core,garrison),[]]),_ReconAv,_FlankAv,(_HQ getVariable [QEGVAR(core,noRecon),[]]),_exhausted,(_HQ getVariable [QEGVAR(core,nCCargoG),[]]),_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])];
 			if (not ((count (_HQ getVariable [QGVAR(rAirG),[]])) == 0) and ((count (_HQ getVariable [QGVAR(reconAv),[]])) > 0) and not (_HQ getVariable [QEGVAR(core,reconDone),false]) and not ((_HQ getVariable [QEGVAR(core,reconStage),1]) > (_stages * (count _toRecon)))) then
 				{
-				_gps = (([(_HQ getVariable [QGVAR(rAirG),[]]),"R",_rcheckArr,200000,true] call GVAR(recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
+				_gps = (([(_HQ getVariable [QGVAR(rAirG),[]]),"R",_rcheckArr,200000,true] call EFUNC(common,recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
 
 					{
 					if ((_HQ getVariable [QEGVAR(core,reconStage2),1]) > _stages) exitWith {};
@@ -375,14 +375,14 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call GVAR(spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
 
 			if (not ((count (_HQ getVariable [QGVAR(reconG),[]])) == 0) and ((count (_HQ getVariable [QGVAR(reconAv),[]])) > 0) and not (_HQ getVariable [QEGVAR(core,reconDone),false]) and not ((_HQ getVariable [QEGVAR(core,reconStage),1]) > (_stages * (count _toRecon)))) then
 				{
-				_gps = (([(_HQ getVariable [QGVAR(reconG),[]]),"R",_rcheckArr,50000,false] call GVAR(recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
+				_gps = (([(_HQ getVariable [QGVAR(reconG),[]]),"R",_rcheckArr,50000,false] call EFUNC(common,recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
 
 					{
 					if ((_HQ getVariable [QEGVAR(core,reconStage2),1]) > _stages) exitWith {};
@@ -392,14 +392,14 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call GVAR(spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
 
 			if (not ((count (_HQ getVariable [QGVAR(fOG),[]])) == 0) and ((count (_HQ getVariable [QGVAR(reconAv),[]])) > 0) and not (_HQ getVariable [QEGVAR(core,reconDone),false]) and not ((_HQ getVariable [QEGVAR(core,reconStage),1]) > (_stages * (count _toRecon)))) then
 				{
-				_gps = (([(_HQ getVariable [QGVAR(fOG),[]]),"R",_rcheckArr,50000,false] call GVAR(recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
+				_gps = (([(_HQ getVariable [QGVAR(fOG),[]]),"R",_rcheckArr,50000,false] call EFUNC(common,recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
 
 					{
 					if ((_HQ getVariable [QEGVAR(core,reconStage2),1]) > _stages) exitWith {};
@@ -409,14 +409,14 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call GVAR(spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
 
 			if (not ((count (_HQ getVariable [QGVAR(snipersG),[]])) == 0) and ((count (_HQ getVariable [QGVAR(reconAv),[]])) > 0) and not (_HQ getVariable [QEGVAR(core,reconDone),false]) and not ((_HQ getVariable [QEGVAR(core,reconStage),1]) > (_stages * (count _toRecon)))) then
 				{
-				_gps = (([(_HQ getVariable [QGVAR(snipersG),[]]),"R",_rcheckArr,50000,false] call GVAR(recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
+				_gps = (([(_HQ getVariable [QGVAR(snipersG),[]]),"R",_rcheckArr,50000,false] call EFUNC(common,recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
 
 					{
 					if ((_HQ getVariable [QEGVAR(core,reconStage2),1]) > _stages) exitWith {};
@@ -426,7 +426,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call GVAR(spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
@@ -434,7 +434,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 			_onlyL = (_HQ getVariable [QEGVAR(boss,lArmorG),[]]) - (_HQ getVariable [QGVAR(mArmorG),[]]);
 			if (not ((_onlyL isEqualTo [])) and ((count (_HQ getVariable [QGVAR(reconAv),[]])) > 0) and not (_HQ getVariable [QEGVAR(core,reconDone),false]) and not ((_HQ getVariable [QEGVAR(core,reconStage),1]) > (_stages * (count _toRecon)))) then
 				{
-				_gps = (([_onlyL,"R",_rcheckArr,200000,false] call GVAR(recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
+				_gps = (([_onlyL,"R",_rcheckArr,200000,false] call EFUNC(common,recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
 
 					{
 					if ((_HQ getVariable [QEGVAR(core,reconStage2),1]) > _stages) exitWith {};
@@ -444,14 +444,14 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call GVAR(spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
 
 			if (not ((count ((_HQ getVariable [QEGVAR(core,nCrewInfG),[]]) - (_HQ getVariable [QGVAR(specForG),[]]))) == 0) and ((count (_HQ getVariable [QGVAR(reconAv),[]])) > 0) and not (_HQ getVariable [QEGVAR(core,reconDone),false]) and not ((_HQ getVariable [QEGVAR(core,reconStage),1]) > (_stages * (count _toRecon)))) then
 				{
-				_gps = (([((_HQ getVariable [QEGVAR(core,nCrewInfG),[]]) - (_HQ getVariable [QGVAR(specForG),[]])),"NR",_rcheckArr,100000,false] call GVAR(recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
+				_gps = (([((_HQ getVariable [QEGVAR(core,nCrewInfG),[]]) - (_HQ getVariable [QGVAR(specForG),[]])),"NR",_rcheckArr,100000,false] call EFUNC(common,recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
 
 					{
 					if ((_HQ getVariable [QEGVAR(core,reconStage2),1]) > _stages) exitWith {};
@@ -462,7 +462,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
 					//[_x,_PosObj1,(_HQ getVariable ["RydHQ_ReconStage",1]),_HQ,_reconNr,false] spawn HAL_GoRecon;
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,false],HAL_GoRecon] call GVAR(spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,false],HAL_GoRecon] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
@@ -470,7 +470,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 			_LMCUA = (_HQ getVariable [QEGVAR(core,friends),[]]) - ((_HQ getVariable [QEGVAR(core,aOnly),[]]) + (_HQ getVariable [QEGVAR(core,navalG),[]]) + (_HQ getVariable [QGVAR(staticG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,artG),[]]) + (_HQ getVariable [QEGVAR(core,noRecon),[]]) + (_HQ getVariable [QGVAR(specForG),[]]) + (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) + (_HQ getVariable [QEGVAR(core,cargoOnly),[]]));
 			if (not ((_LMCUA isEqualTo [])) and not (_HQ getVariable [QEGVAR(core,reconDone),false]) and not ((_HQ getVariable [QEGVAR(core,reconStage),1]) > (_stages * (count _toRecon)))) then
 				{
-				_gps = (([_LMCUA,"NR",_rcheckArr,200000,false] call GVAR(recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
+				_gps = (([_LMCUA,"NR",_rcheckArr,200000,false] call EFUNC(common,recon)) - (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) - (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) - (_HQ getVariable [QEGVAR(core,artG),[]]));
 
 					{
 					if ((_HQ getVariable [QEGVAR(core,reconStage2),1]) > _stages) exitWith {};
@@ -481,7 +481,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
 					//[_x,_PosObj1,(_HQ getVariable ["RydHQ_ReconStage",1]),_HQ,_reconNr,false] spawn HAL_GoRecon;
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,false],HAL_GoRecon] call GVAR(spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,false],HAL_GoRecon] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				}
@@ -514,7 +514,7 @@ if (not ((_HQ getVariable [QEGVAR(core,reconDone),false])) and ((count (_HQ getV
 		if (not (_resting) and not (_Unable) and not (_IsAPlayer)) then 
 			{
 			//[_x,_HQ] spawn HAL_GoRest
-			[[_x,_HQ],HAL_GoRest] call GVAR(spawn);
+			[[_x,_HQ],HAL_GoRest] call EFUNC(common,spawn);
 			}
 		}
 	forEach ((_HQ getVariable [QEGVAR(core,exhausted),[]]) - ((_HQ getVariable [QEGVAR(core,airG),[]]) + (_HQ getVariable [QGVAR(staticG),[]]) + (_HQ getVariable [QEGVAR(core,artG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,navalG),[]])));
@@ -545,9 +545,9 @@ if (not ((_HQ getVariable [QEGVAR(core,reconDone),false])) and ((count (_HQ getV
 				//[_x,_HQ] spawn HAL_GoIdle
 
 				if ((_HQ getVariable [QEGVAR(core,idleDef),true]) and not (isPlayer (leader _x)) and not ((_HQ getVariable [QEGVAR(common,taken),[]]) isEqualTo [])) then {
-					[[_x,selectRandom (_HQ getVariable [QEGVAR(common,taken),[]]),_HQ],HAL_GoDefRes] call GVAR(spawn);
+					[[_x,selectRandom (_HQ getVariable [QEGVAR(common,taken),[]]),_HQ],HAL_GoDefRes] call EFUNC(common,spawn);
 					} else {
-					[[_x,_HQ],HAL_GoIdle] call GVAR(spawn);
+					[[_x,_HQ],HAL_GoIdle] call EFUNC(common,spawn);
 					};
 				};
 			}
@@ -642,47 +642,47 @@ _constant = [(_HQ getVariable [QEGVAR(core,aAthreat),[]]),(_HQ getVariable [QEGV
 
 if (count (_reconthreat + _FOthreat + _snipersthreat) > 0) then 
 	{
-	([_reconthreat + _FOthreat + _snipersthreat,"Recon",_HQ,0,0,0] + _constant) call GVAR(dispatcher);
+	([_reconthreat + _FOthreat + _snipersthreat,"Recon",_HQ,0,0,0] + _constant) call FUNC(dispatcher);
 	};
 
 if (_ATinfthreat isNotEqualTo []) then 
 	{
-	([_ATinfthreat,"ATInf",_HQ,0,0,85] + _constant) call GVAR(dispatcher);
+	([_ATinfthreat,"ATInf",_HQ,0,0,85] + _constant) call FUNC(dispatcher);
 	};
 
 if (_Infthreat isNotEqualTo []) then 
 	{
-	([_Infthreat,"Inf",_HQ,75,80,85] + _constant) call GVAR(dispatcher);
+	([_Infthreat,"Inf",_HQ,75,80,85] + _constant) call FUNC(dispatcher);
 	};
 
 if (count (_LArmorthreat + _HArmorthreat) > 0) then 
 	{
-	([_LArmorthreat + _HArmorthreat,"Armor",_HQ,50,0,85] + _constant) call GVAR(dispatcher);
+	([_LArmorthreat + _HArmorthreat,"Armor",_HQ,50,0,85] + _constant) call FUNC(dispatcher);
 	};
 
 if (_Carsthreat isNotEqualTo []) then 
 	{
-	([_Carsthreat,"Cars",_HQ,75,80,85] + _constant) call GVAR(dispatcher);
+	([_Carsthreat,"Cars",_HQ,75,80,85] + _constant) call FUNC(dispatcher);
 	};
 
 if (_Artthreat isNotEqualTo []) then 
 	{
-	([_Artthreat,"Art",_HQ,70,75,75] + _constant) call GVAR(dispatcher);
+	([_Artthreat,"Art",_HQ,70,75,75] + _constant) call FUNC(dispatcher);
 	};
 
 if (_Airthreat isNotEqualTo []) then 
 	{
-	([_Airthreat,"Air",_HQ,0,0,75] + _constant) call GVAR(dispatcher);
+	([_Airthreat,"Air",_HQ,0,0,75] + _constant) call FUNC(dispatcher);
 	};
 
 if (count (_Staticthreat - _Artthreat) > 0) then 
 	{
-	([_Staticthreat - _Artthreat,"Static",_HQ,75,80,85] + _constant) call GVAR(dispatcher);
+	([_Staticthreat - _Artthreat,"Static",_HQ,75,80,85] + _constant) call FUNC(dispatcher);
 	};
 
 if (_Navalthreat isNotEqualTo []) then 
 	{
-	([_Navalthreat,"Naval",_HQ,0,0,0] + _constant) call GVAR(dispatcher);
+	([_Navalthreat,"Naval",_HQ,0,0,0] + _constant) call FUNC(dispatcher);
 	};
 
 /////////////////////////////////////////
@@ -711,7 +711,7 @@ if ((_AAO) or (_HQ getVariable [QEGVAR(core,simpleMode),false])) then
 	_taken = _HQ getVariable [QEGVAR(common,taken),[]]; 
 	_toTake = _objectives - _taken;
 
-	_toTake = [_toTake,(leader _HQ),250000] call GVAR(distOrdD);
+	_toTake = [_toTake,(leader _HQ),250000] call EFUNC(common,distOrdD);
 	if ((_HQ getVariable [QEGVAR(core,maxSimpleObjs),5]) < (count _toTake)) then {_toTake resize (_HQ getVariable [QEGVAR(core,maxSimpleObjs),5])};
 	
 		{
@@ -780,7 +780,7 @@ _toTake = _toTake - [objNull];
 			_checked = [];
 			_forCapt = (_HQ getVariable [QEGVAR(core,nCrewInfG),[]]) - ((_HQ getVariable [QEGVAR(core,exhausted),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,navalG),[]]) + (_HQ getVariable [QGVAR(specForG),[]]) + (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) + (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) + (_HQ getVariable [QEGVAR(core,garrison),[]]));
 			_forCapt = _forCapt - ((_HQ getVariable [QEGVAR(core,aOnly),[]]) + (_HQ getVariable [QEGVAR(core,rOnly),[]]));
-			_forCapt = [_forCapt] call GVAR(sizeOrd);
+			_forCapt = [_forCapt] call EFUNC(common,sizeOrd);
 
 			if (not ((_forCapt isEqualTo [])) and ((count (_HQ getVariable [QGVAR(attackAv),[]])) > 0) and not (_toTake isEqualTo [(leader _HQ)])) then
 				{
@@ -808,7 +808,7 @@ _toTake = _toTake - [objNull];
 								{
 								if (not (_x in (_HQ getVariable [QEGVAR(core,nCCargoG),[]])) or ((count (units _x)) > 1)) then 
 									{
-									_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoCount);
+									_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoCount);
 
 									if (_ammo > 0) then
 										{
@@ -832,7 +832,7 @@ _toTake = _toTake - [objNull];
 												};
 
 											//[_x,_isAttacked,_HQ,_Trg] spawn HAL_GoCapture;
-											[[_x,_isAttacked,_HQ,_Trg],HAL_GoCapture] call GVAR(spawn);
+											[[_x,_isAttacked,_HQ,_Trg],HAL_GoCapture] call EFUNC(common,spawn);
 											}
 										}
 									}
@@ -848,7 +848,7 @@ _toTake = _toTake - [objNull];
 
 			_LMCU = (_HQ getVariable [QEGVAR(core,friends),[]]) - ((_HQ getVariable [QEGVAR(core,exhausted),[]]) + ((_HQ getVariable [QEGVAR(core,airG),[]]) - (_HQ getVariable [QEGVAR(core,nCrewInfG),[]])) + (_HQ getVariable [QGVAR(specForG),[]]) + (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) + (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) + (_HQ getVariable [QEGVAR(core,navalG),[]]) + (_HQ getVariable [QGVAR(staticG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,artG),[]]) + (_HQ getVariable [QEGVAR(core,garrison),[]]) + ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) - ((_HQ getVariable [QEGVAR(core,nCrewInfG),[]]) - (_HQ getVariable [QEGVAR(core,supportG),[]]))));
 			_LMCU = _LMCU - ((_HQ getVariable [QEGVAR(core,aOnly),[]]) + (_HQ getVariable [QEGVAR(core,rOnly),[]]));
-			_LMCU = [_LMCU] call GVAR(sizeOrd);
+			_LMCU = [_LMCU] call EFUNC(common,sizeOrd);
 			if (not ((_LMCU isEqualTo [])) and ((count (_HQ getVariable [QGVAR(attackAv),[]])) > 0) and not (_toRecon isEqualTo [(leader _HQ)])) then
 				{
 				for [{_m = 1000},{_m <= 200000},{_m = _m + 1000}] do
@@ -870,7 +870,7 @@ _toTake = _toTake - [objNull];
 							{
 							if (((leader _x) distance _Trg) <= _m) then
 								{
-								_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoCount);
+								_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoCount);
 								if (_ammo > 0) then
 									{
 									_busy = _x getVariable [("Busy" + (str _x)),false];
@@ -893,7 +893,7 @@ _toTake = _toTake - [objNull];
 											};
 
 										//[_x,_isAttacked,_HQ,_Trg] spawn HAL_GoCapture;
-										[[_x,_isAttacked,_HQ,_Trg],HAL_GoCapture] call GVAR(spawn);
+										[[_x,_isAttacked,_HQ,_Trg],HAL_GoCapture] call EFUNC(common,spawn);
 										}
 									}
 								}
@@ -918,7 +918,7 @@ if (((_AAO) or (_HQ getVariable [QEGVAR(core,simpleMode),false]))) then
 	_takenNav = _HQ getVariable [QGVAR(takenNaval),[]]; 
 	_toTakeNav = _Navalobjectives - _takenNav;
 
-	_toTakeNav = [_toTakeNav,(leader _HQ),250000] call GVAR(distOrdD);
+	_toTakeNav = [_toTakeNav,(leader _HQ),250000] call EFUNC(common,distOrdD);
 	if ((_HQ getVariable [QGVAR(maxNavalObjs),5]) < (count _toTakeNav)) then {_toTakeNav resize (_HQ getVariable [QGVAR(maxNavalObjs),5])};
 		
 /*	_allAttackers = 0;
@@ -963,7 +963,7 @@ _toTakeNav = _toTakeNav - [objNull];
 			_checked = [];
 			_forNavCapt = (_HQ getVariable [QEGVAR(core,navalG),[]]) - ((_HQ getVariable [QEGVAR(core,exhausted),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QGVAR(specForG),[]]) + (_HQ getVariable [QEGVAR(core,ammoDrop),[]]) + (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) + (_HQ getVariable [QEGVAR(core,garrison),[]]));
 			_forNavCapt = _forNavCapt - ((_HQ getVariable [QEGVAR(core,aOnly),[]]) + (_HQ getVariable [QEGVAR(core,rOnly),[]]));
-			_forNavCapt = [_forNavCapt] call GVAR(sizeOrd);
+			_forNavCapt = [_forNavCapt] call EFUNC(common,sizeOrd);
 
 			if (not ((_forNavCapt isEqualTo []))) then
 				{
@@ -991,7 +991,7 @@ _toTakeNav = _toTakeNav - [objNull];
 								{
 								if (not (_x in (_HQ getVariable [QEGVAR(core,nCCargoG),[]])) or ((count (units _x)) > 1)) then 
 									{
-									_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call GVAR(ammoCount);
+									_ammo = [_x,(_HQ getVariable [QEGVAR(core,nCVeh),[]])] call EFUNC(common,ammoCount);
 
 									if (_ammo > 0) then
 										{
@@ -1014,7 +1014,7 @@ _toTakeNav = _toTakeNav - [objNull];
 												case (0) : {_Trg setVariable [("Capturing" + (str  _Trg) + (str _HQ)),[1,_captCount + _groupCount]]};
 												};
 
-											[[_x,_isAttacked,_HQ,_Trg],HAL_GoCaptureNaval] call GVAR(spawn);
+											[[_x,_isAttacked,_HQ,_Trg],HAL_GoCaptureNaval] call EFUNC(common,spawn);
 											}
 										}
 									}
@@ -1037,8 +1037,8 @@ forEach _toTakeNav;
 
 	if (_WAchance > (random 1)) then
 		{
-		_armored = (_HQ getVariable ["RydHQ_HArmorG",[]]) + (_HQ getVariable ["RydHQ_LArmorG",[]]);
-		_LMCU = (_HQ getVariable ["RydHQ_Friends",[]]) - (((_HQ getVariable ["RydHQ_AirG",[]]) - (_HQ getVariable ["RydHQ_NCrewInfG",[]])) + (_HQ getVariable ["RydHQ_Exhausted",[]]) + (_HQ getVariable ["RydHQ_NoAttack",[]]) + (_HQ getVariable ["RydHQ_SpecForG",[]]) + (_HQ getVariable ["RydHQ_CargoOnly",[]]) + (_HQ getVariable ["RydHQ_NavalG",[]]) + (_HQ getVariable ["RydHQ_StaticG",[]]) + (_HQ getVariable ["RydHQ_SupportG",[]]) + (_HQ getVariable ["RydHQ_ArtG",[]]) + (_HQ getVariable ["RydHQ_Garrison",[]]) + ((_HQ getVariable ["RydHQ_NCCargoG",[]]) - ((_HQ getVariable ["RydHQ_NCrewInfG",[]]) - (_HQ getVariable ["RydHQ_SupportG",[]]))));
+		_armored = (_HQ getVariable [QEGVAR(boss,hArmorG),[]]) + (_HQ getVariable [QEGVAR(boss,lArmorG),[]]);
+		_LMCU = (_HQ getVariable [QEGVAR(core,friends),[]]) - (((_HQ getVariable [QEGVAR(core,airG),[]]) - (_HQ getVariable [QEGVAR(core,nCrewInfG),[]])) + (_HQ getVariable [QEGVAR(core,exhausted),[]]) + (_HQ getVariable [QEGVAR(core,noAttack),[]]) + (_HQ getVariable [QGVAR(specForG),[]]) + (_HQ getVariable [QEGVAR(core,cargoOnly),[]]) + (_HQ getVariable [QEGVAR(core,navalG),[]]) + (_HQ getVariable [QGVAR(staticG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,artG),[]]) + (_HQ getVariable [QEGVAR(core,garrison),[]]) + ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) - ((_HQ getVariable [QEGVAR(core,nCrewInfG),[]]) - (_HQ getVariable [QEGVAR(core,supportG),[]]))));
 		
 		_WAAv = [];
 		
@@ -1120,9 +1120,9 @@ if (_HQ getVariable [QEGVAR(core,idleOrd),true]) then
 			//[_x,_HQ] spawn HAL_GoIdle
 
 			if ((_HQ getVariable [QEGVAR(core,idleDef),true]) and not (isPlayer (leader _x)) and not ((_HQ getVariable [QEGVAR(common,taken),[]]) isEqualTo [])) then {
-				[[_x,selectRandom (_HQ getVariable [QEGVAR(common,taken),[]]),_HQ],HAL_GoDefRes] call GVAR(spawn);
+				[[_x,selectRandom (_HQ getVariable [QEGVAR(common,taken),[]]),_HQ],HAL_GoDefRes] call EFUNC(common,spawn);
 				} else {
-				[[_x,_HQ],HAL_GoIdle] call GVAR(spawn);
+				[[_x,_HQ],HAL_GoIdle] call EFUNC(common,spawn);
 				};
 			};
 		}
@@ -1150,7 +1150,7 @@ if (_HQ getVariable [QEGVAR(core,idleOrd),true]) then
 			//[_x,_HQ] spawn HAL_GoIdle
 
 			if ((_HQ getVariable [QEGVAR(core,idleDef),true]) and not (isPlayer (leader _x)) and not ((_HQ getVariable [QGVAR(takenNaval),[]]) isEqualTo [])) then {
-				[[_x,selectRandom (_HQ getVariable [QGVAR(takenNaval),[]]),_HQ],HAL_GoDefNav] call GVAR(spawn);
+				[[_x,selectRandom (_HQ getVariable [QGVAR(takenNaval),[]]),_HQ],HAL_GoDefNav] call EFUNC(common,spawn);
 				};
 			};
 		}
@@ -1173,7 +1173,7 @@ if (_HQ getVariable [QEGVAR(core,idleOrd),true]) then
 		if not (_x in (_HQ getVariable [QEGVAR(core,garrison),[]])) then
 			{
 			//[_x,_HQ] spawn HAL_GoRest
-			[[_x,_HQ],HAL_GoRest] call GVAR(spawn);
+			[[_x,_HQ],HAL_GoRest] call EFUNC(common,spawn);
 			}
 		}
 	}

@@ -54,7 +54,7 @@ while {((_isWater) and (_cnt <= 20))} do
 	_cnt = _cnt + 1;
 	};
 
-[_unitG,[_posX,_posY,0],"HQ_ord_ammoS",_HQ] call GVAR(orderPause);
+[_unitG,[_posX,_posY,0],"HQ_ord_ammoS",_HQ] call EFUNC(common,orderPause);
 
 if ((isPlayer (leader _unitG)) and (GVAR(gPauseActive))) then {hintC "New orders from HQ!"; setAccTime 1};
 
@@ -66,10 +66,10 @@ _alive = false;
 if (_HQ getVariable [QEGVAR(common,debug),false]) then
 	{
 	_signum = _HQ getVariable [QEGVAR(core,codeSign),"X"];
-	_i = [[_posX,_posY],_unitG,"markAmmoSupp","ColorKhaki","ICON","waypoint","REARM " + (groupId _unitG) + " " + _signum," - REARM",[0.5,0.5],270] call GVAR(mark)
+	_i = [[_posX,_posY],_unitG,"markAmmoSupp","ColorKhaki","ICON","waypoint","REARM " + (groupId _unitG) + " " + _signum," - REARM",[0.5,0.5],270] call EFUNC(common,mark)
 	};
 
-_task = [(leader _unitG),["Deliver Ammo to " + (groupId (group _Trg)), "Rearm " + (groupId (group _Trg)), ""],(position _Trg),"rearm"] call GVAR(addTask);
+_task = [(leader _unitG),["Deliver Ammo to " + (groupId (group _Trg)), "Rearm " + (groupId (group _Trg)), ""],(position _Trg),"rearm"] call EFUNC(common,addTask);
 
 if (_drop) then
 	{
@@ -87,12 +87,12 @@ if (_drop) then
 			if not (EGVAR(core,slingDrop)) then
 				{
 				_ammoBox setPos [0,0,2000];
-				_ang = [(getPosATL _unit),(getPosATL _Trg),5] call GVAR(angTowards);
-				_nextPos1 = [(getPosATL _unit),_ang,(_unit distance _Trg) + 200] call GVAR(posTowards2D);
+				_ang = [(getPosATL _unit),(getPosATL _Trg),5] call EFUNC(common,angleTowards);
+				_nextPos1 = [(getPosATL _unit),_ang,(_unit distance _Trg) + 200] call EFUNC(common,positionTowards2D);
 
 				_tp = "MOVE";
 
-				_wp = [_unitG,_pos,_tp,"STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call GVAR(wPadd);
+				_wp = [_unitG,_pos,_tp,"STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call EFUNC(common,WPadd);
 
 				_unit flyInHeight 150;
 				//[_unit,100] spawn RYD_KeepAlt;
@@ -120,7 +120,7 @@ if (_drop) then
 						(_endThis)
 						};
 					} else {
-						_cause = [_unitG,1,true,0,240,[],true,true,true,true] call GVAR(wait);
+						_cause = [_unitG,1,true,0,240,[],true,true,true,true] call EFUNC(common,wait);
 						_timer = _cause select 0;
 						_alive = _cause select 1;
 					};
@@ -143,17 +143,17 @@ if (_drop) then
 					{
 					_UL = leader _unitG;if not (isPlayer _UL) then {if (_timer <= 240) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_OrdFinal),"OrdFinal"] call EFUNC(common,AIChatter)}}};
 					//[_unit,_ammoBox,(group _Trg)] spawn RYD_AmmoDrop;
-					[[_unit,_ammoBox,(group _Trg)],GVAR(ammoDrop)] call GVAR(spawn);
+					[[_unit,_ammoBox,(group _Trg)],EFUNC(common,ammoDrop)] call EFUNC(common,spawn);
 					_boxed = (_HQ getVariable [QEGVAR(core,boxed),[]]);
 					_boxed pushBack (group _Trg);
 					_HQ setVariable [QEGVAR(core,boxed),_boxed];
 					_HQ setVariable [QEGVAR(boss,ordnanceDrops),(_HQ getVariable [QEGVAR(boss,ordnanceDrops),[]]) + [_ammoBox]];
 					};
 
-				_wp = [_unitG,_nextPos1,_tp,"STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call GVAR(wPadd);
+				_wp = [_unitG,_nextPos1,_tp,"STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call EFUNC(common,WPadd);
 
 
-				_cause = [_unitG,6,true,0,24,[],true,true,true,true] call GVAR(wait);
+				_cause = [_unitG,6,true,0,24,[],true,true,true,true] call EFUNC(common,wait);
 				_timer = _cause select 0;
 				_alive = _cause select 1;
 
@@ -185,11 +185,11 @@ if (_drop) then
 					{
 
 					_unitG setVariable ["AmmBox" + (str _unitG),_ammoBox];
-					_wp = [_unitG,_pos,"HOOK","STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call GVAR(wPadd);
+					_wp = [_unitG,_pos,"HOOK","STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call EFUNC(common,WPadd);
 
 					_wp waypointAttachVehicle _ammoBox;
 
-					_cause = [_unitG,6,true,0,24,[],true,true,true,true] call GVAR(wait);
+					_cause = [_unitG,6,true,0,24,[],true,true,true,true] call EFUNC(common,wait);
 					_timer = _cause select 0;
 					_alive = _cause select 1;
 
@@ -205,11 +205,11 @@ if (_drop) then
 						_unitG setVariable [("Busy" + _unitvar), false];
 						};
 
-					_wp = [_unitG,_pos2,"UNHOOK","STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call GVAR(wPadd);
+					_wp = [_unitG,_pos2,"UNHOOK","STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call EFUNC(common,WPadd);
 
 					_wp waypointAttachVehicle _Trg;
 
-					_cause = [_unitG,6,true,0,24,[],true,true,true,true] call GVAR(wait);
+					_cause = [_unitG,6,true,0,24,[],true,true,true,true] call EFUNC(common,wait);
 					_timer = _cause select 0;
 					_alive = _cause select 1;
 
@@ -235,7 +235,7 @@ if (_drop) then
 				else
 					{
 					_unitG setVariable ["AmmBox" + (str _unitG),_ammoBox];
-					_wp = [_unitG,_pos,"HOOK","STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call GVAR(wPadd);
+					_wp = [_unitG,_pos,"HOOK","STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call EFUNC(common,WPadd);
 
 					_sl = configFile >> "CfgVehicles" >> (typeOf _unit) >> "slingLoadMemoryPoint";
 
@@ -356,11 +356,11 @@ if (_drop) then
 
 					sleep 3;
 
-					_wp = [_unitG,_pos2,"MOVE","STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call GVAR(wPadd);
+					_wp = [_unitG,_pos2,"MOVE","STEALTH","BLUE","FULL",["true","deletewaypoint [(group this), 0]"]] call EFUNC(common,WPadd);
 
 					_wp waypointAttachVehicle _Trg;
 
-					_cause = [_unitG,6,true,0,24,[],true,true,true,true] call GVAR(wait);
+					_cause = [_unitG,6,true,0,24,[],true,true,true,true] call EFUNC(common,wait);
 					_timer = _cause select 0;
 					_alive = _cause select 1;
 
@@ -469,10 +469,10 @@ else
 		_tp = "MOVE";
 		if (_HQ getVariable [QEGVAR(core,supportWP),false]) then {_tp = "SUPPORT"};
 
-		_wp = [_unitG,_pos,_tp,"SAFE","BLUE","FULL",["true","(vehicle this) land 'GET IN';deletewaypoint [(group this), 0]"]] call GVAR(wPadd);
+		_wp = [_unitG,_pos,_tp,"SAFE","BLUE","FULL",["true","(vehicle this) land 'GET IN';deletewaypoint [(group this), 0]"]] call EFUNC(common,WPadd);
 		if (_counter == 0) then {_wp waypointAttachVehicle _Trg};
 
-		_cause = [_unitG,6,true,0,24,[],true,true,true,true] call GVAR(wait);
+		_cause = [_unitG,6,true,0,24,[],true,true,true,true] call EFUNC(common,wait);
 		_timer = _cause select 0;
 		_alive = _cause select 1;
 
@@ -548,7 +548,7 @@ _rrr = (_unitG getVariable ["Ryd_RRR",false]);
 _radd = "";
 if (_rrr) then {_radd = "; {(vehicle _x) setFuel 1; (vehicle _x) setVehicleAmmo 1; (vehicle _x) setDamage 0;} foreach (units (group this))"};
 
-_wp = [_unitG,_pos,_tp,_beh,"BLUE","FULL",["true","if not ((group this) getVariable ['AirNoLand',false]) then {{(vehicle _x) land 'LAND'} foreach (units (group this))}; deletewaypoint [(group this), 0]" + _radd]] call GVAR(wPadd);
+_wp = [_unitG,_pos,_tp,_beh,"BLUE","FULL",["true","if not ((group this) getVariable ['AirNoLand',false]) then {{(vehicle _x) land 'LAND'} foreach (units (group this))}; deletewaypoint [(group this), 0]" + _radd]] call EFUNC(common,WPadd);
 
 if (not (_task isEqualTo taskNull) and (_HQ getVariable [QEGVAR(core,supportRTB),false]) and not (_drop)) then
 	{
@@ -561,7 +561,7 @@ _timer = 0;
 _alive = true;
 
 if not (_HQ getVariable [QEGVAR(core,supportRTB),false]) then {
-	_cause = [_unitG,6,true,0,24,[],true,true,true,true] call GVAR(wait);
+	_cause = [_unitG,6,true,0,24,[],true,true,true,true] call EFUNC(common,wait);
 	_timer = _cause select 0;
 	_alive = _cause select 1;
 };

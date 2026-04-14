@@ -151,12 +151,12 @@ switch true do
 			if (_minF) then 
 				{
 				//[_x,_BEnemyPosA,_PosMid0,_PosMid1,_angle0,true,_HQ] spawn HAL_GoFlank
-				[[_x,_BEnemyPosA,_PosMid0,_PosMid1,_angle0,true,_HQ],HAL_GoFlank] call GVAR(spawn);
+				[[_x,_BEnemyPosA,_PosMid0,_PosMid1,_angle0,true,_HQ],HAL_GoFlank] call EFUNC(common,spawn);
 				} 
 			else 
 				{
 				//[_x,_BEnemyPosB,_PosMid0,_PosMid1,_angle0,false,_HQ] spawn HAL_GoFlank
-				[[_x,_BEnemyPosB,_PosMid0,_PosMid1,_angle0,false,_HQ],HAL_GoFlank] call GVAR(spawn);
+				[[_x,_BEnemyPosB,_PosMid0,_PosMid1,_angle0,false,_HQ],HAL_GoFlank] call EFUNC(common,spawn);
 				};
 			}
 		forEach _FlankAv;
@@ -171,12 +171,12 @@ switch true do
 			if ((_b/2 - floor (_b/2)) == 0) then 
 				{
 				//[_FlankU,_BEnemyPosA,_PosMid0,_PosMid1,_angle0,true,_HQ] spawn HAL_GoFlank;
-				[[_FlankU,_BEnemyPosA,_PosMid0,_PosMid1,_angle0,true,_HQ],HAL_GoFlank] call GVAR(spawn);
+				[[_FlankU,_BEnemyPosA,_PosMid0,_PosMid1,_angle0,true,_HQ],HAL_GoFlank] call EFUNC(common,spawn);
 				} 
 			else 
 				{
 				//[_FlankU,_BEnemyPosB,_PosMid0,_PosMid1,_angle0,false,_HQ] spawn HAL_GoFlank 
-				[[_FlankU,_BEnemyPosB,_PosMid0,_PosMid1,_angle0,false,_HQ],HAL_GoFlank] call GVAR(spawn);
+				[[_FlankU,_BEnemyPosB,_PosMid0,_PosMid1,_angle0,false,_HQ],HAL_GoFlank] call EFUNC(common,spawn);
 				}
 			}		
 		}

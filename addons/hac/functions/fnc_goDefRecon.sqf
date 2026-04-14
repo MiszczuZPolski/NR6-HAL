@@ -109,16 +109,16 @@ if not (isNull _nE) then
 		_posSL = getPosASL _UL;
 		_posSL2 = getPosASL _nE;
 
-		_angle = [_posSL,_posSL2,15] call GVAR(angTowards);
+		_angle = [_posSL,_posSL2,15] call EFUNC(common,angleTowards);
 
 		_dstB = _posSL distance _posSL2;
-		_pos = [_posSL,_angle,_dstB/4 + (random 100) - 50] call GVAR(posTowards2D);
+		_pos = [_posSL,_angle,_dstB/4 + (random 100) - 50] call EFUNC(common,positionTowards2D);
 
 		_CFF = false;
 
 		if ((_HQ getVariable [QEGVAR(core,artyShells),1]) > 0) then
 			{
-			_CFF = ([_pos,(_HQ getVariable [QEGVAR(core,artG),[]]),"SMOKE",9,_UL] call GVAR(artyMission)) select 0;
+			_CFF = ([_pos,(_HQ getVariable [QEGVAR(core,artG),[]]),"SMOKE",9,_UL] call EFUNC(common,artyMission)) select 0;
 			if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_SmokeReq),"SmokeReq"] call EFUNC(common,AIChatter)}};
 			};
 
@@ -131,7 +131,7 @@ if not (isNull _nE) then
 			{
 			if ((_HQ getVariable [QEGVAR(core,artyShells),1]) > 0) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[(leader _HQ),EGVAR(common,aIC_ArtDen),"ArtDen"] call EFUNC(common,AIChatter)}};
 			//[_unitG,_nE] spawn RYD_Smoke;
-			[[_unitG,_nE],GVAR(smoke)] call EFUNC(common,spawn);
+			[[_unitG,_nE],EFUNC(common,smoke)] call EFUNC(common,spawn);
 			sleep 10;
 			if ((isNull objectParent _UL)) then {sleep 25}
 			}
@@ -209,7 +209,7 @@ if ((_HQ getVariable [QEGVAR(common,debug),false]) or (isPlayer (leader _unitG))
 	_i = [_TED,_unitG,"markWatch","Default","ICON","waypoint", (groupId _unitG) + _signum,_signum,[0.2,0.2]] call EFUNC(common,mark)
 	};
 
-_dir = [(getPosATL (vehicle (leader _unitG))),_TED,10] call GVAR(angTowards);
+_dir = [(getPosATL (vehicle (leader _unitG))),_TED,10] call EFUNC(common,angleTowards);
 if (_dir < 0) then {_dir = _dir + 360};
 
 _unitG setFormDir _dir;

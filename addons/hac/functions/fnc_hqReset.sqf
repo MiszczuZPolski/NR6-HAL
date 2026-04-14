@@ -310,7 +310,7 @@ _SideEnemies = [];
 				_HQ setVariable [QEGVAR(core,garrison),_garrison];
 				};
 						
-			if ((_trg distance (vehicle (leader _chosen))) < (_HQ getVariable [QEGVAR(core,objRadius2),500])) then {[[_chosen,_HQ],_code] call GVAR(spawn)};
+			if ((_trg distance (vehicle (leader _chosen))) < (_HQ getVariable [QEGVAR(core,objRadius2),500])) then {[[_chosen,_HQ],_code] call EFUNC(common,spawn)};
 			}
 		};
 

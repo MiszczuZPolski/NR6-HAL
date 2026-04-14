@@ -110,7 +110,7 @@ while {not _isLOS} do
 	_isWater = surfaceIsWater [_posX,_posY];
 	if not (_isWater) then
 		{
-		_isLOS = [[_posX,_posY,_MElev],_POASL,0.5,1,_VL,objNull] call GVAR(lOSCheck)
+		_isLOS = [[_posX,_posY,_MElev],_POASL,0.5,1,_VL,objNull] call EFUNC(common,LOSCheck)
 		};
 
 	_ct = _ct + 1;
@@ -716,7 +716,7 @@ if not (_alive) exitWith {_unitG setVariable [("Busy" + (str _unitG)),false];};
 
 if ((_HQ getVariable [QEGVAR(common,uAVAlt),150]) > 0) then
 	{
-	[_unitG,_PosObj1,_HQ] call GVAR(deployUAV)
+	[_unitG,_PosObj1,_HQ] call EFUNC(common,deployUAV)
 	};
 
 _beh = "AWARE";

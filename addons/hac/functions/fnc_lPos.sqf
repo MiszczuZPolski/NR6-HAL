@@ -19,7 +19,7 @@ _HQ = _this select 0;
 			if (not (_x getVariable [("Resting" + (str _x)),false]) and not (_x getVariable ["Defending",false]) and not (_x getVariable ["Break",false]) and not (_x getVariable [("Busy" + (str _x)),false]) and (((getPos _veh) select 2) > 5)) then
 				{
 
-				if ((count (waypoints _x)) < 1) then {_wp = [_x,_start,"MOVE","CARELESS","GREEN","NORMAL",["true", "deletewaypoint [(group this), 0]"]] call GVAR(wPadd)};
+				if ((count (waypoints _x)) < 1) then {_wp = [_x,_start,"MOVE","CARELESS","GREEN","NORMAL",["true", "deletewaypoint [(group this), 0]"]] call EFUNC(common,WPadd)};
 
 				}
 			}

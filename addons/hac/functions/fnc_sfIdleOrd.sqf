@@ -59,10 +59,10 @@ _pos = getPosATL (vehicle (leader _HQ));
 
 			if ((count _tasks) == 0) then
 				{
-				_task = [_UL,["Guard HQ.", "Guard", ""],[_posX,_posY]] call GVAR(addTask)
+				_task = [_UL,["Guard HQ.", "Guard", ""],[_posX,_posY]] call EFUNC(common,addTask)
 				};
 
-			_wp = [_unitG,[_posX,_posY],"HOLD","AWARE","RED","NORMAL"] call GVAR(wPadd)
+			_wp = [_unitG,[_posX,_posY],"HOLD","AWARE","RED","NORMAL"] call EFUNC(common,WPadd)
 			}
 		}
 	}

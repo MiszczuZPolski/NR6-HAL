@@ -194,8 +194,8 @@ for [{_a = 500},{_a <= 44000},{_a = _a + 500}] do
 
 			_halfway = [(((position _MTruck) select 0) + ((position _Zunit) select 0))/2,(((position _MTruck) select 1) + ((position _Zunit) select 1))/2];
 			_distT = 500/(0.75 + ((_HQ getVariable [QEGVAR(core,recklessness),0.5])/2));
-			_eClose1 = [_Zunit,(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]),_distT] call GVAR(closeEnemy);
-			_eClose2 = [_halfway,(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]),_distT] call GVAR(closeEnemy);				
+			_eClose1 = [_Zunit,(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]),_distT] call EFUNC(common,closeEnemy);
+			_eClose2 = [_halfway,(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]),_distT] call EFUNC(common,closeEnemy);				
 			if ((_eClose1) or (_eClose2)) then {_noenemy = false};
 			if not ((group _Zunit) in (_HQ getVariable [QEGVAR(core,aSupportedG),[]])) then
 				{
@@ -277,8 +277,8 @@ if ((count (_HQ getVariable [QEGVAR(core,ammoBoxes),[]])) > 0) then
 				_noenemy = true;
 				_halfway = [(((position _MTruck) select 0) + ((position _Hunit) select 0))/2,(((position _MTruck) select 1) + ((position _Hunit) select 1))/2];
 				_distT = 300/(0.75 + ((_HQ getVariable [QEGVAR(core,recklessness),0.5])/2));
-				_eClose1 = [_Hunit,(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]),_distT] call GVAR(closeEnemy);
-				_eClose2 = [_halfway,(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]),_distT] call GVAR(closeEnemy);				
+				_eClose1 = [_Hunit,(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]),_distT] call EFUNC(common,closeEnemy);
+				_eClose2 = [_halfway,(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]),_distT] call EFUNC(common,closeEnemy);				
 				if ((_eClose1) or (_eClose2)) then {_noenemy = false};
 
 				if not ((group _Hunit) in ((_HQ getVariable [QEGVAR(core,aSupportedG),[]]) + (_HQ getVariable [QEGVAR(core,boxed),[]]))) then

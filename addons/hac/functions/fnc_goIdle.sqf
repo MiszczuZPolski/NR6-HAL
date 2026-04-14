@@ -175,7 +175,7 @@ if not (_isDecoy) then
 		};
 	};
 
-_eClose = [[_posX,_posY],(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]),500] call GVAR(closeEnemy);
+_eClose = [[_posX,_posY],(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]),500] call EFUNC(common,closeEnemy);
 
 if (((([_posX,_posY] distance _VLU) < 100) and not (_patrol) and not (_roadG)) or ((_eClose) and (_enemyMatters))) exitWith {_unitG setVariable [("Deployed" + (str _unitG)),false]};
 

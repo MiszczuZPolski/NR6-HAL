@@ -195,7 +195,7 @@ for [{_a = 0},{_a < (count _Garrison)},{_a = _a + 1}] do
 								_posTaken = _posTaken - [0];
 								missionNamespace setVariable ["PosTaken",_posTaken];
 								//[_x,_posS,_bld,[_posTaken,_ix],_HQ] spawn RYD_GarrS;
-								[[_x,_posS,_bld,[_posTaken,_ix],_HQ],GVAR(garrS)] call EFUNC(common,spawn);
+								[[_x,_posS,_bld,[_posTaken,_ix],_HQ],EFUNC(common,garrisonS)] call EFUNC(common,spawn);
 								_units = _units - [_x]
 								}
 							}
@@ -243,7 +243,7 @@ for [{_a = 0},{_a < (count _Garrison)},{_a = _a + 1}] do
 			if ((count _patrolPos) > 1) then
 				{
 				//[_unitG,_patrolPos,_HQ] spawn RYD_GarrP
-				[[_unitG,_patrolPos,_HQ],GVAR(garrP)] call EFUNC(common,spawn);
+				[[_unitG,_patrolPos,_HQ],EFUNC(common,garrisonP)] call EFUNC(common,spawn);
 				}
 			else
 				{
