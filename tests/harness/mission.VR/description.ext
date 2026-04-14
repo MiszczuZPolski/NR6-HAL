@@ -1,0 +1,26 @@
+// Minimal HAL test mission — description.ext
+// Not binarized. Loads on Arma 3 VR map.
+
+author = "HAL Test Harness";
+onLoadName = "HAL Smoke Test";
+onLoadMission = "Automated BEHAV-01..05 smoke tests. Wait for the report.";
+
+overviewText = "HAL automated smoke test harness.";
+
+respawn = "BASE";
+respawnDelay = 5;
+respawnButton = 0;
+
+disabledAI = 1;
+enableDebugConsole = 2;
+
+class CfgFunctions {
+    class HAL_TEST {
+        class main {
+            file = "tests\harness";
+            class setupScenario { preInit = 0; postInit = 0; };
+            class runAll { preInit = 0; postInit = 0; };
+            class injectAndRun { preInit = 0; postInit = 0; };
+        };
+    };
+};

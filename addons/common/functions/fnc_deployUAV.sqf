@@ -51,11 +51,11 @@ private _hasUAV = false;
 
                 { _x setSkill ["spotDistance", 1]; _x setSkill ["spotTime", 1] } forEach (units _gpUAV);
 
-                private _excl = _HQ getVariable ["RydHQ_Excluded", []];
+                private _excl = _HQ getVariable [QGVAR(excluded), []];
                 _excl pushBack _gpUAV;
-                _HQ setVariable ["RydHQ_Excluded", _excl];
+                _HQ setVariable [QGVAR(excluded), _excl];
 
-                private _alt = _HQ getVariable ["RydHQ_UAVAlt", 150];
+                private _alt = _HQ getVariable [QGVAR(uAVAlt), 150];
                 private _mPos = [_pos, 50] call FUNC(positionAround);
                 _mPos set [2, _alt];
                 _uav flyInHeight _alt;

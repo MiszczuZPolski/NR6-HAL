@@ -8,12 +8,12 @@ _script = _this select 1;
 
 _handle = _arguments spawn _script;
 
-RydxHQ_Handles pushBack _handle;
+GVAR(handles) pushBack _handle;
 
     {
     if (isNil {_x}) then
         {
-        RydxHQ_Handles set [_foreachIndex,0]
+        GVAR(handles) set [_foreachIndex,0]
         }
     else
         {
@@ -21,11 +21,11 @@ RydxHQ_Handles pushBack _handle;
             {
             if (scriptDone _x) then
                 {
-                RydxHQ_Handles set [_foreachIndex,0]
+                GVAR(handles) set [_foreachIndex,0]
                 }
             }
         }
     }
-forEach RydxHQ_Handles;
+forEach GVAR(handles);
 
-RydxHQ_Handles = RydxHQ_Handles - [0];
+GVAR(handles) = GVAR(handles) - [0];

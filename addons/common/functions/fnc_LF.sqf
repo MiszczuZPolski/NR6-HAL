@@ -7,11 +7,11 @@ private ["_src","_dc","_leader","_posS"];
 _src = _this select 0;
 _leader = _this select 1;
 
-if  !(RydHQ_LF) then
+if  !(GVAR(lF)) then
     {
     _dc = "EmptyDetector" createVehicle (getPosATL _src);
 
-    RydHQ_LF = true;
+    GVAR(lF) = true;
     [_src, _src, _leader, 0] call BIS_fnc_liveFeed;
 
     waitUntil { !(isNil "BIS_liveFeed")};
@@ -24,7 +24,7 @@ if  !(RydHQ_LF) then
     _vh = vehicle _src;
     _tp = toLower (typeOf _vh);
 
-    (group _leader) setVariable ["RydHQ_LFSourceFin", _vh];
+    (group _leader) setVariable [QGVAR(lFSourceFin), _vh];
 
     _vPos = [0,50,2];
 
@@ -48,7 +48,7 @@ if  !(RydHQ_LF) then
         _inside = true;
 
         while {_inside} do {
-            _inside = [_vh,[_pX,_pY,_pZ],6,[[1],[1]]] call RYD_isInside;
+            _inside = [_vh,[_pX,_pY,_pZ],6,[[1],[1]]] call FUNC(isInside);
             _pZ = _pZ + (0.01 * _sign);
         };
 
@@ -70,18 +70,18 @@ if  !(RydHQ_LF) then
 
         while { !(isNil "BIS_liveFeed")} do {
             if ((_isFoot) && !(isNull objectParent _tgt)) exitWith {
-                if (isNil "RydxHQ_LFTerminating") then {
-                    RydxHQ_LFTerminating = true;
+                if (isNil QGVAR(lFTerminating)) then {
+                    GVAR(lFTerminating) = true;
                     [] call BIS_fnc_liveFeedTerminate;
                     waitUntil {isNil "BIS_liveFeed"};
-                    RydxHQ_LFTerminating = nil;
-                    _dc = _tgt getVariable ["RydHQ_CamPoint",objNull];
+                    GVAR(lFTerminating) = nil;
+                    _dc = _tgt getVariable [QGVAR(camPoint),objNull];
 
                     deleteVehicle _dc;
 
-                    _tgt setVariable ["RydHQ_CamPoint",nil];
+                    _tgt setVariable [QGVAR(camPoint),nil];
 
-                    RydHQ_LF = false;
+                    GVAR(lF) = false;
                 };
             };
 
@@ -92,19 +92,19 @@ if  !(RydHQ_LF) then
         };
     };
 
-    [[_src,_vPos], _fnc_code] call RYD_Spawn
+    [[_src,_vPos], _fnc_code] call FUNC(spawn)
 } else {
-    if (isNil "RydxHQ_LFTerminating") then {
-        RydxHQ_LFTerminating = true;
+    if (isNil QGVAR(lFTerminating)) then {
+        GVAR(lFTerminating) = true;
         [] call BIS_fnc_liveFeedTerminate;
         waitUntil {isNil "BIS_liveFeed"};
-        RydxHQ_LFTerminating = nil;
-        _dc = _src getVariable ["RydHQ_CamPoint",objNull];
+        GVAR(lFTerminating) = nil;
+        _dc = _src getVariable [QGVAR(camPoint),objNull];
 
         deleteVehicle _dc;
 
-        _src setVariable ["RydHQ_CamPoint",nil];
+        _src setVariable [QGVAR(camPoint),nil];
 
-        RydHQ_LF = false;
+        GVAR(lF) = false;
     };
 };

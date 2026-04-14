@@ -137,7 +137,7 @@ private _smokeCount = 0;
 
                 _smokeCount = _smokeCount + 1;
             };
-        } forEach (missionNamespace getVariable ["RydxHQ_SmokeMuzzles", []]);
+        } forEach (missionNamespace getVariable [QGVAR(smokeMuzzles), []]);
     };
 
     // Check if unit is in a different vehicle than we've already processed

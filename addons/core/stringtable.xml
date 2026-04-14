@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="HAL">
+    <Package name="core">
+        <Key ID="STR_hal_core_aAO">
+            <English>All At Once</English>
+        </Key>
+        <Key ID="STR_hal_core_aAO_desc">
+            <English>Will allow commander to capture objectives all at once and out of order. Only works in legacy mode.</English>
+        </Key>
+        <Key ID="STR_hal_core_aIChatDensity">
+            <English>Radio Comms Presence</English>
+        </Key>
+        <Key ID="STR_hal_core_aIChatDensity_desc">
+            <English>Chance for a communication between AI and commander to be visible and audible.</English>
+        </Key>
+        <Key ID="STR_hal_core_aIChat_Type">
+            <English>Radio Comms Profile</English>
+        </Key>
+        <Key ID="STR_hal_core_aIChat_Type_desc">
+            <English>Changes the lines used in radio communications to better fit certain contexts for modded content.</English>
+        </Key>
+        <Key ID="STR_hal_core_actions">
+            <English>Squad Leader Actions</English>
+        </Key>
+        <Key ID="STR_hal_core_actionsAceOnly">
+            <English>Only Use ACE Actions</English>
+        </Key>
+        <Key ID="STR_hal_core_actionsAceOnly_desc">
+            <English>Player squad leaders will only use ACE self-interactions for their HAL actions.</English>
+        </Key>
+        <Key ID="STR_hal_core_actionsMenu">
+            <English>Actions Menu</English>
+        </Key>
+        <Key ID="STR_hal_core_actionsMenu_desc">
+            <English>Player squad leaders will have HAL actions enabled as a menu.</English>
+        </Key>
+        <Key ID="STR_hal_core_actions_desc">
+            <English>Player squad leaders will have HAL actions enabled.</English>
+        </Key>
+        <Key ID="STR_hal_core_airDist">
+            <English>Max Air Asset Dist</English>
+        </Key>
+        <Key ID="STR_hal_core_airDist_desc">
+            <English>Idle air assets beyond this distance from their starting position will return to that position. Useful for planes running away from the map when not issued any waypoints.</English>
+        </Key>
+        <Key ID="STR_hal_core_airEvac">
+            <English>Air Evac</English>
+        </Key>
+        <Key ID="STR_hal_core_airEvac_desc">
+            <English>Enables retreat orders to use air evac.</English>
+        </Key>
+        <Key ID="STR_hal_core_artyMarks">
+            <English>Artillery Markers</English>
+        </Key>
+        <Key ID="STR_hal_core_artyMarks_desc">
+            <English>Enables artillery markers for fire missions.</English>
+        </Key>
+        <Key ID="STR_hal_core_artyShells">
+            <English>Arty Ord Coef</English>
+        </Key>
+        <Key ID="STR_hal_core_artyShells_desc">
+            <English>Coefficient of how many shells should be dropped every round.</English>
+        </Key>
+        <Key ID="STR_hal_core_attArmDistance">
+            <English>Armor Attack Radius Mult</English>
+        </Key>
+        <Key ID="STR_hal_core_attArmDistance_desc">
+            <English>Multiplier for how far from the target's position the initial waypoint will be placed during armor attack orders.</English>
+        </Key>
+        <Key ID="STR_hal_core_attInfDistance">
+            <English>Inf Attack Radius Mult</English>
+        </Key>
+        <Key ID="STR_hal_core_attInfDistance_desc">
+            <English>Multiplier for how far from the target's position the initial waypoint will be placed during infantry attack orders.</English>
+        </Key>
+        <Key ID="STR_hal_core_attSFDistance">
+            <English>Specops Attack Radius Mult</English>
+        </Key>
+        <Key ID="STR_hal_core_attSFDistance_desc">
+            <English>Multiplier for how far from the target's position the initial waypoint will be placed during specops attack orders.</English>
+        </Key>
+        <Key ID="STR_hal_core_attSnpDistance">
+            <English>Sniper Attack Radius Mult</English>
+        </Key>
+        <Key ID="STR_hal_core_attSnpDistance_desc">
+            <English>Multiplier for how far from the target's position the initial waypoint will be placed during sniper attack orders.</English>
+        </Key>
+        <Key ID="STR_hal_core_attackReserve">
+            <English>Att Reserve Ratio</English>
+        </Key>
+        <Key ID="STR_hal_core_attackReserve_desc">
+            <English>Coefficient of how many squads will be reserved for advanced attack orders like flanking orders. Choose a number from 0 to 1.</English>
+        </Key>
+        <Key ID="STR_hal_core_bBAOObj">
+            <English>Objectives At Once (HC mode)</English>
+        </Key>
+        <Key ID="STR_hal_core_bBAOObj_desc">
+            <English>Set the max number of objectives to capture at once. Only works in high-command + legacy mode.</English>
+        </Key>
+        <Key ID="STR_hal_core_bbLRelocating">
+            <English>Commanders Relocate</English>
+        </Key>
+        <Key ID="STR_hal_core_bbLRelocating_desc">
+            <English>HC controlled commanders will relocate to objectives recently captured. Used for HC mode as legacy relocation works differently.</English>
+        </Key>
+        <Key ID="STR_hal_core_berserk">
+            <English>Forced Attack Mode</English>
+        </Key>
+        <Key ID="STR_hal_core_berserk_desc">
+            <English>Commander will never go into defensive mode.</English>
+        </Key>
+        <Key ID="STR_hal_core_cRDefRes">
+            <English>Def Reserve Ratio</English>
+        </Key>
+        <Key ID="STR_hal_core_cRDefRes_desc">
+            <English>Coefficient of how many squads will be reserved for advanced defend orders like patrol orders. Choose a number from 0 to 1.</English>
+        </Key>
+        <Key ID="STR_hal_core_camV">
+            <English>Remote Cam</English>
+        </Key>
+        <Key ID="STR_hal_core_camV_desc">
+            <English>Setting broken with caching. Supposed to add a camera to see what other squad leaders can see.</English>
+        </Key>
+        <Key ID="STR_hal_core_captLimit">
+            <English>Capture Strength</English>
+        </Key>
+        <Key ID="STR_hal_core_captLimit_desc">
+            <English>Number of units that must be at the objective to capture it.</English>
+        </Key>
+        <Key ID="STR_hal_core_captureDistance">
+            <English>Capture Radius Mult</English>
+        </Key>
+        <Key ID="STR_hal_core_captureDistance_desc">
+            <English>Multiplier for how far from the objective's position the initial waypoint will be placed during capture orders.</English>
+        </Key>
+        <Key ID="STR_hal_core_cargoFind">
+            <English>Cargo Find Range</English>
+        </Key>
+        <Key ID="STR_hal_core_cargoFind_desc">
+            <English>Range around an infantry squad within which the squad will look for a transport vehicle. Set to 0 to disable.</English>
+        </Key>
+        <Key ID="STR_hal_core_cargoObjRange">
+            <English>Distance To Use Transport</English>
+        </Key>
+        <Key ID="STR_hal_core_cargoObjRange_desc">
+            <English>Distance beyond which infantry will make use of dispatched transports to get a lift. Too low values will result in problematic behaviour.</English>
+        </Key>
+        <Key ID="STR_hal_core_category_behaviour">
+            <English>HAL Behaviour</English>
+        </Key>
+        <Key ID="STR_hal_core_category_commander">
+            <English>HAL Commander</English>
+        </Key>
+        <Key ID="STR_hal_core_category_general">
+            <English>HAL General</English>
+        </Key>
+        <Key ID="STR_hal_core_category_highcommander">
+            <English>HAL High Commander</English>
+        </Key>
+        <Key ID="STR_hal_core_category_objectives">
+            <English>HAL Objectives</English>
+        </Key>
+        <Key ID="STR_hal_core_category_personality">
+            <English>HAL Personality</English>
+        </Key>
+        <Key ID="STR_hal_core_category_support">
+            <English>HAL Support</English>
+        </Key>
+        <Key ID="STR_hal_core_chatDebug">
+            <English>Map Radio Messages</English>
+        </Key>
+        <Key ID="STR_hal_core_chatDebug_desc">
+            <English>Show radio messages on map as markers.</English>
+        </Key>
+        <Key ID="STR_hal_core_combining">
+            <English>Exhausted Squads Combine</English>
+        </Key>
+        <Key ID="STR_hal_core_combining_desc">
+            <English>Enables withdrawing or disabled squads to join forces with other squads to continue fighting. WIP setting.</English>
+        </Key>
+        <Key ID="STR_hal_core_commDelay">
+            <English>Communication Delay</English>
+        </Key>
+        <Key ID="STR_hal_core_commDelay_desc">
+            <English>Coefficient of speed for orders dispatching. (ex: 2 for double delay) Avoid values under 1.</English>
+        </Key>
+        <Key ID="STR_hal_core_customObjOnly">
+            <English>No Auto Objectives</English>
+        </Key>
+        <Key ID="STR_hal_core_customObjOnly_desc">
+            <English>HC will only consider user placed objectives instead of scanning the map for strategic locations.</English>
+        </Key>
+        <Key ID="STR_hal_core_debug">
+            <English>Debug</English>
+        </Key>
+        <Key ID="STR_hal_core_debug_desc">
+            <English>Enables debug mode for the commander.</English>
+        </Key>
+        <Key ID="STR_hal_core_defRange">
+            <English>Defend Position Radius Mult</English>
+        </Key>
+        <Key ID="STR_hal_core_defRange_desc">
+            <English>Multiplier for how far from the defense point defense orders will be assigned. Useful for keeping a tight defensive formation or opening it up.</English>
+        </Key>
+        <Key ID="STR_hal_core_defendObjectives">
+            <English>Def Ownership Size</English>
+        </Key>
+        <Key ID="STR_hal_core_defendObjectives_desc">
+            <English>Sets how many squads must be around an objective for the commander to consider it a defensive point. Only works in legacy mode.</English>
+        </Key>
+        <Key ID="STR_hal_core_disembarkRange">
+            <English>Infantry Disembark Upon Enemy Contact</English>
+        </Key>
+        <Key ID="STR_hal_core_disembarkRange_desc">
+            <English>Infantry will dismount their transport upon making contact with enemy within this radius from them.</English>
+        </Key>
+        <Key ID="STR_hal_core_dynForm">
+            <English>Dynamic Formations</English>
+        </Key>
+        <Key ID="STR_hal_core_dynForm_desc">
+            <English>Squads will change their formation according to the situation (Updated every minute).</English>
+        </Key>
+        <Key ID="STR_hal_core_exInfo">
+            <English>Ext Enemy Reports</English>
+        </Key>
+        <Key ID="STR_hal_core_exInfo_desc">
+            <English>Makes commander receive information about enemies from non-controlled groups.</English>
+        </Key>
+        <Key ID="STR_hal_core_fast">
+            <English>Fast Orders</English>
+        </Key>
+        <Key ID="STR_hal_core_fast_desc">
+            <English>Makes commander issue orders before the end of its waiting period between order cycles. Can cause clashing orders and heavy CPU load.</English>
+        </Key>
+        <Key ID="STR_hal_core_flankDistance">
+            <English>Flanking Radius Mult</English>
+        </Key>
+        <Key ID="STR_hal_core_flankDistance_desc">
+            <English>Multiplier for how far from the target's position the initial waypoint will be placed during flanking attack orders.</English>
+        </Key>
+        <Key ID="STR_hal_core_flare">
+            <English>Flares On Enemies</English>
+        </Key>
+        <Key ID="STR_hal_core_flare_desc">
+            <English>Squads will use flares or request flare shells to mark or expose enemies (At night).</English>
+        </Key>
+        <Key ID="STR_hal_core_flee">
+            <English>Fleeing Behaviour</English>
+        </Key>
+        <Key ID="STR_hal_core_flee_desc">
+            <English>Enables fleeing for overwhelmed squads.</English>
+        </Key>
+        <Key ID="STR_hal_core_forceAAO">
+            <English>Force AAO</English>
+        </Key>
+        <Key ID="STR_hal_core_forceAAO_desc">
+            <English>Will force the commander to capture objectives all at once. Only works in legacy mode.</English>
+        </Key>
+        <Key ID="STR_hal_core_garrR">
+            <English>Garrison Attack Range</English>
+        </Key>
+        <Key ID="STR_hal_core_garrR_desc">
+            <English>How far can attack orders be issued for a garrisoned squad.</English>
+        </Key>
+        <Key ID="STR_hal_core_garrRange">
+            <English>Garrison Radius Mult</English>
+        </Key>
+        <Key ID="STR_hal_core_garrRange_desc">
+            <English>Multiplier for how far garrisoned squads will look around for buildings and static weapons from their garrison point.</English>
+        </Key>
+        <Key ID="STR_hal_core_garrVehAb">
+            <English>Garr Disembark (only Stock)</English>
+        </Key>
+        <Key ID="STR_hal_core_garrVehAb_desc">
+            <English>Makes garrisoned squads disembark their vehicle when using the stock garrison mode (not compatible with NR6 Sites mode).</English>
+        </Key>
+        <Key ID="STR_hal_core_garrisonV2">
+            <English>NR6 Sites Garrisons</English>
+        </Key>
+        <Key ID="STR_hal_core_garrisonV2_desc">
+            <English>Uses the NR6 Sites CBA based defensive script for garrison orders instead of stock HAL.</English>
+        </Key>
+        <Key ID="STR_hal_core_getHQInside">
+            <English>Commander Shelter Seek</English>
+        </Key>
+        <Key ID="STR_hal_core_getHQInside_desc">
+            <English>Commanders will seek for shelter everytime they relocate (For Relocating Mode).</English>
+        </Key>
+        <Key ID="STR_hal_core_hQChat">
+            <English>Commander Chat Orders</English>
+        </Key>
+        <Key ID="STR_hal_core_hQChat_desc">
+            <English>Commander orders visible in side chat.</English>
+        </Key>
+        <Key ID="STR_hal_core_idleDef">
+            <English>Patrol Orders</English>
+        </Key>
+        <Key ID="STR_hal_core_idleDef_desc">
+            <English>When used with Idle Orders, squads will patrol between captured objectives instead of idling when waiting for orders.</English>
+        </Key>
+        <Key ID="STR_hal_core_idleOrd">
+            <English>Idle Orders</English>
+        </Key>
+        <Key ID="STR_hal_core_idleOrd_desc">
+            <English>Squads will wander and patrol around their position when waiting for orders.</English>
+        </Key>
+        <Key ID="STR_hal_core_infoMarkers">
+            <English>BFT Markers</English>
+        </Key>
+        <Key ID="STR_hal_core_infoMarkersID">
+            <English>Add Group ID for BFT</English>
+        </Key>
+        <Key ID="STR_hal_core_infoMarkersID_desc">
+            <English>Friendly forces will have their Squad ID show up on info markers.</English>
+        </Key>
+        <Key ID="STR_hal_core_infoMarkers_desc">
+            <English>Enables BFT markers with known enemy positions refreshed each cycle.</English>
+        </Key>
+        <Key ID="STR_hal_core_knowTL">
+            <English>Commander KnownE Share</English>
+        </Key>
+        <Key ID="STR_hal_core_knowTL_desc">
+            <English>All known enemy targets will be shared to controlled players.</English>
+        </Key>
+        <Key ID="STR_hal_core_lRelocating">
+            <English>Relocating Commander</English>
+        </Key>
+        <Key ID="STR_hal_core_lRelocating_desc">
+            <English>Commander will move to the latest captured objective each time. Only works in legacy mode.</English>
+        </Key>
+        <Key ID="STR_hal_core_lZ">
+            <English>Enable LZ System</English>
+        </Key>
+        <Key ID="STR_hal_core_lZ_desc">
+            <English>System that will place invisible helipads when helicopter transport is issued to improve the selection of landing sites by AI pilots.</English>
+        </Key>
+        <Key ID="STR_hal_core_mAtt">
+            <English>Manual Personality</English>
+        </Key>
+        <Key ID="STR_hal_core_mAtt_desc">
+            <English>Use the manual personality selection below instead of a randomized personality.</English>
+        </Key>
+        <Key ID="STR_hal_core_magicHeal">
+            <English>Supports Magic Heal (ACE only)</English>
+        </Key>
+        <Key ID="STR_hal_core_magicHeal_desc">
+            <English>Enables magic healing around ambulances upon support request as a workaround for ACE medical.</English>
+        </Key>
+        <Key ID="STR_hal_core_magicRearm">
+            <English>Supports Magic Rearm</English>
+        </Key>
+        <Key ID="STR_hal_core_magicRearm_desc">
+            <English>Enables magic vehicle rearming around ammo vehicles upon support request as a workaround for ACE rearming limitations.</English>
+        </Key>
+        <Key ID="STR_hal_core_magicRefuel">
+            <English>Supports Magic Refuel</English>
+        </Key>
+        <Key ID="STR_hal_core_magicRefuel_desc">
+            <English>Enables magic refueling around refuel vehicles upon support request as a workaround for ACE refuel limitations.</English>
+        </Key>
+        <Key ID="STR_hal_core_magicRepair">
+            <English>Supports Magic Repair</English>
+        </Key>
+        <Key ID="STR_hal_core_magicRepair_desc">
+            <English>Enables magic repairs around repair vehicles upon support request as a workaround for ACE repair limitations.</English>
+        </Key>
+        <Key ID="STR_hal_core_mainInterval">
+            <English>HC Cycle (Minutes)</English>
+        </Key>
+        <Key ID="STR_hal_core_mainInterval_desc">
+            <English>Delay between HC computation cycles.</English>
+        </Key>
+        <Key ID="STR_hal_core_maxSimpleObjs">
+            <English>Objectives At Once (Simple mode)</English>
+        </Key>
+        <Key ID="STR_hal_core_maxSimpleObjs_desc">
+            <English>Set the max number of objectives to capture at once in simple mode.</English>
+        </Key>
+        <Key ID="STR_hal_core_muu">
+            <English>Morale Coefficient</English>
+        </Key>
+        <Key ID="STR_hal_core_muu_desc">
+            <English>Coefficient of how much morale is affected by events on the battlefield. The higher this is, the more likely troops will stop fighting.</English>
+        </Key>
+        <Key ID="STR_hal_core_nEAware">
+            <English>Squad Info Share Range</English>
+        </Key>
+        <Key ID="STR_hal_core_nEAware_desc">
+            <English>How far do squads communicate enemy positions to other nearby squads. Set to 0 to disable.</English>
+        </Key>
+        <Key ID="STR_hal_core_noAirCargo">
+            <English>Disable Air Cargo</English>
+        </Key>
+        <Key ID="STR_hal_core_noAirCargo_desc">
+            <English>Disable aerial transportation.</English>
+        </Key>
+        <Key ID="STR_hal_core_noCargoPlayers">
+            <English>Disable Cargo Players Squad Leaders</English>
+        </Key>
+        <Key ID="STR_hal_core_noCargoPlayers_desc">
+            <English>Players will not be provided with forced lifts (Recommended).</English>
+        </Key>
+        <Key ID="STR_hal_core_noLandCargo">
+            <English>Disable Land Cargo</English>
+        </Key>
+        <Key ID="STR_hal_core_noLandCargo_desc">
+            <English>Disable ground transportation.</English>
+        </Key>
+        <Key ID="STR_hal_core_noRec">
+            <English>Chance Skip Recon</English>
+        </Key>
+        <Key ID="STR_hal_core_noRec_desc">
+            <English>Chance to skip recon stage for capturing objectives on each cycle. Percentage affected by leader personality.</English>
+        </Key>
+        <Key ID="STR_hal_core_noRestPlayers">
+            <English>Disable Withdraw For Players Squad Leader</English>
+        </Key>
+        <Key ID="STR_hal_core_noRestPlayers_desc">
+            <English>Players will not receive forced retreat orders (Recommended).</English>
+        </Key>
+        <Key ID="STR_hal_core_objHoldTime">
+            <English>Time To Capture Objective</English>
+        </Key>
+        <Key ID="STR_hal_core_objHoldTime_desc">
+            <English>Capture orders will stay active for squads this long after they have reached the objective.</English>
+        </Key>
+        <Key ID="STR_hal_core_objRadius1">
+            <English>Friendly Capture Radius</English>
+        </Key>
+        <Key ID="STR_hal_core_objRadius1_desc">
+            <English>Friendly forces must be within this radius from an objective to capture it.</English>
+        </Key>
+        <Key ID="STR_hal_core_objRadius2">
+            <English>Enemy Capture Radius</English>
+        </Key>
+        <Key ID="STR_hal_core_objRadius2_desc">
+            <English>Enemy forces must be within this radius from an objective for the commander to consider it lost.</English>
+        </Key>
+        <Key ID="STR_hal_core_objectiveRespawn">
+            <English>Create Objective Player Respawn Points</English>
+        </Key>
+        <Key ID="STR_hal_core_objectiveRespawn_desc">
+            <English>Creates a player respawn position for every taken objective.</English>
+        </Key>
+        <Key ID="STR_hal_core_order">
+            <English>Forced Defense Mode</English>
+        </Key>
+        <Key ID="STR_hal_core_order_desc">
+            <English>Commander will never go into offensive mode.</English>
+        </Key>
+        <Key ID="STR_hal_core_pathFinding">
+            <English>Pathfinding Increments</English>
+        </Key>
+        <Key ID="STR_hal_core_pathFinding_desc">
+            <English>Set to 0 to disable. Adds several waypoints to squads instead of a single straight line waypoint to account for terrain. May cause more issues with mobility. (Recommended disabled)</English>
+        </Key>
+        <Key ID="STR_hal_core_personality">
+            <English>Select Personality</English>
+        </Key>
+        <Key ID="STR_hal_core_personality_desc">
+            <English>Manual commander personality preset. Affects decision-making biases.</English>
+        </Key>
+        <Key ID="STR_hal_core_rHQAutoFill">
+            <English>RHQ Auto Mode</English>
+        </Key>
+        <Key ID="STR_hal_core_rHQAutoFill_desc">
+            <English>Classifies units to be used by HAL automatically.</English>
+        </Key>
+        <Key ID="STR_hal_core_rapidCapt">
+            <English>Chance Fast Capture</English>
+        </Key>
+        <Key ID="STR_hal_core_rapidCapt_desc">
+            <English>Chance for the commander to focus on capturing objectives instead of engaging hostiles on each cycle.</English>
+        </Key>
+        <Key ID="STR_hal_core_reconCargo">
+            <English>Enable Cargo Recon</English>
+        </Key>
+        <Key ID="STR_hal_core_reconCargo_desc">
+            <English>Recon orders will use provided lifts.</English>
+        </Key>
+        <Key ID="STR_hal_core_reconDistance">
+            <English>Recon Radius Mult</English>
+        </Key>
+        <Key ID="STR_hal_core_reconDistance_desc">
+            <English>Multiplier for how far from the recon position the initial waypoint will be placed during recon orders.</English>
+        </Key>
+        <Key ID="STR_hal_core_reconReserve">
+            <English>Recon Reserve Ratio</English>
+        </Key>
+        <Key ID="STR_hal_core_reconReserve_desc">
+            <English>Coefficient of how many squads will be reserved for recon. Choose a number from 0 to 1.</English>
+        </Key>
+        <Key ID="STR_hal_core_resetOnDemand">
+            <English>Cycles On Demand</English>
+        </Key>
+        <Key ID="STR_hal_core_resetOnDemand_desc">
+            <English>Only advance to next order cycle when the ResetNow variable has been set to true for the concerned commander.</English>
+        </Key>
+        <Key ID="STR_hal_core_resetTime">
+            <English>Cycle Duration</English>
+        </Key>
+        <Key ID="STR_hal_core_resetTime_desc">
+            <English>Waiting time between each cycle of orders.</English>
+        </Key>
+        <Key ID="STR_hal_core_rush">
+            <English>Rush Mode</English>
+        </Key>
+        <Key ID="STR_hal_core_rush_desc">
+            <English>Squads will always run to their objectives (even in patrols).</English>
+        </Key>
+        <Key ID="STR_hal_core_sAmmo">
+            <English>Ammo Support</English>
+        </Key>
+        <Key ID="STR_hal_core_sAmmo_desc">
+            <English>Controlled groups will receive rearming support.</English>
+        </Key>
+        <Key ID="STR_hal_core_sFuel">
+            <English>Fuel Support</English>
+        </Key>
+        <Key ID="STR_hal_core_sFuel_desc">
+            <English>Controlled groups will receive refueling support.</English>
+        </Key>
+        <Key ID="STR_hal_core_sMed">
+            <English>Medical Support</English>
+        </Key>
+        <Key ID="STR_hal_core_sMed_desc">
+            <English>Controlled groups will receive medical support.</English>
+        </Key>
+        <Key ID="STR_hal_core_sRep">
+            <English>Repair Support</English>
+        </Key>
+        <Key ID="STR_hal_core_sRep_desc">
+            <English>Controlled groups will receive repairing support.</English>
+        </Key>
+        <Key ID="STR_hal_core_secTasks">
+            <English>Objective Status Tasks</English>
+        </Key>
+        <Key ID="STR_hal_core_secTasks_desc">
+            <English>Enables tasks added to all groups that inform players about the ownership/status of objectives.</English>
+        </Key>
+        <Key ID="STR_hal_core_simpleMode">
+            <English>Simple Mode</English>
+        </Key>
+        <Key ID="STR_hal_core_simpleMode_desc">
+            <English>Default mode. Activates simple mode and disables the old HAL 4 objectives system.</English>
+        </Key>
+        <Key ID="STR_hal_core_slingDrop">
+            <English>Sling Load Ammo Drop</English>
+        </Key>
+        <Key ID="STR_hal_core_slingDrop_desc">
+            <English>(Feature inconsistent at this time)</English>
+        </Key>
+        <Key ID="STR_hal_core_smoke">
+            <English>Smoke For Retreat</English>
+        </Key>
+        <Key ID="STR_hal_core_smoke_desc">
+            <English>Squads will use smoke grenades or request smoke shells to cover their retreat.</English>
+        </Key>
+        <Key ID="STR_hal_core_subAll">
+            <English>Control All Side Groups</English>
+        </Key>
+        <Key ID="STR_hal_core_subAll_desc">
+            <English>Add all from the same side as the commander under his control.</English>
+        </Key>
+        <Key ID="STR_hal_core_subSynchro">
+            <English>Control Sync Groups</English>
+        </Key>
+        <Key ID="STR_hal_core_subSynchro_desc">
+            <English>Units synchronized to the commander unit will be added to his control (Non Virtual CO).</English>
+        </Key>
+        <Key ID="STR_hal_core_supportActions">
+            <English>Support Actions (Deprecated)</English>
+        </Key>
+        <Key ID="STR_hal_core_supportActions_desc">
+            <English>Player squad leaders will have support related actions. Deprecated by menu.</English>
+        </Key>
+        <Key ID="STR_hal_core_supportRTB">
+            <English>Support RTB</English>
+        </Key>
+        <Key ID="STR_hal_core_supportRTB_desc">
+            <English>Makes support vehicles/groups return to their starting point upon completion of their mission.</English>
+        </Key>
+        <Key ID="STR_hal_core_supportWP">
+            <English>Support Waypoints</English>
+        </Key>
+        <Key ID="STR_hal_core_supportWP_desc">
+            <English>Support orders will use support waypoints.</English>
+        </Key>
+        <Key ID="STR_hal_core_surr">
+            <English>Surrender Behaviour</English>
+        </Key>
+        <Key ID="STR_hal_core_surr_desc">
+            <English>Enables surrendering for overwhelmed squads.</English>
+        </Key>
+        <Key ID="STR_hal_core_synchroAttack">
+            <English>Synchronized/Planned Attacks</English>
+        </Key>
+        <Key ID="STR_hal_core_synchroAttack_desc">
+            <English>Attacks will be timed and synchronized among squads attacking the same target.</English>
+        </Key>
+        <Key ID="STR_hal_core_taskActions">
+            <English>Tasking Actions (Deprecated)</English>
+        </Key>
+        <Key ID="STR_hal_core_taskActions_desc">
+            <English>Player squad leaders will have tasking related actions. Deprecated by menu.</English>
+        </Key>
+        <Key ID="STR_hal_core_uAVAlt">
+            <English>UAV Deploy Altitude</English>
+        </Key>
+        <Key ID="STR_hal_core_uAVAlt_desc">
+            <English>Altitude at which carried UAVs will fly during recon orders. Set to 0 to disable.</English>
+        </Key>
+        <Key ID="STR_hal_core_unlimitedCapt">
+            <English>Never Capture</English>
+        </Key>
+        <Key ID="STR_hal_core_unlimitedCapt_desc">
+            <English>Commander will keep sending troops to an objective and it will never be considered captured.</English>
+        </Key>
+        <Key ID="STR_hal_core_withdraw">
+            <English>Withdrawal Coefficient</English>
+        </Key>
+        <Key ID="STR_hal_core_withdraw_desc">
+            <English>Coefficient of how likely troops will be withdrawn. The higher this is, the more likely troops will run.</English>
+        </Key>
+    </Package>
+</Project>

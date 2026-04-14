@@ -14,8 +14,8 @@ _amount = ceil _amount;
 			_vehicle setVariable ["RydHQArtyAmmoHandled", true];
 
 			_vehicle addEventHandler ["Fired",{
-				(_this select 0) setVariable ["RydHQ_ShotFired", true];
-				(_this select 0) setVariable ["RydHQ_ShotFired2", ((_this select 0) getVariable ["RydHQ_ShotFired2", 0]) + 1];
+				(_this select 0) setVariable [QGVAR(shotFired), true];
+				(_this select 0) setVariable [QGVAR(shotFired2), ((_this select 0) getVariable [QGVAR(shotFired2), 0]) + 1];
 			}];
 
 			private _magTypes = getArtilleryAmmo [_vehicle];

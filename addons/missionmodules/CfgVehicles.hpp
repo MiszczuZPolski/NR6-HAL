@@ -13,7 +13,7 @@ class CfgVehicles
 	class GVAR(Core_Module): Module_F
 	{
 		scope=2;
-		displayName="HAL Core";
+		displayName = CSTRING(Core_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category= QGVAR(core);
@@ -26,7 +26,7 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_Wait
+			class EGVAR(core,wait)
 			{
 				displayName="Startup Delay";
 				description="Time in seconds that HAL will wait before initializing.";
@@ -36,7 +36,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Activates HAL. Can be synchronized to a trigger for late activation.";
+			description = CSTRING(Core_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -57,7 +57,7 @@ class CfgVehicles
 	class GVAR(GenSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="HAL General Settings";
+		displayName = CSTRING(GenSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(core);
@@ -70,35 +70,35 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydxHQ_ReconCargo
+			class EGVAR(core,reconCargo)
 			{
 				displayName="Enable Cargo Recon";
 				description="Recon orders will use provided lifts.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_SynchroAttack
+			class EGVAR(core,synchroAttack)
 			{
 				displayName="Synchronized/Planned Attacks";
 				description="Attacks will be timed and synchronized among squads attacking the same target.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_HQChat
+			class EGVAR(core,hQChat)
 			{
 				displayName="Commander Chat Orders";
 				description="Commander orders visivle in side chat.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_AIChatDensity
+			class EGVAR(core,aIChatDensity)
 			{
 				displayName="Radio Comms Presence";
 				description="Chance for a communication between AI and commander to be visible and audible.";
 				typeName="NUMBER";
 				defaultValue = "100";
 			};
-			class RydxHQ_AIChat_Type
+			class EGVAR(core,aIChat_Type)
 			{
 				displayName="Radio Comms Profile";
 				description="Changes the lines used in radio communications to better fit certain contexts for modded content.";
@@ -122,56 +122,56 @@ class CfgVehicles
 					};
 				};
 			};
-			class RydxHQ_InfoMarkersID
+			class EGVAR(core,infoMarkersID)
 			{
 				displayName="Add Group ID for BFT";
 				description="Friendly forces will have their Squad ID show up on info markers.";
 				typeName="BOOL";
 				defaultValue = "true";
 			};
-			class RydxHQ_Actions
+			class EGVAR(core,actions)
 			{
 				displayName="Squad Leader Actions";
 				description="Player squad leaders will have HAL actions enabled.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_ActionsMenu
+			class EGVAR(core,actionsMenu)
 			{
 				displayName="Actions Menu";
 				description="Player squad leaders will have HAL actions enabled as a menu.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_TaskActions
+			class EGVAR(core,taskActions)
 			{
 				displayName="Tasking Actions (Deprecated)";
 				description="Player squad leaders will have tasking related actions. Deprecated by menu.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_SupportActions
+			class EGVAR(core,supportActions)
 			{
 				displayName="Support Actions (Deprecated)";
 				description="Player squad leaders will have support related actions. Deprecated by menu.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_ActionsAceOnly
+			class EGVAR(core,actionsAceOnly)
 			{
 				displayName="Only Use ACE Actions";
 				description="Player squad leaders will only use ACE self-interactions for their HAL actions.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_NoRestPlayers
+			class EGVAR(core,noRestPlayers)
 			{
 				displayName="Disable Withdraw For Players Squad Leader";
 				description="Players will not receive forced retreat orders (Recommended).";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_NoCargoPlayers
+			class EGVAR(core,noCargoPlayers)
 			{
 				displayName="Disable Cargo Players Squad Leaders";
 				description="Players will not be provided with forced lifts (Recommended).";
@@ -185,84 +185,84 @@ class CfgVehicles
 				typeName="NUMBER";
 				defaultValue = "2";
 			};
-			class RydxHQ_DisembarkRange
+			class EGVAR(core,disembarkRange)
 			{
 				displayName="Infantry Disembark Upon Enemy Contact";
 				description="Infantry will dismount their transport upon making contact with enemy within this radius from them. Note that certain orders will always have their infantry disembark when meeting nearby enemy to counterattack and re-evaluate.";
 				typeName="NUMBER";
 				defaultValue = "200";
 			};
-			class RydxHQ_CargoObjRange
+			class EGVAR(core,cargoObjRange)
 			{
 				displayName="Distance To Use Transport";
 				description="Distance beyond which infantry will make use of dispatched transports to get a lift. Too low values will result in problematic behaviour.";
 				typeName="NUMBER";
 				defaultValue = "1500";
 			};
-			class RydxHQ_LZ
+			class EGVAR(core,lZ)
 			{
 				displayName="Enable LZ System";
 				description="System that will place invisible helipads when helicopter transport is issued to improve the selection of landing sites by AI pilots.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_GarrisonV2
+			class EGVAR(core,garrisonV2)
 			{
 				displayName="NR6 Sites Garrisons";
 				description="Uses the NR6 Sites CBA based defensive script for garrison orders instead of stock HAL.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_NEAware
+			class EGVAR(core,nEAware)
 			{
 				displayName="Squad Info Share Range";
 				description="How far do squads communicate enemy positions to other nearby squads. Set to 0 to disable.";
 				typeName="NUMBER";
 				defaultValue = "500";
 			};
-			class RydxHQ_SlingDrop
+			class EGVAR(core,slingDrop)
 			{
 				displayName="Sling Load Ammo Drop";
 				description="(Feature inconsistent at this time)";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_RHQAutoFill
+			class EGVAR(core,rHQAutoFill)
 			{
 				displayName="RHQ Auto Mode";
 				description="Classifies units to be used by HAL automatically";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydxHQ_PathFinding
+			class EGVAR(core,pathFinding)
 			{
 				displayName="Pathfinding Increments";
 				description="Set to 0 to disable. Adds several waypoints to squads instead of a single straight line waypoint to account for terrain. May cause more issues with mobility. (Recommended disabled)";
 				typeName="NUMBER";
 				defaultValue = "0";
 			};
-			class RydxHQ_MagicHeal
+			class EGVAR(core,magicHeal)
 			{
 				displayName="Supports Magic Heal (ACE only)";
 				description="Enables magic healing around ambulances upon support request as a workaround for ACE medical.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_MagicRepair
+			class EGVAR(core,magicRepair)
 			{
 				displayName="Supports Magic Repair";
 				description="Enables magic repairs around repair vehicles upon support request as a workaround for ACE repair limitations.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_MagicRearm
+			class EGVAR(core,magicRearm)
 			{
 				displayName="Supports Magic Rearm";
 				description="Enables magic vehicle rearming around ammo vehicles upon support request as a workaround for ACE rearming limitations.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydxHQ_MagicRefuel
+			class EGVAR(core,magicRefuel)
 			{
 				displayName="Supports Magic Refuel";
 				description="Enables magic refueling around refuel vehicles upon support request as a workaround for ACE refuel limitations.";
@@ -279,7 +279,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="General settings shared by all commanders.";
+			description = CSTRING(GenSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -302,7 +302,7 @@ class CfgVehicles
 	class GVAR(Leader_Module): Module_F
 	{
 		scope = 2;
-		displayName = "HAL Commander";
+		displayName = CSTRING(Leader_Module);
 		author = "NinjaRider600";
 		vehicleClass = "Modules";
 		category = QGVAR(leader);
@@ -405,7 +405,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds an AI commander. Synchronize to a unit to set it to be the AI commander or do not for a virtual HQ";
+			description = CSTRING(Leader_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -426,7 +426,7 @@ class CfgVehicles
 	class GVAR(Leader_Settings_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Settings";
+		displayName = CSTRING(Leader_Settings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -439,105 +439,105 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_Fast
+			class EGVAR(core,fast)
 			{
 				displayName="Fast Orders";
 				description="Makes commander issue orders before the end of its waiting period between order cycles. Can cause clashing orders and heavy CPU load.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_CommDelay
+			class EGVAR(core,commDelay)
 			{
 				displayName="Communication Delay";
 				description="Coefficient of speed for orders dispatching. (ex: 2 for double delay) Avoid values under 1.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_ChatDebug
+			class EGVAR(common,chatDebug)
 			{
 				displayName="Map Radio Messages";
 				description="Show radio messages on map as markers.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_ExInfo
+			class EGVAR(core,exInfo)
 			{
 				displayName="Ext Enemy Reports";
 				description="Makes commander receive information about enemies from non-controlled groups.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_ResetTime
+			class EGVAR(core,resetTime)
 			{
 				displayName="Cycle Duration";
 				description="Waiting time between each cycle of orders.";
 				typeName="NUMBER";
 				defaultValue = "150";
 			};
-			class RydHQ_ResetOnDemand
+			class EGVAR(core,resetOnDemand)
 			{
 				displayName="Cycles On Demand";
 				description="Only advance to next order cycle when ((group LeaderHQ) setVariable ['RydHQ_ResetNow',true]) has been set to true for the concerned commander.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_SubAll
+			class EGVAR(core,subAll)
 			{
 				displayName="Control All Side Groups";
 				description="Add all from the same side as the commander under his control.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_SubSynchro
+			class EGVAR(core,subSynchro)
 			{
 				displayName="Control Sync Groups";
 				description="Units synchronized to the commander unit will be added to his control (Non Virtual CO).";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_KnowTL
+			class EGVAR(core,knowTL)
 			{
 				displayName="Commander KnownE Share";
 				description="All known enemy targets will be shared to controlled players";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_GetHQInside
+			class EGVAR(core,getHQInside)
 			{
 				displayName="Commander Shelter Seek";
 				description="Commanders will seek for shelter everytime they relocate (For Relocating Mode).";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_CamV
+			class EGVAR(hac,camV)
 			{
 				displayName="Remote Cam";
 				description="Setting broken with caching. Supposed to add a camera to see what other squad leaders can see";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_InfoMarkers
+			class EGVAR(core,infoMarkers)
 			{
 				displayName="BFT Markers";
 				description="Enables BFT markers with known enemy positions refreshed each cycle.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_ArtyMarks
+			class EGVAR(core,artyMarks)
 			{
 				displayName="Artillery Markers";
 				description="Enables artillery markers for fire missions.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_SecTasks
+			class EGVAR(core,secTasks)
 			{
 				displayName="Objective Status Tasks";
 				description="Enables tasks added to all groups that inform players about the ownership/status of objectives. NOTE: May cause an error. It is a bug on BI's side linked to a task function for groups and can be ignored.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_Debug
+			class EGVAR(common,debug)
 			{
 				displayName="Debug";
 				description="Enables debug mode for the commander.";
@@ -547,7 +547,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets settings for the synchronized commander module.";
+			description = CSTRING(Leader_Settings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -568,7 +568,7 @@ class CfgVehicles
 	class GVAR(Leader_BehSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Behaviour Settings";
+		displayName = CSTRING(Leader_BehSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -581,84 +581,84 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_Smoke
+			class EGVAR(core,smoke)
 			{
 				displayName="Smoke For Retreat";
 				description="Squads will use smoke grenades or request smoke shells to cover their retreat.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_Flare
+			class EGVAR(core,flare)
 			{
 				displayName="Flares On Enemies";
 				description="Squads will use flares or request flare shells to mark or exposed enemies (At night).";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_GarrVehAb
+			class EGVAR(core,garrVehAb)
 			{
 				displayName="Garr Disembark (only Stock)";
 				description="Makes garrisoned squads disembark their vehicle when using the stock garrison mode (not compatible with NR6 Sites mode).";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_IdleOrd
+			class EGVAR(core,idleOrd)
 			{
 				displayName="Idle Orders";
 				description="Squads will wander and patrol around their position when waiting for orders";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_IdleDef
+			class EGVAR(core,idleDef)
 			{
 				displayName="Patrol Orders";
 				description="When used with Idle Orders, squads will patrol between captured objectives instead of idling when waiting for orders";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_Flee
+			class EGVAR(core,flee)
 			{
 				displayName="Fleeing Behaviour";
 				description="Enables fleeing for overwhelmed squads";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_Surr
+			class EGVAR(core,surr)
 			{
 				displayName="Surrender Behaviour";
 				description="Enables surrendering for overwhelmed squads";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_Muu
+			class EGVAR(core,muu)
 			{
 				displayName="Morale Coefficient";
 				description="Coefficient of how much morale is affected by events on the battlefield. The higher this is, the more likely troops will stop fighting.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_Rush
+			class EGVAR(core,rush)
 			{
 				displayName="Rush Mode";
 				description="Squads will always run to their objectives (even in patrols).";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_Withdraw
+			class EGVAR(core,withdraw)
 			{
 				displayName="Withdrawal Coefficient";
 				description="Coefficient of how likely troops will be withdrawn. The higher this is, the more likely troops will run.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_AirDist
+			class EGVAR(core,airDist)
 			{
 				displayName="Max Air Asset Dist";
 				description="Idle air assets beyond this distance from their starting position will return to that position. Useful for planes running away from the map when not issued any waypoints.";
 				typeName="NUMBER";
 				defaultValue = "4000";
 			};
-			class RydHQ_DynForm
+			class EGVAR(core,dynForm)
 			{
 				displayName="Dynamic Formations";
 				description="Squads will change their formation according to the situation (Updated every minute).";
@@ -666,77 +666,77 @@ class CfgVehicles
 				defaultValue = "True";
 			};
 
-			class RydHQ_DefRange
+			class EGVAR(core,defRange)
 			{
 				displayName="Defend Position Radius Mult";
 				description="Multiplier for how far from the defense point defense orders will be assigned. Useful for keeping a tight defensive formation or opening it up.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_GarrRange
+			class EGVAR(core,garrRange)
 			{
 				displayName="Garrison Radius Mult";
 				description="Multiplier for how far garrisonned squads will look around for buildings and static weapons from their garrison point.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_AttInfDistance
+			class EGVAR(core,attInfDistance)
 			{
 				displayName="Inf Attack Radius Mult";
 				description="Multiplier for how far from the target's position the initial waypoint will be placed during infantry attack orders.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_AttArmDistance
+			class EGVAR(core,attArmDistance)
 			{
 				displayName="Armor Attack Radius Mult";
 				description="Multiplier for how far from the target's position the initial waypoint will be placed during armor attack orders.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_AttSnpDistance
+			class EGVAR(core,attSnpDistance)
 			{
 				displayName="Sniper Attack Radius Mult";
 				description="Multiplier for how far from the target's position the initial waypoint will be placed during sniper attack orders.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_FlankDistance
+			class EGVAR(core,flankDistance)
 			{
 				displayName="Flanking Radius Mult";
 				description="Multiplier for how far from the target's position the initial waypoint will be placed during flanking attack orders.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_AttSFDistance
+			class EGVAR(core,attSFDistance)
 			{
 				displayName="Specops Attack Radius Mult";
 				description="Multiplier for how far from the target's position the initial waypoint will be placed during specops attack orders.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_ReconDistance
+			class EGVAR(core,reconDistance)
 			{
 				displayName="Recon Radius Mult";
 				description="Multiplier for how far from the recon position the initial waypoint will be placed during recon orders.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_CaptureDistance
+			class EGVAR(core,captureDistance)
 			{
 				displayName="Capture Radius Mult";
 				description="Multiplier for how far from the objective's position the initial waypoint will be placed during capture orders.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_UAVAlt
+			class EGVAR(common,uAVAlt)
 			{
 				displayName="UAV Deploy Altitude";
 				description="Altitude at which carried UAVs will fly during recon orders. Set to 0 to disable.";
 				typeName="NUMBER";
 				defaultValue = "150";
 			};
-			class RydHQ_Combining
+			class EGVAR(core,combining)
 			{
 				displayName="Exhausted Squads Combine";
 				description="Enables withdrawing or disabled squads to join forces with other squads to continue fighting. WIP setting.";
@@ -746,7 +746,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets behaviour settings for the synchronized commander module";
+			description = CSTRING(Leader_BehSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -767,7 +767,7 @@ class CfgVehicles
 	class GVAR(Leader_PersSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Personality Settings";
+		displayName = CSTRING(Leader_PersSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -780,14 +780,14 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_MAtt
+			class EGVAR(core,mAtt)
 			{
 				displayName="Manual Personality";
 				description="";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_Personality
+			class EGVAR(core,personality)
 			{
 				displayName="Select Personality";
 				description="Squads will use flares or request flare shells to mark or expose enemies (At night).";
@@ -845,7 +845,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets behaviour settings for the synchronized commander module";
+			description = CSTRING(Leader_PersSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -866,7 +866,7 @@ class CfgVehicles
 	class GVAR(Leader_SupSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Support Settings";
+		displayName = CSTRING(Leader_SupSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -879,77 +879,77 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_CargoFind
+			class EGVAR(core,cargoFind)
 			{
 				displayName="Cargo Find Range";
 				description="Range around an infantry squad within which the squad will look for a transport vehicle. If no vehicle is found, commander will try to provide a lift for the squad. To only use commander dispatched lifts, set to a very small value. Set to 0 to disable.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_NoAirCargo
+			class EGVAR(core,noAirCargo)
 			{
 				displayName="Disable Air Cargo";
 				description="Disable aerial transportation.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_NoLandCargo
+			class EGVAR(core,noLandCargo)
 			{
 				displayName="Disable Land Cargo";
 				description="Disable ground transportation.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_SMed
+			class EGVAR(core,sMed)
 			{
 				displayName="Medical Support";
 				description="Controlled groups will receive medical support (See magic workaround in HAL general settings for usage with ACE).";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_SFuel
+			class EGVAR(core,sFuel)
 			{
 				displayName="Fuel Support";
 				description="Controlled groups will receive refueling support (See magic workaround in HAL general settings for usage with ACE).";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_SAmmo
+			class EGVAR(core,sAmmo)
 			{
 				displayName="Ammo Support";
 				description="Controlled groups will receive rearming support (See magic workaround in HAL general settings for usage with ACE).";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_SRep
+			class EGVAR(core,sRep)
 			{
 				displayName="Repair Support";
 				description="Controlled groups will receive repairing support (See magic workaround in HAL general settings for usage with ACE).";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_SupportWP
+			class EGVAR(core,supportWP)
 			{
 				displayName="Support Waypoints";
 				description="Support orders will use support waypoints.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_ArtyShells
+			class EGVAR(core,artyShells)
 			{
 				displayName="Arty Ord Coef";
 				description="Coefficient of how many shells should be dropped every round.";
 				typeName="NUMBER";
 				defaultValue = "1";
 			};
-			class RydHQ_AirEvac
+			class EGVAR(core,airEvac)
 			{
 				displayName="Air Evac";
 				description="Enables retreat orders to use air evac.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_SupportRTB
+			class EGVAR(core,supportRTB)
 			{
 				displayName="Support RTB";
 				description="Makes support vehicles/groups return to their strating point uppon completion of their mission";
@@ -959,7 +959,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets support settings for the synchronized commander module";
+			description = CSTRING(Leader_SupSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -980,7 +980,7 @@ class CfgVehicles
 	class GVAR(Leader_ObjSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Objectives Settings";
+		displayName = CSTRING(Leader_ObjSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -993,145 +993,145 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_Order
+			class EGVAR(core,order)
 			{
 				displayName="Forced Defense Mode";
 				description="Commander will never go into offensive mode.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_Berserk
+			class EGVAR(core,berserk)
 			{
 				displayName="Forced Attack Mode";
 				description="Commander will never go into defensive mode.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_SimpleMode
+			class EGVAR(core,simpleMode)
 			{
 				displayName="Simple Mode";
 				description="Default mode. Activates simple mode and disables the old HAL 4 objectives system.";
 				typeName="BOOL";
 				defaultValue = "True";
 			};
-			class RydHQ_UnlimitedCapt
+			class EGVAR(core,unlimitedCapt)
 			{
 				displayName="Never Capture";
 				description="Commander will keep sending troops to an objective and it will never be considered captured.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_CaptLimit
+			class EGVAR(core,captLimit)
 			{
 				displayName="Capture Strength";
 				description="Number of units that must be at the objective to capture it.";
 				typeName="NUMBER";
 				defaultValue = "10";
 			};
-			class RydHQ_GarrR
+			class EGVAR(core,garrR)
 			{
 				displayName="Garrison Attack Range";
 				description="How far can attack orders be isued for a garrisoned squad.";
 				typeName="NUMBER";
 				defaultValue = "500";
 			};
-			class RydHQ_ObjHoldTime
+			class EGVAR(core,objHoldTime)
 			{
 				displayName="Time To Capture Objective";
 				description="Capture orders will stay active for squads this long after they have reached the objective.";
 				typeName="NUMBER";
 				defaultValue = "60";
 			};
-			class RydHQ_ObjRadius1
+			class EGVAR(core,objRadius1)
 			{
 				displayName="Friendly Capture Radius";
 				description="Friendly forces must be within this radius from an objective to capture it.";
 				typeName="NUMBER";
 				defaultValue = "300";
 			};
-			class RydHQ_ObjRadius2
+			class EGVAR(core,objRadius2)
 			{
 				displayName="Enemy Capture Radius";
 				description="Enemy forces must be within this radius from an objective for the commander to consider it lost.";
 				typeName="NUMBER";
 				defaultValue = "500";
 			};
-			class RydHQ_LRelocating
+			class EGVAR(core,lRelocating)
 			{
 				displayName="Relocating Commander";
 				description="Commander will move to the latest captured objective each time. Only works in legacy mode.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_NoRec
+			class EGVAR(core,noRec)
 			{
 				displayName="Chance Skip Recon";
 				description="Chance to skip recon stage for capturing objectives on each cycle. Percentage affected by leader personality. Set well above 100 to guarantee skipping (like 1000)";
 				typeName="NUMBER";
 				defaultValue = "10";
 			};
-			class RydHQ_RapidCapt
+			class EGVAR(core,rapidCapt)
 			{
 				displayName="Chance Fast Capture";
 				description="Chance for the commander to focus on capturing objectives instead of engaging hostiles on each cycle. Percentage affected by leader personality. Set well above 100.";
 				typeName="NUMBER";
 				defaultValue = "10";
 			};
-			class RydHQ_DefendObjectives
+			class EGVAR(core,defendObjectives)
 			{
 				displayName="Def Ownership Size";
 				description="Sets how many squads must be around an objective for the commander to consider it a defensive point. Only works in legacy mode.";
 				typeName="NUMBER";
 				defaultValue = "4";
 			};
-			class RydHQ_ReconReserve
+			class EGVAR(core,reconReserve)
 			{
 				displayName="Recon Reserve Ratio";
 				description="Coefficient of how many squads will be reserved for recon. Choose a number from 0 to 1.";
 				typeName="NUMBER";
 			};
-			class RydHQ_AttackReserve
+			class EGVAR(core,attackReserve)
 			{
 				displayName="Att Reserve Ratio";
 				description="Coefficient of how many squads will be reserved for advanced attack orders like flanking orders. Choose a number from 0 to 1.";
 				typeName="NUMBER";
 			};
-			class RydHQ_CRDefRes
+			class EGVAR(core,cRDefRes)
 			{
 				displayName="Def Reserve Ratio";
 				description="Coefficient of how many squads will be reserved for advanced defend orders like patrol orders. Choose a number from 0 to 1.";
 				typeName="NUMBER";
 				defaultValue = "0.4";
 			};
-			class RydHQ_AAO
+			class EGVAR(core,aAO)
 			{
 				displayName="All At Once";
 				description="Will allow commander to capture objectives all at once and out of order.  Only works in legacy mode.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_ForceAAO
+			class EGVAR(core,forceAAO)
 			{
 				displayName="Force AAO";
 				description="Will force the commander to capture objectives all at once.  Only works in legacy mode.";
 				typeName="BOOL";
 				defaultValue = "False";
 			};
-			class RydHQ_BBAOObj
+			class EGVAR(core,bBAOObj)
 			{
 				displayName="Objectives At Once (HC mode)";
 				description="Set the max number of objectives to capture at once.  Only works in high-command + legacy mode.";
 				typeName="NUMBER";
 				defaultValue = "4";
 			};
-			class RydHQ_MaxSimpleObjs
+			class EGVAR(core,maxSimpleObjs)
 			{
 				displayName="Objectives At Once (Simple mode)";
 				description="Set the max number of objectives to capture at once in simple mode.";
 				typeName="NUMBER";
 				defaultValue = "5";
 			};
-			class RydHQ_ObjectiveRespawn
+			class EGVAR(hac,objectiveRespawn)
 			{
 				displayName="Create Objective Player Respawn Points";
 				description="Creates a player respawn position for every taken objective.";
@@ -1141,7 +1141,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets objective settings for the synchronized commander module";
+			description = CSTRING(Leader_ObjSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1162,7 +1162,7 @@ class CfgVehicles
 	class GVAR(Leader_IdleDecoy_Module): Module_F
 	{
 		scope=2;
-		displayName="Idle Rally Point";
+		displayName = CSTRING(Leader_IdleDecoy_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(utilities);
@@ -1175,7 +1175,7 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_IDChance
+			class EGVAR(core,iDChance)
 			{
 				displayName="Chance Of Rally (%)";
 				description="Chance that an idle squad will use this position as a rally point.";
@@ -1185,7 +1185,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets rally point for the synchronized commander module";
+			description = CSTRING(Leader_IdleDecoy_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1205,7 +1205,7 @@ class CfgVehicles
 	class GVAR(Leader_WithdrawDecoy_Module): Module_F
 	{
 		scope=2;
-		displayName="Withdrawal Rally Point";
+		displayName = CSTRING(Leader_WithdrawDecoy_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(utilities);
@@ -1218,7 +1218,7 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_RDChance
+			class EGVAR(core,rDChance)
 			{
 				displayName="Chance Of Rally (%)";
 				description="Chance that a retreating squad will use this position as a rally point.";
@@ -1228,7 +1228,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets rally point for the synchronized commander module";
+			description = CSTRING(Leader_WithdrawDecoy_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1248,7 +1248,7 @@ class CfgVehicles
 	class GVAR(Leader_SuppDecoy_Module): Module_F
 	{
 		scope=2;
-		displayName="Supports Rally Point";
+		displayName = CSTRING(Leader_SuppDecoy_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(utilities);
@@ -1261,7 +1261,7 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_SDChance
+			class EGVAR(core,sDChance)
 			{
 				displayName="Chance Of Rally (%)";
 				description="Chance that a support squad will use this position as a rally point (%).";
@@ -1271,7 +1271,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets rally point for the synchronized commander module";
+			description = CSTRING(Leader_SuppDecoy_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1292,7 +1292,7 @@ class CfgVehicles
 	class GVAR(Leader_Front_Module): Module_F
 	{
 		scope=2;
-		displayName="Commander Front";
+		displayName = CSTRING(Leader_Front_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(utilities);
@@ -1311,7 +1311,7 @@ class CfgVehicles
 		};
 		class Arguments: ArgumentsBaseUnits
 		{
-			class GVAR(front)
+			class EGVAR(common,front)
 			{
 				displayName="Enable Front";
 				description="Enables the usage of a limited area of operations for a commander. This module will serve as the front area.";
@@ -1321,7 +1321,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets objective settings for the synchronized commander module";
+			description = CSTRING(Leader_Front_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1343,7 +1343,7 @@ class CfgVehicles
 	class GVAR(Leader_Objective_Module): Module_F
 	{
 		scope=2;
-		displayName="Objective (Legacy Mode)";
+		displayName = CSTRING(Leader_Objective_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(objectives);
@@ -1389,7 +1389,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds an objective for the synchronized commander module";
+			description = CSTRING(Leader_Objective_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1410,7 +1410,7 @@ class CfgVehicles
 	class GVAR(Leader_SimpleObjective_Module): Module_F
 	{
 		scope=2;
-		displayName="Objective (Simple Mode)";
+		displayName = CSTRING(Leader_SimpleObjective_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(objectives);
@@ -1423,7 +1423,7 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_TakenLeader
+			class GVAR(takenLeader)
 			{
 				displayName="Set Taken By Commander";
 				description="Selects which AI leader will consider this objective as taken.";
@@ -1501,7 +1501,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds an objective for the synchronized commander module";
+			description = CSTRING(Leader_SimpleObjective_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1522,7 +1522,7 @@ class CfgVehicles
 	class GVAR(Leader_NavalObjective_Module): Module_F
 	{
 		scope=2;
-		displayName="Naval Objective (Simple Mode)";
+		displayName = CSTRING(Leader_NavalObjective_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(objectives);
@@ -1535,7 +1535,7 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydHQ_TakenLeader
+			class GVAR(takenLeader)
 			{
 				displayName="Set Taken By Commander";
 				description="Selects which AI leader will consider this objective as taken.";
@@ -1613,7 +1613,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds an objective for the synchronized commander module";
+			description = CSTRING(Leader_NavalObjective_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1634,7 +1634,7 @@ class CfgVehicles
 	class GVAR(Leader_AmmoDepot_Module): Module_F
 	{
 		scope=2;
-		displayName="Ammo Drop Ammo Depot";
+		displayName = CSTRING(Leader_AmmoDepot_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -1663,7 +1663,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds a zone in which all ammo boxes will be used for ammo drops for the synchronized commander module. Module may also be directly synced to the ammo boxes in which case the zone will be ignored and only the synced boxes will be considered.";
+			description = CSTRING(Leader_AmmoDepot_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1684,7 +1684,7 @@ class CfgVehicles
 	class GVAR(Leader_Include_Module): Module_F
 	{
 		scope=2;
-		displayName="Include Squads";
+		displayName = CSTRING(Leader_Include_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -1700,7 +1700,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of controlled squads for the synchronized commander module";
+			description = CSTRING(Leader_Include_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1721,7 +1721,7 @@ class CfgVehicles
 	class GVAR(Leader_Exclude_Module): Module_F
 	{
 		scope=2;
-		displayName="Exclude Squads";
+		displayName = CSTRING(Leader_Exclude_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(leader);
@@ -1737,7 +1737,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of non-controlled squads for the synchronized commander module";
+			description = CSTRING(Leader_Exclude_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1760,7 +1760,7 @@ class CfgVehicles
 	class GVAR(Squad_AmmoDrop_Module): Module_F
 	{
 		scope=2;
-		displayName="Ammo Drop";
+		displayName = CSTRING(Squad_AmmoDrop_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1776,7 +1776,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_AmmoDrop_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1797,7 +1797,7 @@ class CfgVehicles
 	class GVAR(Squad_AOnly_Module): Module_F
 	{
 		scope=2;
-		displayName="Attack Only";
+		displayName = CSTRING(Squad_AOnly_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1813,7 +1813,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_AOnly_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1834,7 +1834,7 @@ class CfgVehicles
 	class GVAR(Squad_CargoOnly_Module): Module_F
 	{
 		scope=2;
-		displayName="Transport Only";
+		displayName = CSTRING(Squad_CargoOnly_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1850,7 +1850,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_CargoOnly_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1871,7 +1871,7 @@ class CfgVehicles
 	class GVAR(Squad_ROnly_Module): Module_F
 	{
 		scope=2;
-		displayName="Recon Only";
+		displayName = CSTRING(Squad_ROnly_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1887,7 +1887,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_ROnly_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1908,7 +1908,7 @@ class CfgVehicles
 	class GVAR(Squad_ExReammo_Module): Module_F
 	{
 		scope=2;
-		displayName="Never Request Ammo";
+		displayName = CSTRING(Squad_ExReammo_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1924,7 +1924,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_ExReammo_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1945,7 +1945,7 @@ class CfgVehicles
 	class GVAR(Squad_ExMedic_Module): Module_F
 	{
 		scope=2;
-		displayName="Never Request Medic";
+		displayName = CSTRING(Squad_ExMedic_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1961,7 +1961,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_ExMedic_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -1982,7 +1982,7 @@ class CfgVehicles
 	class GVAR(Squad_ExRefuel_Module): Module_F
 	{
 		scope=2;
-		displayName="Never Request Fuel";
+		displayName = CSTRING(Squad_ExRefuel_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -1998,7 +1998,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_ExRefuel_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2019,7 +2019,7 @@ class CfgVehicles
 	class GVAR(Squad_FirstToFight_Module): Module_F
 	{
 		scope=2;
-		displayName="First To Fight";
+		displayName = CSTRING(Squad_FirstToFight_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2035,7 +2035,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_FirstToFight_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2056,7 +2056,7 @@ class CfgVehicles
 	class GVAR(Squad_RTBRRR_Module): Module_F
 	{
 		scope=2;
-		displayName="Vehicles RTB Refuel/Rearm/Repair";
+		displayName = CSTRING(Squad_RTBRRR_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(attributes);
@@ -2072,7 +2072,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad's vehicles get rearmed/refueled/repaired when they RTB. (Only applies to missions that have an RTB stage). Works on Air Reinforcements modules.";
+			description = CSTRING(Squad_RTBRRR_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2093,7 +2093,7 @@ class CfgVehicles
 	class GVAR(Squad_ExRepair_Module): Module_F
 	{
 		scope=2;
-		displayName="Never Request Repairs";
+		displayName = CSTRING(Squad_ExRepair_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2109,7 +2109,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_ExRepair_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2130,7 +2130,7 @@ class CfgVehicles
 	class GVAR(Squad_Garrison_Module): Module_F
 	{
 		scope=2;
-		displayName="Set Garrison";
+		displayName = CSTRING(Squad_Garrison_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2146,7 +2146,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_Garrison_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2167,7 +2167,7 @@ class CfgVehicles
 	class GVAR(Squad_NoAttack_Module): Module_F
 	{
 		scope=2;
-		displayName="No Attack Orders";
+		displayName = CSTRING(Squad_NoAttack_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2183,7 +2183,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoAttack_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2204,7 +2204,7 @@ class CfgVehicles
 	class GVAR(Squad_NoCargo_Module): Module_F
 	{
 		scope=2;
-		displayName="No Transport Requests";
+		displayName = CSTRING(Squad_NoCargo_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2220,7 +2220,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoCargo_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2241,7 +2241,7 @@ class CfgVehicles
 	class GVAR(Squad_NoDef_Module): Module_F
 	{
 		scope=2;
-		displayName="No Defense Orders";
+		displayName = CSTRING(Squad_NoDef_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2257,7 +2257,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoDef_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2278,7 +2278,7 @@ class CfgVehicles
 	class GVAR(Squad_NoReports_Module): Module_F
 	{
 		scope=2;
-		displayName="No Enemy Contact Reports";
+		displayName = CSTRING(Squad_NoReports_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2294,7 +2294,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoReports_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2315,7 +2315,7 @@ class CfgVehicles
 	class GVAR(Squad_Unable_Module): Module_F
 	{
 		scope=2;
-		displayName="Disable Tasking";
+		displayName = CSTRING(Squad_Unable_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2331,7 +2331,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_Unable_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2352,7 +2352,7 @@ class CfgVehicles
 	class GVAR(Squad_NoRecon_Module): Module_F
 	{
 		scope=2;
-		displayName="No Recon Orders";
+		displayName = CSTRING(Squad_NoRecon_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2368,7 +2368,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoRecon_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2389,7 +2389,7 @@ class CfgVehicles
 	class GVAR(Squad_NoFlank_Module): Module_F
 	{
 		scope=2;
-		displayName="No Flanking Orders";
+		displayName = CSTRING(Squad_NoFlank_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2405,7 +2405,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_NoFlank_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2426,7 +2426,7 @@ class CfgVehicles
 	class GVAR(Squad_SFBodyGuard_Module): Module_F
 	{
 		scope=2;
-		displayName="Set As HQ Bodyguard";
+		displayName = CSTRING(Squad_SFBodyGuard_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2442,7 +2442,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad members will have their squad added to the list of squads affected by the property for the synchronized commander module";
+			description = CSTRING(Squad_SFBodyGuard_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2463,7 +2463,7 @@ class CfgVehicles
 	class GVAR(Squad_AlwaysKnownU_Module): Module_F
 	{
 		scope=2;
-		displayName="Always Known Enemy";
+		displayName = CSTRING(Squad_AlwaysKnownU_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2479,7 +2479,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized unit will always be known to the commander of the synchronized commander module";
+			description = CSTRING(Squad_AlwaysKnownU_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2500,7 +2500,7 @@ class CfgVehicles
 	class GVAR(Squad_AlwaysUnKnownU_Module): Module_F
 	{
 		scope=2;
-		displayName="Always Unknown Enemy";
+		displayName = CSTRING(Squad_AlwaysUnKnownU_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2516,7 +2516,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized unit will always be unknown to the commander of the synchronized commander module";
+			description = CSTRING(Squad_AlwaysUnKnownU_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2537,7 +2537,7 @@ class CfgVehicles
 	class GVAR(Squad_RCAS_Module): Module_F
 	{
 		scope=2;
-		displayName="Assign Close Air Support";
+		displayName = CSTRING(Squad_RCAS_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2553,7 +2553,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad will be used for CAS";
+			description = CSTRING(Squad_RCAS_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2574,7 +2574,7 @@ class CfgVehicles
 	class GVAR(Squad_RCAP_Module): Module_F
 	{
 		scope=2;
-		displayName="Assign Combat Air Patrol";
+		displayName = CSTRING(Squad_RCAP_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(squad);
@@ -2590,7 +2590,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Synchronized squad will be used for CAP";
+			description = CSTRING(Squad_RCAP_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2613,7 +2613,7 @@ class CfgVehicles
 	class GVAR(BBLeader_Module): Module_F
 	{
 		scope=2;
-		displayName="High Commander";
+		displayName = CSTRING(BBLeader_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(BB);
@@ -2649,7 +2649,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Creates a new high commander.";
+			description = CSTRING(BBLeader_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2670,7 +2670,7 @@ class CfgVehicles
 	class GVAR(BBSettings_Module): Module_F
 	{
 		scope=2;
-		displayName="High Commander Settings";
+		displayName = CSTRING(BBSettings_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(BB);
@@ -2683,21 +2683,21 @@ class CfgVehicles
 		is3DEN=0;
 		class Arguments: ArgumentsBaseUnits
 		{
-			class RydBB_CustomObjOnly
+			class GVAR(customObjOnly)
 			{
 				displayName="No Auto Objectives";
 				description="HC will only consider user placed objectives instead of scanning the map for strategic locations.";
 				typeName="BOOL";
 				defaultValue="True";
 			};
-			class RydBB_LRelocating
+			class GVAR(lRelocating)
 			{
 				displayName="Commanders Relocate";
 				description="HC controlled conmmanders will relocate to objectives recently captured. This is used for HC mode as the legacy relocation works differently.";
 				typeName="BOOL";
 				defaultValue="False";
 			};
-			class RydBB_MainInterval
+			class GVAR(mainInterval)
 			{
 				displayName="HC Cycle (Minutes)";
 				description="Delay between HC computation cycles.";
@@ -2716,7 +2716,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Sets settings for the synchronized high commander module";
+			description = CSTRING(BBSettings_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2737,7 +2737,7 @@ class CfgVehicles
 	class GVAR(BBZone_Module): Module_F
 	{
 		scope=2;
-		displayName="High Commander Zone";
+		displayName = CSTRING(BBZone_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(BB);
@@ -2760,7 +2760,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="If custom objectives are not enforced, High-Command/Big-Boss mode will only scan the map within this zone for additional objectives.";
+			description = CSTRING(BBZone_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"
@@ -2781,7 +2781,7 @@ class CfgVehicles
 	class GVAR(BBLeader_Objective_Module): Module_F
 	{
 		scope=2;
-		displayName="High Commander Objective";
+		displayName = CSTRING(BBLeader_Objective_Module);
 		author="NinjaRider600";
 		vehicleClass="Modules";
 		category=QGVAR(BB);
@@ -2829,7 +2829,7 @@ class CfgVehicles
 		};
 		class ModuleDescription: ModuleDescription
 		{
-			description="Adds an objective for the synchronized high commander module";
+			description = CSTRING(BBLeader_Objective_Module_desc);
 			sync[]=
 			{
 				"LocationArea_F"

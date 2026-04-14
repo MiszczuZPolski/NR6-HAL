@@ -1,41 +1,48 @@
 #include "..\script_component.hpp"
-private ["_logic","_Commanders","_Leader","_prefix"];
 
-_logic = (_this select 0);
-_Commanders = [];
+params ["_logic"];
+
+private _commanders = [];
 
 {
-    if ((typeOf _x) == QGVAR(Leader_Module)) then {_Commanders pushBack _x};
+    if ((typeOf _x) == QGVAR(Leader_Module)) then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
-    _Leader = (_x getVariable "LeaderType");
+    private _leaderName = (_x getVariable "LeaderType");
 
-    if (_Leader == "LeaderHQ") then {_prefix = "RydHQ_"};
-    if (_Leader == "LeaderHQB") then {_prefix = "RydHQB_"};
-    if (_Leader == "LeaderHQC") then {_prefix = "RydHQC_"};
-    if (_Leader == "LeaderHQD") then {_prefix = "RydHQD_"};
-    if (_Leader == "LeaderHQE") then {_prefix = "RydHQE_"};
-    if (_Leader == "LeaderHQF") then {_prefix = "RydHQF_"};
-    if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
-    if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
+    private _letter = switch (_leaderName) do {
+        case "LeaderHQ":  {""};
+        case "LeaderHQB": {"B"};
+        case "LeaderHQC": {"C"};
+        case "LeaderHQD": {"D"};
+        case "LeaderHQE": {"E"};
+        case "LeaderHQF": {"F"};
+        case "LeaderHQG": {"G"};
+        case "LeaderHQH": {"H"};
+        default {""};
+    };
 
-    waitUntil {sleep 0.5; (!(isNil _Leader))};
-    _Leader = call compile _Leader;
+    waitUntil {sleep 0.5; (!(isNil _leaderName))};
+    private _leaderObj = call compile _leaderName;
 
-    if (call compile ("isNil " + "'" + _prefix + "AlwaysKnownU" + "'")) then {
+    // QGVAR(alwaysKnownU) + _letter constructs the mission-namespace variable
+    // name for the per-HQ sibling list (e.g. "hal_missionmodules_alwaysKnownUB").
+    private _varName = QGVAR(alwaysKnownU) + _letter;
 
-        call compile (_prefix + "AlwaysKnownU" + " = " + "[]");
-
+    if (isNil {missionNamespace getVariable _varName}) then {
+        missionNamespace setVariable [_varName, []];
     };
 
     {
         if !(_x isKindOf "Logic") then {
-            _x call compile (_prefix + "AlwaysKnownU" + " pushback " + "_this");
+            private _existing = missionNamespace getVariable [_varName, []];
+            _existing pushBack _x;
+            missionNamespace setVariable [_varName, _existing];
         } else {
-            _x setVariable ["_ExtraArgs",(_logic getVariable ["_ExtraArgs",""]) + "; " + _prefix + "AlwaysKnownU" + " pushback " + "_this"];
+            _x setVariable ["_ExtraArgs",(_logic getVariable ["_ExtraArgs",""]) + "; " + _varName + " pushback " + "_this"];
         };
 
     } forEach (synchronizedObjects _logic);
 
-} forEach _Commanders;
+} forEach _commanders;

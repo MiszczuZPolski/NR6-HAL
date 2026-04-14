@@ -1,40 +1,44 @@
 #include "..\script_component.hpp"
+
 params ["_logic"];
 
 private _commanders = [];
-private _leader = objNull;
-private _prefix = "";
 
 {
     if ((typeOf _x) == QGVAR(Leader_Module)) then {_commanders pushBack _x};
 } forEach (synchronizedObjects _logic);
 
 {
-    _leader = (_x getVariable "LeaderType");
+    private _leaderName = (_x getVariable "LeaderType");
 
-    if (_Leader == "LeaderHQ") then {_prefix = "RydHQ_"};
-    if (_Leader == "LeaderHQB") then {_prefix = "RydHQB_"};
-    if (_Leader == "LeaderHQC") then {_prefix = "RydHQC_"};
-    if (_Leader == "LeaderHQD") then {_prefix = "RydHQD_"};
-    if (_Leader == "LeaderHQE") then {_prefix = "RydHQE_"};
-    if (_Leader == "LeaderHQF") then {_prefix = "RydHQF_"};
-    if (_Leader == "LeaderHQG") then {_prefix = "RydHQG_"};
-    if (_Leader == "LeaderHQH") then {_prefix = "RydHQH_"};
+    private _letter = switch (_leaderName) do {
+        case "LeaderHQ":  {""};
+        case "LeaderHQB": {"B"};
+        case "LeaderHQC": {"C"};
+        case "LeaderHQD": {"D"};
+        case "LeaderHQE": {"E"};
+        case "LeaderHQF": {"F"};
+        case "LeaderHQG": {"G"};
+        case "LeaderHQH": {"H"};
+        default {""};
+    };
 
-    waitUntil {sleep 0.5; (!(isNil _Leader))};
-    _Leader = call compile _Leader;
+    waitUntil {sleep 0.5; (!(isNil _leaderName))};
+    private _leaderObj = call compile _leaderName;
 
-    if (call compile ("isNil " + "'" + _prefix + "CargoOnly" + "'")) then {
+    private _varName = QGVAR(cargoOnly) + _letter;
 
-        call compile (_prefix + "CargoOnly" + " = " + "[]");
-
+    if (isNil {missionNamespace getVariable _varName}) then {
+        missionNamespace setVariable [_varName, []];
     };
 
     {
         if !(_x isKindOf "Logic") then {
-            _x call compile (_prefix + "CargoOnly" + " pushback " + "(group _this)");
+            private _existing = missionNamespace getVariable [_varName, []];
+            _existing pushBack (group _x);
+            missionNamespace setVariable [_varName, _existing];
         } else {
-            _x setVariable ["_ExtraArgs",(_logic getVariable ["_ExtraArgs",""]) + "; " + _prefix + "CargoOnly" + " pushback " + "(group _this)"];
+            _x setVariable ["_ExtraArgs",(_logic getVariable ["_ExtraArgs",""]) + "; " + _varName + " pushback " + "(group _this)"];
         };
 
     } forEach (synchronizedObjects _logic);

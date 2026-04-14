@@ -1,0 +1,332 @@
+#include "..\script_component.hpp"
+// Originally from nr6_hal/HAL/GoAttAir.sqf
+_SCRname = "GoAttAir";
+
+_i = "";
+
+_unitG = _this select 0;
+_Trg = _this select 1;
+_HQ = _this select 2;
+_request = false;
+_reqTgtSet = false;
+if ((count _this) > 3) then {_request = _this select 3};
+
+_PosObj1 = getPosATL _Trg;
+_unitvar = str (_unitG);
+
+_UL = leader _unitG;
+
+_PosLand = _unitG getVariable ("START" + _unitvar);
+if (isNil ("_PosLand")) then {_unitG setVariable [("START" + _unitvar),(position (vehicle _UL))];_PosLand = _unitG getVariable ("START" + _unitvar);};
+
+[_unitG] call CBA_fnc_clearWaypoints;
+
+_unitG setVariable [("Deployed" + (str _unitG)),false];_unitG setVariable [("Capt" + (str _unitG)),false];
+
+_flight = [];
+
+{if ((vehicle _x) isKindOf "Air") then {_flight pushBackUnique (vehicle _x)}} forEach (units _unitG);
+
+{_x setVariable ["SortiePylons",(count (getPylonMagazines _x))]} forEach _flight;
+
+if ((_flight isEqualTo []) and ((isNull (assignedVehicle (leader _unitG))) or not (alive (assignedVehicle (leader _unitG))))) exitWith {
+
+	_attAv = _HQ getVariable [QGVAR(attackAv),[]];
+	_attAv pushBack _unitG;
+	_HQ setVariable [QGVAR(attackAv),_attAv];
+
+	_unitG setVariable [("Busy" + (str _unitG)),false];
+
+	_HQ setVariable [QEGVAR(core,exhausted),(_HQ getVariable [QEGVAR(core,exhausted),[]]) + [_unitG]];
+	[[_unitG,_HQ],FUNC(goRest)] call EFUNC(common,spawn);
+
+};
+
+//_unitG setVariable [("Busy" + (str _unitG)),true];};
+
+_nothing = true;
+
+_dX = (_PosObj1 select 0) - ((getPosATL (leader _HQ)) select 0);
+_dY = (_PosObj1 select 1) - ((getPosATL (leader _HQ)) select 1);
+
+_angle = _dX atan2 _dY;
+
+_distance = (leader _HQ) distance _PosObj1;
+_distance2 = 0;
+
+_dXc = _distance2 * (cos _angle);
+_dYc = _distance2 * (sin _angle);
+
+_dXb = _distance * (sin _angle);
+_dYb = _distance * (cos _angle);
+
+_posX = ((getPosATL (leader _HQ)) select 0) + _dXb;
+_posY = ((getPosATL (leader _HQ)) select 1) + _dYb;
+
+if (_request) then {
+
+	_Trg = objNull;
+
+	_newTrg = _Trg;
+	_posX = (_PosObj1 select 0) + (random 300) - 150;
+	_posY = (_PosObj1 select 1) + (random 300) - 150;
+
+};
+
+[_unitG,[_posX,_posY,0],"HQ_ord_attackAir",_HQ] call EFUNC(common,orderPause);
+
+if ((isPlayer (leader _unitG)) and (EGVAR(common,gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
+
+_UL = leader _unitG;
+
+if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,EGVAR(boss,aIC_OrdConf),"OrdConf"] call EFUNC(common,AIChatter)}};
+
+if (_HQ getVariable [QEGVAR(common,debug),false]) then
+	{
+	_signum = _HQ getVariable [QEGVAR(core,codeSign),"X"];
+	_i = [[_posX,_posY],_unitG,"markAttack","ColorRed","ICON","waypoint","CAS " + (groupId _unitG) + " " + _signum," - CAS",[0.5,0.5]] call EFUNC(common,mark)
+	};
+
+_task = [(leader _unitG),["Provide close air support and neutralize hostile targets.", "Provide Close Air Support", ""],[_posX,_posY],"destroy"] call EFUNC(common,addTask);
+
+_wp = [_unitG,[_posX,_posY],"SAD","COMBAT","RED","NORMAL",["true", "deletewaypoint [(group this), 0]"],true,0,[0,0,0],"COLUMN"] call EFUNC(common,WPadd);
+
+_lasT = objNull;
+
+
+if ((_unitG in (_HQ getVariable [QGVAR(bAirG),[]])) and not (isPlayer (leader _unitG))) then
+	{
+	_eSide = side _unitG;
+
+	_unitG setVariable ["CurrCASLazeOff",false];
+
+	_tgt = "LaserTargetW";
+	if (_eSide == east) then {_tgt = "LaserTargetE"};
+	if (_eSide == resistance) then {_tgt = "LaserTargetC"};
+
+	_tPos = getPosATL _Trg;
+	//_tX = (_tPos select 0) + (random 60) - 30;
+	//_tY = (_tPos select 1) + (random 60) - 30;
+
+	_tX = (_tPos select 0);
+	_tY = (_tPos select 1);
+
+	if not (_request) then {
+		_lasT = createVehicle [_tgt, _Trg, [], 0, "CAN_COLLIDE"];
+
+		_lasT attachTo [_Trg];
+
+		_wp waypointAttachVehicle _lasT;
+
+		_eSide reportRemoteTarget [_lasT, 600];
+		_lasT confirmSensorTarget [_eSide, true];
+
+		_unitG setVariable ["CurrCASLaze",_lasT];
+		_unitG setVariable ["CurrCASObjSetByLead",_Trg];
+	} else {_lasT = objNull; _Trg = objNull;};
+
+	_code =
+		{
+		_Trg = _this select 0;
+		_lasT = _this select 1;
+		_unitG = _this select 2;
+		_HQ = _this select 3;
+		_casPos = _this select 4;
+
+
+		_wp = _this select 6;
+		_tgt = _this select 7;
+		_eSide = _this select 8;
+		_endThis = false;
+
+		_VL = vehicle (leader _unitG);
+		_ct = 0;
+		_range = 3000;
+
+
+		waitUntil
+			{
+			sleep 5;
+
+			_endThis = false;
+//			_Trg = _unitG getVariable ["CurrCASTgt",_Trg];
+			_newTrg = objNull;
+
+			if ((isNull (_unitG getVariable ["CurrCASObjSetByLead",objNull])) and not (isNull _Trg)) then {
+				_nearEnVeh = [(_unitG targets [true, 1500]), [], {_casPos distance _x }, "ASCEND",{not (_x isKindOf "Man") and (((vehicle _x) distance _casPos) < 750)}] call BIS_fnc_sortBy;
+				_nearEnInfHALG = [(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]), [], {_casPos distance (vehicle (leader _x))}, "ASCEND",{(((vehicle (leader _x)) distance _casPos) < 750)}] call BIS_fnc_sortBy;
+				if (((vehicle _Trg) distance _casPos) > 750) then {{{if (_Trg == (vehicle _x) or _Trg == (_x)) exitWith {_Trg = objNull;}} forEach (units _x)} forEach _nearEnInfHALG};
+				if (not (_Trg in _nearEnVeh) and ((count _nearEnVeh) > 0)) then {_Trg = objNull;};
+			};
+
+			_friends = [];
+			{{_friends pushBackUnique (vehicle _x)} forEach (units _x)} forEach (_HQ getVariable [QEGVAR(core,friends),[]]);
+
+			if (not (alive _Trg) or (isNull _Trg)) then {
+
+				_Trg = objNull;
+				_newTrg = objNull;
+
+				_nearEnVeh = [(_unitG targets [true, 1500]), [], {_casPos distance _x }, "ASCEND",{not (_x isKindOf "Man")}] call BIS_fnc_sortBy;
+				_nearEnInf = [(_unitG targets [true, 1500]), [], {_casPos distance _x }, "ASCEND",{((vehicle _x) isKindOf "Man") and (3 < (count (units (group _x))))}] call BIS_fnc_sortBy;
+				_nearEnInfHALG = [(_HQ getVariable [QEGVAR(common,knEnemiesG),[]]), [], {_casPos distance (vehicle (leader _x))}, "ASCEND",{((vehicle (leader _x)) isKindOf "Man") and (3 < (count (units _x)))}] call BIS_fnc_sortBy;
+
+
+				{
+					_range = _x;
+					{
+						_tUnit = (vehicle _x);
+						_distOK = true;
+						{if ((_tUnit distance (vehicle _x)) < 75) exitWith {_distOK = false} } forEach _friends;
+						if ((((vehicle _x) distance _casPos) < _range) and (_distOK) and (((getPos (vehicle _x)) select 2) < 10)) exitWith {_newTrg = _tUnit;}
+					} forEach _nearEnVeh;
+
+
+					if (isNull (_newTrg)) then {
+						{
+							_tUnit = (vehicle _x);
+							_distOK = true;
+							{if ((_tUnit distance (vehicle _x)) < 75) exitWith {_distOK = false} } forEach _friends;
+							if ((((vehicle _x) distance _casPos) < (_range)) and (_distOK)) exitWith {_newTrg = (vehicle _x);}
+						} forEach _nearEnInf;
+					};
+
+					if ((isNull (_newTrg)) and (_range < 2000)) then {
+						{
+							{
+								_tUnit = (vehicle _x);
+								_distOK = true;
+								{if ((_tUnit distance (vehicle _x)) < 75) exitWith {_distOK = false} } forEach _friends;
+								if ((((vehicle _x) distance _casPos) < (_range)) and (_distOK) and (((side _unitG) knowsAbout (vehicle _x)) > 0)) exitWith {_newTrg = (vehicle _x);}
+							} forEach (units _x);
+							if not (isNull (_newTrg)) exitWith {};
+						} forEach _nearEnInfHALG;
+					};
+					if (isNull (_newTrg)) exitWith {};
+				} forEach [750,1500,3000,6000];
+
+
+				if not (isNull (_newTrg)) then {
+					_Trg = _newTrg;
+					if not (isNull _lasT) then {deleteVehicle _lasT};
+					_lasT = createVehicle [_tgt, _Trg, [], 0, "CAN_COLLIDE"];
+					_lasT attachTo [_Trg];
+
+					_eSide reportRemoteTarget [_lasT, 1500];
+					_lasT confirmSensorTarget [_eSide, true];
+					_VL doTarget _lasT;
+					_reqTgtSet = true;
+					_unitG setVariable ["CurrCASObjSetByLead",objNull];
+
+				};
+			};
+
+			_hideNow = false;
+
+			if not (isNull (_lasT)) then {{if (75 >= (_lasT distance2D _x)) exitWith {_hideNow = true;}} forEach (_friends)};
+			if (isNull (_Trg)) then {_hideNow = true};
+
+			if (_hideNow) then {if not (isNull (_lasT)) then {_lasT hideObjectGlobal true; deleteVehicle _lasT;};_Trg = objNull;} else {if not (isNull (_lasT)) then {_lasT hideObjectGlobal false};};
+
+
+			if (((getPos (vehicle _Trg)) select 2) > 10) then {_Trg = objNull; deleteVehicle _lasT;};
+			if ((isNull _Trg) or not (alive _Trg) or not (((side _unitG) knowsAbout _Trg) > 0)) then {_Trg = objNull; deleteVehicle _lasT;};
+			if (not (alive _VL)) then {_endThis = true};
+			if (({alive _x} count (units _unitG)) < 1) then {_endThis = true};
+			if (_ct >= 1200) then {_endThis = true};
+			_isBusy = _unitG getVariable [("Busy" + (str _unitG)),false];
+			if not (_isBusy) then {_endThis = true};
+			if ((((_VL getVariable ["SortiePylons",0])/4) > (count (getPylonMagazines _VL))) or ((damage _VL) > 0.5) or ((fuel _VL) < 0.3)) then {_endThis = true; if not (_unitG getVariable ["CurrCASLazeOff",false]) then {deleteWaypoint [(_unitG), 0]}};
+
+
+			_ct = _ct + 5;
+
+			_unitG setVariable ["CurrCASTgt",_Trg];
+			_unitG setVariable ["CurrCASLaze",_lasT];
+			_unitG setVariable ["CurrCASDone",_endThis];
+			//Variables for testing or for use to fetch current target of CAS run
+
+
+			(_endThis) or (_unitG getVariable ["CurrCASLazeOff",false])
+			};
+
+		if (not (isNull _lasT)) then {deleteVehicle _lasT};
+		_unitG setVariable [QEGVAR(common,waitingTarget),nil];
+		};
+
+	[[_Trg,_lasT,_unitG,_HQ,[_posX,_posY],_reqTgtSet,_wp,_tgt,_eSide],_code] call EFUNC(common,spawn)
+};
+
+
+if (not (_request) and not (_unitG in (_HQ getVariable [QGVAR(bAirG),[]]))) then {_unitG setVariable [QEGVAR(common,waitingTarget),_this select 1]};
+_cause = [_unitG,6,true,0,120,[],false] call EFUNC(common,wait);
+_timer = _cause select 0;
+_alive = _cause select 1;
+
+_unitG setVariable ["CurrCASLazeOff",true];
+_unitG setVariable ["CurrCASObjSetByLead",objNull];
+
+if not (_alive) exitWith
+	{
+	if ((_HQ getVariable [QEGVAR(common,debug),false]) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
+	if not (isNull _lasT) then {deleteVehicle _lasT};
+	_unitG setVariable [("Busy" + (str _unitG)),false];
+	if not (_request) then {[_Trg,"AirAttacked"] call EFUNC(common,varReductor)}
+	};
+
+if (_timer > 120) then {deleteWaypoint _wp};
+
+if not (_task isEqualTo taskNull) then
+	{
+
+	[_task,(leader _unitG),["Return to base.", "Return To Base", ""],_Posland,"ASSIGNED",0,false,true] call BIS_fnc_SetTask;
+
+	};
+
+if (_HQ getVariable [QEGVAR(common,debug),false]) then {_i setMarkerColor "ColorBlue"};
+if (_unitG in (_HQ getVariable [QGVAR(bAirG),[]])) then {if not (isNull _lasT) then {deleteVehicle _lasT}};
+
+_rrr = (_unitG getVariable ["Ryd_RRR",false]);
+
+_radd = "";
+if (_rrr) then {_radd = "; {(vehicle _x) setFuel 1; (vehicle _x) setVehicleAmmo 1; (vehicle _x) setDamage 0;} foreach (units (group this))"};
+
+_wp = [_unitG,_Posland,"MOVE","SAFE","GREEN","NORMAL",["true", "if not ((group this) getVariable ['AirNoLand',false]) then {{(vehicle _x) land 'LAND'} foreach (units (group this))}; deletewaypoint [(group this), 0]" + _radd],true,0,[0,0,0],"COLUMN"] call EFUNC(common,WPadd);
+
+_mustRTB = false;
+
+{
+	if ((((_x getVariable ["SortiePylons",0])/2) > (count (getPylonMagazines _x))) or ((damage _x) > 0.5) or ((fuel _x) < 0.3)) then {_mustRTB = true;};
+
+} forEach _flight;
+
+
+if (_mustRTB) then {
+	_cause = [_unitG,6,true,0,24,[],false] call EFUNC(common,wait);
+	_timer = _cause select 0;
+	_alive = _cause select 1;
+
+	if not (_alive) exitWith
+		{
+		if ((_HQ getVariable [QEGVAR(common,debug),false]) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
+		_unitG setVariable [("Busy" + (str _unitG)),false];
+		if not (_request) then {[_Trg,"AirAttacked"] call EFUNC(common,varReductor)}
+		};
+	if (_timer > 24) then {deleteWaypoint _wp};
+
+};
+
+
+if (not (_task isEqualTo taskNull) and not (alive _Trg)) then {[_task,"SUCCEEDED",true] call BIS_fnc_taskSetState};
+
+if ((_HQ getVariable [QEGVAR(common,debug),false]) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
+
+_attAv = _HQ getVariable [QGVAR(attackAv),[]];
+_attAv pushBack _unitG;
+_HQ setVariable [QGVAR(attackAv),_attAv];
+
+_unitG setVariable [("Busy" + (str _unitG)),false];
+
+if not (_request) then {[_Trg,"AirAttacked"] call EFUNC(common,varReductor)};
+
+_UL = leader _unitG;if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_OrdEnd),"OrdEnd"] call EFUNC(common,AIChatter)}};

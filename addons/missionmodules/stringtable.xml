@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="HAL">
+    <Package name="missionmodules">
+        <Key ID="STR_hal_missionmodules_BBLeader_Module">
+            <English>High Commander</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_BBLeader_Module_desc">
+            <English>Creates a new high commander.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_BBLeader_Objective_Module">
+            <English>High Commander Objective</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_BBLeader_Objective_Module_desc">
+            <English>Adds an objective for the synchronized high commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_BBSettings_Module">
+            <English>High Commander Settings</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_BBSettings_Module_desc">
+            <English>Sets settings for the synchronized high commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_BBZone_Module">
+            <English>High Commander Zone</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_BBZone_Module_desc">
+            <English>If custom objectives are not enforced, High-Command mode will only scan the map within this zone for additional objectives.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Core_Module">
+            <English>HAL Core</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Core_Module_desc">
+            <English>Activates HAL. Can be synchronized to a trigger for late activation.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_GenSettings_Module">
+            <English>HAL General Settings</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_GenSettings_Module_desc">
+            <English>General settings shared by all commanders.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_AmmoDepot_Module">
+            <English>Ammo Drop Ammo Depot</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_AmmoDepot_Module_desc">
+            <English>Adds a zone in which all ammo boxes will be used for ammo drops for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_BehSettings_Module">
+            <English>Commander Behaviour Settings</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_BehSettings_Module_desc">
+            <English>Sets behaviour settings for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Exclude_Module">
+            <English>Exclude Squads</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Exclude_Module_desc">
+            <English>Synchronized squad members will have their squad added to the list of non-controlled squads for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Front_Module">
+            <English>Commander Front</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Front_Module_desc">
+            <English>Sets a limited area of operations (front) for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_IdleDecoy_Module">
+            <English>Idle Rally Point</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_IdleDecoy_Module_desc">
+            <English>Sets an idle rally point for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Include_Module">
+            <English>Include Squads</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Include_Module_desc">
+            <English>Synchronized squad members will have their squad added to the list of controlled squads for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Module">
+            <English>HAL Commander</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Module_desc">
+            <English>Adds an AI commander. Synchronize to a unit to set it to be the AI commander or do not for a virtual HQ.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_NavalObjective_Module">
+            <English>Naval Objective (Simple Mode)</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_NavalObjective_Module_desc">
+            <English>Adds a naval simple-mode objective for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_ObjSettings_Module">
+            <English>Commander Objectives Settings</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_ObjSettings_Module_desc">
+            <English>Sets objective settings for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Objective_Module">
+            <English>Objective (Legacy Mode)</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Objective_Module_desc">
+            <English>Adds a legacy-mode objective for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_PersSettings_Module">
+            <English>Commander Personality Settings</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_PersSettings_Module_desc">
+            <English>Sets personality settings for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Settings_Module">
+            <English>Commander Settings</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_Settings_Module_desc">
+            <English>Sets settings for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_SimpleObjective_Module">
+            <English>Objective (Simple Mode)</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_SimpleObjective_Module_desc">
+            <English>Adds a simple-mode objective for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_SupSettings_Module">
+            <English>Commander Support Settings</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_SupSettings_Module_desc">
+            <English>Sets support settings for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_SuppDecoy_Module">
+            <English>Supports Rally Point</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_SuppDecoy_Module_desc">
+            <English>Sets a support rally point for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_WithdrawDecoy_Module">
+            <English>Withdrawal Rally Point</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Leader_WithdrawDecoy_Module_desc">
+            <English>Sets a withdrawal rally point for the synchronized commander module.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_AOnly_Module">
+            <English>Attack Only</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_AOnly_Module_desc">
+            <English>Restricts squads to attack orders only.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_AlwaysKnownU_Module">
+            <English>Always Known Enemy</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_AlwaysKnownU_Module_desc">
+            <English>Synchronized unit will always be known to the commander.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_AlwaysUnKnownU_Module">
+            <English>Always Unknown Enemy</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_AlwaysUnKnownU_Module_desc">
+            <English>Synchronized unit will always be unknown to the commander.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_AmmoDrop_Module">
+            <English>Ammo Drop</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_AmmoDrop_Module_desc">
+            <English>Marks squads as eligible to perform ammo drops.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_CargoOnly_Module">
+            <English>Transport Only</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_CargoOnly_Module_desc">
+            <English>Restricts squads to transport orders only.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_ExMedic_Module">
+            <English>Never Request Medic</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_ExMedic_Module_desc">
+            <English>Squad will never request medical support.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_ExReammo_Module">
+            <English>Never Request Ammo</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_ExReammo_Module_desc">
+            <English>Squad will never request ammo resupply.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_ExRefuel_Module">
+            <English>Never Request Fuel</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_ExRefuel_Module_desc">
+            <English>Squad will never request refueling support.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_ExRepair_Module">
+            <English>Never Request Repairs</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_ExRepair_Module_desc">
+            <English>Squad will never request repair support.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_FirstToFight_Module">
+            <English>First To Fight</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_FirstToFight_Module_desc">
+            <English>Squad will be prioritized for combat orders.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_Garrison_Module">
+            <English>Set Garrison</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_Garrison_Module_desc">
+            <English>Marks squad as a garrison unit.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoAttack_Module">
+            <English>No Attack Orders</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoAttack_Module_desc">
+            <English>Squad will never receive attack orders.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoCargo_Module">
+            <English>No Transport Requests</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoCargo_Module_desc">
+            <English>Squad will never request transport.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoDef_Module">
+            <English>No Defense Orders</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoDef_Module_desc">
+            <English>Squad will never receive defense orders.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoFlank_Module">
+            <English>No Flanking Orders</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoFlank_Module_desc">
+            <English>Squad will never receive flanking orders.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoRecon_Module">
+            <English>No Recon Orders</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoRecon_Module_desc">
+            <English>Squad will never receive recon orders.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoReports_Module">
+            <English>No Enemy Contact Reports</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_NoReports_Module_desc">
+            <English>Squad will not report enemy contacts to the commander.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_RCAP_Module">
+            <English>Assign Combat Air Patrol</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_RCAP_Module_desc">
+            <English>Synchronized squad will be used for CAP.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_RCAS_Module">
+            <English>Assign Close Air Support</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_RCAS_Module_desc">
+            <English>Synchronized squad will be used for CAS.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_ROnly_Module">
+            <English>Recon Only</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_ROnly_Module_desc">
+            <English>Restricts squads to recon orders only.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_RTBRRR_Module">
+            <English>Vehicles RTB Refuel/Rearm/Repair</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_RTBRRR_Module_desc">
+            <English>Squad vehicles get rearmed/refueled/repaired when they RTB.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_SFBodyGuard_Module">
+            <English>Set As HQ Bodyguard</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_SFBodyGuard_Module_desc">
+            <English>Squad will be tasked as HQ bodyguard.</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_Unable_Module">
+            <English>Disable Tasking</English>
+        </Key>
+        <Key ID="STR_hal_missionmodules_Squad_Unable_Module_desc">
+            <English>Disables HAL tasking for the squad.</English>
+        </Key>
+    </Package>
+</Project>

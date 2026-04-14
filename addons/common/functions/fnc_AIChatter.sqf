@@ -24,12 +24,16 @@ if ((time - _lastCommunication) < 5) exitWith {};
 _unitGroup setVariable ["HAC_LastComm", time];
 
 // Apply chat type variations if specified in mission settings
-switch (missionNamespace getVariable ["RydxHQ_AIChat_Type", "NONE"]) do {
+switch (missionNamespace getVariable [QEGVAR(core,aIChat_Type), "NONE"]) do {
     case "SILENT_M": {
-        _sentences = call compile ("RydxHQ_AIC_SILENTM_" + _messageType);
+        // TODO(Phase 5 COMPAT-04): cross-tree legacy reference — writer lives in nr6_hal/VarInit.sqf.
+        // Rewrite to explicit hal_<owner>_AIC_SILENTM_<msgtype> form after nr6_hal/ is deleted.
+        _sentences = missionNamespace getVariable ["RydxHQ_AIC_SILENTM_" + _messageType, []];
     };
     case "40K_IMPERIUM": {
-        _sentences = call compile ("RydxHQ_AIC_40KImp_" + _messageType);
+        // TODO(Phase 5 COMPAT-04): cross-tree legacy reference — writer lives in nr6_hal/VarInit.sqf.
+        // Rewrite to explicit hal_<owner>_AIC_40KImp_<msgtype> form after nr6_hal/ is deleted.
+        _sentences = missionNamespace getVariable ["RydxHQ_AIC_40KImp_" + _messageType, []];
     };
 };
 
@@ -85,7 +89,7 @@ private _sentence = selectRandom _sentences;
 [_unit, _sentence] remoteExecCall ["sideRadio"];
 
 // Create debug markers if enabled
-if (missionNamespace getVariable ["RydHQ_ChatDebug", false]) then {
+if (missionNamespace getVariable [QGVAR(chatDebug), false]) then {
     // Select marker color and type based on message category
     private _color = "ColorGrey";
     private _type = "mil_warning";

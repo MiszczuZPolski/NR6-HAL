@@ -1,24 +1,24 @@
 #include "..\script_component.hpp"
 
-if (RydBB_Active) then {
+private ["_txtArr","_dbgMon","_txt"];
+
+if (EGVAR(missionmodules,active)) then {
     waitUntil {
         sleep 1;
-        !(isNil "RydBB_mapReady")
+        !(isNil QEGVAR(missionmodules,mapReady))
     };
 };
 
-private _txtArr = [];
-private _txt = "";
-private _dbgMon = "";
+_txtArr = [];
 
-while {((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (RydHQE_Debug) or (RydHQF_Debug) or (RydHQG_Debug) or (RydHQH_Debug))} do {
-    if (({(_x getVariable ["RydHQ_KIA",false])} count EGVAR(core,allHQ)) == (count EGVAR(core,allHQ))) exitWith {};
+while {((GVAR(debug)) or (GVAR(debugB)) or (GVAR(debugC)) or (GVAR(debugD)) or (GVAR(debugE)) or (GVAR(debugF)) or (GVAR(debugG)) or (GVAR(debugH)))} do {
+    if (({(_x getVariable [QGVAR(kIA),false])} count EGVAR(core,allHQ)) == (count EGVAR(core,allHQ))) exitWith {};
     _txtArr = [];
 
     {
         if not (isNil "_x") then {
             if not (isNull _x) then {
-                if not (_x getVariable ["RydHQ_KIA",false]) then {
+                if not (_x getVariable [QGVAR(kIA),false]) then {
                     _dbgMon = _x getVariable "DbgMon";
                     if not (isNil "_dbgMon") then {
                         _txtArr pushBack _dbgMon;
@@ -27,7 +27,7 @@ while {((RydHQ_Debug) or (RydHQB_Debug) or (RydHQC_Debug) or (RydHQD_Debug) or (
                 };
             };
         };
-    } forEach GVAR(allHQ);
+    } forEach EGVAR(core,allHQ);
 
     if (_txtArr isNotEqualTo []) then {
         _txt = composeText _txtArr;

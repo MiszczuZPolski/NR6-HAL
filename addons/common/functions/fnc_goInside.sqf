@@ -39,7 +39,7 @@ if (_nearestHouses isNotEqualTo []) then {
             _posAct = _nearestHouse buildingPos _i;
             _i = _i + 1;
             if ((_posAct distance [0,0,0]) > 0) then {
-                _isRoof = [ATLToASL _posAct, 20] call RYD_RoofOver;
+                _isRoof = [ATLToASL _posAct, 20] call FUNC(roofOver);
 
                 if (_isRoof) then {
                     _posAll pushBack _posAct

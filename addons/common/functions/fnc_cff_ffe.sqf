@@ -15,7 +15,7 @@ if ((count _this) > 8) then {_request = _this select 8};
 if (_request) then {_myFO = objNull;_assumedPos = _target;};
 
 if !(_request) then {
-	_myFO = _target getVariable ["RydHQ_MyFO",objNull];
+	_myFO = _target getVariable [QGVAR(myFO),objNull];
 	_assumedPos = (getPosATL _target);
 	if !(isNull _myFO) then {
 		_assumedPos = _myFO getHideFrom _target;
@@ -39,7 +39,7 @@ if (_isTaken) exitWith {
 	{
 	if !(isNull _x) then
 		{
-			_x setVariable ["RydHQ_BatteryBusy", false];
+			_x setVariable [QGVAR(batteryBusy), false];
 		}
 	} forEach _battery;
 };
@@ -349,8 +349,8 @@ _amount2 = _amount - _amount1;
 
 		if (_dSum < _exDst) then {
 			//if (_transdir < 0) then {_transdir = _transdir + 360};
-			_angle = [_targetPos,(getPosASL _stRS),1] call RYD_AngTowards;
-			_impactPos = [(getPosASL _stRS),_angle,(_exDst - _dSum)] call RYD_PosTowards2D
+			_angle = [_targetPos,(getPosASL _stRS),1] call FUNC(angleTowards);
+			_impactPos = [(getPosASL _stRS),_angle,(_exDst - _dSum)] call FUNC(positionTowards2D)
 		} else {
 			_rPos = getPosASL _stRS;
 			_impactPos = [_rPos select 0,_rPos select 1]
@@ -435,7 +435,7 @@ _amount2 = _amount - _amount1;
 	{
 		if !(isNull _x) then {
 			{
-				(vehicle _x) setVariable ["RydHQ_ShotFired",false]
+				(vehicle _x) setVariable [QGVAR(shotFired),false]
 			} forEach (units _x)
 		};
 	} forEach _battery;
@@ -446,10 +446,10 @@ _amount2 = _amount - _amount1;
 
 	_distance = _impactPos distance _finalimpact;
 
-	(_battery select 0) setVariable ["RydHQ_Break",false];
+	(_battery select 0) setVariable [QGVAR(break),false];
 
 	if !(_Debug) then {
-		_Debug = RYD_WS_ArtyMarks
+		_Debug = EGVAR(core,wS_ArtyMarks)
 	};
 
 	if (_Debug) then {
@@ -562,12 +562,12 @@ _amount2 = _amount - _amount1;
 			if (({!(isNull _x)} count _batlead) < 1) then {_alive = false};
 			if (isNull _battery1) then {_alive = false};
 			if (({(alive _x)} count _batlead) < 1) then {_alive = false};
-			if (_battery1 getVariable ["RydHQ_Break",false]) then {_alive = false};
+			if (_battery1 getVariable [QGVAR(break),false]) then {_alive = false};
 
 			{
 				if !(isNull _x) then {
 					{
-						if ((vehicle _x) getVariable ["RydHQ_ShotFired",false]) exitWith {_shot = true};
+						if ((vehicle _x) getVariable [QGVAR(shotFired),false]) exitWith {_shot = true};
 					} forEach (units _x);
 				};
 
@@ -580,7 +580,7 @@ _amount2 = _amount - _amount1;
 		{
 			if !(isNull _x) then {
 				{
-					(vehicle _x) setVariable ["RydHQ_ShotFired",false]
+					(vehicle _x) setVariable [QGVAR(shotFired),false]
 				} forEach (units _x)
 			};
 		} forEach _battery;
@@ -598,7 +598,7 @@ _amount2 = _amount - _amount1;
 			if (({!(isNull _x)} count _batlead) < 1) exitWith {_alive = false};
 			if (isNull _battery1) exitWith {_alive = false};
 			if (({(alive _x)} count _batlead) < 1) exitWith {_alive = false};
-			if (_battery1 getVariable ["RydHQ_Break",false]) exitWith {_alive = false};
+			if (_battery1 getVariable [QGVAR(break),false]) exitWith {_alive = false};
 
 			_TOF = (round (10 * (time - _stoper)))/10;
 			_rEta = _eta - _TOF;
@@ -618,24 +618,24 @@ _amount2 = _amount - _amount1;
 			} forEach _markers;
 		};
 
-		_battery1 setVariable ["RydHQ_SPLASH",true];
+		_battery1 setVariable [QGVAR(sPLASH),true];
 
 		if ((count _markers) > 0) then {
 			_mark setMarkerText (str (round _distance) + "m"  + " - SPLASH!" + " - " + _ammoG);
 		};
 	};
 
-	[[_battery,_distance,_eta,_ammoG,_batlead,_target,_markers,_request],_code] call RYD_Spawn;
+	[[_battery,_distance,_eta,_ammoG,_batlead,_target,_markers,_request],_code] call FUNC(spawn);
 
-	_eta = [_battery,_finalimpact,_ammo,_amount] call RYD_CFF_Fire;
+	_eta = [_battery,_finalimpact,_ammo,_amount] call FUNC(cff_fire);
 
 	_UL = _batlead1;
 
-	if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_ArtFire,"ArtFire"] call RYD_AIChatter};
+	if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_ArtFire),"ArtFire"] call FUNC(AIChatter)};
 
 	_alive = (_eta > 0);
 
-	if !(_alive) then {(_battery select 0) setVariable ["RydHQ_Break",true]};
+	if !(_alive) then {(_battery select 0) setVariable [QGVAR(break),true]};
 
 	_stoper = time;
 
@@ -654,7 +654,7 @@ _amount2 = _amount - _amount1;
 		{
 			if !(isNull _x) then {
 				{
-					if !((vehicle _x) getVariable ["RydHQ_GunFree",true]) exitWith {_available = false}
+					if !((vehicle _x) getVariable [QGVAR(gunFree),true]) exitWith {_available = false}
 				} forEach (units _x)
 			};
 
@@ -681,12 +681,12 @@ _amount2 = _amount - _amount1;
 				case ((time - _stoper) > 240) : {_alive = false};
 			};
 
-			if !(isNull _battery1) then {_splash = _battery1 getVariable ["RydHQ_SPLASH",false]};
+			if !(isNull _battery1) then {_splash = _battery1 getVariable [QGVAR(sPLASH),false]};
 
 			((_splash) or !(_alive))
 		};
 
-		if !(isNull _battery1) then {_battery1 setVariable ["RydHQ_SPLASH",false]};
+		if !(isNull _battery1) then {_battery1 setVariable [QGVAR(sPLASH),false]};
 
 		sleep 10;
 
@@ -715,12 +715,12 @@ if (_waitFor) then {
 			case ((time - _stoper) > 240) : {_alive = false};
 		};
 
-		if !(isNull _battery1) then {_splash = _battery1 getVariable ["RydHQ_SPLASH",false]};
+		if !(isNull _battery1) then {_splash = _battery1 getVariable [QGVAR(sPLASH),false]};
 
 		((_splash) or !(_alive))
 	};
 
-	if !(isNull _battery1) then {_battery1 setVariable ["RydHQ_SPLASH",false]};
+	if !(isNull _battery1) then {_battery1 setVariable [QGVAR(sPLASH),false]};
 
 	sleep 10;
 };
@@ -748,7 +748,7 @@ waitUntil {
 	{
 		if !(isNull _x) then {
 			{
-				if !((vehicle _x) getVariable ["RydHQ_GunFree",true]) exitWith {_available = false}
+				if !((vehicle _x) getVariable [QGVAR(gunFree),true]) exitWith {_available = false}
 			} forEach (units _x)
 		};
 
@@ -762,6 +762,6 @@ waitUntil {
 
 {
 	if !(isNull _x) then {
-		_x setVariable ["RydHQ_BatteryBusy",false]
+		_x setVariable [QGVAR(batteryBusy),false]
 	};
 } forEach _battery

@@ -42,8 +42,8 @@ while {_isDefending} do {
                         if ((_availableShells > 0) && ((random 100) > 50)) then {
                             // Request illumination from leader
                             if (!isPlayer _unitLeader) then {
-                                if ((random 100) < (missionNamespace getVariable ["RydxHQ_AIChatDensity", 30])) then {
-                                    [_unitLeader, (missionNamespace getVariable ["RydxHQ_AIC_IllumReq", ["Radio_Report_IllumRequest"]]), "IllumReq"] call FUNC(AIChatter);
+                                if ((random 100) < (missionNamespace getVariable [QEGVAR(core,aIChatDensity), 30])) then {
+                                    [_unitLeader, (missionNamespace getVariable [QGVAR(aIC_IllumReq), ["Radio_Report_IllumRequest"]]), "IllumReq"] call FUNC(AIChatter);
                                 };
                             };
 
@@ -52,12 +52,12 @@ while {_isDefending} do {
 
                             // Report success or failure
                             if (_callForFireSucceeded) then {
-                                if ((random 100) < (missionNamespace getVariable ["RydxHQ_AIChatDensity", 30])) then {
-                                    [_leaderUnit, (missionNamespace getVariable ["RydxHQ_AIC_ArtAss", ["Radio_Report_IllumSent"]]), "ArtAss"] call FUNC(AIChatter);
+                                if ((random 100) < (missionNamespace getVariable [QEGVAR(core,aIChatDensity), 30])) then {
+                                    [_leaderUnit, (missionNamespace getVariable [QGVAR(aIC_ArtAss), ["Radio_Report_IllumSent"]]), "ArtAss"] call FUNC(AIChatter);
                                 };
                             } else {
-                                if ((random 100) < (missionNamespace getVariable ["RydxHQ_AIChatDensity", 30])) then {
-                                    [_leaderUnit, (missionNamespace getVariable ["RydxHQ_AIC_ArtDen", ["Radio_Report_IllumDenied"]]), "ArtDen"] call FUNC(AIChatter);
+                                if ((random 100) < (missionNamespace getVariable [QEGVAR(core,aIChatDensity), 30])) then {
+                                    [_leaderUnit, (missionNamespace getVariable [QGVAR(aIC_ArtDen), ["Radio_Report_IllumDenied"]]), "ArtDen"] call FUNC(AIChatter);
                                 };
                             };
                         };
@@ -147,7 +147,7 @@ while {_isDefending} do {
 
                                         // Stop after launching one flare
                                         if (_flareCount > 0) exitWith {};
-                                    } forEach (missionNamespace getVariable ["RydxHQ_FlareMuzzles", []]);
+                                    } forEach (missionNamespace getVariable [QGVAR(flareMuzzles), []]);
                                 };
 
                                 // Stop after launching one flare

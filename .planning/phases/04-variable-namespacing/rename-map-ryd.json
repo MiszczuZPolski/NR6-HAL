@@ -1,0 +1,1570 @@
+{
+  "$schema": "phase-4-rename-map-v1",
+  "generated_at": "2026-04-11T20:06:24.290461Z",
+  "prefix_batch": "RYD_",
+  "entries": [
+    {
+      "legacy_name": "RYD_Attacks",
+      "new_macro_owner_form": "GVAR(attacks)",
+      "new_macro_extern_form": "EGVAR(common,attacks)",
+      "new_literal_expansion": "hal_common_attacks",
+      "addon_owner": "common",
+      "scopes": [
+        "getVariable_key",
+        "setVariable_key"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_WPSync.sqf",
+          "line": 18,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/common/functions/fnc_WPSync.sqf",
+          "line": 69,
+          "scope": "setVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_ItsMyMark",
+      "new_macro_owner_form": "GVAR(itsMyMark)",
+      "new_macro_extern_form": "EGVAR(common,itsMyMark)",
+      "new_literal_expansion": "hal_common_itsMyMark",
+      "addon_owner": "common",
+      "scopes": [
+        "getVariable_key",
+        "setVariable_key"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_groupMarkerLoop.sqf",
+          "line": 8,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/common/functions/fnc_groupMarkerLoop.sqf",
+          "line": 34,
+          "scope": "setVariable_key"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_Path",
+      "new_macro_owner_form": "GVAR(path)",
+      "new_macro_extern_form": "EGVAR(core,path)",
+      "new_literal_expansion": "hal_core_path",
+      "addon_owner": "core",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_liveFeed.sqf",
+          "line": 6,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_liveFeed.sqf",
+          "line": 7,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_TimeMachine.sqf",
+          "line": 6,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_TimeMachine.sqf",
+          "line": 7,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_TimeMachine.sqf",
+          "line": 8,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/common/functions/fnc_TimeMachine.sqf",
+          "line": 9,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 94,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 138,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 147,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 205,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_AAinf_class",
+      "new_macro_owner_form": "GVAR(wS_AAinf_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_AAinf_class)",
+      "new_literal_expansion": "hal_hal_data_wS_AAinf_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 17,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 126,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 90,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 21,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 27,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_ATinf_class",
+      "new_macro_owner_form": "GVAR(wS_ATinf_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_ATinf_class)",
+      "new_literal_expansion": "hal_hal_data_wS_ATinf_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 16,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 124,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 74,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 20,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 26,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_Air_class",
+      "new_macro_owner_form": "GVAR(wS_Air_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_Air_class)",
+      "new_literal_expansion": "hal_hal_data_wS_Air_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 25,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 142,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 376,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 29,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 35,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_AllClasses",
+      "new_macro_owner_form": "GVAR(wS_AllClasses)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_AllClasses)",
+      "new_literal_expansion": "hal_hal_data_wS_AllClasses",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 41,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 43,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 54,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 56,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_Art_class",
+      "new_macro_owner_form": "GVAR(wS_Art_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_Art_class)",
+      "new_literal_expansion": "hal_hal_data_wS_Art_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 19,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 130,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 272,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 23,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 29,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_ArtyMarks",
+      "new_macro_owner_form": "GVAR(wS_ArtyMarks)",
+      "new_macro_extern_form": "EGVAR(core,wS_ArtyMarks)",
+      "new_literal_expansion": "hal_core_wS_ArtyMarks",
+      "addon_owner": "core",
+      "scopes": [
+        "getVariable_key",
+        "global_assignment",
+        "global_read",
+        "publicVariable_string"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_cff_ffe.sqf",
+          "line": 452,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 91,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 91,
+          "scope": "getVariable_key"
+        },
+        {
+          "path": "addons/core/functions/fnc_init.sqf",
+          "line": 92,
+          "scope": "publicVariable_string"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_BAir_class",
+      "new_macro_owner_form": "GVAR(wS_BAir_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_BAir_class)",
+      "new_literal_expansion": "hal_hal_data_wS_BAir_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 26,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 144,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 419,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 30,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 36,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_Cargo_class",
+      "new_macro_owner_form": "GVAR(wS_Cargo_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_Cargo_class)",
+      "new_literal_expansion": "hal_hal_data_wS_Cargo_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 34,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 160,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 548,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 37,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 43,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_Cars_class",
+      "new_macro_owner_form": "GVAR(wS_Cars_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_Cars_class)",
+      "new_literal_expansion": "hal_hal_data_wS_Cars_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 24,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 140,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 321,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 28,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 34,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_Crew_class",
+      "new_macro_owner_form": "GVAR(wS_Crew_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_Crew_class)",
+      "new_literal_expansion": "hal_hal_data_wS_Crew_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 36,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 164,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 658,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 623,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 39,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 45,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_FO_class",
+      "new_macro_owner_form": "GVAR(wS_FO_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_FO_class)",
+      "new_literal_expansion": "hal_hal_data_wS_FO_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 14,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 120,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 51,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 18,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 24,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_HArmor_class",
+      "new_macro_owner_form": "GVAR(wS_HArmor_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_HArmor_class)",
+      "new_literal_expansion": "hal_hal_data_wS_HArmor_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 20,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 132,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 289,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 24,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 30,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_Inf_class",
+      "new_macro_owner_form": "GVAR(wS_Inf_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_Inf_class)",
+      "new_literal_expansion": "hal_hal_data_wS_Inf_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 18,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 128,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 100,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 22,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 28,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_LArmorAT_class",
+      "new_macro_owner_form": "GVAR(wS_LArmorAT_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_LArmorAT_class)",
+      "new_literal_expansion": "hal_hal_data_wS_LArmorAT_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 23,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 138,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 313,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 27,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 33,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_LArmor_class",
+      "new_macro_owner_form": "GVAR(wS_LArmor_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_LArmor_class)",
+      "new_literal_expansion": "hal_hal_data_wS_LArmor_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 22,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 136,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 301,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 26,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 32,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_MArmor_class",
+      "new_macro_owner_form": "GVAR(wS_MArmor_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_MArmor_class)",
+      "new_literal_expansion": "hal_hal_data_wS_MArmor_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 21,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 134,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 297,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 25,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 31,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_NCAir_class",
+      "new_macro_owner_form": "GVAR(wS_NCAir_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_NCAir_class)",
+      "new_literal_expansion": "hal_hal_data_wS_NCAir_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 28,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 148,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 439,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 32,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 38,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_NCCargo_class",
+      "new_macro_owner_form": "GVAR(wS_NCCargo_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_NCCargo_class)",
+      "new_literal_expansion": "hal_hal_data_wS_NCCargo_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 162,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 616,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 38,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 44,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_NCrewInf_class",
+      "new_macro_owner_form": "GVAR(wS_NCrewInf_class)",
+      "new_macro_extern_form": "EGVAR(hal_hac,wS_NCrewInf_class)",
+      "new_literal_expansion": "hal_hal_hac_wS_NCrewInf_class",
+      "addon_owner": "hal_hac",
+      "scopes": [
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "inferred owner (no top-level assignment found)",
+      "file_locations": [
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 40,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 46,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_Naval_class",
+      "new_macro_owner_form": "GVAR(wS_Naval_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_Naval_class)",
+      "new_literal_expansion": "hal_hal_data_wS_Naval_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 29,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 150,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 456,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 33,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 39,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_Other_class",
+      "new_macro_owner_form": "GVAR(wS_Other_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_Other_class)",
+      "new_literal_expansion": "hal_hal_data_wS_Other_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 37,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 166,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 675,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_RAir_class",
+      "new_macro_owner_form": "GVAR(wS_RAir_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_RAir_class)",
+      "new_literal_expansion": "hal_hal_data_wS_RAir_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 27,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 146,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 426,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 31,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 37,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_StaticAA_class",
+      "new_macro_owner_form": "GVAR(wS_StaticAA_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_StaticAA_class)",
+      "new_literal_expansion": "hal_hal_data_wS_StaticAA_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 31,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 154,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 507,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 41,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_StaticAT_class",
+      "new_macro_owner_form": "GVAR(wS_StaticAT_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_StaticAT_class)",
+      "new_literal_expansion": "hal_hal_data_wS_StaticAT_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 32,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 156,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 514,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 36,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 42,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_Static_class",
+      "new_macro_owner_form": "GVAR(wS_Static_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_Static_class)",
+      "new_literal_expansion": "hal_hal_data_wS_Static_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 30,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 152,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 472,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 34,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 40,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_Support_class",
+      "new_macro_owner_form": "GVAR(wS_Support_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_Support_class)",
+      "new_literal_expansion": "hal_hal_data_wS_Support_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 33,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 158,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 521,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 762,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_presentRHQ.sqf",
+          "line": 35,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 41,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 47,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_ammo",
+      "new_macro_owner_form": "GVAR(wS_ammo)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_ammo)",
+      "new_literal_expansion": "hal_hal_data_wS_ammo",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 38,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 741,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action9ct.sqf",
+          "line": 27,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_fuel",
+      "new_macro_owner_form": "GVAR(wS_fuel)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_fuel)",
+      "new_literal_expansion": "hal_hal_data_wS_fuel",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 39,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 722,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action10ct.sqf",
+          "line": 27,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_med",
+      "new_macro_owner_form": "GVAR(wS_med)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_med)",
+      "new_literal_expansion": "hal_hal_data_wS_med",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 40,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 703,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action11ct.sqf",
+          "line": 27,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action12ct.sqf",
+          "line": 27,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_recon_class",
+      "new_macro_owner_form": "GVAR(wS_recon_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_recon_class)",
+      "new_literal_expansion": "hal_hal_data_wS_recon_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 13,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 118,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 15,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 17,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 23,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_rep",
+      "new_macro_owner_form": "GVAR(wS_rep)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_rep)",
+      "new_literal_expansion": "hal_hal_data_wS_rep",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 41,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 682,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_tasking/functions/fnc_action13ct.sqf",
+          "line": 27,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_snipers_class",
+      "new_macro_owner_form": "GVAR(wS_snipers_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_snipers_class)",
+      "new_literal_expansion": "hal_hal_data_wS_snipers_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 15,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 122,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 60,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 19,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 25,
+          "scope": "global_read"
+        }
+      ]
+    },
+    {
+      "legacy_name": "RYD_WS_specFor_class",
+      "new_macro_owner_form": "GVAR(wS_specFor_class)",
+      "new_macro_extern_form": "EGVAR(hal_data,wS_specFor_class)",
+      "new_literal_expansion": "hal_hal_data_wS_specFor_class",
+      "addon_owner": "hal_data",
+      "scopes": [
+        "global_assignment",
+        "global_read"
+      ],
+      "multi_hq": false,
+      "multi_hq_siblings": [],
+      "stripped": false,
+      "notes": "",
+      "file_locations": [
+        {
+          "path": "addons/common/functions/fnc_rhqCheck.sqf",
+          "line": 12,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/core/functions/fnc_HQSitRep.sqf",
+          "line": 116,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_data/functions/fnc_initWeaponClasses.sqf",
+          "line": 11,
+          "scope": "global_assignment"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyEnemies.sqf",
+          "line": 16,
+          "scope": "global_read"
+        },
+        {
+          "path": "addons/hal_hac/functions/fnc_statusQuo_classifyFriends.sqf",
+          "line": 22,
+          "scope": "global_read"
+        }
+      ]
+    }
+  ]
+}

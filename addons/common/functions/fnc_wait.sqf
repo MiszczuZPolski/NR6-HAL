@@ -72,7 +72,7 @@ if (count _additionalData > 0) then {
 
     if (count _additionalData > 2) then {
         _HQ = _additionalData select 2;
-        _enemyGroups = _HQ getVariable ["RydHQ_KnEnemiesG", []];
+        _enemyGroups = _HQ getVariable [QGVAR(knEnemiesG), []];
     };
 };
 
@@ -90,9 +90,9 @@ waitUntil {
         case ({alive _x} count (units _group) < 1): {_alive = false};
         case (isNull _assignedVehicle): {_alive = false};
         case (!alive _assignedVehicle): {_alive = false};
-        case (_group getVariable ["RydHQ_MIA", false]): {
+        case (_group getVariable [QGVAR(mIA), false]): {
             _alive = false;
-            _group setVariable ["RydHQ_MIA", nil];
+            _group setVariable [QGVAR(mIA), nil];
         };
         case (_group getVariable ["Break", false]): {
             _breakFlag = true;
@@ -128,7 +128,7 @@ waitUntil {
         } else {
             if !(_driverGroup in _airGroups) then {
                 _enemyPresent = [_assignedVehicle, _enemyGroups,
-                    missionNamespace getVariable ["RydxHQ_DisembarkRange", 500]] call FUNC(closeEnemy);
+                    missionNamespace getVariable [QEGVAR(core,disembarkRange), 500]] call FUNC(closeEnemy);
             };
         };
 
@@ -147,7 +147,7 @@ waitUntil {
 
                 if (!isNull _closestEnemy) then {
                     if (((vehicle (leader _group)) distance _closestEnemy) <
-                        missionNamespace getVariable ["RydxHQ_DisembarkRange", 500]) then {
+                        missionNamespace getVariable [QEGVAR(core,disembarkRange), 500]) then {
                         _enemyPresent = true;
                         if (_checkEnemy > 0) then {_enemy = true;};
                     };
@@ -203,7 +203,7 @@ waitUntil {
 
         // Check speed factor if enabled
         if (_checkSpeed) then {
-            if (!(missionNamespace getVariable ["RydxHQ_SynchroAttack", false])) then {
+            if (!(missionNamespace getVariable [QEGVAR(core,synchroAttack), false])) then {
                 if (abs (speed (vehicle (leader _driverGroup))) < 0.05) then {
                     _timer = _timer + 1;
                 };
@@ -269,9 +269,9 @@ waitUntil {
 
         if (_checkAmmo && !isNil "_boxedAt") then {
             _boxedAt = getPosATL _boxedAt;
-            _boxedAt = [_boxedAt, 20] call FUNC(positionAround);
+            _boxedAt = [_boxedAt, 20] call FUNC(randomAround);
             private _wp = [_group, [_boxedAt select 0, _boxedAt select 1], "MOVE", "AWARE", "GREEN", "FULL",
-                ["true", "deletewaypoint [(group this), 0]"]] call EFUNC(common,WPadd);
+                ["true", "deletewaypoint [(group this), 0]"]] call FUNC(WPadd);
             _boxedAt = nil;
             _group setVariable ["isBoxed", nil];
         };
@@ -286,31 +286,31 @@ waitUntil {
         };
 
         // Check for waiting targets and objectives
-        if (!isNil {_group getVariable "RydHQ_WaitingTarget"}) then {
-            private _waitingTarget = _group getVariable "RydHQ_WaitingTarget";
+        if (!isNil {_group getVariable QGVAR(waitingTarget)}) then {
+            private _waitingTarget = _group getVariable QGVAR(waitingTarget);
             if ((isNull _waitingTarget) || !alive _waitingTarget) then {
                 [_group] call FUNC(deleteWaypoint);
-                _group setVariable ["RydHQ_WaitingTarget", nil];
+                _group setVariable [QGVAR(waitingTarget), nil];
                 _timer = _tolerance + 10;
             } else {
-                private _frontArea = _HQ getVariable [QEGVAR(core,front), locationNull];
+                private _frontArea = _HQ getVariable [QGVAR(front), locationNull];
                 if (!isNull _frontArea) then {
                     if !((getPosATL _waitingTarget) in _frontArea) then {
                         [_group] call FUNC(deleteWaypoint);
-                        _group setVariable ["RydHQ_WaitingTarget", nil];
+                        _group setVariable [QGVAR(waitingTarget), nil];
                         _timer = _tolerance + 10;
                     };
                 };
             };
         };
 
-        if (!isNil {_group getVariable "RydHQ_WaitingObjective"}) then {
-            private _objective = (_group getVariable "RydHQ_WaitingObjective") select 1;
-            private _objectiveHQ = (_group getVariable "RydHQ_WaitingObjective") select 0;
+        if (!isNil {_group getVariable QGVAR(waitingObjective)}) then {
+            private _objective = (_group getVariable QGVAR(waitingObjective)) select 1;
+            private _objectiveHQ = (_group getVariable QGVAR(waitingObjective)) select 0;
 
-            if ((isNull _objective) || (_objective in (_objectiveHQ getVariable ["RydHQ_Taken", []]))) then {
+            if ((isNull _objective) || (_objective in (_objectiveHQ getVariable [QGVAR(taken), []]))) then {
                 [_group] call FUNC(deleteWaypoint);
-                _group setVariable ["RydHQ_WaitingObjective", nil];
+                _group setVariable [QGVAR(waitingObjective), nil];
             };
         };
     };
@@ -332,8 +332,8 @@ if (!isNull _assignedVehicle) then {
 };
 
 // Clear waiting target/objective variables
-_group setVariable ["RydHQ_WaitingTarget", nil];
-_group setVariable ["RydHQ_WaitingObjective", nil];
+_group setVariable [QGVAR(waitingTarget), nil];
+_group setVariable [QGVAR(waitingObjective), nil];
 
 // Clear infantry get-in checking
 if (_group getVariable ["InfGetinCheck" + (str _group), false]) then {
@@ -345,8 +345,8 @@ if (_group getVariable ["InfGetinCheck" + (str _group), false]) then {
 
 // Send AI chatter message about order denial if timed out
 if (_timer > _tolerance) then {
-    if ((random 100) < (missionNamespace getVariable ["RydxHQ_AIChatDensity", 30])) then {
-        [(leader _group), (missionNamespace getVariable ["RydxHQ_AIC_OrdDen", ["Radio_Report_OrderRejected"]]), "OrdDen"] call FUNC(AIChatter);
+    if ((random 100) < (missionNamespace getVariable [QEGVAR(core,aIChatDensity), 30])) then {
+        [(leader _group), (missionNamespace getVariable [QGVAR(aIC_OrdDen), ["Radio_Report_OrderRejected"]]), "OrdDen"] call FUNC(AIChatter);
     };
 };
 

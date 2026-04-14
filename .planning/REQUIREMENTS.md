@@ -1,0 +1,148 @@
+# Requirements: NR6-HAL ACE3 Refactor
+
+**Defined:** 2026-04-09
+**Core Value:** Existing HAL AI behavior must continue working identically after refactoring
+
+## v1 Requirements
+
+Requirements for initial release. Each maps to roadmap phases.
+
+### Build Infrastructure
+
+- [x] **BUILD-01**: HEMTT builds project with zero errors
+- [x] **BUILD-02**: HEMTT builds project with zero warnings
+- [x] **BUILD-03**: Subsystem addon skeletons exist under `addons/hal_data/`, `addons/hal_hac/`, `addons/hal_boss/`, `addons/hal_tasking/` each with correct `$PBOPREFIX$`, `script_component.hpp`, `config.cpp`, `CfgEventHandlers.hpp`, XEH files (per D-01 4-way split)
+- [x] **BUILD-04**: `addons/compat_nr6hal/` compatibility addon skeleton exists
+- [x] **BUILD-05**: `mod.cpp` contains correct project metadata (not ACE3 placeholder text)
+
+### Function Migration
+
+- [x] **FUNC-01**: Full inter-function call graph documented for all 7 legacy files (HAC_fnc.sqf, HAC_fnc2.sqf, RHQLibrary.sqf, Boss_fnc.sqf, Boss.sqf, TaskInitNR6.sqf, SquadTaskingNR6.sqf)
+- [x] **FUNC-02**: All active functions classified (active/dead/already-migrated) with target destination
+- [x] **FUNC-03**: `RHQLibrary.sqf` weapon class arrays migrated to `fnc_initWeaponClasses.sqf` in addons/
+- [x] **FUNC-04**: All active `HAC_fnc.sqf` functions (~10 remaining) extracted to individual `fnc_*.sqf` files
+- [x] **FUNC-05**: All active `HAC_fnc2.sqf` functions extracted to individual `fnc_*.sqf` files
+- [x] **FUNC-06**: All active `Boss_fnc.sqf` functions (~20) extracted to individual `fnc_*.sqf` files in `addons/core/functions/`
+- [x] **FUNC-07**: `Boss.sqf` migrated to `fnc_boss.sqf` with all internal call sites updated — Boss.sqf external call edges (RYD_*/HAL_*) updated to EFUNC() in Phase 3; full imperative main-loop migration is Phase 4 per D-06
+- [x] **FUNC-08**: `RYD_StatusQuo` (1779 lines) decomposed into sub-functions under 250 lines each
+- [x] **FUNC-09**: Every migrated function registered in `XEH_PREP.hpp` with correct PREP ordering (leaf functions first)
+- [x] **FUNC-10**: Every migrated function file includes `#include "script_component.hpp"` header
+
+### Code Standards
+
+- [x] **STD-01**: All migrated functions use `params` syntax (not `_this select N` or `private ["_var"]`)
+- [x] **STD-02**: All migrated functions use `private` keyword for local variable declarations
+- [x] **STD-03**: All commented-out/dead code removed from migrated files
+- [x] **STD-04**: All function call sites use `FUNC()`/`EFUNC()` macros instead of hardcoded function names
+
+### Variable Namespacing
+
+- [x] **VAR-01**: All `RYD*`/`RHQ*`/`RydBB*` global variables replaced with `GVAR()`/`QGVAR()` macros
+- [x] **VAR-02**: All `publicVariable` calls updated to use `QGVAR()` string references
+- [x] **VAR-03**: All `isNil "RydHQ_..."` guards converted to use `QGVAR()` references
+- [x] **VAR-04**: Each variable renamed atomically (assignment + publicVariable + all readers in same commit)
+
+### Settings & Localization
+
+- [x] **SET-01**: CBA settings framework integrated via `CBA_fnc_addSetting` in `initSettings.inc.sqf`
+- [x] **SET-02**: All configurable options (currently in mission module Arguments) exposed as CBA settings
+- [x] **SET-03**: `stringtable.xml` created with English localization for all user-facing strings
+- [x] **SET-04**: All settings display names and descriptions use `LSTRING()` macro referencing stringtable.xml
+
+### Compatibility
+
+- [x] **COMPAT-01**: Compatibility addon maps all old module classnames to new classnames via CfgVehicles inheritance
+- [x] **COMPAT-02**: `compat_vars.sqf` assigns all legacy function variable names to new `hal_*_fnc_*` references
+- [x] **COMPAT-03**: Existing missions using old classnames load and function correctly with compat addon enabled
+- [x] **COMPAT-04**: Legacy `nr6_hal/` directory removed after all functions migrated and verified (deleted in Plan 05-04 — directory tree no longer exists)
+
+### Behavior Preservation
+
+- [x] **BEHAV-01**: AI HQ commander initializes with identical personality traits and state variables
+- [x] **BEHAV-02**: Group management (spawn, waypoints, objectives) produces identical behavior
+- [x] **BEHAV-03**: Enemy scanning and threat detection loops function identically
+- [x] **BEHAV-04**: Artillery/fire support coordination produces identical results
+- [x] **BEHAV-05**: AI chatter/radio communication system works identically
+
+## v2 Requirements
+
+Deferred to future release. Tracked but not in current roadmap.
+
+### Module Migration
+
+- **MOD-01**: Migrate `nr6_alice2` (civilian ambient life) into addons/ structure
+- **MOD-02**: Migrate `nr6_reinforcements` into addons/ structure
+- **MOD-03**: Migrate `nr6_sites`/`nr6_sitemarkers` into addons/ structure
+- **MOD-04**: Migrate `nr6_tools` into addons/ structure
+
+### Testing
+
+- **TEST-01**: Automated test framework for utility functions
+- **TEST-02**: Regression test suite for core AI behaviors
+
+### Performance
+
+- **PERF-01**: Optimize entity queries (replace 100000m nearEntities with location-based approach)
+- **PERF-02**: Cache repeated group string conversions
+- **PERF-03**: Replace array concatenation in loops with pushBack
+
+## Out of Scope
+
+| Feature | Reason |
+|---------|--------|
+| AI behavior changes | V1 is structure-only refactor — behavior must be identical |
+| New gameplay features | Scope creep risk; structure must be stable first |
+| UI/dialog redesign | Keep existing UI working; cosmetic changes are V2+ |
+| Multi-language localization | English baseline only for V1; other languages in V2+ |
+| Performance optimization | Only fix what naturally improves during refactoring |
+| nr6_alice2/reinforcements/sites migration | Focus on core HAL first; proves the pattern |
+
+## Traceability
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| BUILD-01 | Phase 1 | Complete |
+| BUILD-02 | Phase 1 | Complete |
+| BUILD-03 | Phase 1 | Complete |
+| BUILD-04 | Phase 1 | Complete |
+| BUILD-05 | Phase 1 | Complete |
+| FUNC-01 | Phase 2 | Complete |
+| FUNC-02 | Phase 2 | Complete |
+| FUNC-03 | Phase 3 | Complete |
+| FUNC-04 | Phase 3 | Complete |
+| FUNC-05 | Phase 3 | Complete |
+| FUNC-06 | Phase 3 | Complete |
+| FUNC-07 | Phase 3 | Complete |
+| FUNC-08 | Phase 3 | Complete |
+| FUNC-09 | Phase 3 | Complete |
+| FUNC-10 | Phase 3 | Complete |
+| STD-01 | Phase 3 | Complete |
+| STD-02 | Phase 3 | Complete |
+| STD-03 | Phase 3 | Complete |
+| STD-04 | Phase 3 | Complete |
+| VAR-01 | Phase 4 | Complete |
+| VAR-02 | Phase 4 | Complete |
+| VAR-03 | Phase 4 | Complete |
+| VAR-04 | Phase 4 | Complete |
+| SET-01 | Phase 5 | Complete |
+| SET-02 | Phase 5 | Complete |
+| SET-03 | Phase 5 | Complete |
+| SET-04 | Phase 5 | Complete |
+| COMPAT-01 | Phase 5 | Complete |
+| COMPAT-02 | Phase 5 | Complete |
+| COMPAT-03 | Phase 5 | Complete |
+| COMPAT-04 | Phase 5 | Complete |
+| BEHAV-01 | Phase 5 | Complete |
+| BEHAV-02 | Phase 5 | Complete |
+| BEHAV-03 | Phase 5 | Complete |
+| BEHAV-04 | Phase 5 | Complete |
+| BEHAV-05 | Phase 5 | Complete |
+
+**Coverage:**
+- v1 requirements: 37 total
+- Mapped to phases: 37
+- Unmapped: 0 ✓
+
+---
+*Requirements defined: 2026-04-09*
+*Last updated: 2026-04-11 — Plan 05-09 marked all 37 v1 requirements complete; v1.0 milestone DONE*

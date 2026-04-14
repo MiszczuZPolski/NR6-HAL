@@ -1,0 +1,237 @@
+#include "..\script_component.hpp"
+// Originally from nr6_hal/HAL/GoAttArmor.sqf
+_SCRname = "GoAttArmor";
+
+_i = "";
+
+_unitG = _this select 0;_Spos = _unitG getVariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(getPosATL (vehicle (leader _unitG)))];_Spos = _unitG getVariable ("START" + (str _unitG))};
+_Trg = _this select 1;
+_HQ = _this select 2;
+_request = false;
+if ((count _this) > 3) then {_request = _this select 3};
+
+
+_isAttacked = (group _Trg) getVariable ("ArmorAttacked" + (str (group _Trg)));
+if (isNil ("_isAttacked")) then {_isAttacked = 0};
+
+
+_PosObj1 = getPosATL _Trg;
+_unitvar = str (_unitG);
+_busy = false;
+
+_IsAPlayer = false;
+if (EGVAR(core,noCargoPlayers) and (isPlayer (leader _unitG))) then {_IsAPlayer = true};
+
+//if (_isAttacked > 1) exitwith {};
+
+[_unitG] call CBA_fnc_clearWaypoints;
+
+_unitG setVariable [("Deployed" + (str _unitG)),false];_unitG setVariable [("Capt" + (str _unitG)),false];
+
+_unitG setVariable [("Busy" + _unitvar), true];
+
+_UL = leader _unitG;
+_nothing = true;
+
+_dX = (_PosObj1 select 0) - ((getPosATL (leader _HQ)) select 0);
+_dY = (_PosObj1 select 1) - ((getPosATL (leader _HQ)) select 1);
+
+_angle = _dX atan2 _dY;
+
+_distance = (leader _HQ) distance _PosObj1;
+_distance2 = 500;
+
+_dstMpl = (_HQ getVariable [QEGVAR(core,attArmDistance),1]) * (_unitG getVariable [QGVAR(myAttDst),1]);
+_distance2 = _distance2 * _dstMpl;
+
+_dXc = _distance2 * (cos _angle);
+_dYc = _distance2 * (sin _angle);
+
+if not (_request) then {
+	if (_isAttacked == 1) then {(group _Trg) setVariable [("ArmorAttacked" + (str (group _Trg))),2,true];_dYc = - _dYc};
+	if (_isAttacked < 1) then {(group _Trg) setVariable [("ArmorAttacked" + (str (group _Trg))),1,true];_dXc = - _dXc};
+	if (_isAttacked > 1) then {_distance = _distance - _distance2;_dXc = 0;_dYc = 0};
+};
+
+_dXb = _distance * (sin _angle);
+_dYb = _distance * (cos _angle);
+
+_posX = ((getPosATL (leader _HQ)) select 0) + _dXb + _dXc + (random 200) - 100;
+_posY = ((getPosATL (leader _HQ)) select 1) + _dYb + _dYc + (random 200) - 100;
+
+if (_request) then {
+	_posX = (_PosObj1 select 0) + (random 300) - 150;
+	_posY = (_PosObj1 select 1) + (random 300) - 150;
+};
+
+_isWater = surfaceIsWater [_posX,_posY];
+
+while {((_isWater) and (([_posX,_posY] distance _PosObj1) >= 50))} do
+	{
+	_posX = _posX - _dXc/20;
+	_posY = _posY - _dYc/20;
+	_isWater = surfaceIsWater [_posX,_posY];
+	};
+
+_isWater = surfaceIsWater [_posX,_posY];
+
+if (_isWater) exitWith
+	{
+	_attAv = _HQ getVariable [QGVAR(attackAv),[]];
+	_attAv pushBack _unitG;
+	_HQ setVariable [QGVAR(attackAv),_attAv];
+	_unitG setVariable [("Busy" + (str _unitG)),false];
+	if not (_request) then {[_Trg,"ArmorAttacked"] call EFUNC(common,varReductor)};
+	};
+
+if ((EGVAR(core,synchroAttack)) and not (isPlayer (leader _unitG)) and not (_request)) then
+	{
+	_attackedBy = (group _trg) getVariable [QEGVAR(common,attacks),[]];
+	_attackedBy pushBack [_unitG,[_posX,_posY,0]];
+	(group _trg) setVariable [QEGVAR(common,attacks),_attackedBy];
+	};
+
+[_unitG,[_posX,_posY,0],"HQ_ord_attackArmor",_HQ] call EFUNC(common,orderPause);
+
+if ((isPlayer (leader _unitG)) and (EGVAR(common,gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
+
+_UL = leader _unitG;
+
+_AV = assignedVehicle _UL;
+
+if not (isNull _AV) then {
+
+	{
+		if (isNull (assignedVehicle _x)) then {_x assignAsCargo _AV};
+	} forEach (units _unitG);
+};
+
+if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,EGVAR(boss,aIC_OrdConf),"OrdConf"] call EFUNC(common,AIChatter)}};
+
+if (_HQ getVariable [QEGVAR(common,debug),false]) then
+	{
+	_signum = _HQ getVariable [QEGVAR(core,codeSign),"X"];
+	_i = [[_posX,_posY],_unitG,"markAttack","ColorRed","ICON","waypoint","ARM " + (groupId _unitG) + " " + _signum," - ATTACK",[0.5,0.5]] call EFUNC(common,mark);
+	};
+
+_task = [(leader _unitG),["Engage the designated hostile forces. ROE: WEAPONS FREE.", "Engage Hostile Forces", ""],[_posX,_posY],"attack"] call EFUNC(common,addTask);
+
+_tp = "MOVE";
+if (_request) then {_tp = "SAD"};
+_wp = [_unitG,[_posX,_posY],_tp,"AWARE","RED","NORMAL"] call EFUNC(common,WPadd);
+if (isPlayer (leader _unitG)) then {deleteWaypoint _wp};
+
+
+if not (_request) then {_unitG setVariable [QEGVAR(common,waitingTarget),_trg]};
+if not (_isAPlayer) then {_unitG setVariable ["InfGetinCheck" + (str _unitG),true]};
+_cause = [_unitG,6,true,0,24,[],false] call EFUNC(common,wait);
+_timer = _cause select 0;
+_alive = _cause select 1;
+
+if not (_alive) exitWith
+	{
+	if ((_HQ getVariable [QEGVAR(common,debug),false]) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
+	_unitG setVariable [("Busy" + (str _unitG)),false];
+	if not (_request) then {[_Trg,"ArmorAttacked"] call EFUNC(common,varReductor)}
+	};
+
+if (_timer > 24) then {deleteWaypoint _wp};
+
+if ((EGVAR(core,synchroAttack)) and not (isPlayer (leader _unitG)) and not (_request)) then
+	{
+	[_wp,_Trg,_unitG,_HQ] call EFUNC(common,WPSync);
+
+
+	};
+
+if not (_task isEqualTo taskNull) then
+	{
+
+	[_task,(leader _unitG),["Engage the designated hostile forces. ROE: WEAPONS FREE.", "Engage Hostile Forces"],(getPosATL _Trg),"ASSIGNED",0,false,true] call BIS_fnc_SetTask;
+
+	};
+
+_cur = true;
+//if (RydxHQ_SynchroAttack) then {_cur = false};
+_formation = formation _unitG;
+if not (isPlayer (leader _unitG)) then {_formation = "WEDGE"};
+
+_UL = leader _unitG;if not (isPlayer _UL) then {if (_timer <= 24) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_OrdFinal),"OrdFinal"] call EFUNC(common,AIChatter)}}};
+
+_tPos = getPosATL _Trg;
+_tPosX = _tPos select 0;
+_tPosY = _tPos select 1;
+
+_tPosX = (_tPosX + _posX)/2;
+_tPosY = (_tPosY + _posY)/2;
+
+if not (_request) then {
+	if not (isPlayer (leader _unitG)) then {
+		_wp = [_unitG,[_tPosX,_tPosY],"SAD","AWARE","RED","NORMAL",["true","deletewaypoint [(group this), 0];"],_cur,0,[0,0,0],_formation] call EFUNC(common,WPadd);
+
+		} else {
+
+		_wp = [_unitG,_Trg,"SAD","AWARE","RED","NORMAL",["true","deletewaypoint [(group this), 0];"],_cur,0,[0,0,0],_formation] call EFUNC(common,WPadd);
+		_wp waypointAttachVehicle _Trg;
+
+		};
+};
+
+if not (_request) then {_unitG setVariable [QEGVAR(common,waitingTarget),_trg]};
+if not (_isAPlayer) then {_unitG setVariable ["InfGetinCheck" + (str _unitG),true]};
+_cause = [_unitG,6,true,0,24,[],false] call EFUNC(common,wait);
+_timer = _cause select 0;
+_alive = _cause select 1;
+
+if not (_alive) exitWith
+	{
+	if ((_HQ getVariable [QEGVAR(common,debug),false]) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
+	_unitG setVariable [("Busy" + (str _unitG)),false];
+	if not (_request) then {[_Trg,"ArmorAttacked"] call EFUNC(common,varReductor)}
+	};
+
+if (_timer > 24) then {deleteWaypoint _wp};
+
+if ((_HQ getVariable [QEGVAR(common,debug),false]) or (isPlayer (leader _unitG))) then {_i setMarkerColor "ColorBlue"};
+
+	if not (_task isEqualTo taskNull) then
+		{
+
+//		[_task,(leader _unitG),["Hold position and standby for further orders.", "Standby", ""],_Spos,"ASSIGNED",0,false,true] call BIS_fnc_SetTask;
+
+		};
+
+if ((_unitG in (_HQ getVariable [QEGVAR(core,garrison),[]])) and not (isPlayer (leader _unitG))) then
+	{
+	if not (_task isEqualTo taskNull) then
+		{
+
+		[_task,(leader _unitG),["Hold position and standby for further orders.", "Standby", ""],_Spos,"ASSIGNED",0,false,true] call BIS_fnc_SetTask;
+
+		};
+	_wp = [_unitG,_Spos,"MOVE","SAFE","YELLOW","NORMAL",["true","deletewaypoint [(group this), 0];"],true,5] call EFUNC(common,WPadd);
+
+	_cause = [_unitG,6,true,0,30,[],false] call EFUNC(common,wait);
+	_timer = _cause select 0;
+	_alive = _cause select 1;
+
+	if not (_alive) exitWith {_unitG setVariable [("Busy" + (str _unitG)),false];if ((_HQ getVariable [QEGVAR(common,debug),false]) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))}};
+	if (_timer > 30) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [getPosATL (vehicle _UL), 0]};
+	_unitG setVariable ["Garrisoned" + (str _unitG),false];
+	};
+
+sleep 20;
+
+if (not (_task isEqualTo taskNull) and not (alive _Trg)) then {[_task,"SUCCEEDED",true] call BIS_fnc_taskSetState};
+
+if ((_HQ getVariable [QEGVAR(common,debug),false]) or (isPlayer (leader _unitG))) then {deleteMarker _i};
+
+_attAv = _HQ getVariable [QGVAR(attackAv),[]];
+_attAv pushBack _unitG;
+_HQ setVariable [QGVAR(attackAv),_attAv];
+
+_unitG setVariable [("Busy" + (str _unitG)),false];
+
+if not (_request) then {[_Trg,"ArmorAttacked"] call EFUNC(common,varReductor)};
+
+_UL = leader _unitG;if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_OrdEnd),"OrdEnd"] call EFUNC(common,AIChatter)}};

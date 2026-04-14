@@ -16,7 +16,7 @@ private _unit = leader _group;
 private _commander = leader _HQ;
 
 // Get the actual sentence text from config
-private _sentenceType = missionNamespace getVariable ["RydxHQ_AIChat_Type", "NONE"];
+private _sentenceType = missionNamespace getVariable [QEGVAR(core,aIChat_Type), "NONE"];
 if (_sentenceType != "NONE") then {
     switch (_sentenceType) do {
         case "SILENT_M": {_sentenceKey = "HAC_SILENTM_" + _sentenceKey};

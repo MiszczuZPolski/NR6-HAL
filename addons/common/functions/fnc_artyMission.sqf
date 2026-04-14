@@ -18,7 +18,7 @@ private _allAmmo = 0;
 {
 	private _group = _x;
 	if !(isNull _group) then {
-		if !(_group getVariable ["RydHQ_BatteryBusy", false]) then {
+		if !(_group getVariable [QGVAR(batteryBusy), false]) then {
 			_hasAmmo = 0;
 			private _checked = [];
 
@@ -30,7 +30,7 @@ private _allAmmo = 0;
 					private _type = toLower (typeOf _vehicle);
 
 					switch (true) do {
-						case (_type in RydHQ_Mortar_A3) : {
+						case (_type in EGVAR(core,mortar_A3)) : {
 							switch (_ammoG) do {
 								case ("HE") : {_ammo = "8Rnd_82mm_Mo_shells"};
 								case ("SPECIAL") : {_ammo = "8Rnd_82mm_Mo_shells"};
@@ -40,7 +40,7 @@ private _allAmmo = 0;
 							};
 						};
 
-						case (_type in RydHQ_SPMortar_A3) : {
+						case (_type in EGVAR(core,sPMortar_A3)) : {
 							switch (_ammoG) do {
 								case ("HE") : {_ammo = "32Rnd_155mm_Mo_shells"};
 								case ("SPECIAL") : {_ammo = "2Rnd_155mm_Mo_Cluster"};
@@ -50,7 +50,7 @@ private _allAmmo = 0;
 							};
 						};
 
-						case (_type in RHQ_RocketArty) : {
+						case (_type in EGVAR(data,rocketArty)) : {
 							switch (_ammoG) do {
 								case ("HE") : {_ammo = (((magazinesAllTurrets _vehicle) select 0) select 0)};
 								case ("SPECIAL") : {_ammo = (((magazinesAllTurrets _vehicle) select 0) select 0)};
@@ -60,7 +60,7 @@ private _allAmmo = 0;
 							};
 						};
 
-						case (_type in RydHQ_Rocket_A3) : {
+						case (_type in EGVAR(core,rocket_A3)) : {
 							switch (_ammoG) do {
 								case ("HE") : {_ammo = "12Rnd_230mm_rockets"};
 								case ("SPECIAL") : {_ammo = "12Rnd_230mm_rockets"};
@@ -71,12 +71,12 @@ private _allAmmo = 0;
 						};
 
 						default {
-							if ((count RHQ_Art) > 0) then {
+							if ((count EGVAR(data,art)) > 0) then {
 								_arr = [];
 
 								{
 									if (_type in (_x select 0)) exitWith {_arr = _x select 1}
-								} forEach RydHQ_OtherArty;
+								} forEach EGVAR(data,otherArty);
 
 								if ((count _arr) > 0) then {
 
@@ -142,7 +142,7 @@ if (_artyAv isNotEqualTo []) then {
 	if (_ammoG in ["ILLUM","SMOKE"]) then {
 		{
 			if !(isNull _x) then {
-				_x setVariable ["RydHQ_BatteryBusy", true]
+				_x setVariable [QGVAR(batteryBusy), true]
 			};
 		} forEach _battery;
 
@@ -156,21 +156,21 @@ if (_artyAv isNotEqualTo []) then {
 		//_i = [_pos,(random 1000),"markArty","ColorRed","ICON","mil_dot",_ammoG,"",[0.75,0.75]] call RYD_Mark;
 
 		private _fnc_code = {
-			params ["_battery", "_pos", "_ammo", "_FO", "_ammount", "_ammoG"];
+			params ["_battery", "_pos", "_ammo", "_FO", "_amount", "_ammoG"];
 
 			private _positionFO = getPosASL _FO;
 
 			if (_ammoG == "ILLUM") then {
-					[_battery,_pos,_ammo,_amount] call RYD_CFF_Fire;
+					[_battery,_pos,_ammo,_amount] call FUNC(cff_fire);
 			} else {
-				private _angle = [_positionFO, _pos, 10] call RYD_AngTowards;
-				private _pos2 = [_pos, _angle + 110,200 + (random 100) - 50] call RYD_PosTowards2D;
-				private _pos3 = [_pos, _angle - 110,200 + (random 100) - 50] call RYD_PosTowards2D;
+				private _angle = [_positionFO, _pos, 10] call FUNC(angleTowards);
+				private _pos2 = [_pos, _angle + 110,200 + (random 100) - 50] call FUNC(positionTowards2D);
+				private _pos3 = [_pos, _angle - 110,200 + (random 100) - 50] call FUNC(positionTowards2D);
 				//_i2 = [_pos2,(random 1000),"markArty","ColorRed","ICON","mil_dot",_ammoG,"",[0.75,0.75]] call RYD_Mark;
 				//_i3 = [_pos3,(random 1000),"markArty","ColorRed","ICON","mil_dot",_ammoG,"",[0.75,0.75]] call RYD_Mark;
 
 				{
-					[_battery, _x, _ammo,ceil (_amount/3)] call RYD_CFF_Fire;
+					[_battery, _x, _ammo,ceil (_amount/3)] call FUNC(cff_fire);
 
 					_ct = 0;
 					waitUntil {
@@ -180,7 +180,7 @@ if (_artyAv isNotEqualTo []) then {
 
 						{
 							if !(isNull _x) then {
-								_busy = _busy + ({!((vehicle _x) getVariable ["RydHQ_GunFree", true])} count (units _x))
+								_busy = _busy + ({!((vehicle _x) getVariable [QGVAR(gunFree), true])} count (units _x))
 							};
 						} forEach _battery;
 
@@ -197,9 +197,9 @@ if (_artyAv isNotEqualTo []) then {
 
 				{
 					if !(isNull _x) then {
-						private _add = { !((vehicle _x) getVariable ["RydHQ_GunFree", true])} count (units _x);
+						private _add = { !((vehicle _x) getVariable [QGVAR(gunFree), true])} count (units _x);
 						_busy = _busy + _add;
-						if (_add == 0) then {_x setVariable ["RydHQ_BatteryBusy", false];};
+						if (_add == 0) then {_x setVariable [QGVAR(batteryBusy), false];};
 					};
 				} forEach _battery;
 
@@ -208,12 +208,12 @@ if (_artyAv isNotEqualTo []) then {
 
 			{
 				if !(isNull _x) then {
-				_x setVariable ["RydHQ_BatteryBusy", false];
+				_x setVariable [QGVAR(batteryBusy), false];
 				};
 			} forEach _battery;
 		};
 
-		[[_battery,_pos,_ammoArr,_FO,_amount,_ammoG], _fnc_code] call RYD_Spawn
+		[[_battery,_pos,_ammoArr,_FO,_amount,_ammoG], _fnc_code] call FUNC(spawn)
 	};
 };
 

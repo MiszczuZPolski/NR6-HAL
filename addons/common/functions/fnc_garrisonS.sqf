@@ -33,10 +33,10 @@ waitUntil {
     switch (true) do {
         case (isNull _unit): {_alive = false};
         case (!alive _unit): {_alive = false};
-        case (_HQ getVariable ["RydHQ_KIA", false]): {_alive = false};
-        case ((group _unit) getVariable ["RydHQ_MIA", false]): {
+        case (_HQ getVariable [QGVAR(kIA), false]): {_alive = false};
+        case ((group _unit) getVariable [QGVAR(mIA), false]): {
             _alive = false;
-            (group _unit) setVariable ["RydHQ_MIA", nil];
+            (group _unit) setVariable [QGVAR(mIA), nil];
         };
     };
 
@@ -64,11 +64,11 @@ private _unitP = "UP"; // Default stance
 for "_i" from _dir to (_dir + 270) step 90 do {
     // Try to find a position 5m away in this direction with line of sight
     private _cPosASL = [_uPosASL, _i, 5] call FUNC(positionTowards2D);
-    private _isLOS = [_cPosASL, _cPosASL, 1.5, 20, _unit, objNull] call RYD_LOSCheck;
+    private _isLOS = [_cPosASL, _cPosASL, 1.5, 20, _unit, objNull] call FUNC(LOSCheck);
 
     if (_isLOS) then {
         // Double-check if we have direct line of sight
-        _isLOS = [_uPosASL, _cPosASL, 1.5, 1.5, _unit, objNull] call RYD_LOSCheck;
+        _isLOS = [_uPosASL, _cPosASL, 1.5, 1.5, _unit, objNull] call FUNC(LOSCheck);
 
         if (_isLOS) then {
             _watchPos = ASLToATL _cPosASL;
@@ -85,7 +85,7 @@ if (count _watchPos < 2) then {
 
     // Check all building exits for those with line of sight
     while {(_exitPos distance [0,0,0]) > 0} do {
-        private _isLOS = [_uPosASL, ATLToASL _exitPos, 1.5, 1.5, _unit, objNull] call RYD_LOSCheck;
+        private _isLOS = [_uPosASL, ATLToASL _exitPos, 1.5, 1.5, _unit, objNull] call FUNC(LOSCheck);
         if (_isLOS) then {
             _exits pushBack _exitPos;
         };
@@ -96,7 +96,7 @@ if (count _watchPos < 2) then {
 
     // Choose the closest exit if any are valid
     if (_exits isNotEqualTo []) then {
-        private _closestExit = [_uPosASL, _exits] call RYD_FindClosest;
+        private _closestExit = [_uPosASL, _exits] call FUNC(findClosest);
         _watchPos = _closestExit;
     };
 };
@@ -115,7 +115,7 @@ if (count _watchPos < 2) then {
         // Keep going until we hit something
         while {_isLOS} do {
             private _cPosASL = [_uPosASL, _i, _dst] call FUNC(positionTowards2D);
-            _isLOS = [_uPosASL, _cPosASL, 1.5, 1.5, _unit, objNull] call RYD_LOSCheck;
+            _isLOS = [_uPosASL, _cPosASL, 1.5, 1.5, _unit, objNull] call FUNC(LOSCheck);
             _dst = _dst + 1;
             if (_dst > 50) exitWith {};
         };
@@ -146,10 +146,10 @@ waitUntil {
     switch (true) do {
         case (isNull _unit): {_alive = false};
         case (!alive _unit): {_alive = false};
-        case (_HQ getVariable ["RydHQ_KIA", false]): {_alive = false};
-        case ((group _unit) getVariable ["RydHQ_MIA", false]): {
+        case (_HQ getVariable [QGVAR(kIA), false]): {_alive = false};
+        case ((group _unit) getVariable [QGVAR(mIA), false]): {
             _alive = false;
-            (group _unit) setVariable ["RydHQ_MIA", nil];
+            (group _unit) setVariable [QGVAR(mIA), nil];
         };
     };
 

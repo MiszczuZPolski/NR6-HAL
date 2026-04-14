@@ -57,7 +57,7 @@ _nothing = 0;
 	if !(isNull (assignedVehicle _CL)) then {_veh = assignedVehicle _CL};
 	if !(isNull objectParent _CL) then {
 		_veh = vehicle _CL;
-		if ((toLower (typeOf _veh)) in RydHQ_AllArty) then {_artFactor = 10} else {_vehFactor = 500 + (rating _veh)};
+		if ((toLower (typeOf _veh)) in GVAR(allArty)) then {_artFactor = 10} else {_vehFactor = 500 + (rating _veh)};
 	};
 
 	_nearImp = (getPosATL _CL) nearEntities [["CAManBase","AllVehicles","Strategic","WarfareBBaseStructure","Fortress"], 100];
@@ -70,7 +70,7 @@ _nothing = 0;
 			_crowdFactor = _crowdFactor + 0.2;
 			if (_x != _vh) then {
 				_crowdFactor = _crowdFactor + 0.2;
-				if ((toLower (typeOf _vh)) in RydHQ_AllArty) then {
+				if ((toLower (typeOf _vh)) in GVAR(allArty)) then {
 					_crowdFactor = _crowdFactor + 0.2
 				};
 			;}
