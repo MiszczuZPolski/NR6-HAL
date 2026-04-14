@@ -36,6 +36,11 @@ GVAR(allArty) = GVAR(howitzer) + GVAR(mortar) + GVAR(rocket) + GVAR(mortar_A3) +
     }
 forEach GVAR(otherArty);
 
+// Populate hal_common_allArty with the same combined list.
+// fnc_cff_tgt.sqf reads GVAR(allArty) from the common component namespace.
+// fnc_presentRHQ.sqf also pushBackUnique custom entries into it at runtime.
+EGVAR(common,allArty) = +GVAR(allArty);
+
 GVAR(smokeMuzzles) =
     [
     ["SmokeShellMuzzle",["SmokeShell"]],

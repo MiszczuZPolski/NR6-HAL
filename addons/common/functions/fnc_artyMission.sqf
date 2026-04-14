@@ -156,7 +156,7 @@ if (_artyAv isNotEqualTo []) then {
 		//_i = [_pos,(random 1000),"markArty","ColorRed","ICON","mil_dot",_ammoG,"",[0.75,0.75]] call RYD_Mark;
 
 		private _fnc_code = {
-			params ["_battery", "_pos", "_ammo", "_FO", "_ammount", "_ammoG"];
+			params ["_battery", "_pos", "_ammo", "_FO", "_amount", "_ammoG"];
 
 			private _positionFO = getPosASL _FO;
 

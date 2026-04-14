@@ -8,6 +8,11 @@ PREP_RECOMPILE_END;
 
 GVAR(handles) = [];
 
+// Seed allArty as empty array so fnc_cff_tgt.sqf can read GVAR(allArty) safely.
+// fnc_varInit.sqf (core) populates this with the full combined arty classname list
+// at mission start. fnc_presentRHQ.sqf also pushBackUnique custom arty into it.
+GVAR(allArty) = [];
+
 // Seed per-HQ debug flags. EGVAR(common,debug) is registered as a CBA setting
 // (default false) in core/initSettings.inc.sqf. debugB..H are not CBA settings —
 // they are seeded here so fnc_init.sqf:183 can read them unconditionally before
