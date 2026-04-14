@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:744 (ACEAction8fnc)
 /**
  * @description Adds ACE interaction menu action for slot 8: Request ammunition drop (air supply)

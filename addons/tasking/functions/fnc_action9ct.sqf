@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:786 (Action9ct)
 /**
  * @description Server-side condition/execution handler for slot 9: Request ammunition truck

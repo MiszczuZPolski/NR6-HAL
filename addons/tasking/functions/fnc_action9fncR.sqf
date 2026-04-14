@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:856 (Action9fncR)
 /**
  * @description Removes addAction for slot 9: Request ammunition truck

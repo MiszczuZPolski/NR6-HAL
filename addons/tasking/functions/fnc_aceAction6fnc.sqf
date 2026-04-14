@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:498 (ACEAction6fnc)
 /**
  * @description Adds ACE interaction menu action for slot 6: Request armored support

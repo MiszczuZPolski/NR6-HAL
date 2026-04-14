@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:958 (ACEAction10fncR)
 /**
  * @description Removes ACE interaction menu action for slot 10: Request fuel truck

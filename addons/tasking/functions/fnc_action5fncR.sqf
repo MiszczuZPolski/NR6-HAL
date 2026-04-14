@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:402 (Action5fncR)
 /**
  * @description Removes addAction for slot 5: Request infantry support

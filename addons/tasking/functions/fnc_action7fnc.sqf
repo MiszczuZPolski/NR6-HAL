@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:630 (Action7fnc)
 /**
  * @description Adds addAction for slot 7: Request air transport (airlift)

@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:197 (Action4ct)
 /**
  * @description Server-side condition/execution handler for slot 4: Request close air support

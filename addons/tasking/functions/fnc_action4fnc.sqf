@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:250 (Action4fnc)
 /**
  * @description Adds addAction for slot 4: Request close air support

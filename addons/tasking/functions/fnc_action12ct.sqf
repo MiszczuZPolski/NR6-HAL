@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:1059 (Action12ct)
 /**
  * @description Server-side condition/execution handler for slot 12: Request aerial medical support (MEDEVAC)

@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:1290 (ACEActionMfncR)
 /**
  * @description Removes HAL communication menu ACE action from unit

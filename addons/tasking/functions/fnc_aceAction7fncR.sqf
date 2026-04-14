@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:675 (ACEAction7fncR)
 /**
  * @description Removes ACE interaction menu action for slot 7: Request air transport (airlift)

@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:1583 (ActionArt2ct)
 /**
  * @description Server-side artillery fire mission executor (called via remoteExec from actionArtct)

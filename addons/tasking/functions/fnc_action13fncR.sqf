@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:1221 (Action13fncR)
 /**
  * @description Removes addAction for slot 13: Request repair support truck

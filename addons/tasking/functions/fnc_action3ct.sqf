@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:90 (Action3ct)
 /**
  * @description Server-side condition/execution handler for slot 3: Enable HAL tasking for this group

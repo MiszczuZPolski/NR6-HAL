@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:1279 (ActionMfncR)
 /**
  * @description Removes HAL communication menu addAction from unit

@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:1300 (ActionGTct)
 /**
  * @description Ground transport task condition handler - requests ground cargo transport for group

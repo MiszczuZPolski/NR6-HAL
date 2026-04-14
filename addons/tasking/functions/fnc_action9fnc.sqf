@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:822 (Action9fnc)
 /**
  * @description Adds addAction for slot 9: Request ammunition truck

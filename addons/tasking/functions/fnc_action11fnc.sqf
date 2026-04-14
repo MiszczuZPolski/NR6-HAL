@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:1004 (Action11fnc)
 /**
  * @description Adds addAction for slot 11: Request ambulance (ground medical)

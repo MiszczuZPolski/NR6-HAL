@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:1129 (Action12fncR)
 /**
  * @description Removes addAction for slot 12: Request aerial medical support (MEDEVAC)

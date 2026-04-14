@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:58 (Action2fnc)
 /**
  * @description Adds addAction for slot 2: Disable HAL tasking for this group

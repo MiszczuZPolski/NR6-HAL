@@ -1,4 +1,4 @@
-#include "..\\script_component.hpp"
+#include "..\script_component.hpp"
 // Originally from nr6_hal/TaskInitNR6.sqf:839 (ACEAction9fnc)
 /**
  * @description Adds ACE interaction menu action for slot 9: Request ammunition truck
