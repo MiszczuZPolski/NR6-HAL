@@ -123,6 +123,12 @@ Overall: 5/5 phases complete — v1.0 NR6-HAL refactor DONE (37/37 requirements 
 
 - (none)
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260413-qys | Fix fnc_init forEach _this bug and rename hal_* addon dirs | 2026-04-13 | 8217350 | [260413-qys-fix-fnc-init-foreach-this-bug-and-rename](./quick/260413-qys-fix-fnc-init-foreach-this-bug-and-rename/) |
+
 ---
 
 ## Session Continuity
