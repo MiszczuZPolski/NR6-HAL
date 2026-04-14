@@ -42,18 +42,18 @@ _HQ setVariable [QGVAR(fineness),GVAR(finenessG)];
 if (isNil (QGVAR(boxedG))) then {GVAR(boxedG) = []};
 _HQ setVariable [QGVAR(boxed),GVAR(boxedG)];
 
-if (isNil (QGVAR(ammoBoxesG))) then 
+if (isNil (QEGVAR(missionmodules,ammoBoxesG))) then
 	{
-	GVAR(ammoBoxesG) = [];
+	EGVAR(missionmodules,ammoBoxesG) = [];
 
-	if not (isNil QGVAR(ammoDepotG)) then 
+	if not (isNil QEGVAR(missionmodules,ammoDepotG)) then
 		{
-		_rds = (triggerArea GVAR(ammoDepotG)) select 0;
-		GVAR(ammoBoxesG) = (getPosATL GVAR(ammoDepotG)) nearObjects ["ReammoBox_F",_rds]
+		_rds = (triggerArea EGVAR(missionmodules,ammoDepotG)) select 0;
+		EGVAR(missionmodules,ammoBoxesG) = (getPosATL EGVAR(missionmodules,ammoDepotG)) nearObjects ["ReammoBox_F",_rds]
 		}
 	};
-	
-_HQ setVariable [QGVAR(ammoBoxes),GVAR(ammoBoxesG)];
+
+_HQ setVariable [QGVAR(ammoBoxes),EGVAR(missionmodules,ammoBoxesG)];
 
 _HQ setVariable [QGVAR(reconDone),false];
 _HQ setVariable [QGVAR(defDone),false];
@@ -63,8 +63,8 @@ _HQ setVariable [QGVAR(airInDef),[]];
 
 _KnEnPos = [];
 
-if (isNil (QGVAR(excludedG))) then {GVAR(excludedG) = []};
-_HQ setVariable [QEGVAR(common,excluded),GVAR(excludedG)];
+if (isNil (QEGVAR(missionmodules,excludedG))) then {EGVAR(missionmodules,excludedG) = []};
+_HQ setVariable [QEGVAR(common,excluded),EGVAR(missionmodules,excludedG)];
 if (isNil (QGVAR(fastG))) then {GVAR(fastG) = false};
 _HQ setVariable [QGVAR(fast),GVAR(fastG)];
 if (isNil (QGVAR(exInfoG))) then {GVAR(exInfoG) = false};
@@ -318,8 +318,8 @@ while {true} do
 	_HQ setVariable [QGVAR(lastE),count (_HQ getVariable [QGVAR(knEnemies),[]])];
 	_HQ setVariable [QGVAR(lastFriends),_HQ getVariable [QGVAR(friends),[]]];
 	
-	if (isNil QGVAR(garrisonG)) then {GVAR(garrisonG) = []};
-	_HQ setVariable [QGVAR(garrison),GVAR(garrisonG)];
+	if (isNil QEGVAR(missionmodules,garrisonG)) then {EGVAR(missionmodules,garrisonG) = []};
+	_HQ setVariable [QGVAR(garrison),EGVAR(missionmodules,garrisonG)];
 	
 	if (isNil (QGVAR(noAirCargoG))) then {GVAR(noAirCargoG) = false};
 	_HQ setVariable [QGVAR(noAirCargo),GVAR(noAirCargoG)];
@@ -333,8 +333,8 @@ while {true} do
 	_HQ setVariable [QGVAR(subordinated),GVAR(subordinatedG)];
 	if (isNil (QEGVAR(missionmodules,includedG))) then {EGVAR(missionmodules,includedG) = []};
 	_HQ setVariable [QGVAR(included),EGVAR(missionmodules,includedG)];
-	if (isNil (QGVAR(excludedG))) then {GVAR(excludedG) = []};
-	_HQ setVariable [QEGVAR(common,excluded),GVAR(excludedG)];
+	if (isNil (QEGVAR(missionmodules,excludedG))) then {EGVAR(missionmodules,excludedG) = []};
+	_HQ setVariable [QEGVAR(common,excluded),EGVAR(missionmodules,excludedG)];
 	if (isNil (QGVAR(subAllG))) then {GVAR(subAllG) = true};
 	_HQ setVariable [QGVAR(subAll),GVAR(subAllG)];
 	if (isNil (QGVAR(subSynchroG))) then {GVAR(subSynchroG) = false};
@@ -353,20 +353,20 @@ while {true} do
 	_HQ setVariable [QGVAR(noRecon),GVAR(noReconG)];
 	if (isNil (QGVAR(noAttackG))) then {GVAR(noAttackG) = []};
 	_HQ setVariable [QGVAR(noAttack),GVAR(noAttackG)];
-	if (isNil (QGVAR(cargoOnlyG))) then {GVAR(cargoOnlyG) = []};
-	_HQ setVariable [QGVAR(cargoOnly),GVAR(cargoOnlyG)];
+	if (isNil (QEGVAR(missionmodules,cargoOnlyG))) then {EGVAR(missionmodules,cargoOnlyG) = []};
+	_HQ setVariable [QGVAR(cargoOnly),EGVAR(missionmodules,cargoOnlyG)];
 	if (isNil (QGVAR(noCargoG))) then {GVAR(noCargoG) = []};
 	_HQ setVariable [QGVAR(noCargo),GVAR(noCargoG)];
 	if (isNil (QGVAR(noFlankG))) then {GVAR(noFlankG) = []};
 	_HQ setVariable [QGVAR(noFlank),GVAR(noFlankG)];
-	if (isNil (QGVAR(noDefG))) then {GVAR(noDefG) = []};
-	_HQ setVariable [QGVAR(noDef),GVAR(noDefG)];
-	if (isNil (QGVAR(firstToFightG))) then {GVAR(firstToFightG) = []};
-	_HQ setVariable [QGVAR(firstToFight),GVAR(firstToFightG)];
+	if (isNil (QEGVAR(missionmodules,noDefG))) then {EGVAR(missionmodules,noDefG) = []};
+	_HQ setVariable [QGVAR(noDef),EGVAR(missionmodules,noDefG)];
+	if (isNil (QEGVAR(missionmodules,firstToFightG))) then {EGVAR(missionmodules,firstToFightG) = []};
+	_HQ setVariable [QGVAR(firstToFight),EGVAR(missionmodules,firstToFightG)];
 	if (isNil (QGVAR(voiceCommG))) then {GVAR(voiceCommG) = true};
 	_HQ setVariable [QGVAR(voiceComm),GVAR(voiceCommG)];
-	if (isNil (QGVAR(frontAG))) then {GVAR(frontG) = false};
-	_HQ setVariable [QGVAR(frontA),GVAR(frontG)];
+	if (isNil (QEGVAR(missionmodules,frontG))) then {EGVAR(missionmodules,frontG) = false};
+	_HQ setVariable [QGVAR(frontA),EGVAR(missionmodules,frontG)];
 	if (isNil (QGVAR(lRelocatingG))) then {GVAR(lRelocatingG) = false};
 	_HQ setVariable [QGVAR(lRelocating),GVAR(lRelocatingG)];
 	if (isNil (QGVAR(fleeG))) then {GVAR(fleeG) = true};
@@ -399,14 +399,14 @@ while {true} do
 	_HQ setVariable [QGVAR(withdraw),GVAR(withdrawG)];
 	if (isNil QGVAR(berserkG)) then {GVAR(berserkG) = false};
 	_HQ setVariable [QGVAR(berserk),GVAR(berserkG)];
-	if (isNil QGVAR(iDChanceG)) then {GVAR(iDChanceG) = 100};
-	_HQ setVariable [QGVAR(iDChance),GVAR(iDChanceG)];
+	if (isNil QEGVAR(missionmodules,iDChanceG)) then {EGVAR(missionmodules,iDChanceG) = 100};
+	_HQ setVariable [QGVAR(iDChance),EGVAR(missionmodules,iDChanceG)];
 	if (isNil QGVAR(rDChanceG)) then {GVAR(rDChanceG) = 100};
 	_HQ setVariable [QGVAR(rDChance),GVAR(rDChanceG)];
 	if (isNil QGVAR(sDChanceG)) then {GVAR(sDChanceG) = 100};
 	_HQ setVariable [QGVAR(sDChance),GVAR(sDChanceG)];
-	if (isNil QGVAR(ammoDropG)) then {GVAR(ammoDropG) = []};
-	_HQ setVariable [QGVAR(ammoDrop),GVAR(ammoDropG)];
+	if (isNil QEGVAR(missionmodules,ammoDropG)) then {EGVAR(missionmodules,ammoDropG) = []};
+	_HQ setVariable [QGVAR(ammoDrop),EGVAR(missionmodules,ammoDropG)];
 	if (isNil QGVAR(sFTargetsG)) then {GVAR(sFTargetsG) = []};
 	_HQ setVariable [QGVAR(sFTargets),GVAR(sFTargetsG)];
 	if (isNil QGVAR(lZG)) then {GVAR(lZG) = false};
@@ -447,8 +447,8 @@ while {true} do
 	
 	if (isNil (QGVAR(sMedG))) then {GVAR(sMedG) = true};
 	_HQ setVariable [QGVAR(sMed),GVAR(sMedG)];
-	if (isNil (QGVAR(exMedicG))) then {GVAR(exMedicG) = []};
-	_HQ setVariable [QGVAR(exMedic),GVAR(exMedicG)];
+	if (isNil (QEGVAR(missionmodules,exMedicG))) then {EGVAR(missionmodules,exMedicG) = []};
+	_HQ setVariable [QGVAR(exMedic),EGVAR(missionmodules,exMedicG)];
 	if (isNil (QGVAR(medPointsG))) then {GVAR(medPointsG) = []};
 	_HQ setVariable [QGVAR(medPoints),GVAR(medPointsG)];
 	if (isNil (QGVAR(supportedGG))) then {GVAR(supportedGG) = []};
@@ -461,8 +461,8 @@ while {true} do
 	
 	if (isNil (QGVAR(sFuelG))) then {GVAR(sFuelG) = true};
 	_HQ setVariable [QGVAR(sFuel),GVAR(sFuelG)];
-	if (isNil (QGVAR(exRefuelG))) then {GVAR(exRefuelG) = []};
-	_HQ setVariable [QGVAR(exRefuel),GVAR(exRefuelG)];
+	if (isNil (QEGVAR(missionmodules,exRefuelG))) then {EGVAR(missionmodules,exRefuelG) = []};
+	_HQ setVariable [QGVAR(exRefuel),EGVAR(missionmodules,exRefuelG)];
 	if (isNil (QGVAR(fuelPointsG))) then {GVAR(fuelPointsG) = []};
 	_HQ setVariable [QGVAR(fuelPoints),GVAR(fuelPointsG)];
 	if (isNil (QGVAR(fSupportedGG))) then {GVAR(fSupportedGG) = []};
@@ -470,8 +470,8 @@ while {true} do
 	
 	if (isNil (QGVAR(sAmmoG))) then {GVAR(sAmmoG) = true};
 	_HQ setVariable [QGVAR(sAmmo),GVAR(sAmmoG)];
-	if (isNil (QGVAR(exReammoG))) then {GVAR(exReammoG) = []};
-	_HQ setVariable [QGVAR(exReammo),GVAR(exReammoG)];
+	if (isNil (QEGVAR(missionmodules,exReammoG))) then {EGVAR(missionmodules,exReammoG) = []};
+	_HQ setVariable [QGVAR(exReammo),EGVAR(missionmodules,exReammoG)];
 	if (isNil (QGVAR(ammoPointsG))) then {GVAR(ammoPointsG) = []};
 	_HQ setVariable [QGVAR(ammoPoints),GVAR(ammoPointsG)];
 	if (isNil (QGVAR(aSupportedGG))) then {GVAR(aSupportedGG) = []};
@@ -479,8 +479,8 @@ while {true} do
 	
 	if (isNil (QGVAR(sRepG))) then {GVAR(sRepG) = true};
 	_HQ setVariable [QGVAR(sRep),GVAR(sRepG)];
-	if (isNil (QGVAR(exRepairG))) then {GVAR(exRepairG) = []};
-	_HQ setVariable [QGVAR(exRepair),GVAR(exRepairG)];
+	if (isNil (QEGVAR(missionmodules,exRepairG))) then {EGVAR(missionmodules,exRepairG) = []};
+	_HQ setVariable [QGVAR(exRepair),EGVAR(missionmodules,exRepairG)];
 	if (isNil (QGVAR(repPointsG))) then {GVAR(repPointsG) = []};
 	_HQ setVariable [QGVAR(repPoints),GVAR(repPointsG)];
 	if (isNil (QGVAR(rSupportedGG))) then {GVAR(rSupportedGG) = []};
@@ -516,8 +516,8 @@ while {true} do
 	if (isNil (QGVAR(idleDefG))) then {GVAR(idleDefG) = true};
 	_HQ setVariable [QGVAR(idleDef),GVAR(idleDefG)];
 
-	if (isNil QGVAR(idleDecoyG)) then {GVAR(idleDecoyG) = objNull};
-	_HQ setVariable [QGVAR(idleDecoy),GVAR(idleDecoyG)]; 
+	if (isNil QEGVAR(missionmodules,idleDecoyG)) then {EGVAR(missionmodules,idleDecoyG) = objNull};
+	_HQ setVariable [QGVAR(idleDecoy),EGVAR(missionmodules,idleDecoyG)];
 	if (isNil QGVAR(supportDecoyG)) then {GVAR(supportDecoyG) = objNull};
 	_HQ setVariable [QGVAR(supportDecoy),GVAR(supportDecoyG)]; 
 	if (isNil QGVAR(restDecoyG)) then {GVAR(restDecoyG) = objNull};
@@ -535,13 +535,13 @@ while {true} do
 	if (isNil QGVAR(debugIIG)) then {GVAR(debugIIG) = false};
 	_HQ setVariable [QGVAR(debugII),GVAR(debugIIG)]; 
 	
-	if (isNil QGVAR(alwaysKnownUG)) then {GVAR(alwaysKnownUG) = []};
-	_HQ setVariable [QGVAR(alwaysKnownU),GVAR(alwaysKnownUG)]; 
-	if (isNil QGVAR(alwaysUnKnownUG)) then {GVAR(alwaysUnKnownUG) = []};
-	_HQ setVariable [QGVAR(alwaysUnKnownU),GVAR(alwaysUnKnownUG)];
-	
-	if (isNil QGVAR(aOnlyG)) then {GVAR(aOnlyG) = []};
-	_HQ setVariable [QGVAR(aOnly),GVAR(aOnlyG)]; 
+	if (isNil QEGVAR(missionmodules,alwaysKnownUG)) then {EGVAR(missionmodules,alwaysKnownUG) = []};
+	_HQ setVariable [QGVAR(alwaysKnownU),EGVAR(missionmodules,alwaysKnownUG)];
+	if (isNil QEGVAR(missionmodules,alwaysUnKnownUG)) then {EGVAR(missionmodules,alwaysUnKnownUG) = []};
+	_HQ setVariable [QGVAR(alwaysUnKnownU),EGVAR(missionmodules,alwaysUnKnownUG)];
+
+	if (isNil QEGVAR(missionmodules,aOnlyG)) then {EGVAR(missionmodules,aOnlyG) = []};
+	_HQ setVariable [QGVAR(aOnly),EGVAR(missionmodules,aOnlyG)];
 	if (isNil QGVAR(rOnlyG)) then {GVAR(rOnlyG) = []};
 	_HQ setVariable [QGVAR(rOnly),GVAR(rOnlyG)]; 
 	
