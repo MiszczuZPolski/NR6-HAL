@@ -118,103 +118,126 @@ private _clO = [Map_OPFOR_R,Map_OPFOR_G,Map_OPFOR_B,Map_OPFOR_A];
 private _clI = [Map_Independent_R,Map_Independent_G,Map_Independent_B,Map_Independent_A];
 private _clU = [Map_Unknown_R,Map_Unknown_G,Map_Unknown_B,Map_Unknown_A];
 
-
-{
-	_x params ["_leaderName", "_codeSign", "_frontVar"];
-	private _leader = missionNamespace getVariable [_leaderName, objNull];
-	if !(isNull _leader) then {
-		private _gp = group _leader;
-		GVAR(allLeaders) pushBack _leader;
-		GVAR(allHQ) pushBack _gp;
-		_gp setVariable [QGVAR(codeSign), _codeSign];
-		if !(isNil _frontVar) then {
-			_gp setVariable [QEGVAR(common,front), missionNamespace getVariable _frontVar]
-		};
-	};
-} forEach [
-	["leaderHQ",  "A", "HET_FA"],
-	["leaderHQB", "B", "HET_FB"],
-	["leaderHQC", "C", "HET_FC"],
-	["leaderHQD", "D", "HET_FD"],
-	["leaderHQE", "E", "HET_FE"],
-	["leaderHQF", "F", "HET_FF"],
-	["leaderHQG", "G", "HET_FG"],
-	["leaderHQH", "H", "HET_FH"]
-];
-
-[] call FUNC(front);
-
 if (GVAR(timeM)) then
 	{
 	[([player] + (switchableUnits - [player]))] call EFUNC(common,TimeMachine)
 	};
 
-if (EGVAR(missionmodules,active)) then
+// Leader-dependent init: wait for at least one leaderHQ* global to be published
+// by Leader_Module before building allHQ and spawning commander loops.
+// Module activation order is not guaranteed — Core_Module can run before
+// Leader_Module sets leaderHQ. Timeout of 30 s guards against missions with
+// no Leader_Module at all (allHQ stays empty, no loops spawn, no hang).
+[] spawn {
+	private _deadline = diag_tickTime + 30;
+	waitUntil {
+		sleep 0.5;
+		diag_tickTime > _deadline ||
+		{!isNil "leaderHQ"  && {!isNull (missionNamespace getVariable ["leaderHQ",  objNull])}} ||
+		{!isNil "leaderHQB" && {!isNull (missionNamespace getVariable ["leaderHQB", objNull])}} ||
+		{!isNil "leaderHQC" && {!isNull (missionNamespace getVariable ["leaderHQC", objNull])}} ||
+		{!isNil "leaderHQD" && {!isNull (missionNamespace getVariable ["leaderHQD", objNull])}} ||
+		{!isNil "leaderHQE" && {!isNull (missionNamespace getVariable ["leaderHQE", objNull])}} ||
+		{!isNil "leaderHQF" && {!isNull (missionNamespace getVariable ["leaderHQF", objNull])}} ||
+		{!isNil "leaderHQG" && {!isNull (missionNamespace getVariable ["leaderHQG", objNull])}} ||
+		{!isNil "leaderHQH" && {!isNull (missionNamespace getVariable ["leaderHQH", objNull])}}
+	};
+
 	{
-	// Phase 3 extracted nr6_hal/Boss_fnc.sqf handles into hal_boss PREP'd functions;
-	// the legacy preprocessFile loader is removed (file no longer exists).
-	RydBBa_InitDone = false;
-	RydBBb_InitDone = false;
-
-		{
-		if ((count (_x select 0)) > 0) then
-			{
-			if ((_x select 1) == "A") then {RydBBa_Init = false};
-			_BBHQs = _x select 0;
-			_BBHQGrps = [];
-
-				{
-				_BBHQGrps set [(count _BBHQGrps),(group _x)]
-				}
-			forEach _BBHQs;
-
-				{
-				_x setVariable ["BBProgress",0]
-				}
-			forEach _BBHQGrps;
-			[[_x,_BBHQGrps],EFUNC(boss,boss)] call EFUNC(common,spawn)
+		_x params ["_leaderName", "_codeSign", "_frontVar"];
+		private _leader = missionNamespace getVariable [_leaderName, objNull];
+		if !(isNull _leader) then {
+			private _gp = group _leader;
+			GVAR(allLeaders) pushBack _leader;
+			GVAR(allHQ) pushBack _gp;
+			_gp setVariable [QGVAR(codeSign), _codeSign];
+			if !(isNil _frontVar) then {
+				_gp setVariable [QEGVAR(common,front), missionNamespace getVariable _frontVar]
 			};
+		};
+	} forEach [
+		["leaderHQ",  "A", "HET_FA"],
+		["leaderHQB", "B", "HET_FB"],
+		["leaderHQC", "C", "HET_FC"],
+		["leaderHQD", "D", "HET_FD"],
+		["leaderHQE", "E", "HET_FE"],
+		["leaderHQF", "F", "HET_FF"],
+		["leaderHQG", "G", "HET_FG"],
+		["leaderHQH", "H", "HET_FH"]
+	];
 
-		sleep 1;
-		}
-	forEach [[RydBBa_HQs,"A"],[RydBBb_HQs,"B"]];
-	};
+	[] call FUNC(front);
 
-if (((EGVAR(common,debug)) or (EGVAR(common,debugB)) or (EGVAR(common,debugC)) or (EGVAR(common,debugD)) or (EGVAR(common,debugE)) or (EGVAR(common,debugF)) or (EGVAR(common,debugG)) or (EGVAR(common,debugH))) and (GVAR(dbgMon))) then {[[],EFUNC(common,DbgMon)] call EFUNC(common,spawn)};
+	if (EGVAR(missionmodules,active)) then
+		{
+		// Phase 3 extracted nr6_hal/Boss_fnc.sqf handles into hal_boss PREP'd functions;
+		// the legacy preprocessFile loader is removed (file no longer exists).
+		// NOTE: RydBBa_HQs / RydBBb_HQs / RydBBa_Init / RydBBa_InitDone / RydBBb_InitDone
+		// are legacy bare globals that may be Phase 4 rename misses (similar to Bug 6).
+		// Not fixing here — Big Boss (active=true) is not exercised in current test missions.
+		RydBBa_InitDone = false;
+		RydBBb_InitDone = false;
 
-// A_HQSitRep..H_HQSitRep are assigned in compat_nr6hal/XEH_postInit.sqf (COMPAT-02).
-// That postInit runs before this function is invoked (module activation fires after all
-// CBA postInits complete), so the variables are already set here. Re-assigning them
-// here would trigger "Attempt to override final function" because CBA-compiled functions
-// are final. Single source of truth is compat_nr6hal/XEH_postInit.sqf lines 69-76.
+			{
+			if ((count (_x select 0)) > 0) then
+				{
+				if ((_x select 1) == "A") then {RydBBa_Init = false};
+				_BBHQs = _x select 0;
+				_BBHQGrps = [];
 
-{
-	_x params ["_leaderName", "_codeSign"];
-	private _leader = missionNamespace getVariable [_leaderName, objNull];
-	if !(isNull _leader) then {
-		publicVariable _leaderName;
-		private _gp = group _leader;
-		[[_gp], missionNamespace getVariable (_codeSign + "_HQSitRep")] call EFUNC(common,spawn);
-		[[_gp], EFUNC(boss,FBFTLOOP)] call EFUNC(common,spawn);
-		[[_gp], EFUNC(boss,SecTasks)] call EFUNC(common,spawn);
-		sleep 5;
-	};
-} forEach [
-	["leaderHQ",  "A"],
-	["leaderHQB", "B"],
-	["leaderHQC", "C"],
-	["leaderHQD", "D"],
-	["leaderHQE", "E"],
-	["leaderHQF", "F"],
-	["leaderHQG", "G"],
-	["leaderHQH", "H"]
-];
+					{
+					_BBHQGrps set [(count _BBHQGrps),(group _x)]
+					}
+				forEach _BBHQs;
 
-if ((count GVAR(groupMarks)) > 0) then
+					{
+					_x setVariable ["BBProgress",0]
+					}
+				forEach _BBHQGrps;
+				[[_x,_BBHQGrps],EFUNC(boss,boss)] call EFUNC(common,spawn)
+				};
+
+			sleep 1;
+			}
+		forEach [[RydBBa_HQs,"A"],[RydBBb_HQs,"B"]];
+		};
+
+	if (((EGVAR(common,debug)) or (EGVAR(common,debugB)) or (EGVAR(common,debugC)) or (EGVAR(common,debugD)) or (EGVAR(common,debugE)) or (EGVAR(common,debugF)) or (EGVAR(common,debugG)) or (EGVAR(common,debugH))) and (GVAR(dbgMon))) then {[[],EFUNC(common,DbgMon)] call EFUNC(common,spawn)};
+
+	// A_HQSitRep..H_HQSitRep are assigned in compat_nr6hal/XEH_postInit.sqf (COMPAT-02).
+	// That postInit runs before this function is invoked (module activation fires after all
+	// CBA postInits complete), so the variables are already set here. Re-assigning them
+	// here would trigger "Attempt to override final function" because CBA-compiled functions
+	// are final. Single source of truth is compat_nr6hal/XEH_postInit.sqf lines 69-76.
+
 	{
-	[GVAR(groupMarks),EFUNC(common,groupMarkerLoop)] call EFUNC(common,spawn)
-	};
+		_x params ["_leaderName", "_codeSign"];
+		private _leader = missionNamespace getVariable [_leaderName, objNull];
+		if !(isNull _leader) then {
+			publicVariable _leaderName;
+			private _gp = group _leader;
+			[[_gp], missionNamespace getVariable (_codeSign + "_HQSitRep")] call EFUNC(common,spawn);
+			[[_gp], EFUNC(boss,FBFTLOOP)] call EFUNC(common,spawn);
+			[[_gp], EFUNC(boss,SecTasks)] call EFUNC(common,spawn);
+			sleep 5;
+		};
+	} forEach [
+		["leaderHQ",  "A"],
+		["leaderHQB", "B"],
+		["leaderHQC", "C"],
+		["leaderHQD", "D"],
+		["leaderHQE", "E"],
+		["leaderHQF", "F"],
+		["leaderHQG", "G"],
+		["leaderHQH", "H"]
+	];
 
-if (GVAR(actions)) then {
-    [[], EFUNC(tasking,squadTasking)] call EFUNC(common,spawn);
+	if ((count GVAR(groupMarks)) > 0) then
+		{
+		[GVAR(groupMarks),EFUNC(common,groupMarkerLoop)] call EFUNC(common,spawn)
+		};
+
+	if (GVAR(actions)) then {
+	    [[], EFUNC(tasking,squadTasking)] call EFUNC(common,spawn);
+	};
 };
