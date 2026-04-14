@@ -54,7 +54,7 @@ _unitG setVariable ["Defending", true];
 
 [_unitG,_Spot,"HQ_ord_defend",_HQ] call EFUNC(common,orderPause);
 
-if ((isPlayer (leader _unitG)) and (GVAR(gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
+if ((isPlayer (leader _unitG)) and (EGVAR(common,gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
 
 _UL = leader _unitG;
 _plane = vehicle _UL;

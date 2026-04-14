@@ -96,7 +96,7 @@ if (_isWater) then {_DefPos = getPosATL (vehicle (leader _unitG))};
 
 [_unitG,[_posX,_posY,0],"HQ_ord_defend",_HQ] call EFUNC(common,orderPause);
 
-if ((isPlayer (leader _unitG)) and (GVAR(gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
+if ((isPlayer (leader _unitG)) and (EGVAR(common,gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
 
 _UL = leader _unitG;
 
@@ -218,7 +218,7 @@ _unitG setFormDir _dir;
 _UL = leader _unitG;if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_OrdFinal),"OrdFinal"] call EFUNC(common,AIChatter)}};
 
 //[_unitG,(_HQ getVariable ["RydHQ_Flare",true]),(_HQ getVariable ["RydHQ_ArtG",[]]),(_HQ getVariable ["RydHQ_ArtyShells",1]),(leader _HQ)] spawn RYD_Flares;
-[[_unitG,(_HQ getVariable [QEGVAR(core,flare),true]),(_HQ getVariable [QEGVAR(core,artG),[]]),(_HQ getVariable [QEGVAR(core,artyShells),1]),(leader _HQ)],GVAR(flares)] call EFUNC(common,spawn);
+[[_unitG,(_HQ getVariable [QEGVAR(core,flare),true]),(_HQ getVariable [QEGVAR(core,artG),[]]),(_HQ getVariable [QEGVAR(core,artyShells),1]),(leader _HQ)],EFUNC(common,flares)] call EFUNC(common,spawn);
 
 _alive = true;
 /*

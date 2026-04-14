@@ -88,7 +88,7 @@ if (_isDebugEnabled) then {
 private _groupStrengthMap = createHashMap;
 {
     if (!isNull _x && {alive (leader _x)}) then {
-        _groupStrengthMap set [_x, count (units _x)];
+        _groupStrengthMap set [netId _x, count (units _x)];
     };
 } forEach _combatUnitGroups;
 
@@ -100,7 +100,7 @@ private _groupStrengthMap = createHashMap;
     private _group = _x;
     private _groupLeader = leader _group;
     private _leaderVehicle = vehicle _groupLeader;
-    private _baseStrength = _groupStrengthMap get _group;
+    private _baseStrength = _groupStrengthMap get (netId _group);
 
     // Avoid unnecessary calculations if no enemy groups
     if (count _enemyGroups == 0) then {
@@ -117,7 +117,7 @@ private _groupStrengthMap = createHashMap;
         if (_x != _group && {!isNull _x} && {alive (leader _x)}) then {
             private _friendDistance = (vehicle (leader _x)) distance _leaderVehicle;
             if (_friendDistance < 500 && _friendDistance > 0) then {
-                _totalFriendlyStrength = _totalFriendlyStrength + ((_groupStrengthMap get _x) / (_friendDistance/3));
+                _totalFriendlyStrength = _totalFriendlyStrength + ((_groupStrengthMap get (netId _x)) / (_friendDistance/3));
             };
         };
     } forEach _combatUnitGroups;

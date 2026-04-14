@@ -60,7 +60,7 @@ if (_request) then {
 
 [_unitG,[_posX,_posY,0],"HQ_ord_attackNaval",_HQ] call EFUNC(common,orderPause);
 
-if ((isPlayer (leader _unitG)) and (GVAR(gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
+if ((isPlayer (leader _unitG)) and (EGVAR(common,gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
 
 _UL = leader _unitG;
 

@@ -192,7 +192,7 @@ _alive = true;
 
 _timer = 0;
 
-if ((isPlayer (leader _unitG)) and (GVAR(gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
+if ((isPlayer (leader _unitG)) and (EGVAR(common,gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
 
 if not (isNull _nE) then
 	{

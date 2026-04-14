@@ -300,7 +300,7 @@ if not (_emptyV) then
 
 	[_GD,_Lpos,"HQ_ord_cargo",_HQ] call EFUNC(common,orderPause);
 
-	if ((isPlayer _UL) and (GVAR(gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
+	if ((isPlayer _UL) and (EGVAR(common,gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
 
 	if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,EGVAR(boss,aIC_OrdConf),"OrdConf"] call EFUNC(common,AIChatter)}};
 

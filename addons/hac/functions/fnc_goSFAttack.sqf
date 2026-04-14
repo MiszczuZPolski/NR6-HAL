@@ -278,7 +278,7 @@ if ((_ammo > 0) and not (_busy)) then
 
 	[_unitG,[_posXWP4,_posYWP4,0],"HQ_ord_SF",_HQ] call EFUNC(common,orderPause);
 
-	if ((isPlayer (leader _unitG)) and (GVAR(gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
+	if ((isPlayer (leader _unitG)) and (EGVAR(common,gPauseActive))) then {hintC "New orders from HQ!";setAccTime 1};
 
 	_UL = leader _unitG;
 

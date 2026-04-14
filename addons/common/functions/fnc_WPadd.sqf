@@ -19,7 +19,7 @@
  * @return {Array} Empty array (pass-through)
  */
 params [
-    ["_groups", [], [[]]],
+    ["_groups", grpNull, [grpNull]],
     ["_pos", [0, 0, 0], [[]]],
     ["_type", "MOVE", [""]],
     ["_behaviour", "AWARE", [""]],
