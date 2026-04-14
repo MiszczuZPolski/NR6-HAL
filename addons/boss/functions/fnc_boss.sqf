@@ -36,7 +36,7 @@ if ((_BBSide == "B") and ((RydBBa_HQs isNotEqualTo []))) then
 		}
 	};
 
-if (RydBB_Debug) then
+if (EGVAR(missionmodules,debug)) then
 	{
 	RydBBa_SAL globalChat format ["Big Boss %1 awakes (time: %2)",_BBSide,time];
 	diag_log format ["Big Boss %1 awakes (time: %2)",_BBSide,time]
@@ -56,20 +56,20 @@ _cntr = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition");
 
 if (_BBSide == "A") then
 	{
-	if !(isNil "RydBB_MC") then
+	if !(isNil QEGVAR(missionmodules,mC)) then
 		{
-		if ((typeName RydBB_MC) isEqualTo "OBJECT") then {_cntr = getPosATL RydBB_MC} else {_cntr = RydBB_MC};
-		RydBB_MapC = _cntr;
+		if ((typeName EGVAR(missionmodules,mC)) isEqualTo "OBJECT") then {_cntr = getPosATL EGVAR(missionmodules,mC)} else {_cntr = EGVAR(missionmodules,mC)};
+		EGVAR(missionmodules,mapC) = _cntr;
 		}
 	else
 		{
 		_mapSize = getNumber (configFile >> "CfgWorlds" >> worldName >> "mapSize");
 
-		RydBB_MapXMax = _mapSize;
-		RydBB_MapYMax = RydBB_MapXMax;
-		RydBB_MapC = [_mapSize/2,_mapSize/2];
+		EGVAR(missionmodules,mapXMax) = _mapSize;
+		EGVAR(missionmodules,mapYMax) = EGVAR(missionmodules,mapXMax);
+		EGVAR(missionmodules,mapC) = [_mapSize/2,_mapSize/2];
 
-		_cntr = RydBB_MapC
+		_cntr = EGVAR(missionmodules,mapC)
 		};
 
 	//if ((_cntr select 0) < 1000) then {_cntr = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition")};
@@ -78,28 +78,28 @@ if (_BBSide == "A") then
 	//_mark = [_mark,_cntr,"ColorBlue","ICON",[1.5,1.5],0,1,"DOT",(str _cntr)] call RYD_Marker;
 
 	_lng = (_cntr select 0)*2;
-	if !(isNil "RydBB_MC") then
+	if !(isNil QEGVAR(missionmodules,mC)) then
 		{
-		if ((typeName RydBB_MC) isEqualTo "OBJECT") then
+		if ((typeName EGVAR(missionmodules,mC)) isEqualTo "OBJECT") then
 			{
-			_lng = ((triggerArea RydBB_MC) select 0)*2
+			_lng = ((triggerArea EGVAR(missionmodules,mC)) select 0)*2
 			}
 		else
 			{
-			_lng = RydBB_MapLng
+			_lng = EGVAR(missionmodules,mapLng)
 			};
 
-		RydBB_MapXMax = (RydBB_MapC select 0) + _lng/2;
-		RydBB_MapYMax = (RydBB_MapC select 1) + _lng/2;
-		RydBB_MapXMin = (RydBB_MapC select 0) - _lng/2;
-		RydBB_MapYMin = (RydBB_MapC select 1) - _lng/2;
+		EGVAR(missionmodules,mapXMax) = (EGVAR(missionmodules,mapC) select 0) + _lng/2;
+		EGVAR(missionmodules,mapYMax) = (EGVAR(missionmodules,mapC) select 1) + _lng/2;
+		EGVAR(missionmodules,mapXMin) = (EGVAR(missionmodules,mapC) select 0) - _lng/2;
+		EGVAR(missionmodules,mapYMin) = (EGVAR(missionmodules,mapC) select 1) - _lng/2;
 		};
 
 	_nmbr = round (_lng/500);
 
 	missionNamespace setVariable ["BattleF",[_cntr,_lng,_nmbr]];
 
-	RydBB_Sectors = ([_cntr,_lng,0,_nmbr] call EFUNC(boss,sectorize)) select 0;
+	EGVAR(missionmodules,sectors) = ([_cntr,_lng,0,_nmbr] call EFUNC(boss,sectorize)) select 0;
 /*
 	//_markers = [];
 
@@ -110,13 +110,13 @@ if (_BBSide == "A") then
 		//_markers set [(count _markers),_mark];
 		//_x setVariable ["Over_Mark",_mark];
 		}
-	foreach RydBB_Sectors;*/
+	foreach EGVAR(missionmodules,sectors);*/
 
 
 	_nbr = 0;
 
 	startLoadingScreen ["Big Boss studies the map","RscDisplayLoadCustom"];
-	if (RydBB_Debug) then {diag_log "Big Boss studies the map."};
+	if (EGVAR(missionmodules,debug)) then {diag_log "Big Boss studies the map."};
 
 		{
 		_x setVariable ["BBSec",true];
@@ -168,28 +168,28 @@ if (_BBSide == "A") then
 		_mark = _x getVariable "Over_Mark";
 
 		_nbr = _nbr + 1;
-		_sum = count RydBB_Sectors;
+		_sum = count EGVAR(missionmodules,sectors);
 
 		if !(isMultiplayer) then
 			{
 			progressLoadingScreen (_nbr/_sum)
 			}
 		}
-	forEach RydBB_Sectors;
+	forEach EGVAR(missionmodules,sectors);
 	endLoadingScreen;
 	};
 
 
-RydBB_mapReady = true;
+EGVAR(missionmodules,mapReady) = true;
 
 _sectors = [];
 
-_sectors = RydBB_Sectors;
+_sectors = EGVAR(missionmodules,sectors);
 
 _strArea = [];
 
 
-if (RydBB_Debug) then
+if (EGVAR(missionmodules,debug)) then
 	{
 	RydBBa_SAL globalChat format ["Big Boss %1 is looking for strategic objectives.",_BBSide];
 	diag_log format ["Big Boss %1 is looking for strategic objectives.",_BBSide]
@@ -200,7 +200,7 @@ _objRad = 25000;
 _cntr = (missionNamespace getVariable "BattleF") select 0;
 _lng = (missionNamespace getVariable "BattleF") select 1;
 
-if !(isNil "RydBB_MC") then
+if !(isNil QEGVAR(missionmodules,mC)) then
 	{
 	_objRad = _lng/2
 	};
@@ -274,7 +274,7 @@ forEach (synchronizedObjects _BBSAL);
 
 _strArea = _strArea + _BBStr;
 
-if (RydBB_CustomObjOnly) then {_strArea = _BBStr};
+if (EGVAR(missionmodules,customObjOnly)) then {_strArea = _BBStr};
 
 
 _strArea0 = [] + _strArea;
@@ -370,11 +370,11 @@ _mainPos = _cntr;
 _BBalive = true;
 _allAreTaken = true;
 
-while {(RydBB_Active)} do
+while {(EGVAR(missionmodules,active))} do
 	{
 	if !(_BBalive) exitWith
 		{
-		if (RydBB_Debug) then
+		if (EGVAR(missionmodules,debug)) then
 			{
 			RydBBa_SAL globalChat format ["Big Boss %1 has no army!",_BBSide];
 			diag_log format ["Big Boss %1 has no army!",_BBSide]
@@ -410,7 +410,7 @@ while {(RydBB_Active)} do
 
 			_HQg0 = +_HQg;
 
-			while {(RydBB_Active)} do
+			while {(EGVAR(missionmodules,active))} do
 				{
 					{
 					if (isNull (group _x)) then
@@ -429,7 +429,7 @@ while {(RydBB_Active)} do
 
 				if ((_HQg isEqualTo [])) exitWith
 					{
-					if (RydBB_Debug) then
+					if (EGVAR(missionmodules,debug)) then
 						{
 						RydBBa_SAL globalChat format ["Big Boss %1 has no army!",_side];
 						diag_log format ["Big Boss %1 has no army!",_side]
@@ -458,14 +458,14 @@ while {(RydBB_Active)} do
 
 	if ((_BBHQs isEqualTo [])) exitWith
 		{
-		if (RydBB_Debug) then
+		if (EGVAR(missionmodules,debug)) then
 			{
 			RydBBa_SAL globalChat format ["Big Boss %1 has no army!",_BBSide];
 			diag_log format ["Big Boss %1 has no army!",_BBSide]
 			};
 		};
 
-	if (RydBB_Debug) then
+	if (EGVAR(missionmodules,debug)) then
 		{
 		RydBBa_SAL globalChat format ["Big Boss %1 is analyzing forces...",_BBSide];
 		diag_log format ["Big Boss %1 is analyzing forces...",_BBSide]
@@ -478,7 +478,7 @@ while {(RydBB_Active)} do
 
 	if (_BBCycle == 1) then
 		{
-		if (RydBB_Debug) then
+		if (EGVAR(missionmodules,debug)) then
 			{
 			RydBBa_SAL globalChat format ["Big Boss %1 is checking own forces placement...",_BBSide];
 			diag_log format ["Big Boss %1 is checking own forces placement...",_BBSide]
@@ -551,7 +551,7 @@ while {(RydBB_Active)} do
 			_change = false;
 
 			_civF = ["CIV_F","CIV","CIV_RU","BIS_TK_CIV","BIS_CIV_special"];
-			if !(isNil ("RydBB_CivF")) then {_civF = RydBB_CivF};
+			if !(isNil QEGVAR(missionmodules,civF)) then {_civF = EGVAR(missionmodules,civF)};
 
 				{
 				_posStr = _x select 0;
@@ -586,7 +586,7 @@ while {(RydBB_Active)} do
 					}
 				forEach _ownGroups;
 
-				if (RydBB_CustomObjOnly) then
+				if (EGVAR(missionmodules,customObjOnly)) then
 
 					{
 					if ((((_mDist > _amDist) and (_mDist > _aDist) and (_amDist > _aDist) and (_aDist < 1000000)) or (_gDst < 500) or (_aDist < 1000)) and !(_enemyClose)) then
@@ -659,12 +659,12 @@ while {(RydBB_Active)} do
 
 		_attackAxis = [_ArmyPos,_mainPos,10] call EFUNC(common,angleTowards);
 
-		if (RydBB_Debug) then
+		if (EGVAR(missionmodules,debug)) then
 			{
 			[[_strArea,_BBSide],EFUNC(boss,objMark)] call EFUNC(common,spawn)
 			};
 
-		if (RydBB_Debug) then
+		if (EGVAR(missionmodules,debug)) then
 			{
 			RydBBa_SAL globalChat format ["Big Boss %1 orients the flanks.",_BBSide];
 			diag_log format ["Big Boss %1 orients the flanks.",_BBSide]
@@ -714,7 +714,7 @@ while {(RydBB_Active)} do
 			}
 		forEach _sectors;
 
-		if (RydBB_Debug) then
+		if (EGVAR(missionmodules,debug)) then
 			{
 			RydBBa_SAL globalChat format ["Big Boss %1 assigns front sections to divisions.",_BBSide];
 			diag_log format ["Big Boss %1 assigns front sections to divisions.",_BBSide]
@@ -1329,7 +1329,7 @@ while {(RydBB_Active)} do
 				}
 			};
 
-		if (RydBB_Debug) then
+		if (EGVAR(missionmodules,debug)) then
 			{
 			RydBBa_SAL globalChat format ["Assignment of Big Boss %5 : Left: %1 Right: %2 Front: %3 Reserve: %4",_goingLeft,_goingRight,_goingAhead,_goingReserve,_BBSide];
 			diag_log format ["Assignment of Big Boss %5 : Left: %1 Right: %2 Front: %3 Reserve: %4",_goingLeft,_goingRight,_goingAhead,_goingReserve,_BBSide];
@@ -1342,7 +1342,7 @@ while {(RydBB_Active)} do
 			};
 		};
 
-	if (RydBB_Debug) then
+	if (EGVAR(missionmodules,debug)) then
 		{
 		RydBBa_SAL globalChat format ["Big Boss %1 issues orders.",_BBSide];
 		diag_log format ["Big Boss %1 issues orders.",_BBSide];
@@ -1469,7 +1469,7 @@ while {(RydBB_Active)} do
 	_lossesFactor = (_losses/(_currentNumber + 1)) * _inert;
 
 
-	if (RydBB_Debug) then
+	if (EGVAR(missionmodules,debug)) then
 		{
 		RydBBa_SAL globalChat format ["Side: %7 - Losses: %1 Number: %2 Value: %3 enValue: %4 enFactor: %5 lossFactor: %6",_losses,_currentNumber,_ownVal,_enemyVal,_enemyFactor,_lossesFactor,_BBSide];
 		diag_log format ["Side: %7 - Losses: %1 Number: %2 Value: %3 enValue: %4 enFactor: %5 lossFactor: %6",_losses,_currentNumber,_ownVal,_enemyVal,_enemyFactor,_lossesFactor,_BBSide];
@@ -1929,7 +1929,7 @@ while {(RydBB_Active)} do
 
 	if ((_BBSide == "A") and (_BBCycle == 1)) then {RydBBa_Init = true};
 
-	if (RydBB_Debug) then
+	if (EGVAR(missionmodules,debug)) then
 		{
 		RydBBa_SAL globalChat format ["For Big Boss %3 cycle is completed: %1 (mission time: %2)",_BBCycle,time,_BBSide];
 		diag_log format ["For Big Boss %3 cycle is completed: %1 (mission time: %2)",_BBCycle,time,_BBSide]
@@ -1937,9 +1937,9 @@ while {(RydBB_Active)} do
 
 	_ctWait = time;
 	_ctVal = 20;
-	if !(isNil "RydBB_MainInterval") then {_ctVal = RydBB_MainInterval};
+	_ctVal = EGVAR(missionmodules,mainInterval);
 
-	if (RydBB_Debug) then
+	if (EGVAR(missionmodules,debug)) then
 		{
 		RydBBa_SAL globalChat format ["Big Boss %1 will now take a moment to ash his cigar.",_BBSide];
 		diag_log format ["Big Boss %1 will now take a moment to ash his cigar.",_BBSide];
@@ -1964,17 +1964,17 @@ while {(RydBB_Active)} do
 				}
 			};
 
-		if !(RydBB_Active) then {_ctVal = 0};
+		if !(EGVAR(missionmodules,active)) then {_ctVal = 0};
 
 		((time - _ctWait) >= (_ctVal * 60))
 		};
 
-	if !(RydBB_Active) exitWith {};
+	if !(EGVAR(missionmodules,active)) exitWith {};
 
 	_urgent = RydBBa_Urgent;
 	if (_BBSide == "B") then {_urgent = RydBBb_Urgent};
 
-	if (RydBB_Debug) then
+	if (EGVAR(missionmodules,debug)) then
 		{
 		if (_urgent) then
 			{
@@ -1998,7 +1998,7 @@ while {(RydBB_Active)} do
 
 	_BBalive = true;
 
-	if (RydBB_BBOnMap) then
+	if (EGVAR(missionmodules,bBOnMap)) then
 		{
 		_BBUnit = RydBBaHQ;
 		if (_BBSide == "B") then {_BBUnit = RydBBbHQ};
@@ -2015,7 +2015,7 @@ while {(RydBB_Active)} do
 
 	if !(_BBalive) exitWith
 		{
-		if (RydBB_Debug) then
+		if (EGVAR(missionmodules,debug)) then
 			{
 			RydBBa_SAL globalChat format ["Big Boss %1 is dead!",_BBSide];
 			diag_log format ["Big Boss %1 is dead!",_BBSide];

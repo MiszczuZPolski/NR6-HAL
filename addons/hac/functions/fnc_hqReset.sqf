@@ -107,7 +107,7 @@ _SideEnemies = [];
 
 	{
 
-	if ((_HQ getVariable [QEGVAR(core,simpleMode),false]) and not (RydBB_Active)) then {_trg = _x};
+	if ((_HQ getVariable [QEGVAR(core,simpleMode),false]) and not (EGVAR(missionmodules,active))) then {_trg = _x};
 
 	_AllV20 = _x nearEntities [["AllVehicles"],(_HQ getVariable [QEGVAR(core,objRadius1),300])];
 	_Civs20 = _x nearEntities [["Civilian"],(_HQ getVariable [QEGVAR(core,objRadius1),300])];
@@ -239,7 +239,7 @@ _SideEnemies = [];
 		if ((_trg distance (leader _x)) < (_HQ getVariable [QEGVAR(core,objRadius2),500])) exitWith {_noGarrAround = false};
 	} forEach (_HQ getVariable [QEGVAR(core,garrison),[]]);
 
-	if ((_noGarrAround) and not (RydBB_Active) and (_x in _taken) and not (_setTaken)) then
+	if ((_noGarrAround) and not (EGVAR(missionmodules,active)) and (_x in _taken) and not (_setTaken)) then
 		{
 		_UnableArr = [];
 
@@ -319,7 +319,7 @@ forEach _objectives;
 
 	{
 
-	if ((_HQ getVariable [QEGVAR(core,simpleMode),false]) and not (RydBB_Active)) then {_trg = _x};
+	if ((_HQ getVariable [QEGVAR(core,simpleMode),false]) and not (EGVAR(missionmodules,active))) then {_trg = _x};
 
 	_AllV20 = _x nearEntities [["AllVehicles"],(_HQ getVariable [QEGVAR(core,objRadius1),300])];
 	_Civs20 = _x nearEntities [["Civilian"],(_HQ getVariable [QEGVAR(core,objRadius1),300])];
@@ -435,7 +435,7 @@ forEach _objectives;
 	}
 forEach _Navalobjectives;
 
-if not ((RydBB_Active) and ((leader _HQ) in (RydBBa_HQs + RydBBb_HQs))) then
+if not ((EGVAR(missionmodules,active)) and ((leader _HQ) in (RydBBa_HQs + RydBBb_HQs))) then
 	{
 	_HQ setVariable [QEGVAR(common,taken),_taken]; 
 	_HQ setVariable [QGVAR(takenNaval),_Navaltaken]; 

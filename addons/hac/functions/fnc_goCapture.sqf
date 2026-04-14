@@ -963,7 +963,7 @@ waitUntil
 		}
 	else
 		{
-		if (not ((_HQ getVariable [QEGVAR(core,nObj),1]) < _currentObj) or (RydBB_Active)) then
+		if (not ((_HQ getVariable [QEGVAR(core,nObj),1]) < _currentObj) or (EGVAR(missionmodules,active))) then
 			{
 			_isTaken = true
 			}
