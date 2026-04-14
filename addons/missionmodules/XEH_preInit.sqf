@@ -30,4 +30,14 @@ GVAR(sectors)             = [];
 // "no BB zone placed" detection logic.
 GVAR(takenLeader)         = "";
 
+// RydBBa_HQs / RydBBb_HQs are bare-global arrays populated by fnc_bbLeader when a Big Boss
+// Leader module is placed in the editor. hac functions (fnc_goCapture, fnc_hqReset,
+// fnc_statusQuo_doctrine, fnc_statusQuo_hqReloc) read these arrays unconditionally on every
+// HQ tick — even when no Big Boss module is present (active=false). Without a seed value of
+// [] the concatenation (RydBBa_HQs + RydBBb_HQs) crashes with "Undefined variable".
+// fnc_bbLeader already has isNil guards; seeding [] here is safe — bbLeader will pushBackUnique
+// into these arrays when modules are placed.
+if (isNil "RydBBa_HQs") then { RydBBa_HQs = [] };
+if (isNil "RydBBb_HQs") then { RydBBb_HQs = [] };
+
 ADDON = true;

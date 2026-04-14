@@ -60,7 +60,7 @@ if ((isPlayer (leader _unitG)) and (GVAR(gPauseActive))) then {hintC "New orders
 
 _UL = leader _unitG;
 
-if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,EGVAR(boss,aIC_OrdConf),"OrdConf"] call GVAR(aIChatter)}};
+if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,EGVAR(boss,aIC_OrdConf),"OrdConf"] call EFUNC(common,AIChatter)}};
 
 _alive = false;
 if (_HQ getVariable [QEGVAR(common,debug),false]) then
@@ -141,7 +141,7 @@ if (_drop) then
 					}
 				else
 					{
-					_UL = leader _unitG;if not (isPlayer _UL) then {if (_timer <= 240) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_OrdFinal),"OrdFinal"] call GVAR(aIChatter)}}};
+					_UL = leader _unitG;if not (isPlayer _UL) then {if (_timer <= 240) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_OrdFinal),"OrdFinal"] call EFUNC(common,AIChatter)}}};
 					//[_unit,_ammoBox,(group _Trg)] spawn RYD_AmmoDrop;
 					[[_unit,_ammoBox,(group _Trg)],GVAR(ammoDrop)] call GVAR(spawn);
 					_boxed = (_HQ getVariable [QEGVAR(core,boxed),[]]);
@@ -499,7 +499,7 @@ else
 
 		if ((_request) and not (_mtr getVariable ["HAL_Requested",false])) then {_counter = 5};
 
-		_UL = leader _unitG; if not (isPlayer _UL) then {if ((_timer <= 24) and (_counter == 1)) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_OrdFinal),"OrdFinal"] call GVAR(aIChatter)}}};
+		_UL = leader _unitG; if not (isPlayer _UL) then {if ((_timer <= 24) and (_counter == 1)) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_OrdFinal),"OrdFinal"] call EFUNC(common,AIChatter)}}};
 
 		if ((damage _Trg) >= 0.9) then {_Hollow = _Hollow - [_Trg]};
 		}
@@ -604,4 +604,4 @@ if (_lastOne) then
 	_HQ setVariable [QEGVAR(core,aSupportedG),_aSupp]
 	};
 
-_UL = leader _unitG; if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_OrdEnd),"OrdEnd"] call GVAR(aIChatter)}};
+_UL = leader _unitG; if not (isPlayer _UL) then {if ((random 100) < EGVAR(core,aIChatDensity)) then {[_UL,GVAR(aIC_OrdEnd),"OrdEnd"] call EFUNC(common,AIChatter)}};
