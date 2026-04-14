@@ -37,7 +37,7 @@ private _StaticAT_class = EGVAR(data,wS_StaticAT_class);
 private _Cargo_class = EGVAR(data,wS_Cargo_class);
 private _NCCargo_class = EGVAR(data,wS_NCCargo_class);
 private _Crew_class = EGVAR(data,wS_Crew_class);
-private _NCrewInf_class = GVAR(wS_NCrewInf_class);
+private _NCrewInf_class = _Inf_class - _Crew_class;
 private _Support_class = EGVAR(data,wS_Support_class);
 
 private _EnSpecFor = [];

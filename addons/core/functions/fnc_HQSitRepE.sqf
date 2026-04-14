@@ -683,5 +683,5 @@ while {true} do
 		default {_HQ setVariable [QGVAR(obj),GVAR(obj4E)]};
 		};
 		
-	call GVAR(statusQuo);
+	[_HQ, _cycleC, _lastReset, [], _civF] call EFUNC(hac,statusQuo);
 	};
