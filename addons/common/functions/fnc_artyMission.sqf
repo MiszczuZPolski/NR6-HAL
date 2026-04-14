@@ -30,7 +30,7 @@ private _allAmmo = 0;
 					private _type = toLower (typeOf _vehicle);
 
 					switch (true) do {
-						case (_type in GVAR(mortar_A3)) : {
+						case (_type in EGVAR(core,mortar_A3)) : {
 							switch (_ammoG) do {
 								case ("HE") : {_ammo = "8Rnd_82mm_Mo_shells"};
 								case ("SPECIAL") : {_ammo = "8Rnd_82mm_Mo_shells"};
@@ -40,7 +40,7 @@ private _allAmmo = 0;
 							};
 						};
 
-						case (_type in GVAR(sPMortar_A3)) : {
+						case (_type in EGVAR(core,sPMortar_A3)) : {
 							switch (_ammoG) do {
 								case ("HE") : {_ammo = "32Rnd_155mm_Mo_shells"};
 								case ("SPECIAL") : {_ammo = "2Rnd_155mm_Mo_Cluster"};
@@ -60,7 +60,7 @@ private _allAmmo = 0;
 							};
 						};
 
-						case (_type in GVAR(rocket_A3)) : {
+						case (_type in EGVAR(core,rocket_A3)) : {
 							switch (_ammoG) do {
 								case ("HE") : {_ammo = "12Rnd_230mm_rockets"};
 								case ("SPECIAL") : {_ammo = "12Rnd_230mm_rockets"};

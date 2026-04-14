@@ -488,7 +488,7 @@ if not (isNull _AV) then {_crr = true};
 _sts = ["true","deletewaypoint [(group this), 0];"];
 if (((group (assignedDriver _AV)) in (_HQ getVariable [QEGVAR(core,airG),[]])) and (_unitG in (_HQ getVariable [QEGVAR(core,nCrewInfG),[]]))) then {_sts = ["true","(vehicle this) land 'GET OUT';deletewaypoint [(group this), 0]"]};
 
-_EDPos = _GDV getVariable QGVAR(eDPos);
+_EDPos = if (isNull _GDV) then { nil } else { _GDV getVariable QGVAR(eDPos) };
 _earlyD = false;
 
 if not (isNil "_EDPos") then

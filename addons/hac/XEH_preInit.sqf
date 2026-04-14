@@ -88,4 +88,10 @@ GVAR(aIC_InPanic) = [
 GVAR(aIC_DefStance) = ["v2HAC_DefStance1"];
 GVAR(aIC_OffStance) = ["v2HAC_OffStance1"];
 
+// Seed mARatio — minimum attacker ratio thresholds for the dispatcher.
+// Five elements: [inf, armor, air, sniper, naval]. Value -1 means "skip ratio
+// check" (the dispatcher code does `if (_x >= 0) then {...}`).
+// Legacy source: nr6_hal/VarInit.sqf line 163 — RydxHQ_MARatio = [-1,-1,-1,-1,-1]
+if (isNil QGVAR(mARatio)) then { GVAR(mARatio) = [-1,-1,-1,-1,-1] };
+
 ADDON = true;

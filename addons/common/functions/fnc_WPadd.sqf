@@ -20,7 +20,7 @@
  */
 params [
     ["_groups", grpNull, [grpNull]],
-    ["_pos", [0, 0, 0], [[]]],
+    ["_pos", [0, 0, 0]],
     ["_type", "MOVE", [""]],
     ["_behaviour", "AWARE", [""]],
     ["_combatMode", "YELLOW", [""]],
