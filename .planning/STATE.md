@@ -2,22 +2,22 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: complete
-stopped_at: v1.0 milestone complete — Plan 05-09 closed
-last_updated: "2026-04-11T00:00:00.000Z"
+status: in-progress
+stopped_at: "Completed 06-01-PLAN.md — awaiting human BEHAV-06 baseline capture (Task 3 checkpoint)"
+last_updated: "2026-04-14T00:00:00.000Z"
 progress:
-  total_phases: 5
+  total_phases: 6
   completed_phases: 5
-  total_plans: 30
+  total_plans: 31
   completed_plans: 30
-  percent: 100
+  percent: 97
 ---
 
 # Project State: NR6-HAL ACE3 Refactor
 
 **Project:** NR6-HAL — Migrate nr6_hal to ACE3/CBA-compliant addon structure
 **Core Value:** Existing HAL AI behavior must continue working identically after refactoring
-**Last updated:** 2026-04-09
+**Last updated:** 2026-04-14
 
 ---
 
@@ -25,29 +25,28 @@ progress:
 
 **Core Value:** Structure changes, not behavior changes. HAL AI behavior must be identical after refactoring.
 
-**Current Focus:** Phase 01 — addon-skeleton-build-foundation
+**Current Focus:** Phase 06 — drop-compat-code
 
 ---
 
 ## Current Position
 
-Phase: 05 (settings-localization-compat-cleanup) — COMPLETE
-**Phase:** 5 — Settings, Localization, Compat & Cleanup
-**Plan:** 05-09 complete (final build verification + tracking doc closure)
-**Status:** v1.0 MILESTONE COMPLETE
+Phase: 06 (drop-compat-code) — IN PROGRESS
+**Phase:** 6 — Drop Compat Code
+**Plan:** 06-01 complete (compat deleted), awaiting Task 3 human-verify checkpoint (BEHAV-06 baseline capture)
+**Status:** Phase 6 in progress — BEHAV-06 baseline capture needed before 06-02 can start
 
 **Progress:**
 
-[██████████] 100%
+[█████████░] 97%
 [Phase 1] Addon Skeleton & Build Foundation   [x] Complete
 [Phase 2] Dependency Mapping                  [x] Complete
 [Phase 3] Function Extraction                 [x] Complete
 [Phase 4] Variable Namespacing                [x] Complete
 [Phase 5] Settings, Localization, Compat      [x] Complete (9/9 plans)
+[Phase 6] Drop Compat Code                    [ ] In progress (1/N plans)
 
-```
-
-Overall: 5/5 phases complete — v1.0 NR6-HAL refactor DONE (37/37 requirements satisfied)
+Overall: 5/6 phases complete — v1.0 milestone done, Phase 6 (compat removal) in progress
 
 ---
 
@@ -62,6 +61,10 @@ Overall: 5/5 phases complete — v1.0 NR6-HAL refactor DONE (37/37 requirements 
 ---
 
 ## Accumulated Context
+
+### Roadmap Evolution
+
+- Phase 6 added: drop compat code. we don't need old missions to work with this new HAL. it will lower codebase size.
 
 ### Key Decisions Logged
 
