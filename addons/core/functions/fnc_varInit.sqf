@@ -163,3 +163,45 @@ if (isNil (QGVAR(oALib))) then {GVAR(oALib) = false};
 if (isNil (QGVAR(aCRLib))) then {GVAR(aCRLib) = false};
 if (isNil (QGVAR(bAFLib))) then {GVAR(bAFLib) = false};
 if (isNil (QGVAR(pMCLib))) then {GVAR(pMCLib) = false};
+
+// Call-sign noun pool — read with +GVAR(callSignsN) (array copy, no nil guard) by all
+// fnc_HQSitRep*.sqf variants. Must be seeded here before those loops start.
+// Originally from nr6_hal/VarInit.sqf lines 196-233 (RydHQ_CallSignsN).
+if (isNil (QGVAR(callSignsN))) then
+    {
+    GVAR(callSignsN) =
+        [
+        [
+        ["PERSEUS",[]],
+        ["AJAX",[]],
+        ["HECTOR",[]],
+        ["CASTOR",[]],
+        ["JASON",[]],
+        ["ACHILLES",[]]
+        ],
+        [
+        ["LADON",[]],
+        ["CERBERUS",[]],
+        ["MANTICORE",[]],
+        ["MINOTAUR",[]],
+        ["CENTAUR",[]],
+        ["CHIMERA",[]]
+        ],
+        [
+        ["PHOENIX",[]],
+        ["HARPY",[]],
+        ["GRIFFIN",[]],
+        ["SPHINX",[]],
+        ["PEGASUS",[]],
+        ["ERINYS",[]]
+        ],
+        [
+        ["HERACLES",[]],
+        ["CYCLOPS",[]],
+        ["ARES",[]],
+        ["ATLAS",[]],
+        ["TYPHON",[]],
+        ["POLYPHEMUS",[]]
+        ]
+        ]
+    };
