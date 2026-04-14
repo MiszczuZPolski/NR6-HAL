@@ -1,4 +1,5 @@
 #include "..\script_component.hpp"
+#include "\a3\ui_f\hpp\defineCommonColors.inc"
 // Originally from RydHQInit.sqf
 
 params ["_logic", "_units", "_activated"];
@@ -181,18 +182,11 @@ if (EGVAR(missionmodules,active)) then
 
 if (((EGVAR(common,debug)) or (EGVAR(common,debugB)) or (EGVAR(common,debugC)) or (EGVAR(common,debugD)) or (EGVAR(common,debugE)) or (EGVAR(common,debugF)) or (EGVAR(common,debugG)) or (EGVAR(common,debugH))) and (GVAR(dbgMon))) then {[[],EFUNC(common,DbgMon)] call EFUNC(common,spawn)};
 
-// HQSitRep dynamic dispatch variables (replaces VarInit.sqf Section C conditional
-// `compile preprocessFile HAL\HQSitRep*.sqf` assignments). Populated with PREP'd
-// function references so the per-HQ foreach loop below can resolve `{letter}_HQSitRep`
-// via missionNamespace getVariable exactly as the legacy code did.
-A_HQSitRep = EFUNC(core,HQSitRep);
-B_HQSitRep = EFUNC(core,HQSitRepB);
-C_HQSitRep = EFUNC(core,HQSitRepC);
-D_HQSitRep = EFUNC(core,HQSitRepD);
-E_HQSitRep = EFUNC(core,HQSitRepE);
-F_HQSitRep = EFUNC(core,HQSitRepF);
-G_HQSitRep = EFUNC(core,HQSitRepG);
-H_HQSitRep = EFUNC(core,HQSitRepH);
+// A_HQSitRep..H_HQSitRep are assigned in compat_nr6hal/XEH_postInit.sqf (COMPAT-02).
+// That postInit runs before this function is invoked (module activation fires after all
+// CBA postInits complete), so the variables are already set here. Re-assigning them
+// here would trigger "Attempt to override final function" because CBA-compiled functions
+// are final. Single source of truth is compat_nr6hal/XEH_postInit.sqf lines 69-76.
 
 {
 	_x params ["_leaderName", "_codeSign"];
