@@ -35,7 +35,7 @@
 	_TransportPriority pushBackUnique _unitG;
 	(leader _HQ) setVariable [QGVAR(transportPriorityGnd),_TransportPriority,true];
 
-	[[_unitG,_HQ,getPos _unit,false,true,true],HAL_SCargo] call EFUNC(common,spawn);
+	[[_unitG,_HQ,getPos _unit,false,true,true],EFUNC(hac,sCargo)] call EFUNC(common,spawn);
 
 	sleep 15;
 
@@ -70,7 +70,7 @@
 		waitUntil {
 			if not ((_unitG getVariable ["CargoCheckPending" + _unitvar,false]) and (_unitG getVariable [("CC" + _unitvar), false]) and not (_unitG getVariable ["CargoChosen", false])) then {
 				_unitG setVariable [("CC" + _unitvar), false, true];
-				[[_unitG,_HQ,getPos _unit,false,true,true],HAL_SCargo] call EFUNC(common,spawn);
+				[[_unitG,_HQ,getPos _unit,false,true,true],EFUNC(hac,sCargo)] call EFUNC(common,spawn);
 				};
 
 			sleep 5;

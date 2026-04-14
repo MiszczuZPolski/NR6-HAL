@@ -298,7 +298,7 @@ _exhausted = _HQ getVariable [QEGVAR(core,exhausted),[]];
 					
 					if (not (_resting) and not (_Unable) and not (_IsAPlayer)) then
 						{
-						[[_x,_HQ,true],HAL_GoRest] call EFUNC(common,spawn);
+						[[_x,_HQ,true],EFUNC(hac,goRest)] call EFUNC(common,spawn);
 						//_exhausted pushBack _x
 						}
 					}; 
@@ -597,8 +597,8 @@ _recDefSpot = _HQ getVariable [QEGVAR(core,recDefSpot),[]];
 								_goodSpots set [_aa,0]; 
 								_goodSpots = _goodSpots - [0];
 								_closestArr set [1,_goodSpots];
-								//[_x,_Spot,_angleV,_HQ] spawn HAL_GoDefRecon;
-								[[_x,_Spot,_angleV,_HQ],HAL_GoDefRecon] call EFUNC(common,spawn);
+								//[_x,_Spot,_angleV,_HQ] spawn EFUNC(hac,goDefRecon);
+								[[_x,_Spot,_angleV,_HQ],EFUNC(hac,goDefRecon)] call EFUNC(common,spawn);
 								_recDefSpot pushBack _x;
 								_HQ setVariable [QEGVAR(core,recDefSpot),_recDefSpot];
 								}
@@ -668,8 +668,8 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 										_goodSpots set [_bb,0]; 
 										_goodSpots = _goodSpots - [0];
 										_closestArr set [2,_goodSpots];
-										//[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ] spawn HAL_GoDef;
-										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],HAL_GoDef] call EFUNC(common,spawn);
+										//[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ] spawn EFUNC(hac,goDef);
+										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],EFUNC(hac,goDef)] call EFUNC(common,spawn);
 										_defSpot = _HQ getVariable [QEGVAR(core,defSpot),[]];
 										_defSpot pushBack _x;
 										_HQ setVariable [QEGVAR(core,defSpot),_defSpot];
@@ -728,8 +728,8 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 								_HQ setVariable [QEGVAR(core,airInDef),_AirInDef];	
 
 								_ad setVariable [("Busy" + (str _ad)), false];
-								//[_ad,_Spot,_HQ] spawn HAL_GoDefAir;
-								[[_ad,_Spot,_HQ],HAL_GoDefAir] call EFUNC(common,spawn);
+								//[_ad,_Spot,_HQ] spawn EFUNC(hac,goDefAir);
+								[[_ad,_Spot,_HQ],EFUNC(hac,goDefAir)] call EFUNC(common,spawn);
 								}
 							}
 						}
@@ -817,8 +817,8 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 												};
 											};
 
-										//[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ] spawn HAL_GoDef;
-										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],HAL_GoDef] call EFUNC(common,spawn);
+										//[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ] spawn EFUNC(hac,goDef);
+										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],EFUNC(hac,goDef)] call EFUNC(common,spawn);
 										};
 									};
 								};
@@ -906,8 +906,8 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 												};
 											};
 										
-										//[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ] spawn HAL_GoDef;
-										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],HAL_GoDef] call EFUNC(common,spawn);
+										//[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ] spawn EFUNC(hac,goDef);
+										[[_x,_Spot,_dXb,_dYb,_DN,_angleV,_HQ],EFUNC(hac,goDef)] call EFUNC(common,spawn);
 										}
 									}
 								}
@@ -960,8 +960,8 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 								_HQ setVariable [QEGVAR(core,airInDef),_AirInDef];
 								
 								_ad setVariable [("Busy" + (str _ad)), false];
-								//[_ad,_Spot,_HQ] spawn HAL_GoDefAir
-								[[_ad,_Spot,_HQ],HAL_GoDefAir] call EFUNC(common,spawn);
+								//[_ad,_Spot,_HQ] spawn EFUNC(hac,goDefAir)
+								[[_ad,_Spot,_HQ],EFUNC(hac,goDefAir)] call EFUNC(common,spawn);
 								}
 							}
 						}
@@ -1000,8 +1000,8 @@ switch ((random 100) >= (50/(0.5 + (_HQ getVariable [QEGVAR(core,fineness),0.5])
 
 								_Spot = (selectRandom _defArray) select 0;
 
-								//[_x,_Spot,_HQ] spawn HAL_GoDefRes;
-								[[_x,_Spot,_HQ],HAL_GoDefRes] call EFUNC(common,spawn);
+								//[_x,_Spot,_HQ] spawn EFUNC(hac,goDefRes);
+								[[_x,_Spot,_HQ],EFUNC(hac,goDefRes)] call EFUNC(common,spawn);
 								
 								}
 							}
@@ -1033,7 +1033,7 @@ forEach ((_HQ getVariable [QGVAR(defRes),[]]) - (_HQ getVariable [QEGVAR(core,no
 		{
 		deleteWaypoint ((waypoints _x) select 0);
 		//[_x,_HQ] spawn HAL_GoIdle
-			[[_x,selectRandom (_HQ getVariable [QGVAR(takenNaval),[]]),_HQ],HAL_GoDefNav] call EFUNC(common,spawn);
+			[[_x,selectRandom (_HQ getVariable [QGVAR(takenNaval),[]]),_HQ],EFUNC(hac,goDefNav)] call EFUNC(common,spawn);
 		};
 	}
 forEach (_HQ getVariable [QEGVAR(core,navalG),[]]);

@@ -10,12 +10,12 @@
 params ["_kind"];
 
 private _lookup = createHashMapFromArray [
-    ["INF",    HAL_GoAttInf],
-    ["ARM",    HAL_GoAttArmor],
-    ["SNP",    HAL_GoAttSniper],
-    ["AIR",    HAL_GoAttAir],
-    ["AIRCAP", HAL_GoAttAirCAP],
-    ["NAVAL",  HAL_GoAttNaval]
+    ["INF",    EFUNC(hac,goAttInf)],
+    ["ARM",    EFUNC(hac,goAttArmor)],
+    ["SNP",    EFUNC(hac,goAttSniper)],
+    ["AIR",    EFUNC(hac,goAttAir)],
+    ["AIRCAP", EFUNC(hac,goAttAirCAP)],
+    ["NAVAL",  EFUNC(hac,goAttNaval)]
 ];
 
 _lookup getOrDefault [_kind, {}]

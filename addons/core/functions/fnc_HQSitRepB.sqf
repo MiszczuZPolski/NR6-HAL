@@ -37,7 +37,7 @@ _HQ setVariable [QGVAR(fineness),GVAR(finenessB)];
 
 [_HQ] call FUNC(personality);
 
-[[_HQ],HAL_LHQ] call EFUNC(common,spawn);
+[[_HQ],EFUNC(hac,lhq)] call EFUNC(common,spawn);
 
 if (isNil (QGVAR(boxedB))) then {GVAR(boxedB) = []};
 _HQ setVariable [QGVAR(boxed),GVAR(boxedB)];

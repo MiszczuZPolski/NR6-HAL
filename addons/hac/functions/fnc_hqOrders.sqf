@@ -230,7 +230,7 @@ _exhausted = _HQ getVariable [QEGVAR(core,exhausted),[]];
 					
 					if (not (_resting) and not (_Unable) and not (_IsAPlayer)) then
 						{
-						[[_x,_HQ,true],HAL_GoRest] call EFUNC(common,spawn);
+						[[_x,_HQ,true],EFUNC(hac,goRest)] call EFUNC(common,spawn);
 						//_exhausted pushBack _x
 						}
 					}; 
@@ -375,7 +375,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call EFUNC(common,spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],EFUNC(hac,goRecon)] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
@@ -392,7 +392,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call EFUNC(common,spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],EFUNC(hac,goRecon)] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
@@ -409,7 +409,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call EFUNC(common,spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],EFUNC(hac,goRecon)] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
@@ -426,7 +426,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call EFUNC(common,spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],EFUNC(hac,goRecon)] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
@@ -444,7 +444,7 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],HAL_GoRecon] call EFUNC(common,spawn);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,true],EFUNC(hac,goRecon)] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
@@ -461,8 +461,8 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					//[_x,_PosObj1,(_HQ getVariable ["RydHQ_ReconStage",1]),_HQ,_reconNr,false] spawn HAL_GoRecon;
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,false],HAL_GoRecon] call EFUNC(common,spawn);
+					//[_x,_PosObj1,(_HQ getVariable ["RydHQ_ReconStage",1]),_HQ,_reconNr,false] spawn EFUNC(hac,goRecon);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,false],EFUNC(hac,goRecon)] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				};
@@ -480,8 +480,8 @@ if (((_HQ getVariable [QEGVAR(core,noRec),1]) * ((_HQ getVariable [QEGVAR(core,r
 					_reconAv = _HQ getVariable [QGVAR(reconAv),[]];
 					_reconAv = _reconAv - [_x];
 					_HQ setVariable [QGVAR(reconAv),_reconAv];
-					//[_x,_PosObj1,(_HQ getVariable ["RydHQ_ReconStage",1]),_HQ,_reconNr,false] spawn HAL_GoRecon;
-					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,false],HAL_GoRecon] call EFUNC(common,spawn);
+					//[_x,_PosObj1,(_HQ getVariable ["RydHQ_ReconStage",1]),_HQ,_reconNr,false] spawn EFUNC(hac,goRecon);
+					[[_x,_PosObj1,(_HQ getVariable [QEGVAR(core,reconStage),1]),_HQ,_reconNr,false],EFUNC(hac,goRecon)] call EFUNC(common,spawn);
 					}
 				forEach _gps
 				}
@@ -513,8 +513,8 @@ if (not ((_HQ getVariable [QEGVAR(core,reconDone),false])) and ((count (_HQ getV
 		if (EGVAR(core,noRestPlayers) and (isPlayer (leader _x))) then {_IsAPlayer = true};
 		if (not (_resting) and not (_Unable) and not (_IsAPlayer)) then 
 			{
-			//[_x,_HQ] spawn HAL_GoRest
-			[[_x,_HQ],HAL_GoRest] call EFUNC(common,spawn);
+			//[_x,_HQ] spawn EFUNC(hac,goRest)
+			[[_x,_HQ],EFUNC(hac,goRest)] call EFUNC(common,spawn);
 			}
 		}
 	forEach ((_HQ getVariable [QEGVAR(core,exhausted),[]]) - ((_HQ getVariable [QEGVAR(core,airG),[]]) + (_HQ getVariable [QGVAR(staticG),[]]) + (_HQ getVariable [QEGVAR(core,artG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,navalG),[]])));
@@ -542,12 +542,12 @@ if (not ((_HQ getVariable [QEGVAR(core,reconDone),false])) and ((count (_HQ getV
 			if (not (_busy) and not (_Unable) and ((count (waypoints _x)) <= 1) and not (_deployed) and not (_isDef) and not (_capturing) and (not (_x in ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,airG),[]]))) or ((count (units _x)) > 1))) then 
 				{
 				deleteWaypoint ((waypoints _x) select 0);
-				//[_x,_HQ] spawn HAL_GoIdle
+				//[_x,_HQ] spawn EFUNC(hac,goIdle)
 
 				if ((_HQ getVariable [QEGVAR(core,idleDef),true]) and not (isPlayer (leader _x)) and not ((_HQ getVariable [QEGVAR(common,taken),[]]) isEqualTo [])) then {
-					[[_x,selectRandom (_HQ getVariable [QEGVAR(common,taken),[]]),_HQ],HAL_GoDefRes] call EFUNC(common,spawn);
+					[[_x,selectRandom (_HQ getVariable [QEGVAR(common,taken),[]]),_HQ],EFUNC(hac,goDefRes)] call EFUNC(common,spawn);
 					} else {
-					[[_x,_HQ],HAL_GoIdle] call EFUNC(common,spawn);
+					[[_x,_HQ],EFUNC(hac,goIdle)] call EFUNC(common,spawn);
 					};
 				};
 			}
@@ -831,8 +831,8 @@ _toTake = _toTake - [objNull];
 												case (0) : {_Trg setVariable [("Capturing" + (str  _Trg) + (str _HQ)),[1,_captCount + _groupCount]]};
 												};
 
-											//[_x,_isAttacked,_HQ,_Trg] spawn HAL_GoCapture;
-											[[_x,_isAttacked,_HQ,_Trg],HAL_GoCapture] call EFUNC(common,spawn);
+											//[_x,_isAttacked,_HQ,_Trg] spawn EFUNC(hac,goCapture);
+											[[_x,_isAttacked,_HQ,_Trg],EFUNC(hac,goCapture)] call EFUNC(common,spawn);
 											}
 										}
 									}
@@ -892,8 +892,8 @@ _toTake = _toTake - [objNull];
 											case (0) : {_Trg setVariable [("Capturing" + (str  _Trg) + (str _HQ)),[1,_captCount + _groupCount]]};
 											};
 
-										//[_x,_isAttacked,_HQ,_Trg] spawn HAL_GoCapture;
-										[[_x,_isAttacked,_HQ,_Trg],HAL_GoCapture] call EFUNC(common,spawn);
+										//[_x,_isAttacked,_HQ,_Trg] spawn EFUNC(hac,goCapture);
+										[[_x,_isAttacked,_HQ,_Trg],EFUNC(hac,goCapture)] call EFUNC(common,spawn);
 										}
 									}
 								}
@@ -1014,7 +1014,7 @@ _toTakeNav = _toTakeNav - [objNull];
 												case (0) : {_Trg setVariable [("Capturing" + (str  _Trg) + (str _HQ)),[1,_captCount + _groupCount]]};
 												};
 
-											[[_x,_isAttacked,_HQ,_Trg],HAL_GoCaptureNaval] call EFUNC(common,spawn);
+											[[_x,_isAttacked,_HQ,_Trg],EFUNC(hac,goCaptureNaval)] call EFUNC(common,spawn);
 											}
 										}
 									}
@@ -1078,12 +1078,15 @@ forEach _toTakeNav;
 			{
 				{
 				_gp = _WAAv select 0;
-				_code = HAL_GoHoldInf;
-				if (_gp in _armored) then {_code = HAL_GoHoldArmor};
+				// TODO Phase 6+: HAL_GoHoldInf/HAL_GoHoldArmor targets missing in hal_hac — pre-existing bug, not introduced by this plan.
+				// These handles were NOT in compat_nr6hal Part A and no fnc_goHoldInf/fnc_goHoldArmor exist in addons/hac/functions/.
+				// The block below is disabled until the functions are implemented.
+				//_code = EFUNC(hac,goHoldInf);
+				//if (_gp in _armored) then {_code = EFUNC(hac,goHoldArmor)};
 				_WAAv = _WAAv - [_gp];
 				_gp setVariable ["Busy" + (str _gp),true];
-				
-				[_gp,_x] spawn _code;
+
+				//[_gp,_x] spawn _code;
 				
 				_howMuch = _howMuch - 1;
 				
@@ -1117,12 +1120,12 @@ if (_HQ getVariable [QEGVAR(core,idleOrd),true]) then
 		if (not (_busy) and not (_Unable) and ((count (waypoints _x)) <= 1) and not (_deployed) and not (_isDef) and not (_capturing) and (not (_x in ((_HQ getVariable [QEGVAR(core,nCCargoG),[]]) + (_HQ getVariable [QEGVAR(core,supportG),[]]) + (_HQ getVariable [QEGVAR(core,airG),[]]))) or ((count (units _x)) > 1))) then 
 			{
 			deleteWaypoint ((waypoints _x) select 0);
-			//[_x,_HQ] spawn HAL_GoIdle
+			//[_x,_HQ] spawn EFUNC(hac,goIdle)
 
 			if ((_HQ getVariable [QEGVAR(core,idleDef),true]) and not (isPlayer (leader _x)) and not ((_HQ getVariable [QEGVAR(common,taken),[]]) isEqualTo [])) then {
-				[[_x,selectRandom (_HQ getVariable [QEGVAR(common,taken),[]]),_HQ],HAL_GoDefRes] call EFUNC(common,spawn);
+				[[_x,selectRandom (_HQ getVariable [QEGVAR(common,taken),[]]),_HQ],EFUNC(hac,goDefRes)] call EFUNC(common,spawn);
 				} else {
-				[[_x,_HQ],HAL_GoIdle] call EFUNC(common,spawn);
+				[[_x,_HQ],EFUNC(hac,goIdle)] call EFUNC(common,spawn);
 				};
 			};
 		}
@@ -1147,10 +1150,10 @@ if (_HQ getVariable [QEGVAR(core,idleOrd),true]) then
 		if (not (_busy) and not (_Unable) and ((count (waypoints _x)) <= 1) and not (_deployed) and not (_isDef) and not (_capturing) and (not (_x in (_HQ getVariable [QEGVAR(core,nCCargoG),[]])) or ((count (units _x)) > 1))) then 
 			{
 			deleteWaypoint ((waypoints _x) select 0);
-			//[_x,_HQ] spawn HAL_GoIdle
+			//[_x,_HQ] spawn EFUNC(hac,goIdle)
 
 			if ((_HQ getVariable [QEGVAR(core,idleDef),true]) and not (isPlayer (leader _x)) and not ((_HQ getVariable [QGVAR(takenNaval),[]]) isEqualTo [])) then {
-				[[_x,selectRandom (_HQ getVariable [QGVAR(takenNaval),[]]),_HQ],HAL_GoDefNav] call EFUNC(common,spawn);
+				[[_x,selectRandom (_HQ getVariable [QGVAR(takenNaval),[]]),_HQ],EFUNC(hac,goDefNav)] call EFUNC(common,spawn);
 				};
 			};
 		}
@@ -1172,8 +1175,8 @@ if (_HQ getVariable [QEGVAR(core,idleOrd),true]) then
 		{
 		if not (_x in (_HQ getVariable [QEGVAR(core,garrison),[]])) then
 			{
-			//[_x,_HQ] spawn HAL_GoRest
-			[[_x,_HQ],HAL_GoRest] call EFUNC(common,spawn);
+			//[_x,_HQ] spawn EFUNC(hac,goRest)
+			[[_x,_HQ],EFUNC(hac,goRest)] call EFUNC(common,spawn);
 			}
 		}
 	}

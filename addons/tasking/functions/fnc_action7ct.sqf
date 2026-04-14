@@ -36,7 +36,7 @@ private _TransportPriority = (leader _HQ) getVariable [QGVAR(transportPriorityAi
 _TransportPriority pushBackUnique _grp;
 (leader _HQ) setVariable [QGVAR(transportPriorityAir),_TransportPriority,true];
 
-[[_unitG,_HQ,getPos _unit,false,true],HAL_SCargo] call EFUNC(common,spawn);
+[[_unitG,_HQ,getPos _unit,false,true],EFUNC(hac,sCargo)] call EFUNC(common,spawn);
 
 sleep 15;
 
@@ -72,7 +72,7 @@ if (not (_unitG getVariable ["CargoChosen", false])) then {
 	waitUntil {
 		if not ((_unitG getVariable ["CargoCheckPending" + _unitvar,false]) and (_unitG getVariable [("CC" + _unitvar), false]) and not (_unitG getVariable ["CargoChosen", false])) then {
 			_unitG setVariable [("CC" + _unitvar), false, true];
-			[[_unitG,_HQ,getPos _unit,false,true],HAL_SCargo] call EFUNC(common,spawn);
+			[[_unitG,_HQ,getPos _unit,false,true],EFUNC(hac,sCargo)] call EFUNC(common,spawn);
 			};
 
 		sleep 5;
