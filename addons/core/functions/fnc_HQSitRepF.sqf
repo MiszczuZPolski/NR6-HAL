@@ -331,8 +331,8 @@ while {true} do
 	_HQ setVariable [QGVAR(cargoFind),GVAR(cargoFindF)];
 	if (isNil (QGVAR(subordinatedF))) then {GVAR(subordinatedF) = []};
 	_HQ setVariable [QGVAR(subordinated),GVAR(subordinatedF)];
-	if (isNil (QGVAR(includedF))) then {GVAR(includedF) = []};
-	_HQ setVariable [QGVAR(included),GVAR(includedF)];
+	if (isNil (QEGVAR(missionmodules,includedF))) then {EGVAR(missionmodules,includedF) = []};
+	_HQ setVariable [QGVAR(included),EGVAR(missionmodules,includedF)];
 	if (isNil (QGVAR(excludedF))) then {GVAR(excludedF) = []};
 	_HQ setVariable [QEGVAR(common,excluded),GVAR(excludedF)];
 	if (isNil (QGVAR(subAllF))) then {GVAR(subAllF) = true};
