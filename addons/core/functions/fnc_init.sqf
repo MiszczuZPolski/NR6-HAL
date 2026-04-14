@@ -168,13 +168,20 @@ if (GVAR(timeM)) then
 
 	[] call FUNC(front);
 
+	// MED-3 race fix: fnc_bbLeader (Big Boss Leader module) sets EGVAR(missionmodules,active)=true.
+	// Module activation order is not guaranteed — Core_Module can resolve its leaderHQ waitUntil
+	// and reach this check before Big Boss Leader modules have fired. Poll for up to 5 s so that
+	// missions with Big Boss placed alongside Core don't silently skip the boss spawn.
+	// Missions without Big Boss will have active=false after the timeout and skip correctly.
+	if !(EGVAR(missionmodules,active)) then {
+		private _bbDeadline = diag_tickTime + 5;
+		waitUntil { sleep 0.25; EGVAR(missionmodules,active) || diag_tickTime > _bbDeadline };
+	};
+
 	if (EGVAR(missionmodules,active)) then
 		{
 		// Phase 3 extracted nr6_hal/Boss_fnc.sqf handles into hal_boss PREP'd functions;
 		// the legacy preprocessFile loader is removed (file no longer exists).
-		// NOTE: RydBBa_HQs / RydBBb_HQs / RydBBa_Init / RydBBa_InitDone / RydBBb_InitDone
-		// are legacy bare globals that may be Phase 4 rename misses (similar to Bug 6).
-		// Not fixing here — Big Boss (active=true) is not exercised in current test missions.
 		RydBBa_InitDone = false;
 		RydBBb_InitDone = false;
 

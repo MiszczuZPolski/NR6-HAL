@@ -40,4 +40,14 @@ GVAR(takenLeader)         = "";
 if (isNil "RydBBa_HQs") then { RydBBa_HQs = [] };
 if (isNil "RydBBb_HQs") then { RydBBb_HQs = [] };
 
+// RydBBa_SAL / RydBBb_SAL are editor-placed unit objects (the "Sector Attack Leader"
+// debug relay unit). They are never assigned in code — mission designers place a unit
+// and give it the editor variable name RydBBa_SAL / RydBBb_SAL.
+// fnc_boss.sqf reads them at lines 264-265 (_BBSAL = RydBBa_SAL) and uses them in
+// globalChat calls and as argument to synchronizedObjects.
+// If the mission has no SAL unit placed, these are nil → synchronizedObjects nil crashes.
+// Seed as objNull so synchronizedObjects returns [] (no crash) and globalChat is a no-op.
+if (isNil "RydBBa_SAL") then { RydBBa_SAL = objNull };
+if (isNil "RydBBb_SAL") then { RydBBb_SAL = objNull };
+
 ADDON = true;
