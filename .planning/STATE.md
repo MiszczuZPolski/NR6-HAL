@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-stopped_at: "Completed 06-01-PLAN.md — awaiting human BEHAV-06 baseline capture (Task 3 checkpoint)"
+stopped_at: "Completed 06-02-PLAN.md — awaiting Task 4 human-verify checkpoint (Arma runtime BEHAV-06 run)"
 last_updated: "2026-04-14T00:00:00.000Z"
 progress:
   total_phases: 6
   completed_phases: 5
   total_plans: 31
-  completed_plans: 30
-  percent: 97
+  completed_plans: 31
+  percent: 100
 ---
 
 # Project State: NR6-HAL ACE3 Refactor
@@ -33,8 +33,8 @@ progress:
 
 Phase: 06 (drop-compat-code) — IN PROGRESS
 **Phase:** 6 — Drop Compat Code
-**Plan:** 06-01 complete (compat deleted), awaiting Task 3 human-verify checkpoint (BEHAV-06 baseline capture)
-**Status:** Phase 6 in progress — BEHAV-06 baseline capture needed before 06-02 can start
+**Plan:** 06-02 complete (HAL_* rewrites + HQSitRep seeds), awaiting Task 4 human-verify checkpoint (Arma BEHAV-06 runtime run)
+**Status:** Phase 6 in progress — runtime verification needed to confirm HQSitRep heartbeat restored
 
 **Progress:**
 
@@ -94,6 +94,7 @@ Overall: 5/6 phases complete — v1.0 milestone done, Phase 6 (compat removal) i
 | Phase 05 P07 | 25m | 2 tasks | 2 files |
 | Phase 05 P08 | 12m | 2 tasks | 6 files |
 | Phase 05-settings-localization-compat-cleanup P08 | 12m | 2 tasks | 6 files |
+| 06-02 | 279s | 3 tasks | 14 files |
 
 ### Performance Metrics
 
